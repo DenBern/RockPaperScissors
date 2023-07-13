@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  background-color: #000;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.wrapper-content {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #000;
+  padding: 20px;
+}
+
+.nav-title {
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+}
+
+.link-user {
+  width: 28px;
+  height: 28px;
+  background: url(./assets/svg/icon_profile.svg) no-repeat center;
+}
+
+.header-background {
+  background: url(../library/assets/png/headerBg.png) no-repeat center;
+}
+
+h1 {
+  max-width: 600px;
+  font-family: Forum, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  background-color: #000;
+  padding: 35px 40px;
+  margin: 220px 0 160px 0;
+}
