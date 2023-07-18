@@ -14,12 +14,12 @@ li {
 }
 
 a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
 }
 
 h1 {
-  font-family: Forum;
+  font-family: Forum, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -29,7 +29,7 @@ h1 {
 
 h2 {
   color: #0C0C0E;
-  font-family: Forum;
+  font-family: Forum, sans-serif;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
@@ -129,11 +129,13 @@ main {
 }
 
 .section-description {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 20px;
   font-style: normal;
+  letter-spacing: 2px;
   font-weight: 400;
   line-height: 40px;
+  text-align: center;
 }
 
 /***** Section about *****/
@@ -310,4 +312,147 @@ h4 {
 .book-image {
   width: 200px;
   height: 300px;
+}
+
+/***** Section coffee shop *****/
+
+.coffee-shop {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.menu-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-coffee-tea,
+.menu-desserts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.menu-coffee-tea {
+  width: 438px;
+}
+
+.menu-desserts {
+  width: 482px;
+  align-items: flex-end;
+}
+
+h5 {
+  color: #BB945F;
+  font-family: Forum, sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.price-coffee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.price-desert-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-end;
+}
+
+.dish {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.dish-name {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.price-line {
+  width: 100px;
+  background: #BB945F;
+}
+
+/***** Section our contacts *****/
+
+.our-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contacts-map-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts-text {
+  color: #000;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.tel-numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.tel {
+  color: #000;
+  text-align: center;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+
+.mail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.mailto {
+  color: #000;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
 }
