@@ -59,7 +59,7 @@ hr {
 }
 
 section {
-  padding: 20px 20px 40px 20px;
+  padding: 19px 20px 40px 20px;
 }
 
 .wrapper-content {
@@ -220,6 +220,7 @@ main {
 
 .inputs {
   display: flex;
+  flex-wrap: wrap;
   gap: 90px;
 }
 
@@ -263,32 +264,35 @@ label {
 
 .book-wrapper {
   display: flex;
-  gap: 30px;
-  width: 550px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 552px;
+  height: 555px;
   border: 1px solid #000;
+  padding: 15px 0 15px 20px;
+  position: relative;
 }
 
 .book-details {
-  width: 355px;
+  width: 357px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 15px 0 15px 20px;
+  gap: 17px;
 }
 
 h4 {
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: 40px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  width: fit-content;
 }
 
 .book-description {
-  width: 355px;
+  width: 100%;
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
@@ -299,11 +303,11 @@ h4 {
 }
 
 .staff-picks-line {
-  font-family: Forum;
+  font-family: Forum, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 40px;
+  line-height: 38px;
   letter-spacing: 2px;
 }
 
@@ -340,6 +344,9 @@ h4 {
 .wrapper-image {
   display: flex;
   align-items: flex-end;
+  position: absolute;
+  bottom: 0px;
+  left: 386px;
 }
 
 .book-image {
@@ -358,6 +365,7 @@ h4 {
 .menu-wrapper {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .menu-coffee-tea,
@@ -398,6 +406,7 @@ h5 {
   flex-direction: column;
   gap: 40px;
   align-items: flex-end;
+  text-align: end;
 }
 
 .dish {
@@ -407,6 +416,7 @@ h5 {
 }
 
 .dish-name {
+  width: 221px;
   font-family: Inter, sans-serif;
   font-size: 20px;
   font-style: normal;
@@ -419,6 +429,17 @@ h5 {
 .price-line {
   width: 100px;
   background: #BB945F;
+}
+
+.price {
+  color: #000;
+  font-family: Forum, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
 }
 
 /***** Section our contacts *****/
@@ -506,13 +527,14 @@ h5 {
 
 .find-create-card {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .find-card {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
 }
 
 .find-card-title {
@@ -523,6 +545,7 @@ h5 {
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.6px;
+  text-align: center;
 }
 
 form {
@@ -559,6 +582,14 @@ form {
   border-radius: 10px;
   background: #FFF;
   border: none;
+  color: #8E8E8E;
+  font-family: Forum;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: 0.6px;
+  padding: 8px 0 8px 20px;
 }
 
 .form-tittle {
@@ -572,6 +603,7 @@ form {
 }
 
 .check-card {
+  width: 338px;
   color: #0C0C0E;
   text-align: center;
   font-family: Inter;
@@ -584,6 +616,7 @@ form {
   padding: 10px 40px;
   border-radius: 2px;
   border: 1px solid #0C0C0E;
+  margin: 0 auto;
 }
 
 .create-card {
@@ -679,6 +712,7 @@ footer {
 
 .links {
   display: flex;
+  align-items: flex-end;
   gap: 15px;
 }
 
