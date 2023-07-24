@@ -53,6 +53,7 @@ h3 {
   text-transform: uppercase;
   text-align: center;
   background-color: #000;
+  color: #fff;
   padding: 35px 40px;
   margin: 220px 0 160px 0;
 }
@@ -104,21 +105,16 @@ nav {
   line-height: 50px;
 }
 
+.nav-links a:hover {
+  cursor: pointer;
+  transition: 0.30s;
+  border-bottom: solid;
+}
+
 .link-user {
   width: 28px;
   height: 28px;
   background: url(./assets/svg/icon_profile.svg) no-repeat center;
-}
-
-.header-background {
-  background: url(../library/assets/png/headerBg.png) no-repeat center;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  color: #000;
 }
 
 /***** Section all *****/
@@ -146,6 +142,25 @@ main {
 .text-start {
   text-align: start;
   line-height: normal;
+}
+
+/***** Main *****/
+
+main {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: #000;
+}
+
+/***** Section welcome *****/
+
+.welcome {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%);
+  background-image: url(../library/assets/png/headerBG.png);
 }
 
 /***** Section about *****/
@@ -344,6 +359,29 @@ h4 {
   border: 1px solid #0C0C0E;
   padding: 9px 27px;
   background-color: #fff;
+}
+
+.book-buy:hover {
+  cursor: pointer;
+  border: 1px solid #BB945F;
+  background: #BB945F;
+  transition: 0.3s;
+}
+
+.own {
+  max-width: 75px;
+  text-align: center;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  padding: 9px 27px;
+  background-color: #fff;
+  color: #BB945F;
+  border: 1px solid #BB945F;
 }
 
 .wrapper-image {
@@ -674,6 +712,14 @@ form {
   border-radius: 2px;
   border: 1px solid #0C0C0E;
   background-color: #fff;
+}
+
+.check-card:hover,
+.get-card:hover {
+  cursor: pointer;
+  border: 1px solid #BB945F;
+  background: #BB945F;
+  transition: 0.3s;
 }
 
 /***** Footer *****/

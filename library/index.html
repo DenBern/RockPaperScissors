@@ -29,15 +29,15 @@
           <div class="link-user"></div>
         </div>
       </nav>
-      <div class="header-background">
-        <h3>
-          Welcome<br>
-          to the Brooklyn<br>
-          Library
-        </h3>
-      </div>
     </header>
     <main>
+      <section class="welcome">
+          <h3>
+            Welcome<br>
+            to the Brooklyn<br>
+            Library
+          </h3>
+      </section>
       <section class="about" id="about">
         <div class="section-about">
           <div class="section-title">
@@ -110,7 +110,7 @@
                   Not for the faint of heart.
                 </p>
               </div>
-              <button class="book-buy">Buy</button>
+              <button type="button" class="book-buy">Buy</button>
 
               <div class="wrapper-image">
                 <img src="../library/assets/png/book_eaters.png" alt="Eaters" class="book-image">
@@ -136,7 +136,7 @@
                   quaint town in upstate New York and befriends a beautiful witch.
                 </p>
               </div>
-              <button class="book-buy">Buy</button>
+              <button type="button" class="book-buy">Buy</button>
               <div class="wrapper-image">
                 <img src="../library/assets/png/book_cackle.png" alt="Cackle" class="book-image">
               </div>
@@ -162,7 +162,7 @@
                   significance—an inspired introduction to Dante's main themes.
                 </p>
               </div>
-              <button class="book-buy">Buy</button>
+              <button type="button" class="book-buy">Buy</button>
               <div class="wrapper-image">
                 <img src="../library/assets/png/book_dante.png" alt="Dante" class="book-image">
               </div>
@@ -187,7 +187,7 @@
                   has changed around them.
                 </p>
               </div>
-              <button class="book-buy">Buy</button>
+              <button type="button" class="own" disabled="disabled">Own</button>
               <div class="wrapper-image">
                 <img src="../library/assets/png/book_thelastqueen.png" alt="TheLastQueen" class="book-image">
               </div>
@@ -382,10 +382,10 @@
                   <p class="form-tittle">Brooklyn Public Library</p>
                   <div class="form-inputs">
                     <input type="text" class="card-name" placeholder="Reader's name ">
-                    <input type="number" class="card-number" placeholder="Card number">
+                    <input type="text" class="card-number" placeholder="Card number">
                   </div>
                 </div>
-                <button class="check-card">Check the card</button>
+                <button type="button" class="check-card">Check the card</button>
               </form>
             </div>
             <div class="create-card">
@@ -394,8 +394,8 @@
                 You will be able to see a reader card after logging into account or you can register a new account
               </p>
               <div class="get-card-buttons">
-                <button class="get-card">Sign up</button>
-                <button class="get-card">Log in</button>
+                <button type="button" class="get-card">Sign up</button>
+                <button type="button" class="get-card">Log in</button>
               </div>
             </div>
           </div>
@@ -406,7 +406,11 @@
       <div class="social-media-wrapper">
         <div class="social-media">
           <div class="location">
-            <a href="" class="link-location">286 Cadman Plaza, New York,<br>NY 11238, United States</a>
+            <a
+              target="_blank"
+              href="https://www.google.com/maps/place/286+Cadman+Plaza+E,+Brooklyn,+NY+11201,+%D0%A1%D0%A8%D0%90/@40.6956256,-73.9949653,17z/data=!3m1!4b1!4m9!1m2!2m1!1s286+Cadman+Plaza,+New+York!3m5!1s0x89c25a49ebbb4533:0x83b2f30fade7bf9f!8m2!3d40.6956216!4d-73.9900944!15sChoyODYgQ2FkbWFuIFBsYXphLCBOZXcgWW9ya5IBEGdlb2NvZGVkX2FkZHJlc3PgAQA?entry=ttu" class="link-location">
+              286 Cadman Plaza, New York,<br>NY 11238, United States
+            </a>
             <p class="time">Mon - Fri<br>
               08:00 am - 07:00 pm
             </p>
