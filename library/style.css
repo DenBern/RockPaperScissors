@@ -274,12 +274,21 @@ label {
   accent-color: #000;
 }
 
-.books {
+.winter-season,
+.spring-season,
+.summer-season,
+.autumn-season {
   max-width: 1365px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 40px;
+}
+
+.spring-season,
+.summer-season,
+.autumn-season {
+  display: none;
 }
 
 .book-wrapper {
@@ -294,7 +303,7 @@ label {
 }
 
 .book-details {
-  width: 357px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 17px;
@@ -312,7 +321,7 @@ h4 {
 }
 
 .book-description {
-  width: 100%;
+  max-width: 355px;
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
