@@ -159,8 +159,8 @@ main {
   padding: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%);
-  background-image: url(../library/assets/png/headerBG.png);
+  background: url(./assets/png/headerBG.png) no-repeat center, linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%);;
+  /* background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%); */
 }
 
 /***** Section about *****/
@@ -197,15 +197,15 @@ main {
 }
 
 .first-image {
-  background-image: url(../library/assets/png/imageSlider_1.png);
+  background-image: url(./assets/png/imageSlider_1.png);
 }
 
 .second-image {
-  background-image: url(../library/assets/png/imageSlider_2.png);
+  background-image: url(./assets/png/imageSlider_2.png);
 }
 
 .third-image {
-  background-image: url(../library/assets/png/imageSlider_3.png);
+  background-image: url(./assets/png/imageSlider_3.png);
 }
 
 .slider-dots {
