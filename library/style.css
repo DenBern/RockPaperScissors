@@ -279,16 +279,14 @@ label {
 .summer-season,
 .autumn-season {
   max-width: 1365px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 40px;
 }
 
-.spring-season,
-.summer-season,
-.autumn-season {
-  display: none;
+.active-season {
+  display: flex;
 }
 
 .book-wrapper {
