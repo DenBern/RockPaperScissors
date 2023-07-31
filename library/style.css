@@ -769,6 +769,10 @@ footer {
   justify-content: space-between;
 }
 
+.location a:hover {
+  transform: scale(1.1);
+}
+
 .link-location {
   color: #FFF;
   font-family: Inter;
@@ -787,6 +791,11 @@ footer {
   display: flex;
   align-items: flex-end;
   gap: 15px;
+}
+
+.link:hover {
+  transform: scale(1.1);
+  color: #BB945F;
 }
 
 .footer-divider {
