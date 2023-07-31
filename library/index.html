@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,32 +13,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <title>Brooklyn Public Library</title>
 </head>
+
 <body>
   <div class="wrapper-content">
     <header>
-      <nav>
-        <h1 class="nav-title">
-          Brooklyn Public Library
-        </h1>
-        <div class="wrapper-navigation">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#favorites">Favorites</a></li>
-            <li><a href="#coffee-shop">Coffee Shop</a></li>
-            <li><a href="#contacts">Contacts</a></li>
-            <li><a href="#library-card">Library Card</a></li>
-          </ul>
-          <div class="link-user"></div>
-        </div>
-      </nav>
+      <h1 class="title">
+        Brooklyn Public Library
+      </h1>
+      <div class="nav-wrapper">
+        <nav>
+          <div class="wrapper-navigation">
+            <ul class="nav-links">
+              <li><a href="#about">About</a></li>
+              <li><a href="#favorites">Favorites</a></li>
+              <li><a href="#coffee-shop">Coffee shop</a></li>
+              <li><a href="#contacts">Contacts</a></li>
+              <li><a href="#library-card">Library Card</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="link-user"></div>
+      </div>
     </header>
     <main>
       <section class="welcome">
-          <h3>
-            Welcome<br>
-            to the Brooklyn<br>
-            Library
-          </h3>
+        <h3>
+          Welcome<br>
+          to the Brooklyn<br>
+          Library
+        </h3>
       </section>
       <section class="about" id="about">
         <div class="section-about">
@@ -76,11 +81,11 @@
               <label for="winter">Winter</label>
             </div>
             <div class="input-container">
-              <input name="seasons"  class="input-favorite" type="radio" id="spring" value="spring">
+              <input name="seasons" class="input-favorite" type="radio" id="spring" value="spring">
               <label for="spring">Spring</label>
             </div>
             <div class="input-container">
-              <input name="seasons"  class="input-favorite" type="radio" id="summer" value="summer">
+              <input name="seasons" class="input-favorite" type="radio" id="summer" value="summer">
               <label for="summer">Summer</label>
             </div>
             <div class="input-container">
@@ -665,7 +670,7 @@
               <p class="contacts-text">Senior Staff</p>
               <p class="contacts-text">
                 Library director:
-                <a  class="mailto" href="mailto:AmandaHirst@gmail.com@gmail.com">Amanda Hirst</a>
+                <a class="mailto" href="mailto:AmandaHirst@gmail.com@gmail.com">Amanda Hirst</a>
               </p>
             </div>
           </div>
@@ -712,9 +717,9 @@
       <div class="social-media-wrapper">
         <div class="social-media">
           <div class="location">
-            <a
-              target="_blank"
-              href="https://www.google.com/maps/place/286+Cadman+Plaza+E,+Brooklyn,+NY+11201,+%D0%A1%D0%A8%D0%90/@40.6956256,-73.9949653,17z/data=!3m1!4b1!4m9!1m2!2m1!1s286+Cadman+Plaza,+New+York!3m5!1s0x89c25a49ebbb4533:0x83b2f30fade7bf9f!8m2!3d40.6956216!4d-73.9900944!15sChoyODYgQ2FkbWFuIFBsYXphLCBOZXcgWW9ya5IBEGdlb2NvZGVkX2FkZHJlc3PgAQA?entry=ttu" class="link-location">
+            <a target="_blank"
+              href="https://www.google.com/maps/place/286+Cadman+Plaza+E,+Brooklyn,+NY+11201,+%D0%A1%D0%A8%D0%90/@40.6956256,-73.9949653,17z/data=!3m1!4b1!4m9!1m2!2m1!1s286+Cadman+Plaza,+New+York!3m5!1s0x89c25a49ebbb4533:0x83b2f30fade7bf9f!8m2!3d40.6956216!4d-73.9900944!15sChoyODYgQ2FkbWFuIFBsYXphLCBOZXcgWW9ya5IBEGdlb2NvZGVkX2FkZHJlc3PgAQA?entry=ttu"
+              class="link-location">
               286 Cadman Plaza, New York,<br>NY 11238, United States
             </a>
             <p class="time">Mon - Fri<br>
@@ -723,9 +728,21 @@
           </div>
           <div class="social-links">
             <ul class="links">
-              <li><a target="_blank" href="https://twitter.com/DenisBernovich"><img src="./assets/svg/twitter.svg" alt="icon-twitter"></a></li>
-              <li><a target="_blank"  href="https://www.instagram.com/denberno/?igshid=ZDc4ODBmNjlmNQ%3D%3D"><img src="./assets/svg/instagram.svg" alt="icon-instagram"></a></li>
-              <li><a target="_blank"  href="https://www.facebook.com/profile.php?id=100079447327041"><img src="./assets/svg/facebook.svg" alt="icon-facebook"></a></li>
+              <li>
+                <a target="_blank" href="https://twitter.com/DenisBernovich">
+                  <img class="link" src="./assets/svg/twitter.svg" alt="icon-twitter">
+                </a>
+              </li>
+              <li>
+                <a target="_blank" href="https://www.instagram.com/denberno/?igshid=ZDc4ODBmNjlmNQ%3D%3D">
+                  <img class="link" src="./assets/svg/instagram.svg" alt="icon-instagram">
+                </a>
+              </li>
+              <li>
+                <a target="_blank" href="https://www.facebook.com/profile.php?id=100079447327041">
+                  <img class="link" src="./assets/svg/facebook.svg" alt="icon-facebook">
+                </a>
+              </li>
             </ul>
             <p class="time">Sat - Sun<br>
               10:00 am - 06:00 pm
@@ -736,11 +753,12 @@
       </div>
       <div class="year-author">
         <p class="year-create">2023</p>
-        <a href="https://rs.school/js-stage0/" target="_blank" class="link-school">The Rolling Scopes School</a>
-        <a href="https://github.com/DenBern" target="_blank" class="link-github">DenBern</a>
+        <a class="link" href="https://rs.school/js-stage0/" target="_blank" class="link-school">The Rolling Scopes School</a>
+        <a class="link" href="https://github.com/DenBern" target="_blank" class="link-github">DenBern</a>
       </div>
     </footer>
-</div>
-<script src="./index.js"></script>
+  </div>
+  <script src="./index.js"></script>
 </body>
+
 </html>
