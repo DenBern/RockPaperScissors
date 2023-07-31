@@ -185,6 +185,7 @@ main {
 }
 
 .wrapper-slider {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,6 +193,8 @@ main {
 }
 
 .slider {
+  position: relative;
+  left: 477px;
   display: flex;
   gap: 25px;
   padding-top: 20px;
@@ -213,6 +216,14 @@ main {
 
 .third-image {
   background-image: url(./assets/png/imageSlider_3.png);
+}
+
+.fourth-image {
+  background-image: url(./assets/png/imageSlider_4.png);
+}
+
+.fifth-image {
+  background-image: url(./assets/png/imageSlider_5.png);
 }
 
 .slider-dots {
