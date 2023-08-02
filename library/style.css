@@ -162,17 +162,25 @@ main {
 
 /***** Section welcome *****/
 
+.welcome-overlay {
+  display: inline-block;
+  position: absolute;
+  width: 1440px;
+  height: 300px;
+  background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%);
+}
+
 .welcome {
   padding: 0;
   width: 100%;
   height: 100%;
   background: url(./assets/png/headerBG.png) no-repeat center, linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%);;
-  /* background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%); */
 }
 
 /***** Section about *****/
 
 .section-about {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -267,7 +275,7 @@ main {
 .inputs {
   display: flex;
   flex-wrap: wrap;
-  gap: 90px;
+  gap: 80px;
 }
 
 .input-favorite {
@@ -287,6 +295,11 @@ label {
   display: flex;
   align-items: center;
   gap: 20px;
+  padding: 5px;
+}
+
+.input-container:hover {
+  cursor: pointer;
 }
 
 .active-input {
@@ -568,6 +581,11 @@ h5 {
   text-transform: capitalize;
 }
 
+.tel:hover {
+  transition: 0.3s;
+  transform: scale(1.05);
+}
+
 .mail {
   display: flex;
   flex-direction: column;
@@ -584,6 +602,17 @@ h5 {
   line-height: 40px;
   letter-spacing: 2px;
   text-transform: capitalize;
+}
+
+.mailto:hover {
+  transition: 0.5s;
+  color:#BB945F;
+}
+
+.map:hover {
+  cursor: pointer;
+  transition: 0.2s;
+  opacity: 0.5;
 }
 
 /***** Section library cards *****/
