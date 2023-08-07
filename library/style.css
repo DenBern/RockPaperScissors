@@ -194,6 +194,11 @@ main {
   flex-direction: column;
 }
 
+.button-left,
+.button-right {
+  display: none;
+}
+
 .wrapper-slider {
   overflow: hidden;
   display: flex;
@@ -888,15 +893,34 @@ footer {
     display: none;
   }
 
+  .about {
+    position: relative;
+  }
+
+  .slider-test {
+    display: flex;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-left,
+  .button-right {
+    width: 24px;
+    height: 24px;
+  }
+
   .wrapper-slider {
+    position: relative;
+    justify-content: center;
     max-width: 566px;
     gap: 20px;
-    margin: 0 auto;
   }
 
   .slider {
     left: 1016px;
     gap: 58px;
+    padding-top: 0;
   }
 
   .section-favorites {
