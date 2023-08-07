@@ -917,6 +917,10 @@ footer {
     gap: 40px;
   }
 
+  .menu-desserts {
+    align-self: flex-end;
+  }
+
   .contacts-map-wrapper {
     gap: 100px;
   }
@@ -948,4 +952,5 @@ footer {
     max-width: 600px;
     text-align: center;
   }
+
 }
