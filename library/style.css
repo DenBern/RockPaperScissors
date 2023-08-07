@@ -88,6 +88,14 @@ header {
   gap: 40px;
 }
 
+.burger-menu {
+  display: none;
+}
+
+.burger-menu-button {
+  display: none;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -249,7 +257,6 @@ main {
 .dot {
   width: 16px;
   height: 16px;
-  ;
   display: flex;
   align-items: center;
   margin: 5px;
@@ -260,6 +267,11 @@ main {
 .dot:hover {
   cursor: pointer;
   background-color: #bb955f78;
+}
+
+.fourth-dot,
+.fifth-dot {
+  display: none;
 }
 
 .active {
@@ -886,7 +898,43 @@ footer {
 
 @media (width: 768px) {
   .wrapper-content {
+    position: relative;
     max-width: 768px;
+  }
+
+  .nav-wrapper {
+    align-items: flex-end;
+  }
+
+  .burger-menu-button {
+    display: block;
+  }
+
+  .burger-menu {
+    display: block;
+    position: absolute;
+    top: 90px;
+    right: -332px;
+    background-color: #000;
+    z-index: 1;
+  }
+
+  .burger-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 332px;
+    padding: 10px 0 100px 0;
+  }
+
+  .burger-link {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px;
   }
 
   nav {
@@ -906,8 +954,14 @@ footer {
 
   .button-left,
   .button-right {
+    display: block;
     width: 24px;
     height: 24px;
+  }
+
+  .fourth-dot,
+  .fifth-dot {
+    display: block;
   }
 
   .wrapper-slider {

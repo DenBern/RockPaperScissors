@@ -13,9 +13,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <title>Brooklyn Public Library</title>
 </head>
-
 <body>
   <div class="wrapper-content">
+    <div class="burger-menu">
+      <ul class="burger-links">
+        <li class="burger-link"><a href="#about">About</a></li>
+        <li class="burger-link"><a href="#favorites">Favorites</a></li>
+        <li class="burger-link"><a href="#coffee-shop">Coffee shop</a></li>
+        <li class="burger-link"><a href="#contacts">Contacts</a></li>
+        <li class="burger-link"><a href="#library-card">Library Card</a></li>
+      </ul>
+    </div>
     <header>
       <h1 class="title">
         Brooklyn Public Library
@@ -33,6 +41,14 @@
           </div>
         </nav>
         <div class="link-user"></div>
+        <div class="burger-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="45" height="22" viewBox="0 0 45 22" fill="none">
+            <line y1="1" x2="45" y2="1" stroke="white" stroke-width="2"/>
+            <line y1="11" x2="45" y2="11" stroke="white" stroke-width="2"/>
+            <line y1="21" x2="45" y2="21" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+
       </div>
     </header>
     <main>
@@ -70,9 +86,11 @@
               <div class="image fifth-image"></div>
             </div>
             <div class="slider-dots">
-              <div class="dot active"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
+              <div class="dot first-dot active"></div>
+              <div class="dot second-dot"></div>
+              <div class="dot third-dot"></div>
+              <div class="dot fourth-dot"></div>
+              <div class="dot fifth-dot"></div>
             </div>
           </div>
           <div class="button-right">
