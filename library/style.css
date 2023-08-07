@@ -69,8 +69,10 @@ section {
 }
 
 .wrapper-content {
+  position: relative;
   max-width: 1440px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 /***** Header *****/
@@ -94,7 +96,7 @@ header {
 
 .burger-links {
   position: absolute;
-  top: 200px;
+  top: -100px;
 }
 
 .burger-menu-button {
@@ -901,11 +903,156 @@ footer {
   line-height: 20px;
 }
 
+.burger-menu-button {
+  display: none;
+  background: url(./assets/svg/burger_open.svg) no-repeat center;
+  width: 45px;
+  height: 20px;
+  transition: 0.3s;
+}
+
+.burger-links {
+  position: absolute;
+  top: 90px;
+  right: -332px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 332px;
+  padding: 10px 0 100px 0;
+  background-color: #000;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.burger-links {
+  position: absolute;
+  top: 90px;
+  right: -332px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 332px;
+  padding: 10px 0 100px 0;
+  background-color: #000;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.active-menu {
+  right: 0;
+}
+
+.active-button {
+  width: 32px;
+  height: 32px;
+  transition: 0.3s;
+  background: url(./assets/svg/burger_close.svg) no-repeat center;
+}
+
+@media (max-width: 1200px) and (min-width: 1025px) {
+  .favorite {
+    justify-content: center;
+  }
+
+  .contacts-map-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .find-create-card {
+    flex-direction: column;
+  }
+  .create-card {
+    align-self: flex-end;
+  }
+}
+
+@media (width: 1024px) {
+  .wrapper-content {
+    max-width: 1024px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .burger-menu-button {
+    display: block;
+  }
+
+  .favorite {
+    justify-content: center;
+  }
+
+  .contacts-map-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .find-create-card {
+    flex-direction: column;
+  }
+
+  .create-card {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 769px) {
+  .wrapper-content {
+    max-width: 100%;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .burger-menu-button {
+    display: block;
+  }
+
+  .favorite {
+    justify-content: center;
+  }
+
+  .menu-wrapper {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 40px;
+  }
+
+  .menu-desserts {
+    align-self: flex-end;
+  }
+
+  .contacts-map-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .find-create-card {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .find-card {
+    align-items: center;
+  }
+
+  .create-card {
+    align-self: flex-end;
+  }
+}
+
 @media (width: 768px) {
   .wrapper-content {
-    position: relative;
     max-width: 768px;
-    overflow: hidden;
     z-index: 3;
   }
 
@@ -1058,16 +1205,5 @@ footer {
   .create-card-text {
     max-width: 600px;
     text-align: center;
-  }
-
-  .active-button {
-    width: 32px;
-    height: 32px;
-    transition: 0.3s;
-    background: url(./assets/svg/burger_close.svg) no-repeat center;
-  }
-
-  .active-menu {
-    right: 0;
   }
 }
