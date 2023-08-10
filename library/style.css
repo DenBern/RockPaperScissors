@@ -1121,7 +1121,7 @@ footer {
     position: relative;
   }
 
-  .slider-test {
+  .slider-container {
     display: flex;
     padding-top: 20px;
     align-items: center;
@@ -1206,4 +1206,80 @@ footer {
     max-width: 600px;
     text-align: center;
   }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .wrapper-content {
+    max-width: 100%;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .burger-menu-button {
+    display: block;
+  }
+
+  .slider-container {
+    display: flex;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrapper-slider {
+    position: relative;
+    justify-content: center;
+    max-width: 566px;
+    gap: 20px;
+  }
+
+  .slider {
+    left: 1016px;
+    gap: 58px;
+    padding-top: 0;
+  }
+
+  .button-left,
+  .button-right {
+    display: block;
+  }
+
+  .book-wrapper {
+    width: 450px;
+  }
+
+  .inputs {
+    gap: 0;
+    justify-content: space-around;
+  }
+
+  .fourth-dot,
+  .fifth-dot {
+    display: block;
+  }
+
+  .menu-wrapper {
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .menu-desserts {
+    align-self: flex-end;
+  }
+
+  .contacts-map-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .find-create-card {
+    gap: 30px;
+  }
+
+  .create-card {
+    justify-content: center;
+  }
+
 }
