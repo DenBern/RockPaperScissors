@@ -1056,10 +1056,6 @@ footer {
     z-index: 3;
   }
 
-  .nav-wrapper {
-    align-items: flex-end;
-  }
-
   .burger-menu-button {
     display: block;
     background: url(./assets/svg/burger_open.svg) no-repeat center;
