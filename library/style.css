@@ -915,7 +915,7 @@ footer {
   position: absolute;
   top: 90px;
   right: -332px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -952,6 +952,12 @@ footer {
   background: url(./assets/svg/burger_close.svg) no-repeat center;
 }
 
+@media (min-width: 1025px) {
+  .burger-links {
+    display: none;
+  }
+}
+
 @media (max-width: 1200px) and (min-width: 1025px) {
   .favorite {
     justify-content: center;
@@ -966,6 +972,7 @@ footer {
   .find-create-card {
     flex-direction: column;
   }
+
   .create-card {
     align-self: flex-end;
   }
@@ -1057,7 +1064,7 @@ footer {
   }
 
   .burger-menu-button {
-    display: block;
+    display: flex;
     background: url(./assets/svg/burger_open.svg) no-repeat center;
     width: 45px;
     height: 20px;
@@ -1085,6 +1092,13 @@ footer {
     transition: 1s;
   }
 
+  .active-button {
+    width: 32px;
+    height: 32px;
+    transition: 0.3s;
+    background: url(./assets/svg/burger_close.svg) no-repeat center;
+  }
+
   .burger-links {
     position: absolute;
     top: 90px;
@@ -1098,6 +1112,10 @@ footer {
     background-color: #000;
     z-index: 1;
     transition: 0.5s;
+  }
+
+  .active-menu {
+    right: 0;
   }
 
   .burger-link {
