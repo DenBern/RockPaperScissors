@@ -1061,6 +1061,38 @@ footer {
   .create-card {
     align-self: flex-end;
   }
+
+  .slider-container {
+    display: flex;
+    padding-top: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrapper-slider {
+    position: relative;
+    justify-content: center;
+    max-width: 566px;
+    gap: 20px;
+  }
+
+  .slider {
+    left: 1016px;
+    gap: 58px;
+    padding-top: 0;
+  }
+
+  .button-left,
+  .button-right {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .fourth-dot,
+  .fifth-dot {
+    display: block;
+  }
 }
 
 @media (width: 768px) {
