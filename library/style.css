@@ -946,7 +946,7 @@ footer {
 }
 
 .active-button {
-  width: 32px;
+  width: 45px;
   height: 32px;
   transition: 0.3s;
   background: url(./assets/svg/burger_close.svg) no-repeat center;
@@ -1071,6 +1071,13 @@ footer {
     transition: 0.3s;
   }
 
+  .active-button {
+    width: 45px;
+    height: 32px;
+    transition: 0.3s;
+    background: url(./assets/svg/burger_close.svg) no-repeat center;
+  }
+
   .burger-menu {
     width: 100%;
     height: 100%;
@@ -1090,13 +1097,6 @@ footer {
     overflow: hidden;
     z-index: 3;
     transition: 1s;
-  }
-
-  .active-button {
-    width: 32px;
-    height: 32px;
-    transition: 0.3s;
-    background: url(./assets/svg/burger_close.svg) no-repeat center;
   }
 
   .burger-links {
