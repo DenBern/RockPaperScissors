@@ -99,6 +99,15 @@ header {
   top: -100px;
 }
 
+.burger-link {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 50px;
+}
+
 .burger-menu-button {
   display: none;
 }
@@ -1116,15 +1125,6 @@ footer {
 
   .active-menu {
     right: 0;
-  }
-
-  .burger-link {
-    color: #FFF;
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 50px;
   }
 
   nav {
