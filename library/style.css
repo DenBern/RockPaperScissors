@@ -233,6 +233,7 @@ main {
   display: flex;
   gap: 25px;
   padding-top: 20px;
+  transition: 0.7s;
 }
 
 .image {
