@@ -90,10 +90,6 @@ header {
   gap: 40px;
 }
 
-/* .burger-menu {
-  display: none;
-} */
-
 .burger-links {
   position: absolute;
   top: -100px;
@@ -1295,5 +1291,4 @@ footer {
   .create-card {
     justify-content: center;
   }
-
 }
