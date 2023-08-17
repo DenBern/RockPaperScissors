@@ -8,7 +8,6 @@ export const slider = () => {
     })
   }
 
-
   sliderBtns.forEach(btn => btn.addEventListener('click', (btn) => {
     switch (btn.target.id) {
       case 'first-dot':
