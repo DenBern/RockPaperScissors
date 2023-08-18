@@ -4,19 +4,26 @@ export const sliders = () => {
   const rightButton = document.querySelector('.button-right');
   const leftButton = document.querySelector('.button-left');
 
-  const sliderStartPosition = 1016;
-  const sliderCenterPosition = 0;
-  const sliderEndPosition = -1016;
-  const sliderStep = 508;
-  let sliderPosition = parseInt(window.getComputedStyle(sliderImages).left);
+  // Variables
 
-  // Slider Desktop
+  const sliderTabletStartPosition = 1016;
+  const sliderTabletEndPosition = -1016;
+  const sliderTabletStep = 508;
+  const sliderDesktopStartPosition = 477;
+  const sliderDesktopEndtPosition = -477;
+  const sliderCenterPosition = 0;
+  let sliderPosition = parseInt(window.getComputedStyle(sliderImages).left);
+  const screenWith = window.screen.width > 1024;
+
+  // Active buttons (dots)
 
   const setActiveBtn = (btnName) => {
     sliderBtns.forEach(btn => {
         btn.classList.toggle('active', btn.classList.contains(btnName));
     })
   }
+
+// Set attribute btns (tablet)
 
   const setAttributeBtn = (btn) => {
     switch (btn) {
@@ -36,65 +43,67 @@ export const sliders = () => {
     }
   }
 
-  const moveSlider = (position) => {
-    sliderImages.style.left = `${position}` + 'px';
+  // Move slider (desktop & tablet)
+
+  const moveSlider = (positionDesktop, positionTablet) => {
+    sliderImages.style.left = `${screenWith ? positionDesktop : positionTablet }` + 'px';
   }
 
   sliderBtns.forEach(btn => btn.addEventListener('click', (btn) => {
     switch (btn.target.id) {
       case 'first-dot':
         setActiveBtn(btn.target.id);
-        sliderPosition = sliderStartPosition;
-        window.screen.width > 1024 ? sliderImages.style.left = '477px' : moveSlider(sliderPosition);
+        sliderPosition = sliderTabletStartPosition;
+        moveSlider(sliderDesktopStartPosition, sliderPosition);
         setAttributeBtn(btn.target.id);
         break;
       case 'second-dot':
         setActiveBtn(btn.target.id);
-        sliderPosition = sliderStep;
-        window.screen.width > 1024 ? sliderImages.style.left = '0px' : moveSlider(sliderPosition);
+        sliderPosition = sliderTabletStep;
+        moveSlider(sliderCenterPosition, sliderPosition);
         setAttributeBtn(btn.target.id);
         break;
       case 'third-dot':
         setActiveBtn(btn.target.id);
         sliderPosition = sliderCenterPosition;
-        window.screen.width > 1024 ? sliderImages.style.left = '-477px' : moveSlider(sliderPosition);
+        moveSlider(sliderDesktopEndtPosition, sliderPosition);
         setAttributeBtn(btn.target.id);
         break;
       case 'fourth-dot':
         setActiveBtn(btn.target.id);
-        sliderPosition = -sliderStep;
-        moveSlider(sliderPosition);
+        sliderPosition = -sliderTabletStep;
+        moveSlider(0, sliderPosition);
         setAttributeBtn(btn.target.id);
         break;
       case 'fifth-dot':
         setActiveBtn(btn.target.id);
-        sliderPosition = sliderEndPosition;
-        moveSlider(sliderPosition);
+        sliderPosition = sliderTabletEndPosition;
+        moveSlider(0, sliderPosition);
         setAttributeBtn(btn.target.id);
         break;
-      default:
-        sliderImages.style.left = '477px';
     }
   }))
 
-  // Slider Tablet
+  // Disabled buttons(tablet)
 
   const setDisabledBtn = (arg) => {
-    if (arg === sliderStartPosition) {
+    if (arg === sliderTabletStartPosition) {
       leftButton.setAttribute('disabled', '');
-    } else if (arg === sliderEndPosition) {
+    } else if (arg === sliderTabletEndPosition) {
       rightButton.setAttribute('disabled', '');
     }
   }
   setDisabledBtn(sliderPosition);
 
+  // Move slider buttons tablet
+
   const shiftLeft = () => {
-      sliderPosition > sliderEndPosition ? sliderPosition -= sliderStep : 0;
-      if (sliderPosition === sliderEndPosition) {
+      sliderPosition > sliderTabletEndPosition ? sliderPosition -= sliderTabletStep : 0;
+      if (sliderPosition === sliderTabletEndPosition) {
           rightButton.setAttribute('disabled', '');
-          moveSlider(sliderPosition);
+          moveSlider(0, sliderPosition);
       } else {
-          moveSlider(sliderPosition);
+          moveSlider(0, sliderPosition);
           leftButton.removeAttribute('disabled', '');
       }
       setActiveBtn();
@@ -102,13 +111,13 @@ export const sliders = () => {
   rightButton.addEventListener('click', (shiftLeft));
 
   const shiftRight = () => {
-      sliderPosition < sliderStartPosition ? sliderPosition += sliderStep : 0;
-      if (sliderPosition === sliderStartPosition) {
+      sliderPosition < sliderTabletStartPosition ? sliderPosition += sliderTabletStep : 0;
+      if (sliderPosition === sliderTabletStartPosition) {
           leftButton.setAttribute('disabled', '');
-          moveSlider(sliderPosition);
+          moveSlider(0, sliderPosition);
       } else {
-        moveSlider(sliderPosition);
-          rightButton.removeAttribute('disabled', '');
+        moveSlider(0, sliderPosition);
+        rightButton.removeAttribute('disabled', '');
       }
   }
   leftButton.addEventListener('click', (shiftRight));
