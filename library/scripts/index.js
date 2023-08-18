@@ -1,7 +1,7 @@
 import { changeFavorite } from "./changeFavorite.js";
 import { showMenu } from "./showMenu.js";
-import { slider } from "./slider.js";
+import { sliders } from "./sliders.js";
 
 changeFavorite();
 showMenu();
-slider();
+sliders();

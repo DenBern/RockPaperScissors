@@ -1178,6 +1178,14 @@ footer {
     height: 24px;
   }
 
+  .button-right[disabled] {
+    background-color: red;
+  }
+
+  .button-left[disabled] {
+    background-color: red;
+  }
+
   .fourth-dot,
   .fifth-dot {
     display: block;
@@ -1248,6 +1256,11 @@ footer {
   .create-card-text {
     max-width: 600px;
     text-align: center;
+  }
+
+  .button-right {
+    width: 25px;
+    height: 25px;
   }
 }
 
