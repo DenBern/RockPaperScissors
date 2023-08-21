@@ -1178,14 +1178,6 @@ footer {
     height: 24px;
   }
 
-  .button-right[disabled] {
-    background-color: red;
-  }
-
-  .button-left[disabled] {
-    background-color: red;
-  }
-
   .fourth-dot,
   .fifth-dot {
     display: block;

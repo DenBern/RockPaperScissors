@@ -16,6 +16,8 @@ export const sliders = () => {
   const sliderDesktopEndtPosition = -477;
   let sliderPosition = parseInt(window.getComputedStyle(sliderImages).left);
   const screenWith = window.screen.width > 1024;
+  const defaultColorArrow = "#000";
+  const disabledColorArrow = "#8E8E8E";
 
   // Active buttons(dots) desktop
 
@@ -23,6 +25,10 @@ export const sliders = () => {
     sliderBtns.forEach(btn => {
       btn.classList.toggle('active', btn.classList.contains(btnName));
     })
+    if (btnName !== 'first-dot' || 'fifth-dot') {
+      rightSvg.style.stroke = "#000";
+      leftSvg.style.stroke = "#000";
+    }
   }
 
   // Set attribute btns(dots) tablet
@@ -32,7 +38,6 @@ export const sliders = () => {
       case 'second-dot' || 'third-dot' || 'fourth-dot':
         leftButton.removeAttribute('disabled', '');
         rightButton.removeAttribute('disabled', '');
-        setActiveBtn(btn);
         break;
       case 'first-dot':
         leftButton.setAttribute('disabled', '');
@@ -58,6 +63,7 @@ export const sliders = () => {
         sliderPosition = sliderTabletStartPosition;
         moveSlider(sliderDesktopStartPosition, sliderPosition);
         setAttributeBtn(btn.target.id);
+        leftSvg.style.stroke = `${disabledColorArrow}`;
         break;
       case 'second-dot':
         setActiveBtn(btn.target.id);
@@ -82,6 +88,7 @@ export const sliders = () => {
         sliderPosition = sliderTabletEndPosition;
         moveSlider(0, sliderPosition);
         setAttributeBtn(btn.target.id);
+        rightSvg.style.stroke = `${disabledColorArrow}`;
         break;
     }
   }))
@@ -91,8 +98,13 @@ export const sliders = () => {
   const setDisabledBtn = (position) => {
     if (position === sliderTabletStartPosition) {
       leftButton.setAttribute('disabled', '');
+      leftSvg.style.stroke = `${disabledColorArrow}`;
     } else if (position === sliderTabletEndPosition) {
       rightButton.setAttribute('disabled', '');
+      rightSvg.style.stroke = `${disabledColorArrow}`;
+    } else {
+      rightSvg.style.stroke = `${defaultColorArrow}`;
+      leftSvg.style.stroke = `${defaultColorArrow}`;
     }
   }
   setDisabledBtn(sliderPosition);
@@ -124,11 +136,13 @@ export const sliders = () => {
     if (sliderPosition === sliderTabletEndPosition) {
       rightButton.setAttribute('disabled', '');
       moveSlider(0, sliderPosition);
+      rightSvg.style.stroke = `${disabledColorArrow}`
     } else {
       moveSlider(0, sliderPosition);
       leftButton.removeAttribute('disabled', '');
     }
     activeBtnTablet(sliderPosition);
+    setDisabledBtn(sliderPosition);
   }
   rightButton.addEventListener('click', (shiftLeft));
 
@@ -142,6 +156,7 @@ export const sliders = () => {
       rightButton.removeAttribute('disabled', '');
     }
     activeBtnTablet(sliderPosition);
+    setDisabledBtn(sliderPosition);
   }
   leftButton.addEventListener('click', (shiftRight));
 }
