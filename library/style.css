@@ -301,8 +301,8 @@ main {
 .section-favorites {
   display: flex;
   flex-direction: column;
-  align-items: space-between;
   gap: 37px;
+  position: relative;
 }
 
 .inputs {
@@ -339,6 +339,10 @@ label {
   font-weight: 700;
 }
 
+.books {
+  position: relative;
+}
+
 #winter,
 #spring,
 #summer,
@@ -350,15 +354,25 @@ label {
 .spring-season,
 .summer-season,
 .autumn-season {
+  position: absolute;
   max-width: 1365px;
-  display: none;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+  z-index: -1;
 }
 
 .active-season {
+  position: relative;
   display: flex;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+  z-index: 5;
 }
 
 .book-wrapper {

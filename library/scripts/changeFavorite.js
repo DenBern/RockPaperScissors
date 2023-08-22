@@ -54,8 +54,6 @@ export const changeFavorite = () => {
         case 'autumn':
           changeFavoriteSeason(item);
           break;
-        default:
-          return;
       }
     });
   });
