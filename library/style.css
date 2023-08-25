@@ -302,7 +302,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 37px;
-  position: relative;
 }
 
 .inputs {
@@ -339,9 +338,9 @@ label {
   font-weight: 700;
 }
 
-.books {
-  position: relative;
-}
+/* .books {
+  position: absolute;
+} */
 
 #winter,
 #spring,
@@ -354,25 +353,23 @@ label {
 .spring-season,
 .summer-season,
 .autumn-season {
-  position: absolute;
   max-width: 1365px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 40px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-  z-index: -1;
 }
 
 .active-season {
-  position: relative;
-  display: flex;
-  opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-  z-index: 5;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.deactive-season {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
 .book-wrapper {
@@ -1212,6 +1209,11 @@ footer {
 
   .section-favorites {
     gap: 35px;
+  }
+
+  .inputs {
+    z-index: 100;
+    top: 0;
   }
 
   .winter-season,

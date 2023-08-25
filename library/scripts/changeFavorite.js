@@ -3,17 +3,20 @@ export const changeFavorite = () => {
   const favoritesBooks = [...document.getElementsByClassName('favorite')];
 
   const defaultFavorite = 'winter';
+  const animationTime = 500;
 
   const showDefaultFavorite = () => inputsFavorites.forEach(item => {
+    favoritesBooks.forEach(item => {
+      if(item.className.includes(defaultFavorite)) {
+        item.style.display = 'flex';
+        item.classList.add('active-season');
+      }
+    });
+
     if (item.id === defaultFavorite) {
       item.checked = true;
       item.labels[0].classList.add('active-input');
     }
-    favoritesBooks.forEach(item => {
-      if(item.className.includes(defaultFavorite)) {
-        item.classList.add('active-season');
-      }
-    });
   });
 
   showDefaultFavorite();
@@ -25,9 +28,17 @@ export const changeFavorite = () => {
 
     favoritesBooks.forEach(item => {
       if(item.className.includes(season)) {
+        item.classList.remove('deactive-season');
         item.classList.add('active-season');
+        setTimeout(() => {
+          item.style.display = 'flex';
+        }, 500);
       } else {
         item.classList.remove('active-season');
+        item.classList.add('deactive-season');
+        setTimeout(() => {
+          item.style.display = 'none';
+        }, animationTime);
       }
     });
 
