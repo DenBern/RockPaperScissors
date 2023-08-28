@@ -338,10 +338,6 @@ label {
   font-weight: 700;
 }
 
-/* .books {
-  position: absolute;
-} */
-
 #winter,
 #spring,
 #summer,
@@ -358,17 +354,14 @@ label {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 40px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
 .active-season {
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-}
-
-.deactive-season {
-  visibility: hidden;
-  opacity: 0;
   transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
@@ -1209,11 +1202,6 @@ footer {
 
   .section-favorites {
     gap: 35px;
-  }
-
-  .inputs {
-    z-index: 100;
-    top: 0;
   }
 
   .winter-season,
