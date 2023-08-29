@@ -4,7 +4,7 @@ export const changeFavorite = () => {
 
   const defaultFavorite = 'winter';
   const delayTimeDisplay = 500;
-  const timerActivationAnimation = 10;
+  const timerActivationAnimation = 100;
 
   const showDefaultFavorite = () => inputsFavorites.forEach(item => {
     favoritesBooks.forEach(item => {

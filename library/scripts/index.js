@@ -1,9 +1,7 @@
 import { changeFavorite } from "./changeFavorite.js";
-import { showMenu } from "./showMenu.js";
+import { dropMenus } from "./dropMenus.js";
 import { sliders } from "./sliders.js";
-import { showMenuAutorization } from "./showMenuAutorization.js";
 
 changeFavorite();
-showMenu();
+dropMenus();
 sliders();
-showMenuAutorization();
