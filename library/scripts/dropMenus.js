@@ -9,6 +9,7 @@ export const dropMenus = () => {
 
   const profileButton = document.querySelector('.link-user');
   const menuAuthorization = document.querySelector('.wrapper-menu-auth');
+  const btnRegister = document.querySelector('.register');
 
   const toggleClass = () => {
     burgerButton.classList.toggle('active-button');
@@ -37,7 +38,15 @@ export const dropMenus = () => {
     menuAuthorization.classList.toggle('active-profile');
   });
 
+  btnRegister.addEventListener('click', () => {
+    menuAuthorization.classList.remove('active-profile')
+  })
+
+  menuAuthorization.classList.remove('active-profile')
+
+
   window.addEventListener('click', (event) => {
+    console.log(event.target)
     if (!menuAuthorization.contains(event.target) && !profileButton.contains(event.target)) {
       menuAuthorization.classList.remove('active-profile');
     }
