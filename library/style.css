@@ -75,7 +75,6 @@ section {
   overflow: hidden;
 }
 
-
 /***** Header *****/
 
 header {
@@ -773,7 +772,7 @@ h5 {
   text-align: center;
 }
 
-form {
+.form-card {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -879,7 +878,8 @@ form {
   gap: 20px;
 }
 
-.get-card {
+.sign-up-btn,
+.log-in-btn {
   width: 75px;
   height: 30px;
   color: #0C0C0E;
@@ -897,7 +897,8 @@ form {
 }
 
 .check-card:hover,
-.get-card:hover {
+.sign-up-btn:hover,
+.log-in-btn:hover {
   cursor: pointer;
   border: 1px solid #BB945F;
   background: #BB945F;
@@ -1130,7 +1131,7 @@ footer {
   padding-left: 5px;
 }
 
-.sign-up {
+.sign-up-btn-modal {
   width: 78px;
   color: #0C0C0E;
   text-align: center;

@@ -46,7 +46,6 @@ export const dropMenus = () => {
 
 
   window.addEventListener('click', (event) => {
-    console.log(event.target)
     if (!menuAuthorization.contains(event.target) && !profileButton.contains(event.target)) {
       menuAuthorization.classList.remove('active-profile');
     }

@@ -40,25 +40,25 @@
                 <div class="modal-register">
                     <button class="btn-close-modal"></button>
                     <h6 class="title-modal-register">Register</h6>
-                    <div class="wrapper-inputs-register">
+                    <form class="wrapper-inputs-register" id="formRegistration">
                         <div class="wrapper-input-register">
                             <p class="input-name">First name</p>
-                            <input type="text" class="input-register">
+                            <input type="text" tooltip class="input-register" id="first-name" minlength="1" required>
                         </div>
                         <div class="wrapper-input-register">
                             <p class="input-name">Last name</p>
-                            <input type="text" class="input-register">
+                            <input type="text" class="input-register" id="last-name" minlength="1" required>
                         </div>
                         <div class="wrapper-input-register">
                             <p class="input-name">E-mail</p>
-                            <input type="email" class="input-register">
+                            <input type="email" class="input-register" id="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
                         </div>
                         <div class="wrapper-input-register">
                             <p class="input-name">Password</p>
-                            <input type="password" class="input-register">
+                            <input type="password" class="input-register" id="password" minlength="8" required>
                         </div>
-                    </div>
-                    <button class="sign-up">Sign Up</button>
+                        <button class="sign-up-btn-modal" type="submit">Sign Up</button>
+                    </form>
                     <div class="wrapper-btn-login">
                         <p class="btn-description">Already have an account?</p>
                         <button class="btn-login" type="submit">Login</button>
@@ -772,7 +772,7 @@
                     <div class="find-create-card">
                         <div class="find-card">
                             <p class="find-card-title">Find your Library card</p>
-                            <form>
+                            <form class="form-card">
                                 <div class="wrapper-form">
                                     <p class="form-tittle">Brooklyn Public Library</p>
                                     <div class="form-inputs">
@@ -792,8 +792,8 @@
                                 new account
                             </p>
                             <div class="get-card-buttons">
-                                <button type="button" class="get-card">Sign up</button>
-                                <button type="button" class="get-card">Log in</button>
+                                <button type="button" class="sign-up-btn">Sign up</button>
+                                <button type="button" class="log-in-btn">Log in</button>
                             </div>
                         </div>
                     </div>
