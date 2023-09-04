@@ -4,10 +4,20 @@ export const modalLogIn = () => {
   const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
   const buyBtns = document.querySelectorAll('.book-buy');
   const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
+  const wrapperModalReg = document.querySelector('.wrapper-modal-register');
+  const btnRegister = document.querySelector('.register');
 
-  btnLogIn.addEventListener('click', () => {
-    wrapperModalLogIn.classList.add('active-blackout');
-  });
+  if (btnLogIn) {
+    btnLogIn.addEventListener('click', () => {
+      wrapperModalLogIn.classList.add('active-blackout');
+    });
+  }
+
+  if (btnRegister) {
+    btnRegister.addEventListener('click', () => {
+      wrapperModalReg.classList.add('active-blackout');
+    });
+  }
 
   btnCloseModalLogIn.addEventListener('click', () => {
     wrapperModalLogIn.classList.remove('active-blackout');

@@ -3,10 +3,10 @@ export const modalRegister = () => {
     const btnCloseModalRegistration = document.querySelector('.btn-close-modal-registration');
     const btnSignUpcards = document.querySelector('.sign-up-btn');
     const wrapperModalReg = document.querySelector('.wrapper-modal-register');
-    const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
     const profileButton = document.querySelector('.link-user');
-    const btnLogIn = document.querySelector('.btn-login');
     const menuAuthorization = document.querySelector('.wrapper-menu-auth');
+    const titleDropMenu = document.querySelector('.title-menu');
+    const btnLogInDropMenu = document.querySelector('.log-in');
 
     const firstName = document.getElementById('first-name');
     const lastName = document.getElementById('last-name');
@@ -16,17 +16,16 @@ export const modalRegister = () => {
     const formRegistartion = document.getElementById('form-registration');
     const btnSignUp = document.querySelector('.sign-up-btn-modal');
 
-    let userCreditsLocalStorage = localStorage.getItem('userCredits');
-    const userIsRegistered = (userCreditsLocalStorage) => userCreditsLocalStorage ? true : false;
+    const userIsRegistered = () => localStorage.getItem('userCredits') ? true : false;
+    let userCreditsStorage = {};
 
-    const getLocalStorageUserCredits = () => {
-        if (!userIsRegistered(userCreditsLocalStorage)) return;
-        const userCreditsParse = JSON.parse(userCreditsLocalStorage);
-        profileButton.style.background = 'none';
-        profileButton.innerHTML = `<span class='user-logged'>${userCreditsParse.firstName[0].toUpperCase() + userCreditsParse.lastName[0].toUpperCase()}</span>`
+    userIsRegistered();
+
+    const getLocalStorageUserCredits = (registered) => {
+        if(!registered) return;
+        const getLocalCredits = localStorage.getItem('userCredits');
+        userCreditsStorage = JSON.parse(getLocalCredits);
     }
-
-    getLocalStorageUserCredits();
 
     const userCredits = {
         firstName: '',
@@ -34,16 +33,44 @@ export const modalRegister = () => {
         email: '',
         password: '',
         cardNumber: '',
+        logged: false,
     }
 
-    profileButton.addEventListener('click', () => [
-        userIsRegistered(userCreditsLocalStorage)
-        ? console.log('true')
-        : menuAuthorization.classList.toggle('active-profile')
-    ]);
+    const setTooltip = () => {
+        getLocalStorageUserCredits(userIsRegistered());
+        if (userCreditsStorage.logged) {
+            profileButton.setAttribute('title', `${userCreditsStorage.firstName + ' ' + userCreditsStorage.lastName}`);
+        }
+    }
 
-    btnRegister.addEventListener('click', () => {
-        wrapperModalReg.classList.add('active-blackout');
+    setTooltip();
+
+    const changeProfileMenu = (registered) => {
+        if (!registered) return;
+        getLocalStorageUserCredits(registered);
+        if (userCreditsStorage.logged) {
+            profileButton.style.background = 'none';
+            profileButton.innerHTML = `<span class='user-logged'>
+                ${userCreditsStorage.firstName[0].toUpperCase() + userCreditsStorage.lastName[0].toUpperCase()}
+            </span>`;
+            titleDropMenu.textContent = `${userCreditsStorage.cardNumber}`;
+            btnLogInDropMenu.textContent = 'My profile';
+            btnLogInDropMenu.classList.remove('log-in');
+            btnLogInDropMenu.classList.add('btn-my-profile');
+            btnRegister.textContent = 'Log Out';
+            btnRegister.classList.remove('register');
+            btnRegister.classList.add('log-out')
+        }
+    }
+
+    changeProfileMenu(userIsRegistered());
+
+    profileButton.addEventListener('mouseover', () => {
+        profileButton.getAttribute('title');
+    });
+
+    profileButton.addEventListener('click', () => {
+        menuAuthorization.classList.add('active-profile-menu');
     });
 
     btnCloseModalRegistration.addEventListener('click', () => {
@@ -109,17 +136,42 @@ export const modalRegister = () => {
     }
 
     formRegistartion.addEventListener('submit', (event) => {
+        event.preventDefault();
         const randomCardNumber = Math.floor(Math.random() * 100000000);
         userCredits.cardNumber = randomCardNumber;
+        userCredits.logged = true;
         localStorage.setItem('userCredits', JSON.stringify(userCredits));
-        userCreditsLocalStorage = localStorage.getItem('userCredits');
-        userIsRegistered(userCreditsLocalStorage);
         formRegistartion.reset();
         resetColorBorderInput(firstName, lastName, email, password);
         setTimeout(() => {
             wrapperModalReg.classList.remove('active-blackout');
-        }, 700);
-        getLocalStorageUserCredits(userIsRegistered);
-        event.preventDefault();
+        }, 1000);
+        getLocalStorageUserCredits(userIsRegistered());
+        changeProfileMenu(userCredits.logged);
+        setTooltip();
+        document.location.reload();
     });
+
+    // User logged
+
+    const btnMyProfile = document.querySelector('.btn-my-profile');
+    const btnLogOut = document.querySelector('.log-out');
+
+
+    if (btnMyProfile) {
+        btnMyProfile.addEventListener('click', () => {
+        console.log('show profile')
+        })
+    }
+
+    if (btnLogOut) {
+        btnLogOut.addEventListener('click', () => {
+            console.log(userCreditsStorage)
+            userCreditsStorage.logged = false;
+            localStorage.setItem('userCredits', JSON.stringify(userCredits));
+            setTooltip();
+            changeProfileMenu(userCreditsStorage.logged);
+            document.location.reload();
+        })
+    }
 }

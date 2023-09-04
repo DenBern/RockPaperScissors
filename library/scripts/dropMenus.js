@@ -36,16 +36,16 @@ export const dropMenus = () => {
   //Menu Profile
 
   btnRegister.addEventListener('click', () => {
-    menuAuthorization.classList.remove('active-profile');
+    menuAuthorization.classList.remove('active-profile-menu');
   })
 
   btnLogIn.addEventListener('click', () => {
-    menuAuthorization.classList.remove('active-profile');
+    menuAuthorization.classList.remove('active-profile-menu');
   })
 
   window.addEventListener('click', (event) => {
     if (!menuAuthorization.contains(event.target) && !profileButton.contains(event.target)) {
-      menuAuthorization.classList.remove('active-profile');
+      menuAuthorization.classList.remove('active-profile-menu');
     }
   });
 }
