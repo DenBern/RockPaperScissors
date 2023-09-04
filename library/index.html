@@ -38,7 +38,7 @@
         <div class="wrapper-modal-register">
             <div class="container-modal-register">
                 <div class="modal-register">
-                    <button class="btn-close-modal"></button>
+                    <button class="btn-close-modal-registration"></button>
                     <h6 class="title-modal-register">Register</h6>
                     <form class="wrapper-form-registration" id="form-registration">
                         <div class="wrapper-inputs-register">
@@ -64,6 +64,31 @@
                     <div class="wrapper-btn-login">
                         <p class="btn-description">Already have an account?</p>
                         <button class="btn-login" type="submit">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper-modal-log-in">
+            <div class="container-modal-log-in">
+                <div class="modal-log-in">
+                    <button class="btn-close-modal-log-in"></button>
+                    <h6 class="title-modal-log-in">Login</h6>
+                    <form class="wrapper-form-log-in" id="form-log-in">
+                        <div class="wrapper-inputs-log-in">
+                            <div class="wrapper-input-log-in">
+                                <p class="input-name">Email or readers card</p>
+                                <input type="text" tooltip class="input-register" id="log-in-email-card" minlength="1" required>
+                            </div>
+                            <div class="wrapper-input-log-in">
+                                <p class="input-name">Password</p>
+                                <input type="password" tooltip class="input-register" id="log-in-password" minlength="1" required>
+                            </div>
+                        </div>
+                        <button class="sign-up-btn-modal" type="submit">Log In</button>
+                    </form>
+                    <div class="wrapper-btn-registration">
+                        <p class="btn-description">Don’t have an account?</p>
+                        <button class="btn-registration" type="submit">Register</button>
                     </div>
                 </div>
             </div>
@@ -780,8 +805,7 @@
                                     <div class="form-inputs">
                                         <input type="text" class="card-name" placeholder="Reader's name"
                                             pattern="^[a-zA-Z0-9_]">
-                                        <input type="text" class="card-number" placeholder="Card number"
-                                            pattern="^[a-zA-Z0-9_]">
+                                        <input type="text" class="card-number" placeholder="Card number">
                                     </div>
                                 </div>
                                 <button type="button" class="check-card">Check the card</button>

@@ -1,8 +1,10 @@
 export const modalRegister = () => {
     const btnRegister = document.querySelector('.register');
-    const btnCloseModal = document.querySelector('.btn-close-modal');
+    const btnCloseModalRegistration = document.querySelector('.btn-close-modal-registration');
     const wrapperModalReg = document.querySelector('.wrapper-modal-register');
+    const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
     const profileButton = document.querySelector('.link-user');
+    const btnLogIn = document.querySelector('.btn-login');
     const menuAuthorization = document.querySelector('.wrapper-menu-auth');
 
     const firstName = document.getElementById('first-name');
@@ -43,7 +45,7 @@ export const modalRegister = () => {
         wrapperModalReg.classList.add('active-blackout');
     });
 
-    btnCloseModal.addEventListener('click', () => {
+    btnCloseModalRegistration.addEventListener('click', () => {
         formRegistartion.reset();
         resetColorBorderInput(firstName, lastName, email, password)
         wrapperModalReg.classList.remove('active-blackout');
