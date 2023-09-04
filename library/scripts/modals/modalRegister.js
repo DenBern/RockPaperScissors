@@ -1,6 +1,7 @@
 export const modalRegister = () => {
     const btnRegister = document.querySelector('.register');
     const btnCloseModalRegistration = document.querySelector('.btn-close-modal-registration');
+    const btnSignUpcards = document.querySelector('.sign-up-btn');
     const wrapperModalReg = document.querySelector('.wrapper-modal-register');
     const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
     const profileButton = document.querySelector('.link-user');
@@ -54,6 +55,10 @@ export const modalRegister = () => {
     btnSignUp.addEventListener('click', () => {
         wrapperModalReg.classList.add('active-blackout');
     });
+
+    btnSignUpcards.addEventListener('click', () => {
+        wrapperModalReg.classList.add('active-blackout');
+    })
 
     firstName.addEventListener('input', () => {
         userCredits.firstName = firstName.value;
