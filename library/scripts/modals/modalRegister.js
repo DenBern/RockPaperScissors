@@ -137,7 +137,7 @@ export const modalRegister = () => {
 
     formRegistartion.addEventListener('submit', (event) => {
         event.preventDefault();
-        const randomCardNumber = Math.floor(Math.random() * 100000000);
+        const randomCardNumber = Math.floor(Math.random() * 1000000000);
         userCredits.cardNumber = randomCardNumber;
         userCredits.logged = true;
         localStorage.setItem('userCredits', JSON.stringify(userCredits));
