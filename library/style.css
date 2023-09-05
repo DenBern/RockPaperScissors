@@ -122,7 +122,7 @@ header {
   transition: 0.5s;
 }
 
-.menu-no-auth {
+.menu-auth {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,6 +155,15 @@ header {
   border: none;
 }
 
+.log-in:hover {
+  cursor: pointer;
+  color: #BB945F;
+}
+
+.register:hover {
+  cursor: pointer;
+  color: #BB945F;
+}
 .title-menu {
   font-family: Inter;
   font-size: 15px;
@@ -1379,6 +1388,7 @@ footer {
   font-weight: 400;
   line-height: 20px;
   padding: 5px 15px;
+  word-wrap: break-word;
 }
 
 .wrapper-user-details {
@@ -1537,6 +1547,11 @@ footer {
   width: 13px;
   height: 12px;
   background: url(./assets/png/copy_number.png) no-repeat;
+}
+
+.copy-number-img:hover {
+  color: #BB945F;
+  cursor: pointer;
 }
 
 .btn-my-profile:hover {
