@@ -1,4 +1,4 @@
-export const modalRegister = () => {
+export const regLogInOutAuth = () => {
     const btnRegister = document.querySelector('.register');
     const btnCloseModalRegistration = document.querySelector('.btn-close-modal-registration');
     const btnSignUpcards = document.querySelector('.sign-up-btn');
@@ -24,6 +24,11 @@ export const modalRegister = () => {
     const btnLogOut = document.createElement('button');
     const btnCloseUserProfile = document.querySelector('.btn-close-modal-user-profile');
     const modalUserProfile = document.querySelector('.wrapper-modal-user-profile');
+    const btnLogIn = document.querySelector('.log-in');
+    const btnLogInCards = document.querySelector('.log-in-btn');
+    const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
+    const buyBtns = document.querySelectorAll('.book-buy');
+    const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
 
     const userIsRegistered = () => localStorage.getItem('userCredits') ? true : false;
     let userCreditsStorage = {};
@@ -41,7 +46,7 @@ export const modalRegister = () => {
     }
 
     const getLocalStorageUserCredits = (registered) => {
-        if(!registered) return;
+        if (!registered) return;
         const getLocalCredits = localStorage.getItem('userCredits');
         userCreditsStorage = JSON.parse(getLocalCredits);
     }
@@ -133,10 +138,34 @@ export const modalRegister = () => {
         inputsValidation(password);
     });
 
-    const changeColorBorderInput = (validation, input) => validation ? input.style.borderColor = '#228b22': input.style.borderColor = '#ff6161';
+    if (btnLogIn) {
+        btnLogIn.addEventListener('click', () => {
+            wrapperModalLogIn.classList.add('active-blackout');
+        });
+    }
+
+    if (btnRegister) {
+        btnRegister.addEventListener('click', () => {
+            wrapperModalReg.classList.add('active-blackout');
+        });
+    }
+
+    btnCloseModalLogIn.addEventListener('click', () => {
+        wrapperModalLogIn.classList.remove('active-blackout');
+    });
+
+    btnLogInCards.addEventListener('click', () => {
+        wrapperModalLogIn.classList.add('active-blackout');
+    });
+
+    buyBtns.forEach(buy => buy.addEventListener('click', () => {
+        wrapperModalLogIn.classList.add('active-blackout');
+    }))
+
+    const changeColorBorderInput = (validation, input) => validation ? input.style.borderColor = '#228b22' : input.style.borderColor = '#ff6161';
 
     const resetColorBorderInput = (...inputs) => {
-        inputs.forEach( input => input.style.borderColor = '');
+        inputs.forEach(input => input.style.borderColor = '');
     }
 
     const inputsValidation = (input) => {
@@ -177,6 +206,10 @@ export const modalRegister = () => {
         changeProfileMenu(userCredits.logged);
         setTooltip();
         changeModalUserProfile();
+        btnSignUp.style.background = '#32CD32';
+        setInterval(() => {
+            btnSignUp.style.background = '';
+        }, 1000)
     });
 
     // User logged

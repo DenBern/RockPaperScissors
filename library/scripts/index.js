@@ -1,13 +1,11 @@
 import { changeFavorite } from "./changeFavorite.js";
 import { dropMenus } from "./dropMenus.js";
 import { sliders } from "./sliders.js";
-import { modalRegister } from "./modals/modalRegister.js";
-import { modalLogIn } from "./modals/modalLogIn.js";
+import { regLogInOutAuth } from "./modals/regLogInOutAuth.js";
 import { checkCard } from "./checkCard.js";
 
 changeFavorite();
 dropMenus();
 sliders();
-modalRegister();
-modalLogIn();
+regLogInOutAuth();
 checkCard();
