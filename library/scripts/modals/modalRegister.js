@@ -16,6 +16,12 @@ export const modalRegister = () => {
     const formRegistartion = document.getElementById('form-registration');
     const btnSignUp = document.querySelector('.sign-up-btn-modal');
 
+    const initials = document.querySelector('.initials');
+    const firstLastName = document.querySelector('.first-last');
+    const visitsCount = document.querySelector('.visits-number');
+    const bonusesCount = document.querySelector('.bonuses-number');
+    const booksCount = document.querySelector('.books-number');
+
     const userIsRegistered = () => localStorage.getItem('userCredits') ? true : false;
     let userCreditsStorage = {};
 
@@ -34,6 +40,9 @@ export const modalRegister = () => {
         password: '',
         cardNumber: '',
         logged: false,
+        visits: 0,
+        bonuses: 0,
+        books: 0,
     }
 
     const setTooltip = () => {
@@ -45,6 +54,10 @@ export const modalRegister = () => {
 
     setTooltip();
 
+    const btnsWrapper = document.querySelector('.btns-wrapper');
+    const btnMyProfile = document.createElement('button');
+    const btnLogOut = document.createElement('button');
+
     const changeProfileMenu = (registered) => {
         if (!registered) return;
         getLocalStorageUserCredits(registered);
@@ -54,16 +67,25 @@ export const modalRegister = () => {
                 ${userCreditsStorage.firstName[0].toUpperCase() + userCreditsStorage.lastName[0].toUpperCase()}
             </span>`;
             titleDropMenu.textContent = `${userCreditsStorage.cardNumber}`;
-            btnLogInDropMenu.textContent = 'My profile';
-            btnLogInDropMenu.classList.remove('log-in');
-            btnLogInDropMenu.classList.add('btn-my-profile');
-            btnRegister.textContent = 'Log Out';
-            btnRegister.classList.remove('register');
-            btnRegister.classList.add('log-out')
+            btnLogInDropMenu.remove();
+            btnMyProfile.classList.add('btn-my-profile');
+            btnMyProfile.textContent = 'My profile';
+            btnsWrapper.parentElement.appendChild(btnMyProfile);
+            btnRegister.remove();
+            btnLogOut.classList.add('log-out');
+            btnLogOut.textContent = 'Log Out';
+            btnsWrapper.parentElement.appendChild(btnLogOut);
         }
     }
 
     changeProfileMenu(userIsRegistered());
+
+    //Modal profile user info
+
+    const changeModalUserProfile = () => {
+        initials.textContent = `${userCreditsStorage.firstName[0].toUpperCase() + userCreditsStorage.lastName[0].toUpperCase()}`;
+        firstLastName.textContent = `${userCreditsStorage.firstName + '' + userCreditsStorage.lastName}`;
+    }
 
     profileButton.addEventListener('mouseover', () => {
         profileButton.getAttribute('title');
@@ -140,6 +162,7 @@ export const modalRegister = () => {
         const randomCardNumber = Math.floor(Math.random() * 1000000000);
         userCredits.cardNumber = randomCardNumber;
         userCredits.logged = true;
+        userCredits.visits = userCredits.visits + 1;
         localStorage.setItem('userCredits', JSON.stringify(userCredits));
         formRegistartion.reset();
         resetColorBorderInput(firstName, lastName, email, password);
@@ -149,18 +172,18 @@ export const modalRegister = () => {
         getLocalStorageUserCredits(userIsRegistered());
         changeProfileMenu(userCredits.logged);
         setTooltip();
-        document.location.reload();
+        changeModalUserProfile();
     });
 
-    // User logged
 
-    const btnMyProfile = document.querySelector('.btn-my-profile');
-    const btnLogOut = document.querySelector('.log-out');
+    // User logged
+    const btnCloseUserProfile = document.querySelector('.btn-close-modal-user-profile');
+    const modalUserProfile = document.querySelector('.wrapper-modal-user-profile');
 
 
     if (btnMyProfile) {
         btnMyProfile.addEventListener('click', () => {
-        console.log('show profile')
+            modalUserProfile.classList.add('active-blackout');
         })
     }
 
@@ -174,4 +197,8 @@ export const modalRegister = () => {
             document.location.reload();
         })
     }
+
+    btnCloseUserProfile.addEventListener('click', () => {
+        modalUserProfile.classList.remove('active-blackout');
+    })
 }

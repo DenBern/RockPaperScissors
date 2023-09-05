@@ -1278,14 +1278,6 @@ footer {
   padding-top: 10px;
 }
 
-.active-blackout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 4;
-  transition: 1s;
-}
-
 .btn-registration {
   border: none;
   color: #0C0C0E;
@@ -1330,7 +1322,7 @@ footer {
 
 .wrapper-modal-user-profile {
   position: fixed;
-  display: flex;
+  display: none;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -1391,8 +1383,6 @@ footer {
 
 .wrapper-user-details {
   padding-left: 20px;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .user-details {
@@ -1420,6 +1410,12 @@ footer {
   height: 15px;
   background: url(./assets/svg/close_btn.svg) no-repeat center;
   border: none;
+}
+
+.btn-close-modal-user-profile:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.5s;
 }
 
 .details {
@@ -1543,8 +1539,25 @@ footer {
   background: url(./assets/png/copy_number.png) no-repeat;
 }
 
+.btn-my-profile:hover {
+  cursor: pointer;
+  color: #BB945F;
+}
+
+.log-out:hover {
+  cursor: pointer;
+  color: #BB945F;
+}
 
 /**** Modal user profile end *****/
+
+.active-blackout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  transition: 1s;
+}
 
 @media (min-width: 1025px) {
   .burger-links {
