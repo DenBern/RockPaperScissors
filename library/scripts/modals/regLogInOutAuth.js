@@ -12,6 +12,7 @@ export const regLogInOutAuth = () => {
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     const formRegistartion = document.getElementById('form-registration');
+    const formLogIn = document.getElementById('form-log-in');
     const btnSignUp = document.querySelector('.sign-up-btn-modal');
     const initials = document.querySelector('.initials');
     const firstLastName = document.querySelector('.first-last');
@@ -29,6 +30,8 @@ export const regLogInOutAuth = () => {
     const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
     const buyBtns = document.querySelectorAll('.book-buy');
     const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
+    const inputEmailCardLogIn = document.getElementById('log-in-email-card');
+    const inputPasswordLogIn = document.getElementById('log-in-password');
 
     const userIsRegistered = () => localStorage.getItem('userCredits') ? true : false;
     let userCreditsStorage = {};
@@ -44,6 +47,9 @@ export const regLogInOutAuth = () => {
         bonuses: 0,
         books: 0,
     }
+
+    let inputEmailCardLogInValue;
+    let inputPasswordLogInValue;
 
     const getLocalStorageUserCredits = (registered) => {
         if (!registered) return;
@@ -195,7 +201,7 @@ export const regLogInOutAuth = () => {
         const randomCardNumber = Math.floor(Math.random() * 1000000000);
         userCredits.cardNumber = randomCardNumber;
         userCredits.logged = true;
-        userCredits.visits = userCredits.visits + 1;
+        userCredits.visits += 1;
         localStorage.setItem('userCredits', JSON.stringify(userCredits));
         formRegistartion.reset();
         resetColorBorderInput(firstName, lastName, email, password);
@@ -203,7 +209,7 @@ export const regLogInOutAuth = () => {
             wrapperModalReg.classList.remove('active-blackout');
         }, 1000);
         getLocalStorageUserCredits(userIsRegistered());
-        changeProfileMenu(userCredits.logged);
+        changeProfileMenu(userCreditsStorage.logged);
         setTooltip();
         changeModalUserProfile();
         btnSignUp.style.background = '#32CD32';
@@ -238,4 +244,31 @@ export const regLogInOutAuth = () => {
     btnCloseUserProfile.addEventListener('click', () => {
         modalUserProfile.classList.remove('active-blackout');
     });
+
+    inputEmailCardLogIn.addEventListener('input', () => {
+        changeColorBorderInput(inputEmailCardLogIn.value.length >= 1, inputEmailCardLogIn);
+        inputEmailCardLogInValue = inputEmailCardLogIn.value;
+    });
+
+    inputPasswordLogIn.addEventListener('input', () => {
+        changeColorBorderInput(inputPasswordLogIn.value.length >= 8, inputPasswordLogIn);
+        inputPasswordLogInValue = inputPasswordLogIn.value;
+    });
+
+    formLogIn.addEventListener('submit', (event) => {
+        if (!userIsRegistered()) {
+            alert('User not registered')
+        };
+        event.preventDefault();
+        if (userCreditsStorage.email === inputEmailCardLogInValue || userCreditsStorage.cardNumber === +inputEmailCardLogInValue) {
+            userCreditsStorage.logged = true;
+            userCreditsStorage.visits += 1;
+            localStorage.setItem('userCredits', JSON.stringify(userCreditsStorage));
+            changeProfileMenu(userIsRegistered());
+            setTooltip();
+            setTimeout(() => {
+                wrapperModalLogIn.classList.remove('active-blackout');
+            }, 1000)
+        }
+    })
 }
