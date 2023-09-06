@@ -13,6 +13,10 @@ body {
   background-color: #000;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 li {
   list-style: none;
 }
@@ -164,6 +168,7 @@ header {
   cursor: pointer;
   color: #BB945F;
 }
+
 .title-menu {
   font-family: Inter;
   font-size: 15px;
@@ -1565,6 +1570,158 @@ footer {
 }
 
 /**** Modal user profile end *****/
+
+/***** Modal buy a library card *****/
+
+.wrapper-modal-buy-library-card {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+.container-modal-buy-library-card {
+  width: 640px;
+  height: 540px;
+  margin: auto auto;
+  background-color: #fff;
+}
+
+.wrapper-title-modal-buy-library-card {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 96px;
+  padding: 20px;
+  background: #000;
+}
+
+.title-modal-buy-library-card {
+  color: #FFF;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.btn-close-modal-buy-library-card {
+  width: 15px;
+  height: 15px;
+  background: url(./assets/svg/close_btn_white.svg) no-repeat center;
+  border: none;
+}
+
+.btn-close-modal-buy-library-card:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
+.wrapper-card-details {
+  display: flex;
+  gap: 40px;
+  padding: 30px 30px 40px 40px;
+}
+
+.wrapper-form-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-details-data,
+.card-details-user {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bank-card-number,
+.card-expiration-code,
+.card-cvc,
+.cardholder-name,
+.postal-code,
+.city-town {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-description {
+  color: #000;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+}
+
+.input-card-long {
+  width: 200px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid #BB945F;
+}
+
+.wrapper-inputs-expiration-code {
+  display: flex;
+  gap: 10px;
+}
+
+.input-card-short {
+  width: 45px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid #BB945F;
+}
+
+.btn-price {
+  display: flex;
+  align-items: flex-end;
+  gap: 25px;
+}
+
+.buy-card-btn {
+  width: 75px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  border: 1px solid #0C0C0E;
+}
+
+.buy-card-btn:hover {
+  cursor: pointer;
+}
+
+.price-card {
+  color: #0C0C0E;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-buy-card {
+  color: #8E8E8E;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+}
+
+/***** Modal buy a library card end *****/
 
 .active-blackout {
   display: flex;
