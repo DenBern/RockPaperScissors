@@ -11,7 +11,8 @@ export const regLogInOutAuth = () => {
     const lastName = document.getElementById('last-name');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
-    const formRegistartion = document.getElementById('form-registration');
+    const formRegistrarion = document.getElementById('form-registration');
+    const formCardDetails = document.getElementById('form-card-details');
     const formLogIn = document.getElementById('form-log-in');
     const btnSignUp = document.querySelector('.sign-up-btn-modal');
     const initials = document.querySelector('.initials');
@@ -36,6 +37,12 @@ export const regLogInOutAuth = () => {
     const btnCloseModalBuycard = document.querySelector('.btn-close-modal-buy-library-card');
     const modalBuyCard = document.querySelector('.wrapper-modal-buy-library-card');
     const body = document.querySelector('body');
+    const btnBuyCard = document.querySelector('.buy-card-btn');
+
+    const cardNumberInput = document.getElementById('card-number');
+    const expirationCodeMounth = document.getElementById('expiration-code-mounth');
+    const expirationCodeYear = document.getElementById('expiration-code-year');
+    const cardCvc = document.getElementById('card-cvc');
 
     const userIsRegistered = () => localStorage.getItem('userCredits') ? true : false;
     let userCreditsStorage = {};
@@ -116,7 +123,7 @@ export const regLogInOutAuth = () => {
     });
 
     btnCloseModalRegistration.addEventListener('click', () => {
-        formRegistartion.reset();
+        formRegistrarion.reset();
         resetColorBorderInput(firstName, lastName, email, password)
         wrapperModalReg.classList.remove('active-blackout');
         body.classList.remove('no-scroll');
@@ -176,11 +183,15 @@ export const regLogInOutAuth = () => {
         body.classList.add('no-scroll');
     });
 
-    buyBtns.forEach(buy => buy.addEventListener('click', () => {
+    buyBtns.forEach(buy => buy.addEventListener('click', (event) => {
         getLocalStorageUserCredits(userIsRegistered());
-        if(userCreditsStorage.logged) {
+        if(userCreditsStorage.logged && !userCreditsStorage.subscription) {
             modalBuyCard.classList.add('active-blackout')
             body.classList.add('no-scroll');
+        } else if (userCreditsStorage.subscription && userCreditsStorage.logged) {
+            buy.classList.add('own');
+            buy.textContent = 'Own';
+            buy.setAttribute('disabled', '');
         } else {
             wrapperModalLogIn.classList.add('active-blackout');
             body.classList.add('no-scroll');
@@ -195,34 +206,48 @@ export const regLogInOutAuth = () => {
 
     const inputsValidation = (input) => {
         const minLengthFirstLastName = 1;
-        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const patternEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const patterCardNumber = /^[0-9]{16}$/;
+        const patterOnlyDigits = /^[0-9]+$/;
         const minLengthPassword = 8;
         switch (input.id) {
             case 'first-name':
-                (changeColorBorderInput(input.value.length >= minLengthFirstLastName, input))
+                (changeColorBorderInput(input.value.length >= minLengthFirstLastName, input));
                 break;
             case 'last-name':
-                (changeColorBorderInput(input.value.length >= minLengthFirstLastName, input))
+                (changeColorBorderInput(input.value.length >= minLengthFirstLastName, input));
                 break;
             case 'email':
-                (changeColorBorderInput(pattern.test(input.value), input))
+                (changeColorBorderInput(patternEmail.test(input.value), input));
                 break;
             case 'password':
-                (changeColorBorderInput(password.value.length >= minLengthPassword, input))
+                (changeColorBorderInput(input.value.length >= minLengthPassword, input));
+                break;
+            case 'card-number':
+                (changeColorBorderInput(patterCardNumber.test(input.value), input));
+                break;
+            case 'expiration-code-mounth':
+                (changeColorBorderInput(patterOnlyDigits.test(input.value), input));
+                break;
+            case 'expiration-code-year':
+                (changeColorBorderInput(patterOnlyDigits.test(input.value), input));
+                break;
+            case 'card-cvc':
+                (changeColorBorderInput(patterOnlyDigits.test(input.value), input));
                 break;
             default:
                 input.style.borderColor = '';
         }
     }
 
-    formRegistartion.addEventListener('submit', (event) => {
+    formRegistrarion.addEventListener('submit', (event) => {
         event.preventDefault();
         const randomCardNumber = Math.floor(Math.random() * 1000000000);
         userCredits.cardNumber = randomCardNumber;
         userCredits.logged = true;
         userCredits.visits += 1;
         localStorage.setItem('userCredits', JSON.stringify(userCredits));
-        formRegistartion.reset();
+        formRegistrarion.reset();
         resetColorBorderInput(firstName, lastName, email, password);
         setTimeout(() => {
             wrapperModalReg.classList.remove('active-blackout');
@@ -234,7 +259,7 @@ export const regLogInOutAuth = () => {
         setTooltip();
         changeModalUserProfile();
         btnSignUp.style.background = '#32CD32';
-        btnSignUp.textContent = 'Registered!';
+        btnSignUp.textContent = 'Welcome!';
     });
 
     // User logged
@@ -278,7 +303,7 @@ export const regLogInOutAuth = () => {
 
     formLogIn.addEventListener('submit', (event) => {
         if (!userIsRegistered()) {
-            alert('User not registered')
+            alert('User not registered');
         };
         event.preventDefault();
         if (((userCreditsStorage.email === inputEmailCardLogInValue) || (userCreditsStorage.cardNumber === +inputEmailCardLogInValue)) && (userCreditsStorage.password === inputPasswordLogInValue)) {
@@ -302,5 +327,35 @@ export const regLogInOutAuth = () => {
     btnCloseModalBuycard.addEventListener('click', () => {
         modalBuyCard.classList.remove('active-blackout');
         body.classList.remove('no-scroll');
-    })
+    });
+
+    cardNumberInput.addEventListener('input', () => {
+        inputsValidation(cardNumberInput);
+    });
+
+    expirationCodeMounth.addEventListener('input', () => {
+        inputsValidation(expirationCodeMounth);
+    });
+
+    expirationCodeYear.addEventListener('input', () => {
+        inputsValidation(expirationCodeYear);
+    });
+
+    cardCvc.addEventListener('input', () => {
+        inputsValidation(cardCvc);
+    });
+
+    formCardDetails.addEventListener('submit', (event) => {
+        event.preventDefault();
+        getLocalStorageUserCredits(userIsRegistered());
+        userCreditsStorage.subscription = true;
+        localStorage.setItem('userCredits', JSON.stringify(userCreditsStorage));
+        setTimeout(() => {
+            modalBuyCard.classList.remove('active-blackout');
+            btnBuyCard.style.background = '';
+            body.classList.remove('no-scroll');
+        }, 1000);
+        btnBuyCard.style.background = '#32CD32';
+        btnBuyCard.textContent = 'Done!';
+    });
 }

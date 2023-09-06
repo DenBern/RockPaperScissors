@@ -547,16 +547,6 @@ h4 {
 }
 
 .own {
-  max-width: 75px;
-  text-align: center;
-  font-family: Inter;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 1px;
-  border-radius: 2px;
-  padding: 9px 27px;
   background-color: #fff;
   color: #BB945F;
   border: 1px solid #BB945F;
@@ -1729,6 +1719,14 @@ footer {
   justify-content: center;
   z-index: 4;
   transition: 1s;
+}
+
+.button-left:hover {
+  cursor: pointer;
+}
+
+.button-right:hover {
+  cursor: pointer;
 }
 
 @media (min-width: 1025px) {
