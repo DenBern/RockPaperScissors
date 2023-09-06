@@ -9,6 +9,8 @@ export const regLogInOutAuth = () => {
     const btnLogInDropMenu = document.querySelector('.log-in');
     const firstName = document.getElementById('first-name');
     const lastName = document.getElementById('last-name');
+    const userFirstName = document.querySelector('.first-name');
+    const userLastName = document.querySelector('.last-name');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     const formRegistrarion = document.getElementById('form-registration');
@@ -72,7 +74,7 @@ export const regLogInOutAuth = () => {
     const setTooltip = () => {
         getLocalStorageUserCredits(userIsRegistered());
         if (userCreditsStorage.logged) {
-            profileButton.setAttribute('title', `${userCreditsStorage.firstName + ' ' + userCreditsStorage.lastName}`);
+            profileButton.setAttribute('title', `${userCreditsStorage.firstName.toUpperCase() + ' ' + userCreditsStorage.lastName.toUpperCase()}`);
         }
     }
 
@@ -107,7 +109,8 @@ export const regLogInOutAuth = () => {
     const changeModalUserProfile = () => {
         getLocalStorageUserCredits(userIsRegistered());
         initials.textContent = `${userCreditsStorage.firstName[0].toUpperCase() + userCreditsStorage.lastName[0].toUpperCase()}`;
-        firstLastName.textContent = `${userCreditsStorage.firstName + ' ' + userCreditsStorage.lastName}`;
+        userFirstName.textContent = `${userCreditsStorage.firstName}`;
+        userLastName.textContent = `${userCreditsStorage.lastName}`;
         visitsCount.textContent = `${userCreditsStorage.visits}`;
         bonusesCount.textContent = `${userCreditsStorage.bonuses}`;
         booksCount.textContent = `${userCreditsStorage.books}`;

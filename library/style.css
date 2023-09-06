@@ -1371,19 +1371,31 @@ footer {
 }
 
 .wrapper-first-last {
+  gap: 5px;
   width: 120px;
   background: #fff;
+  padding: 5px 15px;
+  word-wrap: break-word;
 }
 
-.first-last {
+.first-name,
+.last-name {
+  display: block;
   color: #000;
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  padding: 5px 15px;
   word-wrap: break-word;
+}
+
+.first-name::first-letter {
+  text-transform: uppercase;
+}
+
+.last-name::first-letter {
+  text-transform: uppercase;
 }
 
 .wrapper-user-details {
