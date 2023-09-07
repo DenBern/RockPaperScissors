@@ -18,7 +18,7 @@ export const regLogInOutAuth = () => {
     const formLogIn = document.getElementById('form-log-in');
     const btnSignUp = document.querySelector('.sign-up-btn-modal');
     const initials = document.querySelector('.initials');
-    const firstLastName = document.querySelector('.first-last');
+    // const firstLastName = document.querySelector('.first-last');
     const visitsCount = document.querySelector('.visits-number');
     const bonusesCount = document.querySelector('.bonuses-number');
     const booksCount = document.querySelector('.books-number');
@@ -46,10 +46,14 @@ export const regLogInOutAuth = () => {
     const expirationCodeYear = document.getElementById('expiration-code-year');
     const cardCvc = document.getElementById('card-cvc');
 
-    const userIsRegistered = () => localStorage.getItem('userCredits') ? true : false;
-    let userCreditsStorage = {};
+    let inputEmailCardLogInValue;
+    let inputPasswordLogInValue;
 
-    const userCredits = {
+    let currentUserCreditsLogged = {};
+    let localStorageUsersCredits = [];
+    let usersCredits = [];
+
+    const newUserCredits = {
         firstName: '',
         lastName: '',
         email: '',
@@ -60,37 +64,35 @@ export const regLogInOutAuth = () => {
         bonuses: 0,
         books: 0,
         subscription: false,
-    }
+    };
 
-    let inputEmailCardLogInValue;
-    let inputPasswordLogInValue;
+    const hasRegisteredUsers = () => localStorage.getItem('usersCredits') ? true : false;
 
-    const getLocalStorageUserCredits = (registered) => {
+    const getLocalStorageUsersCredits = (registered) => {
         if (!registered) return;
-        const getLocalCredits = localStorage.getItem('userCredits');
-        userCreditsStorage = JSON.parse(getLocalCredits);
+        const getLocalCredits = localStorage.getItem('usersCredits');
+        localStorageUsersCredits = JSON.parse(getLocalCredits);
     }
 
-    const setTooltip = () => {
-        getLocalStorageUserCredits(userIsRegistered());
-        if (userCreditsStorage.logged) {
-            profileButton.setAttribute('title', `${userCreditsStorage.firstName.toUpperCase() + ' ' + userCreditsStorage.lastName.toUpperCase()}`);
-        }
+    const changeModalUserProfile = () => {
+        initials.textContent = `${currentUserCreditsLogged.firstName[0].toUpperCase() + currentUserCreditsLogged.lastName[0].toUpperCase()}`;
+        userFirstName.textContent = `${currentUserCreditsLogged.firstName}`;
+        userLastName.textContent = `${currentUserCreditsLogged.lastName}`;
+        visitsCount.textContent = `${currentUserCreditsLogged.visits}`;
+        bonusesCount.textContent = `${currentUserCreditsLogged.bonuses}`;
+        booksCount.textContent = `${currentUserCreditsLogged.books}`;
+        userCardNumber.textContent = `${currentUserCreditsLogged.cardNumber}`
     }
-
-    setTooltip();
 
     const changeProfileMenu = (registered) => {
-        if (!registered && !userCreditsStorage.logged) {
-            profileButton.style.background = '';
-            profileButton.innerHTML = '';
-        } else if (userCreditsStorage.logged) {
-            getLocalStorageUserCredits(registered);
+        getLocalStorageUsersCredits(registered);
+        currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged) || {};
+        if(Object.keys(currentUserCreditsLogged).length && currentUserCreditsLogged.logged) {
             profileButton.style.background = 'none';
             profileButton.innerHTML = `<span class='user-logged'>
-                ${userCreditsStorage.firstName[0].toUpperCase() + userCreditsStorage.lastName[0].toUpperCase()}
+                ${currentUserCreditsLogged.firstName[0].toUpperCase() + currentUserCreditsLogged.lastName[0].toUpperCase()}
             </span>`;
-            titleDropMenu.textContent = `${userCreditsStorage.cardNumber}`;
+            titleDropMenu.textContent = `${currentUserCreditsLogged.cardNumber}`;
             btnLogInDropMenu.remove();
             btnMyProfile.classList.add('btn-my-profile');
             btnMyProfile.textContent = 'My profile';
@@ -99,107 +101,16 @@ export const regLogInOutAuth = () => {
             btnLogOut.classList.add('log-out');
             btnLogOut.textContent = 'Log Out';
             btnsWrapper.appendChild(btnLogOut);
-        }
-    }
-
-    changeProfileMenu(userIsRegistered());
-
-    //Modal profile user info
-
-    const changeModalUserProfile = () => {
-        getLocalStorageUserCredits(userIsRegistered());
-        initials.textContent = `${userCreditsStorage.firstName[0].toUpperCase() + userCreditsStorage.lastName[0].toUpperCase()}`;
-        userFirstName.textContent = `${userCreditsStorage.firstName}`;
-        userLastName.textContent = `${userCreditsStorage.lastName}`;
-        visitsCount.textContent = `${userCreditsStorage.visits}`;
-        bonusesCount.textContent = `${userCreditsStorage.bonuses}`;
-        booksCount.textContent = `${userCreditsStorage.books}`;
-        userCardNumber.textContent = `${userCreditsStorage.cardNumber}`
-    }
-
-    profileButton.addEventListener('mouseover', () => {
-        profileButton.getAttribute('title');
-    });
-
-    profileButton.addEventListener('click', () => {
-        menuAuthorization.classList.add('active-profile-menu');
-    });
-
-    btnCloseModalRegistration.addEventListener('click', () => {
-        formRegistrarion.reset();
-        resetColorBorderInput(firstName, lastName, email, password)
-        wrapperModalReg.classList.remove('active-blackout');
-        body.classList.remove('no-scroll');
-    });
-
-    btnSignUp.addEventListener('click', () => {
-        wrapperModalReg.classList.add('active-blackout');
-        body.classList.add('no-scroll');
-    });
-
-    btnSignUpcards.addEventListener('click', () => {
-        wrapperModalReg.classList.add('active-blackout');
-        body.classList.add('no-scroll');
-    })
-
-    firstName.addEventListener('input', () => {
-        userCredits.firstName = firstName.value;
-        inputsValidation(firstName);
-    });
-
-    lastName.addEventListener('input', () => {
-        userCredits.lastName = lastName.value;
-        inputsValidation(lastName);
-    });
-
-    email.addEventListener('input', () => {
-        userCredits.email = email.value;
-        inputsValidation(email);
-    });
-
-    password.addEventListener('input', () => {
-        userCredits.password = password.value;
-        inputsValidation(password);
-    });
-
-    if (btnLogIn) {
-        btnLogIn.addEventListener('click', () => {
-            wrapperModalLogIn.classList.add('active-blackout');
-            body.classList.add('no-scroll');
-        });
-    }
-
-    if (btnRegister) {
-        btnRegister.addEventListener('click', () => {
-            wrapperModalReg.classList.add('active-blackout');
-            body.classList.add('no-scroll');
-        });
-    }
-
-    btnCloseModalLogIn.addEventListener('click', () => {
-        wrapperModalLogIn.classList.remove('active-blackout');
-        body.classList.remove('no-scroll');
-    });
-
-    btnLogInCards.addEventListener('click', () => {
-        wrapperModalLogIn.classList.add('active-blackout');
-        body.classList.add('no-scroll');
-    });
-
-    buyBtns.forEach(buy => buy.addEventListener('click', (event) => {
-        getLocalStorageUserCredits(userIsRegistered());
-        if(userCreditsStorage.logged && !userCreditsStorage.subscription) {
-            modalBuyCard.classList.add('active-blackout')
-            body.classList.add('no-scroll');
-        } else if (userCreditsStorage.subscription && userCreditsStorage.logged) {
-            buy.classList.add('own');
-            buy.textContent = 'Own';
-            buy.setAttribute('disabled', '');
+            profileButton.setAttribute('title',
+                `${currentUserCreditsLogged.firstName.toUpperCase() + ' ' + currentUserCreditsLogged.lastName.toUpperCase()}`);
+            changeModalUserProfile();
         } else {
-            wrapperModalLogIn.classList.add('active-blackout');
-            body.classList.add('no-scroll');
+            profileButton.style.background = '';
+            profileButton.innerHTML = '';
         }
-    }))
+    }
+
+    changeProfileMenu(hasRegisteredUsers());
 
     const changeColorBorderInput = (validation, input) => validation ? input.style.borderColor = '#228b22' : input.style.borderColor = '#ff6161';
 
@@ -246,10 +157,11 @@ export const regLogInOutAuth = () => {
     formRegistrarion.addEventListener('submit', (event) => {
         event.preventDefault();
         const randomCardNumber = Math.floor(Math.random() * 1000000000);
-        userCredits.cardNumber = randomCardNumber;
-        userCredits.logged = true;
-        userCredits.visits += 1;
-        localStorage.setItem('userCredits', JSON.stringify(userCredits));
+        newUserCredits.cardNumber = randomCardNumber;
+        newUserCredits.logged = true;
+        newUserCredits.visits += 1;
+        usersCredits = [...localStorageUsersCredits, newUserCredits];
+        localStorage.setItem('usersCredits', JSON.stringify(usersCredits));
         formRegistrarion.reset();
         resetColorBorderInput(firstName, lastName, email, password);
         setTimeout(() => {
@@ -257,74 +169,90 @@ export const regLogInOutAuth = () => {
             body.classList.remove('no-scroll');
             btnSignUp.style.background = '';
         }, 1000);
-        getLocalStorageUserCredits(userIsRegistered());
-        changeProfileMenu(userCreditsStorage.logged);
-        setTooltip();
-        changeModalUserProfile();
+        changeProfileMenu(hasRegisteredUsers());
         btnSignUp.style.background = '#32CD32';
         btnSignUp.textContent = 'Welcome!';
     });
 
-    // User logged
+    const userLogOut = () => {
+        localStorageUsersCredits.map(user => {
+            if (user.logged) {
+                user.logged = false;
+                localStorage.setItem('usersCredits', JSON.stringify(localStorageUsersCredits));
+                changeProfileMenu(localStorageUsersCredits.logged);
+                btnLogOut.remove();
+                btnMyProfile.remove();
+                btnsWrapper.appendChild(btnLogInDropMenu);
+                btnsWrapper.appendChild(btnRegister);
+                titleDropMenu.textContent = 'Profile';
+            }
+        })
+    };
 
-    btnMyProfile.addEventListener('click', () => {
-        menuAuthorization.classList.remove('active-profile-menu');
-        changeModalUserProfile();
-        modalUserProfile.classList.add('active-blackout');
+    //Event listeners
+
+    btnSignUpcards.addEventListener('click', () => {
+        wrapperModalReg.classList.add('active-blackout');
         body.classList.add('no-scroll');
     })
 
-    const userLogOut = () => {
-        getLocalStorageUserCredits(userIsRegistered());
-        userCreditsStorage.logged = false;
-        localStorage.setItem('userCredits', JSON.stringify(userCreditsStorage));
-        setTooltip();
-        changeProfileMenu(userCreditsStorage.logged);
-        btnLogOut.remove();
-        btnMyProfile.remove();
-        btnsWrapper.appendChild(btnLogInDropMenu);
-        btnsWrapper.appendChild(btnRegister);
-        titleDropMenu.textContent = 'Profile';
-    };
+    profileButton.addEventListener('mouseover', () => {
+        profileButton.getAttribute('title');
+    });
 
-    btnLogOut.addEventListener('click', () => userLogOut());
+    profileButton.addEventListener('click', () => {
+        menuAuthorization.classList.add('active-profile-menu');
+    });
 
-    btnCloseUserProfile.addEventListener('click', () => {
-        modalUserProfile.classList.remove('active-blackout');
+    btnCloseModalRegistration.addEventListener('click', () => {
+        formRegistrarion.reset();
+        resetColorBorderInput(firstName, lastName, email, password)
+        wrapperModalReg.classList.remove('active-blackout');
         body.classList.remove('no-scroll');
     });
 
-    inputEmailCardLogIn.addEventListener('input', () => {
-        changeColorBorderInput(inputEmailCardLogIn.value.length >= 1, inputEmailCardLogIn);
-        inputEmailCardLogInValue = inputEmailCardLogIn.value;
+    btnSignUp.addEventListener('click', () => {
+        wrapperModalReg.classList.add('active-blackout');
+        body.classList.add('no-scroll');
     });
 
-    inputPasswordLogIn.addEventListener('input', () => {
-        changeColorBorderInput(inputPasswordLogIn.value.length >= 8, inputPasswordLogIn);
-        inputPasswordLogInValue = inputPasswordLogIn.value;
+    firstName.addEventListener('input', () => {
+        newUserCredits.firstName = firstName.value;
+        inputsValidation(firstName);
     });
 
-    formLogIn.addEventListener('submit', (event) => {
-        if (!userIsRegistered()) {
-            alert('User not registered');
-        };
-        event.preventDefault();
-        if (((userCreditsStorage.email === inputEmailCardLogInValue) || (userCreditsStorage.cardNumber === +inputEmailCardLogInValue)) && (userCreditsStorage.password === inputPasswordLogInValue)) {
-            userCreditsStorage.logged = true;
-            userCreditsStorage.visits += 1;
-            localStorage.setItem('userCredits', JSON.stringify(userCreditsStorage));
-            changeProfileMenu(userIsRegistered());
-            setTooltip();
-            formLogIn.reset();
-            resetColorBorderInput(inputEmailCardLogIn, inputPasswordLogIn);
-            setTimeout(() => {
-                wrapperModalLogIn.classList.remove('active-blackout');
-                body.classList.remove('no-scroll');
-                btnLogInModal.style.background = '';
-            }, 1000);
-            btnLogInModal.style.background = '#32CD32';
-            btnLogInModal.textContent = 'Welcome!';
-        }
+    lastName.addEventListener('input', () => {
+        newUserCredits.lastName = lastName.value;
+        inputsValidation(lastName);
+    });
+
+    email.addEventListener('input', () => {
+        newUserCredits.email = email.value;
+        inputsValidation(email);
+    });
+
+    password.addEventListener('input', () => {
+        newUserCredits.password = password.value;
+        inputsValidation(password);
+    });
+
+    if (btnLogIn) {
+        btnLogIn.addEventListener('click', () => {
+            wrapperModalLogIn.classList.add('active-blackout');
+            body.classList.add('no-scroll');
+        });
+    }
+
+    if (btnRegister) {
+        btnRegister.addEventListener('click', () => {
+            wrapperModalReg.classList.add('active-blackout');
+            body.classList.add('no-scroll');
+        });
+    }
+
+    btnCloseModalLogIn.addEventListener('click', () => {
+        wrapperModalLogIn.classList.remove('active-blackout');
+        body.classList.remove('no-scroll');
     });
 
     btnCloseModalBuycard.addEventListener('click', () => {
@@ -357,17 +285,116 @@ export const regLogInOutAuth = () => {
             inputsValidation(cardCvc);
     });
 
+    btnLogInCards.addEventListener('click', () => {
+        wrapperModalLogIn.classList.add('active-blackout');
+        body.classList.add('no-scroll');
+    });
+
+    buyBtns.forEach(buy => buy.addEventListener('click', (event) => {
+        if (!hasRegisteredUsers()) {
+            wrapperModalReg.classList.add('active-blackout');
+            body.classList.add('no-scroll');
+        };
+        currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged);
+
+        if (!currentUserCreditsLogged) {
+            wrapperModalLogIn.classList.add('active-blackout');
+            body.classList.add('no-scroll');
+        }
+
+        if (currentUserCreditsLogged) {
+            if (currentUserCreditsLogged.logged && !currentUserCreditsLogged.subscription) {
+                modalBuyCard.classList.add('active-blackout')
+                body.classList.add('no-scroll');
+            } else if (currentUserCreditsLogged.subscription && currentUserCreditsLogged.logged) {
+                buy.classList.add('own');
+                buy.textContent = 'Own';
+                buy.setAttribute('disabled', '');
+            } else {
+                wrapperModalLogIn.classList.add('active-blackout');
+                body.classList.add('no-scroll');
+            }
+        }
+    }))
+
+    btnMyProfile.addEventListener('click', () => {
+        menuAuthorization.classList.remove('active-profile-menu');
+        modalUserProfile.classList.add('active-blackout');
+        body.classList.add('no-scroll');
+    });
+
+    btnCloseUserProfile.addEventListener('click', () => {
+        modalUserProfile.classList.remove('active-blackout');
+        body.classList.remove('no-scroll');
+    });
+
+    btnLogOut.addEventListener('click', () => userLogOut());
+
+    inputEmailCardLogIn.addEventListener('input', () => {
+        changeColorBorderInput(inputEmailCardLogIn.value.length >= 1, inputEmailCardLogIn);
+        inputEmailCardLogInValue = inputEmailCardLogIn.value;
+    });
+
+    inputPasswordLogIn.addEventListener('input', () => {
+        changeColorBorderInput(inputPasswordLogIn.value.length >= 8, inputPasswordLogIn);
+        inputPasswordLogInValue = inputPasswordLogIn.value;
+    });
+
+    //Event listeners end
+
+    formLogIn.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!hasRegisteredUsers()) {
+            return alert('User not registered');
+        };
+
+        currentUserCreditsLogged = localStorageUsersCredits.find(user =>
+            (user.email === inputEmailCardLogInValue || user.cardNumber === +inputEmailCardLogInValue)
+                &&
+            (user.password === inputPasswordLogInValue)
+        );
+
+        if (!currentUserCreditsLogged) {
+            return alert('Check email / readers card or password');
+        }
+
+        if (Object.keys(currentUserCreditsLogged).length) {
+            localStorageUsersCredits.map(user => {
+                if (user === currentUserCreditsLogged) {
+                    user.logged = true;
+                    user.visits += 1;
+                    localStorage.setItem('usersCredits', JSON.stringify(localStorageUsersCredits));
+                    changeProfileMenu(hasRegisteredUsers());
+                    changeProfileMenu(hasRegisteredUsers());
+                    formLogIn.reset();
+                    resetColorBorderInput(inputEmailCardLogIn, inputPasswordLogIn);
+                    setTimeout(() => {
+                        wrapperModalLogIn.classList.remove('active-blackout');
+                        body.classList.remove('no-scroll');
+                        btnLogInModal.style.background = '';
+                    }, 1000);
+                    btnLogInModal.style.background = '#32CD32';
+                    btnLogInModal.textContent = 'Welcome!';
+                }
+            })
+        }
+    })
+
     formCardDetails.addEventListener('submit', (event) => {
         event.preventDefault();
-        getLocalStorageUserCredits(userIsRegistered());
-        userCreditsStorage.subscription = true;
-        localStorage.setItem('userCredits', JSON.stringify(userCreditsStorage));
-        setTimeout(() => {
-            modalBuyCard.classList.remove('active-blackout');
-            btnBuyCard.style.background = '';
-            body.classList.remove('no-scroll');
-        }, 1000);
-        btnBuyCard.style.background = '#32CD32';
-        btnBuyCard.textContent = 'Done!';
+        console.log(currentUserCreditsLogged)
+        localStorageUsersCredits.map(user => {
+            if (user.logged && !user.subscription) {
+                user.subscription = true;
+                localStorage.setItem('usersCredits', JSON.stringify(localStorageUsersCredits));
+                setTimeout(() => {
+                    modalBuyCard.classList.remove('active-blackout');
+                    btnBuyCard.style.background = '';
+                    body.classList.remove('no-scroll');
+                }, 1000);
+                btnBuyCard.style.background = '#32CD32';
+                btnBuyCard.textContent = 'Done!';
+            }
+        })
     });
 }
