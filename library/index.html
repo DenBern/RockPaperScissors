@@ -150,18 +150,18 @@
                         <div class="card-details-data">
                             <div class="bank-card-number">
                                 <p class="input-description">Bank card number</p>
-                                <input type="text" class="input-card-long" minlength="16" maxlength="16" id="card-number" required>
+                                <input type="text" class="input-card-long" id="card-number" minlength="16" maxlength="16" required pattern="^[0-9]{16}$">
                             </div>
                             <div class="card-expiration-code">
                                 <p class="input-description">Expiration code</p>
                                 <div class="wrapper-inputs-expiration-code">
-                                    <input type="text" class="input-card-short" maxlength="2" id="expiration-code-mounth" required>
-                                    <input type="text" class="input-card-short"  maxlength="2" id="expiration-code-year" required>
+                                    <input type="text" class="input-card-short" minlength="2" maxlength="2" id="expiration-code-mounth" required pattern="^[0-9]{2}$">
+                                    <input type="text" class="input-card-short"  minlength="2" maxlength="2" id="expiration-code-year" required pattern="^[0-9]{2}$">
                                 </div>
                             </div>
                             <div class="card-cvc">
                                 <p class="input-description">CVC</p>
-                                <input type="text" class="input-card-long" maxlength="3" id="card-cvc" required>
+                                <input type="text" class="input-card-long" minlength="3" maxlength="3" id="card-cvc" required pattern="^[0-9]{3}$">
                             </div>
                         </div>
                         <div class="card-details-user">

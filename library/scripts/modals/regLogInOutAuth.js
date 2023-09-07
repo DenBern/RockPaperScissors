@@ -211,7 +211,7 @@ export const regLogInOutAuth = () => {
         const minLengthFirstLastName = 1;
         const patternEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const patterCardNumber = /^[0-9]{16}$/;
-        const patterOnlyDigits = /^[0-9]+$/;
+        const patterOnlyDigits = /^[0-9]{2}$/;
         const minLengthPassword = 8;
         switch (input.id) {
             case 'first-name':
@@ -332,20 +332,29 @@ export const regLogInOutAuth = () => {
         body.classList.remove('no-scroll');
     });
 
-    cardNumberInput.addEventListener('input', () => {
+    cardNumberInput.addEventListener('input',
+    function () {
+        this.value = this.value.replace(/[^\d.]/g, '');
         inputsValidation(cardNumberInput);
-    });
+    }
+    );
 
-    expirationCodeMounth.addEventListener('input', () => {
+    expirationCodeMounth.addEventListener('input',
+    function () {
+        this.value = this.value.replace(/[^\d.]/g, '');
         inputsValidation(expirationCodeMounth);
     });
 
-    expirationCodeYear.addEventListener('input', () => {
+    expirationCodeYear.addEventListener('input',
+    function () {
+        this.value = this.value.replace(/[^\d.]/g, '');
         inputsValidation(expirationCodeYear);
     });
 
-    cardCvc.addEventListener('input', () => {
-        inputsValidation(cardCvc);
+    cardCvc.addEventListener('input',
+        function () {
+            this.value = this.value.replace(/[^\d.]/g, '');
+            inputsValidation(cardCvc);
     });
 
     formCardDetails.addEventListener('submit', (event) => {
