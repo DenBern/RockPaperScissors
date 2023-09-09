@@ -18,7 +18,6 @@ export const regLogInOutAuth = () => {
     const formLogIn = document.getElementById('form-log-in');
     const btnSignUp = document.querySelector('.sign-up-btn-modal');
     const initials = document.querySelector('.initials');
-    // const firstLastName = document.querySelector('.first-last');
     const visitsCount = document.querySelector('.visits-number');
     const bonusesCount = document.querySelector('.bonuses-number');
     const booksCount = document.querySelector('.books-number');
@@ -32,6 +31,7 @@ export const regLogInOutAuth = () => {
     const btnLogInCards = document.querySelector('.log-in-btn');
     const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
     const buyBtns = document.querySelectorAll('.book-buy');
+    // const book = document.querySelector('.book-wrapper');
     const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
     const inputEmailCardLogIn = document.getElementById('log-in-email-card');
     const inputPasswordLogIn = document.getElementById('log-in-password');
@@ -40,11 +40,14 @@ export const regLogInOutAuth = () => {
     const modalBuyCard = document.querySelector('.wrapper-modal-buy-library-card');
     const body = document.querySelector('body');
     const btnBuyCard = document.querySelector('.buy-card-btn');
+    const booksList = document.querySelector('.books-list');
 
     const cardNumberInput = document.getElementById('card-number');
     const expirationCodeMounth = document.getElementById('expiration-code-mounth');
     const expirationCodeYear = document.getElementById('expiration-code-year');
     const cardCvc = document.getElementById('card-cvc');
+
+    const ownBtn = document.createElement('button');
 
     let inputEmailCardLogInValue;
     let inputPasswordLogInValue;
@@ -52,6 +55,13 @@ export const regLogInOutAuth = () => {
     let currentUserCreditsLogged = {};
     let localStorageUsersCredits = [];
     let usersCredits = [];
+
+    let newRentedBook = {
+        bookName: '',
+        bookAuthor: '',
+    }
+
+    let userRentedBooks = [];
 
     const newUserCredits = {
         firstName: '',
@@ -64,6 +74,7 @@ export const regLogInOutAuth = () => {
         bonuses: 0,
         books: 0,
         subscription: false,
+        rentedBooks: [],
     };
 
     const hasRegisteredUsers = () => localStorage.getItem('usersCredits') ? true : false;
@@ -82,6 +93,25 @@ export const regLogInOutAuth = () => {
         bonusesCount.textContent = `${currentUserCreditsLogged.bonuses}`;
         booksCount.textContent = `${currentUserCreditsLogged.books}`;
         userCardNumber.textContent = `${currentUserCreditsLogged.cardNumber}`
+    }
+
+    const renderRentedBooks = () => {
+        getLocalStorageUsersCredits(hasRegisteredUsers());
+        localStorageUsersCredits.find(user => {
+            if (user.logged) {
+                userRentedBooks = user.rentedBooks;
+            } else {
+                userRentedBooks = []
+            }
+        })
+        if (userRentedBooks.length) {
+            booksList.innerHTML = '';
+            userRentedBooks.forEach(book => {
+                booksList.innerHTML += `<li class="rented-book">
+                    ${book.bookName.trim().toLowerCase() + ',' + book.bookAuthor.toLowerCase()}
+                </li>`
+            })
+        }
     }
 
     const changeProfileMenu = (registered) => {
@@ -104,6 +134,7 @@ export const regLogInOutAuth = () => {
             profileButton.setAttribute('title',
                 `${currentUserCreditsLogged.firstName.toUpperCase() + ' ' + currentUserCreditsLogged.lastName.toUpperCase()}`);
             changeModalUserProfile();
+            renderRentedBooks();
         } else {
             profileButton.style.background = '';
             profileButton.innerHTML = '';
@@ -111,6 +142,7 @@ export const regLogInOutAuth = () => {
     }
 
     changeProfileMenu(hasRegisteredUsers());
+
 
     const changeColorBorderInput = (validation, input) => validation ? input.style.borderColor = '#228b22' : input.style.borderColor = '#ff6161';
 
@@ -120,9 +152,10 @@ export const regLogInOutAuth = () => {
 
     const inputsValidation = (input) => {
         const minLengthFirstLastName = 1;
+        const experationCodeLength = 2;
+        const cvcLength = 3;
         const patternEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const patterCardNumber = /^[0-9]{16}$/;
-        const patterOnlyDigits = /^[0-9]{2}$/;
         const minLengthPassword = 8;
         switch (input.id) {
             case 'first-name':
@@ -141,38 +174,18 @@ export const regLogInOutAuth = () => {
                 (changeColorBorderInput(patterCardNumber.test(input.value), input));
                 break;
             case 'expiration-code-mounth':
-                (changeColorBorderInput(patterOnlyDigits.test(input.value), input));
+                (changeColorBorderInput(input.value.length === experationCodeLength, input));
                 break;
             case 'expiration-code-year':
-                (changeColorBorderInput(patterOnlyDigits.test(input.value), input));
+                (changeColorBorderInput(input.value.length === experationCodeLength, input));
                 break;
             case 'card-cvc':
-                (changeColorBorderInput(patterOnlyDigits.test(input.value), input));
+                (changeColorBorderInput(input.value.length === cvcLength, input));
                 break;
             default:
                 input.style.borderColor = '';
         }
     }
-
-    formRegistrarion.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const randomCardNumber = Math.floor(Math.random() * 1000000000);
-        newUserCredits.cardNumber = randomCardNumber;
-        newUserCredits.logged = true;
-        newUserCredits.visits += 1;
-        usersCredits = [...localStorageUsersCredits, newUserCredits];
-        localStorage.setItem('usersCredits', JSON.stringify(usersCredits));
-        formRegistrarion.reset();
-        resetColorBorderInput(firstName, lastName, email, password);
-        setTimeout(() => {
-            wrapperModalReg.classList.remove('active-blackout');
-            body.classList.remove('no-scroll');
-            btnSignUp.style.background = '';
-        }, 1000);
-        changeProfileMenu(hasRegisteredUsers());
-        btnSignUp.style.background = '#32CD32';
-        btnSignUp.textContent = 'Welcome!';
-    });
 
     const userLogOut = () => {
         localStorageUsersCredits.map(user => {
@@ -261,29 +274,32 @@ export const regLogInOutAuth = () => {
     });
 
     cardNumberInput.addEventListener('input',
-    function () {
-        this.value = this.value.replace(/[^\d.]/g, '');
-        inputsValidation(cardNumberInput);
-    }
+        function () {
+            this.value = this.value.replace(/[^\d.]/g, '');
+            inputsValidation(cardNumberInput);
+        }
     );
 
     expirationCodeMounth.addEventListener('input',
-    function () {
-        this.value = this.value.replace(/[^\d.]/g, '');
-        inputsValidation(expirationCodeMounth);
-    });
+        function () {
+            this.value = this.value.replace(/[^\d.]/g, '');
+            inputsValidation(expirationCodeMounth);
+        }
+    );
 
     expirationCodeYear.addEventListener('input',
-    function () {
-        this.value = this.value.replace(/[^\d.]/g, '');
-        inputsValidation(expirationCodeYear);
-    });
+        function () {
+            this.value = this.value.replace(/[^\d.]/g, '');
+            inputsValidation(expirationCodeYear);
+        }
+    );
 
     cardCvc.addEventListener('input',
         function () {
             this.value = this.value.replace(/[^\d.]/g, '');
             inputsValidation(cardCvc);
-    });
+        }
+    );
 
     btnLogInCards.addEventListener('click', () => {
         wrapperModalLogIn.classList.add('active-blackout');
@@ -294,28 +310,50 @@ export const regLogInOutAuth = () => {
         if (!hasRegisteredUsers()) {
             wrapperModalReg.classList.add('active-blackout');
             body.classList.add('no-scroll');
-        };
-        currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged);
-
-        if (!currentUserCreditsLogged) {
+        } else if (hasRegisteredUsers() && Object.keys(currentUserCreditsLogged).length < 1) {
             wrapperModalLogIn.classList.add('active-blackout');
             body.classList.add('no-scroll');
         }
 
-        if (currentUserCreditsLogged) {
+        currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged);
+        localStorageUsersCredits.find(user => {
+            if (user.logged) {
+                userRentedBooks = user.rentedBooks;
+            }
+        })
+
+        if (currentUserCreditsLogged && currentUserCreditsLogged.logged) {
             if (currentUserCreditsLogged.logged && !currentUserCreditsLogged.subscription) {
                 modalBuyCard.classList.add('active-blackout')
                 body.classList.add('no-scroll');
             } else if (currentUserCreditsLogged.subscription && currentUserCreditsLogged.logged) {
-                buy.classList.add('own');
-                buy.textContent = 'Own';
-                buy.setAttribute('disabled', '');
+                let book = event.target.parentNode;
+                let btnBook = event.target;
+                let getBookName = book.childNodes[1].childNodes[3].childNodes[1].outerText;
+                let getBookAuthor = book.childNodes[1].childNodes[3].childNodes[3].childNodes[2].textContent;
+                btnBook.remove();
+                book.appendChild(ownBtn);
+                ownBtn.classList.add('own');
+                ownBtn.textContent = 'Own';
+                ownBtn.setAttribute('disabled', '');
+                newRentedBook.bookName = getBookName;
+                newRentedBook.bookAuthor = getBookAuthor;
+                localStorageUsersCredits.map(user => {
+                    if (user === currentUserCreditsLogged) {
+                        console.log(userRentedBooks)
+                        user.books += 1;
+                        user.rentedBooks = [...userRentedBooks, newRentedBook];
+                        localStorage.setItem('usersCredits', JSON.stringify(localStorageUsersCredits));
+                        changeProfileMenu(hasRegisteredUsers);
+                        renderRentedBooks();
+                    }
+                })
             } else {
                 wrapperModalLogIn.classList.add('active-blackout');
                 body.classList.add('no-scroll');
             }
         }
-    }))
+    }));
 
     btnMyProfile.addEventListener('click', () => {
         menuAuthorization.classList.remove('active-profile-menu');
@@ -341,6 +379,30 @@ export const regLogInOutAuth = () => {
     });
 
     //Event listeners end
+
+    //Forms
+
+    formRegistrarion.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const randomCardNumber = Math.floor(Math.random() * 1000000000);
+        const randomBonuses = Math.floor(Math.random() * 1000);
+        newUserCredits.cardNumber = randomCardNumber;
+        newUserCredits.logged = true;
+        newUserCredits.visits += 1;
+        newUserCredits.bonuses = randomBonuses;
+        usersCredits = [...localStorageUsersCredits, newUserCredits];
+        localStorage.setItem('usersCredits', JSON.stringify(usersCredits));
+        formRegistrarion.reset();
+        resetColorBorderInput(firstName, lastName, email, password);
+        setTimeout(() => {
+            wrapperModalReg.classList.remove('active-blackout');
+            body.classList.remove('no-scroll');
+            btnSignUp.style.background = '';
+        }, 1000);
+        changeProfileMenu(hasRegisteredUsers());
+        btnSignUp.style.background = '#32CD32';
+        btnSignUp.textContent = 'Welcome!';
+    });
 
     formLogIn.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -378,11 +440,10 @@ export const regLogInOutAuth = () => {
                 }
             })
         }
-    })
+    });
 
     formCardDetails.addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log(currentUserCreditsLogged)
         localStorageUsersCredits.map(user => {
             if (user.logged && !user.subscription) {
                 user.subscription = true;
