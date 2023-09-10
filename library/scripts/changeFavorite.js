@@ -3,17 +3,21 @@ export const changeFavorite = () => {
   const favoritesBooks = [...document.getElementsByClassName('favorite')];
 
   const defaultFavorite = 'winter';
+  const delayTimeDisplay = 500;
+  const timerActivationAnimation = 100;
 
   const showDefaultFavorite = () => inputsFavorites.forEach(item => {
+    favoritesBooks.forEach(item => {
+      if(item.className.includes(defaultFavorite)) {
+        item.style.display = 'flex';
+        item.classList.add('active-season');
+      }
+    });
+
     if (item.id === defaultFavorite) {
       item.checked = true;
       item.labels[0].classList.add('active-input');
     }
-    favoritesBooks.forEach(item => {
-      if(item.className.includes(defaultFavorite)) {
-        item.classList.add('active-season');
-      }
-    });
   });
 
   showDefaultFavorite();
@@ -25,9 +29,17 @@ export const changeFavorite = () => {
 
     favoritesBooks.forEach(item => {
       if(item.className.includes(season)) {
-        item.classList.add('active-season');
+        setTimeout(() => {
+          item.style.display = 'flex';
+          setTimeout(() => {
+            item.classList.add('active-season');
+          }, timerActivationAnimation)
+        }, delayTimeDisplay);
       } else {
         item.classList.remove('active-season');
+        setTimeout(() => {
+          item.style.display = 'none';
+        }, delayTimeDisplay);
       }
     });
 
@@ -54,8 +66,6 @@ export const changeFavorite = () => {
         case 'autumn':
           changeFavoriteSeason(item);
           break;
-        default:
-          return;
       }
     });
   });
