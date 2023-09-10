@@ -41,13 +41,12 @@ export const regLogInOutAuth = () => {
     const body = document.querySelector('body');
     const btnBuyCard = document.querySelector('.buy-card-btn');
     const booksList = document.querySelector('.books-list');
+    // const booksNames = document.querySelectorAll('.book-name');
 
     const cardNumberInput = document.getElementById('card-number');
     const expirationCodeMounth = document.getElementById('expiration-code-mounth');
     const expirationCodeYear = document.getElementById('expiration-code-year');
     const cardCvc = document.getElementById('card-cvc');
-
-    const ownBtn = document.createElement('button');
 
     let inputEmailCardLogInValue;
     let inputPasswordLogInValue;
@@ -59,6 +58,7 @@ export const regLogInOutAuth = () => {
     let newRentedBook = {
         bookName: '',
         bookAuthor: '',
+        btnDisabled: true,
     }
 
     let userRentedBooks = [];
@@ -103,6 +103,16 @@ export const regLogInOutAuth = () => {
             } else {
                 userRentedBooks = []
             }
+        })
+        userRentedBooks.forEach(book => {
+            buyBtns.forEach(buy => {
+                let name = buy.parentElement.childNodes[1].childNodes[3].childNodes[1].textContent.trim();
+                if (book.bookName.toLowerCase() === name.toLowerCase()) {
+                    buy.classList.add('book-own');
+                    buy.textContent = 'Own';
+                    buy.setAttribute('disabled', '');
+                }
+            })
         })
         if (userRentedBooks.length) {
             booksList.innerHTML = '';
@@ -331,16 +341,13 @@ export const regLogInOutAuth = () => {
                 let btnBook = event.target;
                 let getBookName = book.childNodes[1].childNodes[3].childNodes[1].outerText;
                 let getBookAuthor = book.childNodes[1].childNodes[3].childNodes[3].childNodes[2].textContent;
-                btnBook.remove();
-                book.appendChild(ownBtn);
-                ownBtn.classList.add('own');
-                ownBtn.textContent = 'Own';
-                ownBtn.setAttribute('disabled', '');
+                    btnBook.classList.add('book-own');
+                    btnBook.textContent = 'Own';
+                    btnBook.setAttribute('disabled', '');
                 newRentedBook.bookName = getBookName;
                 newRentedBook.bookAuthor = getBookAuthor;
                 localStorageUsersCredits.map(user => {
                     if (user === currentUserCreditsLogged) {
-                        console.log(userRentedBooks)
                         user.books += 1;
                         user.rentedBooks = [...userRentedBooks, newRentedBook];
                         localStorage.setItem('usersCredits', JSON.stringify(localStorageUsersCredits));
@@ -407,7 +414,7 @@ export const regLogInOutAuth = () => {
     formLogIn.addEventListener('submit', (event) => {
         event.preventDefault();
         if (!hasRegisteredUsers()) {
-            return alert('User not registered');
+            return alert('User is not registered');
         };
 
         currentUserCreditsLogged = localStorageUsersCredits.find(user =>
