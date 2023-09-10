@@ -31,7 +31,6 @@ export const regLogInOutAuth = () => {
     const btnLogInCards = document.querySelector('.log-in-btn');
     const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
     const buyBtns = document.querySelectorAll('.book-buy');
-    // const book = document.querySelector('.book-wrapper');
     const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
     const inputEmailCardLogIn = document.getElementById('log-in-email-card');
     const inputPasswordLogIn = document.getElementById('log-in-password');
@@ -41,7 +40,6 @@ export const regLogInOutAuth = () => {
     const body = document.querySelector('body');
     const btnBuyCard = document.querySelector('.buy-card-btn');
     const booksList = document.querySelector('.books-list');
-    // const booksNames = document.querySelectorAll('.book-name');
 
     const cardNumberInput = document.getElementById('card-number');
     const expirationCodeMounth = document.getElementById('expiration-code-mounth');
@@ -85,6 +83,27 @@ export const regLogInOutAuth = () => {
         localStorageUsersCredits = JSON.parse(getLocalCredits);
     }
 
+    const changeBtns = () => {
+        getLocalStorageUsersCredits(hasRegisteredUsers());
+        localStorageUsersCredits.find(user => {
+            if (user.logged) {
+                userRentedBooks = user.rentedBooks;
+            }
+            if (userRentedBooks.length) {
+                userRentedBooks.forEach(book => {
+                    buyBtns.forEach(buy => {
+                        let name = buy.parentElement.childNodes[1].childNodes[3].childNodes[1].textContent.trim().toLocaleLowerCase();
+                        if (book.bookName.toLowerCase() === name) {
+                            buy.classList.add('book-own');
+                            buy.textContent = 'Own';
+                            buy.setAttribute('disabled', '');
+                        }
+                    })
+                })
+            }
+        })
+    }
+
     const changeModalUserProfile = () => {
         initials.textContent = `${currentUserCreditsLogged.firstName[0].toUpperCase() + currentUserCreditsLogged.lastName[0].toUpperCase()}`;
         userFirstName.textContent = `${currentUserCreditsLogged.firstName}`;
@@ -100,21 +119,9 @@ export const regLogInOutAuth = () => {
         localStorageUsersCredits.find(user => {
             if (user.logged) {
                 userRentedBooks = user.rentedBooks;
-            } else {
-                userRentedBooks = []
             }
         })
-        userRentedBooks.forEach(book => {
-            buyBtns.forEach(buy => {
-                let name = buy.parentElement.childNodes[1].childNodes[3].childNodes[1].textContent.trim();
-                if (book.bookName.toLowerCase() === name.toLowerCase()) {
-                    buy.classList.add('book-own');
-                    buy.textContent = 'Own';
-                    buy.setAttribute('disabled', '');
-                }
-            })
-        })
-        if (userRentedBooks.length) {
+        if (userRentedBooks) {
             booksList.innerHTML = '';
             userRentedBooks.forEach(book => {
                 booksList.innerHTML += `<li class="rented-book">
@@ -145,6 +152,7 @@ export const regLogInOutAuth = () => {
                 `${currentUserCreditsLogged.firstName.toUpperCase() + ' ' + currentUserCreditsLogged.lastName.toUpperCase()}`);
             changeModalUserProfile();
             renderRentedBooks();
+            changeBtns();
         } else {
             profileButton.style.background = '';
             profileButton.innerHTML = '';
@@ -208,6 +216,12 @@ export const regLogInOutAuth = () => {
                 btnsWrapper.appendChild(btnLogInDropMenu);
                 btnsWrapper.appendChild(btnRegister);
                 titleDropMenu.textContent = 'Profile';
+                buyBtns.forEach(buy => {
+                    buy.classList.remove('book-own')
+                    buy.classList.add('book-buy');
+                    buy.textContent = 'Buy';
+                    buy.removeAttribute('disabled');
+                })
             }
         })
     };
@@ -281,6 +295,8 @@ export const regLogInOutAuth = () => {
     btnCloseModalBuycard.addEventListener('click', () => {
         modalBuyCard.classList.remove('active-blackout');
         body.classList.remove('no-scroll');
+        formCardDetails.reset();
+        resetColorBorderInput(cardNumberInput, expirationCodeMounth, expirationCodeYear, cardCvc)
     });
 
     cardNumberInput.addEventListener('input',
@@ -317,15 +333,15 @@ export const regLogInOutAuth = () => {
     });
 
     buyBtns.forEach(buy => buy.addEventListener('click', (event) => {
+        currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged) || {};
         if (!hasRegisteredUsers()) {
             wrapperModalReg.classList.add('active-blackout');
             body.classList.add('no-scroll');
-        } else if (hasRegisteredUsers() && Object.keys(currentUserCreditsLogged).length < 1) {
+        } else if (hasRegisteredUsers() && !Object.keys(currentUserCreditsLogged).length) {
             wrapperModalLogIn.classList.add('active-blackout');
             body.classList.add('no-scroll');
         }
 
-        currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged);
         localStorageUsersCredits.find(user => {
             if (user.logged) {
                 userRentedBooks = user.rentedBooks;
@@ -409,6 +425,7 @@ export const regLogInOutAuth = () => {
         changeProfileMenu(hasRegisteredUsers());
         btnSignUp.style.background = '#32CD32';
         btnSignUp.textContent = 'Welcome!';
+        changeBtns();
     });
 
     formLogIn.addEventListener('submit', (event) => {
@@ -444,6 +461,7 @@ export const regLogInOutAuth = () => {
                     }, 1000);
                     btnLogInModal.style.background = '#32CD32';
                     btnLogInModal.textContent = 'Welcome!';
+                    changeBtns();
                 }
             })
         }
