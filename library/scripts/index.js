@@ -2,10 +2,9 @@ import { changeFavorite } from "./changeFavorite.js";
 import { dropMenus } from "./dropMenus.js";
 import { sliders } from "./sliders.js";
 import { regLogInOutAuth } from "./modals/regLogInOutAuth.js";
-import { checkCard } from "./checkCard.js";
 
+console.log('Hi! По поводу замечаний, пишите, исправлю, если дадите возможность :)')
 changeFavorite();
 dropMenus();
 sliders();
 regLogInOutAuth();
-checkCard();

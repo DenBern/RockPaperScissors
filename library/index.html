@@ -895,16 +895,32 @@
                     <div class="find-create-card">
                         <div class="find-card">
                             <p class="find-card-title">Find your Library card</p>
-                            <form class="form-card">
+                            <form class="form-card" id="form-card">
                                 <div class="wrapper-form">
                                     <p class="form-tittle">Brooklyn Public Library</p>
                                     <div class="form-inputs">
-                                        <input type="text" class="card-name" placeholder="Reader's name"
-                                            pattern="^[a-zA-Z0-9_]">
-                                        <input type="text" class="card-number" placeholder="Card number">
+                                        <input type="text" class="card-name" id="readers-name" placeholder="Reader's name">
+                                        <input type="text" class="card-number" id="readers-card-number" placeholder="Card number" maxlength="9">
                                     </div>
                                 </div>
-                                <button type="button" class="check-card">Check the card</button>
+                                <div class="check-details">
+                                    <div class="check-visits">
+                                        <p class="check-visits-title">Visits</p>
+                                        <div class="visits-icon"></div>
+                                        <span class="check-visits-number"></span>
+                                    </div>
+                                    <div class="check-bonuses">
+                                        <p class="check-bonuses-title">Bonuses</p>
+                                        <div class="bonuses-icon"></div>
+                                        <span class="check-bonuses-number"></span>
+                                    </div>
+                                    <div class="check-books">
+                                        <p class="check-books-title">Books</p>
+                                        <div class="books-icon"></div>
+                                        <span class="check-books-number"></span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="check-card">Check the card</button>
                             </form>
                         </div>
                         <div class="create-card">
@@ -916,6 +932,7 @@
                             <div class="get-card-buttons">
                                 <button type="button" class="sign-up-btn">Sign up</button>
                                 <button type="button" class="log-in-btn">Log in</button>
+                                <button type="button" class="profile-btn">Profile</button>
                             </div>
                         </div>
                     </div>

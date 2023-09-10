@@ -16,6 +16,7 @@ export const regLogInOutAuth = () => {
     const formRegistrarion = document.getElementById('form-registration');
     const formCardDetails = document.getElementById('form-card-details');
     const formLogIn = document.getElementById('form-log-in');
+    const formCard = document.getElementById('form-card');
     const btnSignUp = document.querySelector('.sign-up-btn-modal');
     const initials = document.querySelector('.initials');
     const visitsCount = document.querySelector('.visits-number');
@@ -29,6 +30,7 @@ export const regLogInOutAuth = () => {
     const modalUserProfile = document.querySelector('.wrapper-modal-user-profile');
     const btnLogIn = document.querySelector('.log-in');
     const btnLogInCards = document.querySelector('.log-in-btn');
+    const btnProfileCard = document.querySelector('.profile-btn');
     const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
     const buyBtns = document.querySelectorAll('.book-buy');
     const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
@@ -46,8 +48,20 @@ export const regLogInOutAuth = () => {
     const expirationCodeYear = document.getElementById('expiration-code-year');
     const cardCvc = document.getElementById('card-cvc');
 
+    const readersName = document.getElementById('readers-name');
+    const readersCardNumber = document.getElementById('readers-card-number');
+    const findLibraryCard = document.querySelector('.check-card');
+    const checkDetails = document.querySelector('.check-details');
+    const checkVisitsCount = document.querySelector('.check-visits-number');
+    const checkBooksCount = document.querySelector('.check-books-number');
+    const checkBonusesCount = document.querySelector('.check-bonuses-number');
+    const cardTitle = document.querySelector('.create-card-title');
+    const cardText = document.querySelector('.create-card-text');
+
     let inputEmailCardLogInValue;
     let inputPasswordLogInValue;
+    let inputReadersNameValue;
+    let inputReadersCardNumberValue;
 
     let currentUserCreditsLogged = {};
     let localStorageUsersCredits = [];
@@ -61,7 +75,7 @@ export const regLogInOutAuth = () => {
 
     let userRentedBooks = [];
 
-    const newUserCredits = {
+    let newUserCredits = {
         firstName: '',
         lastName: '',
         email: '',
@@ -74,6 +88,16 @@ export const regLogInOutAuth = () => {
         subscription: false,
         rentedBooks: [],
     };
+
+    const generateCardNumber = () => {
+        let cardNumber = '';
+        for (let i = 0; i < 9; i++) {
+            const randomDigit = Math.floor(Math.random() * 16);
+            const hexDigit = randomDigit.toString(16);
+            cardNumber += hexDigit;
+        }
+        return cardNumber.toUpperCase();
+    }
 
     const hasRegisteredUsers = () => localStorage.getItem('usersCredits') ? true : false;
 
@@ -103,6 +127,62 @@ export const regLogInOutAuth = () => {
             }
         })
     }
+
+    const checkCard = () => {
+        if (!hasRegisteredUsers()) {
+            alert('User is not registered')
+        }
+        getLocalStorageUsersCredits(hasRegisteredUsers())
+        localStorageUsersCredits.forEach(user => {
+            if (user.firstName === inputReadersNameValue && user.cardNumber === inputReadersCardNumberValue) {
+                findLibraryCard.style.display = 'none';
+                checkDetails.style.display = 'flex';
+                readersName.setAttribute('disabled', '');
+                readersCardNumber.setAttribute('disabled', '');
+                checkVisitsCount.textContent = `${user.visits}`;
+                checkBooksCount.textContent = `${user.books}`;
+                checkBonusesCount.textContent = `${user.bonuses}`;
+                setTimeout(() => {
+                    findLibraryCard.style.display = 'block';
+                    checkDetails.style.display = 'none';
+                    readersName.removeAttribute('disabled')
+                    readersCardNumber.removeAttribute('disabled')
+                }, 10000)
+            } else {
+                alert('Check user name or card number');
+            }
+        })
+    }
+
+    const changeCard = () => {
+        getLocalStorageUsersCredits(hasRegisteredUsers());
+        localStorageUsersCredits.forEach(user => {
+            if (user.logged) {
+                checkVisitsCount.textContent = `${user.visits}`;
+                checkBooksCount.textContent = `${user.books}`;
+                checkBonusesCount.textContent = `${user.bonuses}`;
+                findLibraryCard.style.display = 'none';
+                checkDetails.style.display = 'flex';
+                readersName.value = user.firstName;
+                readersCardNumber.value = user.cardNumber;
+                readersName.setAttribute('disabled', '');
+                readersCardNumber.setAttribute('disabled', '');
+                readersName.style.color = '#BB945F';
+                readersCardNumber.style.color = '#BB945F';
+                cardTitle.textContent = 'Visit your profile';
+                cardText.textContent = `With a digital library card you get free access
+                                        to the Library’s wide array of digital resources
+                                        including e-books, databases, educational resources,
+                                        and more.`;
+                btnProfileCard.style.display = 'block';
+                btnLogInCards.style.display = 'none';
+                btnSignUpcards.style.display = 'none';
+
+            }
+        })
+    }
+
+    changeCard();
 
     const changeModalUserProfile = () => {
         initials.textContent = `${currentUserCreditsLogged.firstName[0].toUpperCase() + currentUserCreditsLogged.lastName[0].toUpperCase()}`;
@@ -134,7 +214,7 @@ export const regLogInOutAuth = () => {
     const changeProfileMenu = (registered) => {
         getLocalStorageUsersCredits(registered);
         currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged) || {};
-        if(Object.keys(currentUserCreditsLogged).length && currentUserCreditsLogged.logged) {
+        if (Object.keys(currentUserCreditsLogged).length && currentUserCreditsLogged.logged) {
             profileButton.style.background = 'none';
             profileButton.innerHTML = `<span class='user-logged'>
                 ${currentUserCreditsLogged.firstName[0].toUpperCase() + currentUserCreditsLogged.lastName[0].toUpperCase()}
@@ -224,9 +304,32 @@ export const regLogInOutAuth = () => {
                 })
             }
         })
+        formCard.reset();
+        findLibraryCard.style.display = 'block';
+        checkDetails.style.display = 'none';
+        readersName.removeAttribute('disabled')
+        readersCardNumber.removeAttribute('disabled')
+        readersName.style.color = '#BB945F';
+        readersCardNumber.style.color = '#BB945F';
+        cardTitle.textContent = 'Get a reader card';
+        cardText.textContent = `You will be able to see a reader card after logging
+                                into account or you can register a new account`;
+        btnProfileCard.style.display = 'none';
+        btnLogInCards.style.display = 'block';
+        btnSignUpcards.style.display = 'block';
     };
 
     //Event listeners
+
+    readersName.addEventListener('input', () => {
+        inputReadersNameValue = readersName.value;
+        inputsValidation(readersName);
+    })
+
+    readersCardNumber.addEventListener('input', () => {
+        inputReadersCardNumberValue = readersCardNumber.value;
+        inputsValidation(readersCardNumber);
+    })
 
     btnSignUpcards.addEventListener('click', () => {
         wrapperModalReg.classList.add('active-blackout');
@@ -332,6 +435,11 @@ export const regLogInOutAuth = () => {
         body.classList.add('no-scroll');
     });
 
+    btnProfileCard.addEventListener('click', () => {
+        modalUserProfile.classList.add('active-blackout');
+        body.classList.add('no-scroll');
+    })
+
     buyBtns.forEach(buy => buy.addEventListener('click', (event) => {
         currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged) || {};
         if (!hasRegisteredUsers()) {
@@ -357,9 +465,9 @@ export const regLogInOutAuth = () => {
                 let btnBook = event.target;
                 let getBookName = book.childNodes[1].childNodes[3].childNodes[1].outerText;
                 let getBookAuthor = book.childNodes[1].childNodes[3].childNodes[3].childNodes[2].textContent;
-                    btnBook.classList.add('book-own');
-                    btnBook.textContent = 'Own';
-                    btnBook.setAttribute('disabled', '');
+                btnBook.classList.add('book-own');
+                btnBook.textContent = 'Own';
+                btnBook.setAttribute('disabled', '');
                 newRentedBook.bookName = getBookName;
                 newRentedBook.bookAuthor = getBookAuthor;
                 localStorageUsersCredits.map(user => {
@@ -369,6 +477,7 @@ export const regLogInOutAuth = () => {
                         localStorage.setItem('usersCredits', JSON.stringify(localStorageUsersCredits));
                         changeProfileMenu(hasRegisteredUsers);
                         renderRentedBooks();
+                        changeCard();
                     }
                 })
             } else {
@@ -407,11 +516,11 @@ export const regLogInOutAuth = () => {
 
     formRegistrarion.addEventListener('submit', (event) => {
         event.preventDefault();
-        const randomCardNumber = Math.floor(Math.random() * 1000000000);
+        const randomCardNumber = generateCardNumber();
         const randomBonuses = Math.floor(Math.random() * 1000);
         newUserCredits.cardNumber = randomCardNumber;
         newUserCredits.logged = true;
-        newUserCredits.visits += 1;
+        newUserCredits.visits = 1;
         newUserCredits.bonuses = randomBonuses;
         usersCredits = [...localStorageUsersCredits, newUserCredits];
         localStorage.setItem('usersCredits', JSON.stringify(usersCredits));
@@ -421,11 +530,13 @@ export const regLogInOutAuth = () => {
             wrapperModalReg.classList.remove('active-blackout');
             body.classList.remove('no-scroll');
             btnSignUp.style.background = '';
+            btnSignUp.textContent = 'Sign Up!';
         }, 1000);
         changeProfileMenu(hasRegisteredUsers());
         btnSignUp.style.background = '#32CD32';
         btnSignUp.textContent = 'Welcome!';
         changeBtns();
+        changeCard();
     });
 
     formLogIn.addEventListener('submit', (event) => {
@@ -435,8 +546,7 @@ export const regLogInOutAuth = () => {
         };
 
         currentUserCreditsLogged = localStorageUsersCredits.find(user =>
-            (user.email === inputEmailCardLogInValue || user.cardNumber === +inputEmailCardLogInValue)
-                &&
+            (user.email === inputEmailCardLogInValue || user.cardNumber === inputEmailCardLogInValue) &&
             (user.password === inputPasswordLogInValue)
         );
 
@@ -458,10 +568,12 @@ export const regLogInOutAuth = () => {
                         wrapperModalLogIn.classList.remove('active-blackout');
                         body.classList.remove('no-scroll');
                         btnLogInModal.style.background = '';
+                        btnLogInModal.textContent = 'Log In!';
                     }, 1000);
                     btnLogInModal.style.background = '#32CD32';
                     btnLogInModal.textContent = 'Welcome!';
                     changeBtns();
+                    changeCard();
                 }
             })
         }
@@ -483,4 +595,9 @@ export const regLogInOutAuth = () => {
             }
         })
     });
+
+    formCard.addEventListener('submit', (event) => {
+        event.preventDefault();
+        checkCard();
+    })
 }
