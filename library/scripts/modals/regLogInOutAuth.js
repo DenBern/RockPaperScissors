@@ -57,6 +57,7 @@ export const regLogInOutAuth = () => {
     const checkBonusesCount = document.querySelector('.check-bonuses-number');
     const cardTitle = document.querySelector('.create-card-title');
     const cardText = document.querySelector('.create-card-text');
+    const cardTitleFind = document.querySelector('.find-card-title');
 
     let inputEmailCardLogInValue;
     let inputPasswordLogInValue;
@@ -66,6 +67,7 @@ export const regLogInOutAuth = () => {
     let currentUserCreditsLogged = {};
     let localStorageUsersCredits = [];
     let usersCredits = [];
+    let checkCardCredits = {};
 
     let newRentedBook = {
         bookName: '',
@@ -129,29 +131,35 @@ export const regLogInOutAuth = () => {
     }
 
     const checkCard = () => {
-        if (!hasRegisteredUsers()) {
-            alert('User is not registered')
-        }
+        if (!hasRegisteredUsers()) return;
         getLocalStorageUsersCredits(hasRegisteredUsers())
-        localStorageUsersCredits.forEach(user => {
-            if (user.firstName === inputReadersNameValue && user.cardNumber === inputReadersCardNumberValue) {
-                findLibraryCard.style.display = 'none';
-                checkDetails.style.display = 'flex';
-                readersName.setAttribute('disabled', '');
-                readersCardNumber.setAttribute('disabled', '');
-                checkVisitsCount.textContent = `${user.visits}`;
-                checkBooksCount.textContent = `${user.books}`;
-                checkBonusesCount.textContent = `${user.bonuses}`;
-                setTimeout(() => {
-                    findLibraryCard.style.display = 'block';
-                    checkDetails.style.display = 'none';
-                    readersName.removeAttribute('disabled')
-                    readersCardNumber.removeAttribute('disabled')
-                }, 10000)
-            } else {
-                alert('Check user name or card number');
-            }
-        })
+        checkCardCredits = localStorageUsersCredits.find(user => user.firstName === inputReadersNameValue) || {};
+        if (!Object.keys(checkCardCredits).length) {
+            return alert('Check user name or card number')
+        }
+
+        if (checkCardCredits.firstName === inputReadersNameValue && checkCardCredits.cardNumber === inputReadersCardNumberValue) {
+            findLibraryCard.style.display = 'none';
+            checkDetails.style.display = 'flex';
+            readersName.setAttribute('disabled', '');
+            readersCardNumber.setAttribute('disabled', '');
+            checkVisitsCount.textContent = `${checkCardCredits.visits}`;
+            checkBooksCount.textContent = `${checkCardCredits.books}`;
+            checkBonusesCount.textContent = `${checkCardCredits.bonuses}`;
+            setTimeout(() => {
+                findLibraryCard.style.display = 'block';
+                checkDetails.style.display = 'none';
+                readersName.removeAttribute('disabled')
+                readersCardNumber.removeAttribute('disabled')
+                readersName.value = '';
+                readersCardNumber.value = '';
+                inputReadersNameValue = '';
+                inputReadersCardNumberValue = '';
+                checkCardCredits = {};
+            }, 10000)
+        } else {
+            alert('Check user name or card number');
+        }
     }
 
     const changeCard = () => {
@@ -163,7 +171,7 @@ export const regLogInOutAuth = () => {
                 checkBonusesCount.textContent = `${user.bonuses}`;
                 findLibraryCard.style.display = 'none';
                 checkDetails.style.display = 'flex';
-                readersName.value = user.firstName;
+                readersName.value = user.firstName + ' ' + user.lastName;
                 readersCardNumber.value = user.cardNumber;
                 readersName.setAttribute('disabled', '');
                 readersCardNumber.setAttribute('disabled', '');
@@ -177,7 +185,7 @@ export const regLogInOutAuth = () => {
                 btnProfileCard.style.display = 'block';
                 btnLogInCards.style.display = 'none';
                 btnSignUpcards.style.display = 'none';
-
+                cardTitleFind.textContent = 'Your Library card';
             }
         })
     }
@@ -317,6 +325,7 @@ export const regLogInOutAuth = () => {
         btnProfileCard.style.display = 'none';
         btnLogInCards.style.display = 'block';
         btnSignUpcards.style.display = 'block';
+        cardTitleFind.textContent = 'Find your Library card';
     };
 
     //Event listeners
