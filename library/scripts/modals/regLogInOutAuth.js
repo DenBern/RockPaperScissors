@@ -59,6 +59,9 @@ export const regLogInOutAuth = () => {
     const cardText = document.querySelector('.create-card-text');
     const cardTitleFind = document.querySelector('.find-card-title');
 
+    const btnRegistartionInModal = document.querySelector('.btn-registration');
+    const btnLogInInModal = document.querySelector('.btn-login')
+
     let inputEmailCardLogInValue;
     let inputPasswordLogInValue;
     let inputReadersNameValue;
@@ -329,6 +332,16 @@ export const regLogInOutAuth = () => {
     };
 
     //Event listeners
+
+    btnRegistartionInModal.addEventListener('click', () => {
+        wrapperModalLogIn.classList.remove('active-blackout');
+        wrapperModalReg.classList.add('active-blackout');
+    })
+
+    btnLogInInModal.addEventListener('click', () => {
+        wrapperModalReg.classList.remove('active-blackout');
+        wrapperModalLogIn.classList.add('active-blackout');
+    })
 
     readersName.addEventListener('input', () => {
         inputReadersNameValue = readersName.value;

@@ -373,11 +373,16 @@ main {
   margin: 5px;
   border-radius: 50%;
   background-color: #000;
+  border: none;
 }
 
 .dot:hover {
   cursor: pointer;
   background-color: #bb955f78;
+}
+
+.dot:disabled {
+  pointer-events: none;
 }
 
 .fourth-dot,
