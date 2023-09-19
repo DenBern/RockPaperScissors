@@ -6,19 +6,25 @@ const btnNextTrack = document.querySelector('.next-track');
 const btnPrevTrack = document.querySelector('.prev-track');
 const btnSpeaker = document.querySelector('.btn-speaker');
 const inputVolume = document.querySelector('.volume');
+const trackLine = document.querySelector('.track-line');
 const author = document.querySelectorAll('.author');
 const currentTrack = document.querySelector('h2');
 const trackTime = document.querySelector('.track-time');
 const currentTrackTime = document.querySelector('.current-time');
 const cover = document.querySelector('.cover');
-const trackLine = document.querySelector('.track-line');
+const allTracks = document.querySelector('.tracks');
+const trackList = document.querySelector('.track-list');
+const toFavorite = document.querySelector('.to-favorite');
+
+let favoritesTrackNumber = [];
+let favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
 
 const countTraks = tracks.length;
 let isMuted = false;
 let isPlay = false;
 let isPaused = false;
 let pausedTime = 0;
-let track;
+let trackNumber = 0;
 let durationTrack = 0;
 let seconds = 0;
 let minutes = 0;
@@ -28,31 +34,51 @@ let currentSeconds = 0;
 let timerId;
 
 window.onload = function () {
-  track = 0;
+  trackNumber = 0;
   renderTrack();
-}
-
-const renderTrack = () => {
-  author.forEach(item => item.textContent = `${tracks[track].author}`);
-  currentTrack.textContent = `${tracks[track].track}`;
-  trackTime.textContent = `${minutes ? minutes : '0'}:${seconds ? seconds : '00'}`;
-  currentTrackTime.textContent = '0:00';
-  cover.style.backgroundImage = `url(${tracks[track].cover})`;
-}
+};
 
 audio.load();
-
-const setVolume = () => audio.volume = inputVolume.value / 100;
-
-setVolume();
 
 audio.addEventListener('loadedmetadata', () => {
   durationTrack = Math.round(audio.duration);
   minutes = Math.trunc(durationTrack / 60);
   seconds = durationTrack % 60;
   trackLine.max = durationTrack;
-  renderTrack();
 });
+
+const makeShortlist = () => {
+  allTracks.innerHTML = '';
+  tracks.forEach(track => {
+    allTracks.innerHTML += `<li class="track">${track.track + ' - ' + track.author}</li>`
+  });
+}
+
+makeShortlist();
+
+const renderTrack = () => {
+  author.forEach(item => item.textContent = `${tracks[trackNumber].author}`);
+  currentTrack.textContent = `${tracks[trackNumber].track}`;
+  trackTime.textContent = `${tracks[trackNumber].time}`;
+  currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
+  cover.style.backgroundImage = `url(${tracks[trackNumber].cover})`;
+}
+
+const changeShape = () => {
+  favoritesStorage.some(fav => {
+  })
+}
+
+changeShape();
+
+const setTrack = (track) => {
+  audio.src = `${tracks[track].src}`;
+  audio.currentTime = 0;
+}
+
+const setVolume = () => audio.volume = inputVolume.value / 100;
+
+setVolume();
 
 const toggleBtn = () => {
   if (isPlay) {
@@ -62,12 +88,7 @@ const toggleBtn = () => {
     btnPlayTrack.style.display = 'block';
     btnPauseTrack.style.display = 'none';
   }
-}
-
-const setTrack = (track) => {
-  audio.src = `${tracks[track].src}`;
-  audio.currentTime = 0;
-}
+};
 
 const playTrack = () => {
   clearInterval(timerId);
@@ -75,51 +96,55 @@ const playTrack = () => {
   toggleBtn();
 
   if (isPaused) {
+    clearInterval(timerId)
+    isPaused = false;
     audio.currentTime = pausedTime;
-    isPaused = false;
   } else {
-    setTrack(track);
-  }
-
-  audio.play();
-  renderTrack();
-  timerId = setInterval(() => {
-    if (isPaused) {
-      pauseTrack();
-      clearInterval(timerId);
-    }
     isPaused = false;
+    setTrack(trackNumber);
+  }
+  audio.play();
+  timerId = setInterval(() => {
     currentTime = Math.round(audio.currentTime);
     currentMinutes = Math.trunc(currentTime / 60);
     currentSeconds = currentTime % 60;
-    if (isPlay && !isPaused) {
+    if (isPlay) {
       trackLine.value = currentTime;
       currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
       if (durationTrack === currentTime) {
         nextTrack();
       }
     }
-  }, 1000)
-}
+  }, 100)
+};
 
 const pauseTrack = () => {
-  isPaused= true;
+  isPaused = true;
   isPlay = false;
   pausedTime = Math.round(audio.currentTime);
-  toggleBtn();
   audio.pause();
+  toggleBtn();
+  clearInterval(timerId);
 }
 
 const nextTrack = () => {
-  track === countTraks - 1 ? track = 0 : track += 1;
-  playTrack();
+  isPaused = false;
+  trackNumber === countTraks - 1 ? trackNumber = 0 : trackNumber += 1;
   trackLine.value = 0;
+  audio.currentTime = 0;
+  playTrack();
+  renderTrack();
+  changeShape();
 }
 
 const prevTrack = () => {
-  track === 0 ? track = countTraks - 1 : track -= 1;
-  playTrack();
+  isPaused = false;
+  trackNumber === 0 ? trackNumber = countTraks - 1 : trackNumber -= 1;
   trackLine.value = 0;
+  audio.currentTime = 0;
+  playTrack();
+  renderTrack();
+  changeShape();
 }
 
 const muted = () => {
@@ -152,7 +177,12 @@ const changeVolume = (vol) => {
 
 const changeTrackTime = (e) => audio.currentTime = e.target.value;
 
+const addTofavorite = () => {
+  favoritesTrackNumber.push(trackNumber);
+  localStorage.setItem('favorites', JSON.stringify(favoritesTrackNumber));
+}
 
+toFavorite.addEventListener('click', addTofavorite);
 btnPlayTrack.addEventListener('click', playTrack);
 btnPauseTrack.addEventListener('click', pauseTrack);
 btnNextTrack.addEventListener('click', nextTrack);
@@ -160,3 +190,10 @@ btnPrevTrack.addEventListener('click', prevTrack);
 btnSpeaker.addEventListener('click', muted);
 inputVolume.addEventListener('input', () => changeVolume(inputVolume));
 trackLine.addEventListener('input', (e) => changeTrackTime(e));
+trackList.addEventListener('click', () => {
+    allTracks.classList.toggle('active-list');
+    allTracks.classList.contains('active-list')
+      ? trackList.innerHTML = 'All tracks &#11014;'
+      : trackList.innerHTML = 'All tracks &#11015;';
+    }
+);
