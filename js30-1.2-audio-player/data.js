@@ -28,7 +28,7 @@ export const tracks = [
     time: '1:56',
   },
   {
-    cover: './assets/img/covers/Dream.jpg',
+    cover: './assets/img/covers/DREAM.jpg',
     track: "DREAM",
     author: "HOSPICEMANE, purvs",
     src: "./assets/audio/HOSPICEMANE, purvs - DREAM.mp3",
