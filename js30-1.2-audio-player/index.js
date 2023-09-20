@@ -40,6 +40,7 @@ window.onload = function () {
 };
 
 audio.load();
+audio.pause();
 
 const makeShortlist = () => {
   allTracks.innerHTML = '';
