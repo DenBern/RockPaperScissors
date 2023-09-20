@@ -118,7 +118,7 @@ const playTrack = () => {
     isPaused = false;
     setTrack(trackNumber);
   }
-  setTimeout(() => audio.play(), 10);
+  audio.play();
   timerId = setInterval(() => {
     currentTime = Math.round(audio.currentTime);
     currentMinutes = Math.trunc(currentTime / 60);
@@ -232,7 +232,7 @@ audio.addEventListener('loadedmetadata', () => {
   trackLine.max = durationTrack;
 });
 toFavorite.addEventListener('click', addRemoveToFavorite);
-btnPlayTrack.addEventListener('click', playTrack);
+btnPlayTrack.addEventListener('click', () => playTrack());
 btnPauseTrack.addEventListener('click', pauseTrack);
 btnNextTrack.addEventListener('click', nextTrack);
 btnPrevTrack.addEventListener('click', prevTrack);
