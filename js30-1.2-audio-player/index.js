@@ -118,7 +118,7 @@ const playTrack = () => {
     isPaused = false;
     setTrack(trackNumber);
   }
-  audio.play();
+  if(isPlay) audio.play();
   timerId = setInterval(() => {
     currentTime = Math.round(audio.currentTime);
     currentMinutes = Math.trunc(currentTime / 60);
