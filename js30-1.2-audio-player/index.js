@@ -51,7 +51,7 @@ const makeShortlist = () => {
 makeShortlist();
 
 const makeFavoriteTracks = () => {
-    if (!favoritesStorage.length) {
+  if (!favoritesStorage.length) {
     return favoriteTracks.innerHTML = '<li class="track">Not Found</li>';
   }
   favoriteTracks.innerHTML = '';
@@ -118,7 +118,7 @@ const playTrack = () => {
     isPaused = false;
     setTrack(trackNumber);
   }
-  audio.play();
+  setTimeout(() => audio.play(), 10);
   timerId = setInterval(() => {
     currentTime = Math.round(audio.currentTime);
     currentMinutes = Math.trunc(currentTime / 60);
@@ -147,7 +147,7 @@ const nextTrack = () => {
   trackNumber === countTraks - 1 ? trackNumber = 0 : trackNumber += 1;
   trackLine.value = 0;
   audio.currentTime = 0;
-  setTimeout(() => playTrack(),10);
+  playTrack();
   renderTrack();
   changeShape();
 }
@@ -157,7 +157,7 @@ const prevTrack = () => {
   trackNumber === 0 ? trackNumber = countTraks - 1 : trackNumber -= 1;
   trackLine.value = 0;
   audio.currentTime = 0;
-  setTimeout(() => playTrack(),10);
+  playTrack();
   renderTrack();
   changeShape();
 }
@@ -232,7 +232,7 @@ audio.addEventListener('loadedmetadata', () => {
   trackLine.max = durationTrack;
 });
 toFavorite.addEventListener('click', addRemoveToFavorite);
-btnPlayTrack.addEventListener('click', () => setTimeout(() => playTrack(),10));
+btnPlayTrack.addEventListener('click', playTrack);
 btnPauseTrack.addEventListener('click', pauseTrack);
 btnNextTrack.addEventListener('click', nextTrack);
 btnPrevTrack.addEventListener('click', prevTrack);
