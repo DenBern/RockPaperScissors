@@ -40,7 +40,6 @@ window.onload = function () {
 };
 
 audio.load();
-audio.pause();
 
 const makeShortlist = () => {
   allTracks.innerHTML = '';
@@ -119,7 +118,7 @@ const playTrack = () => {
     isPaused = false;
     setTrack(trackNumber);
   }
-  if(isPlay) audio.play();
+  audio.play();
   timerId = setInterval(() => {
     currentTime = Math.round(audio.currentTime);
     currentMinutes = Math.trunc(currentTime / 60);
@@ -148,7 +147,7 @@ const nextTrack = () => {
   trackNumber === countTraks - 1 ? trackNumber = 0 : trackNumber += 1;
   trackLine.value = 0;
   audio.currentTime = 0;
-  playTrack();
+  setTimeout(() => playTrack(),10);
   renderTrack();
   changeShape();
 }
@@ -158,7 +157,7 @@ const prevTrack = () => {
   trackNumber === 0 ? trackNumber = countTraks - 1 : trackNumber -= 1;
   trackLine.value = 0;
   audio.currentTime = 0;
-  playTrack();
+  setTimeout(() => playTrack(),10);
   renderTrack();
   changeShape();
 }
@@ -233,7 +232,7 @@ audio.addEventListener('loadedmetadata', () => {
   trackLine.max = durationTrack;
 });
 toFavorite.addEventListener('click', addRemoveToFavorite);
-btnPlayTrack.addEventListener('click', playTrack);
+btnPlayTrack.addEventListener('click', () => setTimeout(() => playTrack(),10));
 btnPauseTrack.addEventListener('click', pauseTrack);
 btnNextTrack.addEventListener('click', nextTrack);
 btnPrevTrack.addEventListener('click', prevTrack);
