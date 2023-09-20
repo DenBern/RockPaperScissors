@@ -5,6 +5,8 @@ const btnPauseTrack = document.querySelector('.pause-track');
 const btnNextTrack = document.querySelector('.next-track');
 const btnPrevTrack = document.querySelector('.prev-track');
 const btnSpeaker = document.querySelector('.btn-speaker');
+const btnFavoriteList = document.querySelector('.favorite-list');
+const btnTrackList = document.querySelector('.track-list');
 const inputVolume = document.querySelector('.volume');
 const trackLine = document.querySelector('.track-line');
 const author = document.querySelectorAll('.author');
@@ -12,11 +14,10 @@ const currentTrack = document.querySelector('h2');
 const trackTime = document.querySelector('.track-time');
 const currentTrackTime = document.querySelector('.current-time');
 const cover = document.querySelector('.cover');
-const allTracks = document.querySelector('.tracks');
-const trackList = document.querySelector('.track-list');
+const allTracks = document.querySelector('.all-tracks');
+const favoriteTracks = document.querySelector('.favorite-tracks');
 const toFavorite = document.querySelector('.to-favorite');
 
-let favoritesTrackNumber = [];
 let favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
 
 const countTraks = tracks.length;
@@ -40,13 +41,6 @@ window.onload = function () {
 
 audio.load();
 
-audio.addEventListener('loadedmetadata', () => {
-  durationTrack = Math.round(audio.duration);
-  minutes = Math.trunc(durationTrack / 60);
-  seconds = durationTrack % 60;
-  trackLine.max = durationTrack;
-});
-
 const makeShortlist = () => {
   allTracks.innerHTML = '';
   tracks.forEach(track => {
@@ -55,6 +49,22 @@ const makeShortlist = () => {
 }
 
 makeShortlist();
+
+const makeFavoriteTracks = () => {
+    if (!favoritesStorage.length) {
+    return favoriteTracks.innerHTML = '<li class="track">Not Found</li>';
+  }
+  favoriteTracks.innerHTML = '';
+  tracks.forEach((track, index) => {
+    favoritesStorage.forEach(fav => {
+      if (fav === index) {
+        favoriteTracks.innerHTML += `<li class="track">${track.track + ' - ' + track.author}</li>`
+      }
+    })
+  });
+}
+
+makeFavoriteTracks();
 
 const renderTrack = () => {
   author.forEach(item => item.textContent = `${tracks[trackNumber].author}`);
@@ -65,8 +75,13 @@ const renderTrack = () => {
 }
 
 const changeShape = () => {
-  favoritesStorage.some(fav => {
-  })
+  favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
+  if (!favoritesStorage.length) {
+    toFavorite.style.background = 'url(./assets/svg/shape_to_favorite.svg)';
+  }
+  favoritesStorage.includes(trackNumber)
+    ? toFavorite.style.background = 'url(./assets/svg/shape_favorite.svg)'
+    : toFavorite.style.background = 'url(./assets/svg/shape_to_favorite.svg)';
 }
 
 changeShape();
@@ -177,12 +192,46 @@ const changeVolume = (vol) => {
 
 const changeTrackTime = (e) => audio.currentTime = e.target.value;
 
-const addTofavorite = () => {
-  favoritesTrackNumber.push(trackNumber);
-  localStorage.setItem('favorites', JSON.stringify(favoritesTrackNumber));
+const addRemoveToFavorite = () => {
+  favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
+  if (favoritesStorage.includes(trackNumber)) {
+    favoritesStorage = favoritesStorage.filter(fav => fav !== trackNumber);
+  } else {
+    favoritesStorage.push(trackNumber);
+  }
+  localStorage.setItem('favorites', JSON.stringify(favoritesStorage));
+  changeShape();
+  makeFavoriteTracks();
 }
 
-toFavorite.addEventListener('click', addTofavorite);
+const changeBtnList = (btn) => {
+  switch (btn.classList[0]) {
+    case 'track-list':
+      allTracks.classList.toggle('active-list');
+      if (allTracks.classList.contains('active-list')) {
+        btn.innerHTML = 'All tracks &#11014;'
+        btn.style.color = '#f9f9fa52';
+      } else {
+        btn.innerHTML = 'All tracks &#11015;';
+        btn.style.color = '#fff';
+      }
+      break;
+    case 'favorite-list':
+      favoriteTracks.classList.toggle('active-list');
+      favoriteTracks.classList.contains('active-list')
+        ? btn.style.color = '#f9f9fa52'
+        : btn.style.color = '#fff';
+      break;
+  }
+}
+
+audio.addEventListener('loadedmetadata', () => {
+  durationTrack = Math.round(audio.duration);
+  minutes = Math.trunc(durationTrack / 60);
+  seconds = durationTrack % 60;
+  trackLine.max = durationTrack;
+});
+toFavorite.addEventListener('click', addRemoveToFavorite);
 btnPlayTrack.addEventListener('click', playTrack);
 btnPauseTrack.addEventListener('click', pauseTrack);
 btnNextTrack.addEventListener('click', nextTrack);
@@ -190,10 +239,5 @@ btnPrevTrack.addEventListener('click', prevTrack);
 btnSpeaker.addEventListener('click', muted);
 inputVolume.addEventListener('input', () => changeVolume(inputVolume));
 trackLine.addEventListener('input', (e) => changeTrackTime(e));
-trackList.addEventListener('click', () => {
-    allTracks.classList.toggle('active-list');
-    allTracks.classList.contains('active-list')
-      ? trackList.innerHTML = 'All tracks &#11014;'
-      : trackList.innerHTML = 'All tracks &#11015;';
-    }
-);
+btnTrackList.addEventListener('click', () => changeBtnList(btnTrackList));
+btnFavoriteList.addEventListener('click', () => changeBtnList(btnFavoriteList));
