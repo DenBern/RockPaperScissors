@@ -58,7 +58,7 @@ const makeFavoriteTracks = () => {
   tracks.forEach((track, index) => {
     favoritesStorage.forEach(fav => {
       if (fav === index) {
-        favoriteTracks.innerHTML += `<li class="track">${track.track + ' - ' + track.author}</li>`
+        favoriteTracks.innerHTML += `<li class="track">${track.track + ' - ' + track.author}</li>`;
       }
     })
   });
