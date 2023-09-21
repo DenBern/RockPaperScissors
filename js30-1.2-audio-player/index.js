@@ -126,10 +126,6 @@ const playTrack = () => {
     setTrack();
   }
 
-  audio.addEventListener('canplaythrough', () => {
-    audio.play();
-  }, { once: true });
-
   timerId = setInterval(() => {
     currentTime = Math.round(audio.currentTime);
     currentMinutes = Math.trunc(currentTime / 60);
@@ -142,6 +138,7 @@ const playTrack = () => {
       }
     }
   }, 100)
+  audio.play();
 };
 
 const pauseTrack = () => {
