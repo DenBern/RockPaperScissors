@@ -1,5 +1,5 @@
 import {tracks} from './data.js';
-const audio = document.getElementById('audio');
+// const audio = document.getElementById('audio');
 const btnPlayTrack = document.querySelector('.play-track');
 const btnPauseTrack = document.querySelector('.pause-track');
 const btnNextTrack = document.querySelector('.next-track');
@@ -18,6 +18,8 @@ const allTracks = document.querySelector('.all-tracks');
 const favoriteTracks = document.querySelector('.favorite-tracks');
 const toFavorite = document.querySelector('.to-favorite');
 
+
+
 let favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
 
 const countTraks = tracks.length;
@@ -34,12 +36,14 @@ let currentMinutes = 0;
 let currentSeconds = 0;
 let timerId;
 
+const audio = new Audio(tracks[trackNumber].src);
 window.onload = () => {
   trackNumber = 0;
   renderTrack();
 };
 
 audio.load();
+
 
 audio.addEventListener('loadedmetadata', () => {
   durationTrack = Math.round(audio.duration);
@@ -122,10 +126,8 @@ const playTrack = () => {
   }
 
   if (isPlay) {
+    audio.play();
     timerId = setInterval(() => {
-      if (audio.readyState === 4) {
-        audio.play();
-      }
       currentTime = Math.round(audio.currentTime);
       currentMinutes = Math.trunc(currentTime / 60);
       currentSeconds = currentTime % 60;
