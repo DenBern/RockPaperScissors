@@ -37,9 +37,24 @@ let timerId;
 window.onload = function () {
   trackNumber = 0;
   renderTrack();
+  audio.pause();
 };
 
 audio.load();
+
+// let playPromise = Promise.resolve();
+// function togglePlayState() {
+//   isPlay = !isPlay;
+//   if (isPlay) {
+//     playPromise = playPromise.then(() => {
+//       return audio.play();
+//     });
+//   } else {
+//     playPromise = playPromise.then(() => {
+//       audio.pause();
+//     });
+//   }
+// }
 
 const makeShortlist = () => {
   allTracks.innerHTML = '';
