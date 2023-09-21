@@ -39,6 +39,8 @@ window.onload = () => {
   renderTrack();
 };
 
+audio.load();
+
 audio.addEventListener('loadedmetadata', () => {
   durationTrack = Math.round(audio.duration);
   minutes = Math.trunc(durationTrack / 60);
@@ -95,6 +97,7 @@ const setVolume = () => audio.volume = inputVolume.value / inputVolume.max;
 
 setVolume();
 
+
 const toggleBtn = () => {
   if (isPlay) {
     btnPlayTrack.style.display = 'none';
@@ -111,35 +114,25 @@ const playTrack = () => {
   toggleBtn();
 
   if (isPaused) {
-    clearInterval(timerId)
     isPaused = false;
     audio.currentTime = pausedTime;
   } else {
-    isPaused = false;
+    audio.src = `${tracks[trackNumber].src}`;
     audio.currentTime = 0;
   }
 
   if (isPlay) {
-    audio.src = `${tracks[trackNumber].src}`;
-    audio.load();
-    let playPromise = audio.play();
-
-    playPromise.then(() => {
-      audio.play();
-    })
-    .catch((err) => {
-      console.log(err);
-      audio.pause();
-    })
-
     timerId = setInterval(() => {
+      if (audio.readyState === 4) {
+        audio.play();
+      }
       currentTime = Math.round(audio.currentTime);
       currentMinutes = Math.trunc(currentTime / 60);
       currentSeconds = currentTime % 60;
-        trackLine.value = currentTime;
-        currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
-        if (durationTrack === currentTime) nextTrack();
-      }, 100)
+      trackLine.value = currentTime;
+      currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
+      if (durationTrack === currentTime) nextTrack();
+    }, 100);
   }
 };
 
