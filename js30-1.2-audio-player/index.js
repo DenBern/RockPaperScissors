@@ -93,10 +93,10 @@ const changeShape = () => {
 
 changeShape();
 
-const setTrack = () => {
-  audio.src = `${tracks[trackNumber].src}`;
-  audio.currentTime = 0;
-}
+// const  setTrack = () => {
+//   audio.src = `${tracks[trackNumber].src}`;
+//   audio.currentTime = 0;
+// }
 
 const setVolume = () => audio.volume = inputVolume.value / 100;
 
@@ -123,22 +123,23 @@ const playTrack = () => {
     audio.currentTime = pausedTime;
   } else {
     isPaused = false;
-    setTrack();
+    audio.currentTime = 0;
   }
 
-  timerId = setInterval(() => {
-    currentTime = Math.round(audio.currentTime);
-    currentMinutes = Math.trunc(currentTime / 60);
-    currentSeconds = currentTime % 60;
-    if (isPlay) {
-      trackLine.value = currentTime;
-      currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
-      if (durationTrack === currentTime) {
-        nextTrack();
-      }
-    }
-  }, 100)
-  audio.play();
+  if (isPlay) {
+    audio.src = `${tracks[trackNumber].src}`;
+    audio.play();
+    timerId = setInterval(() => {
+      currentTime = Math.round(audio.currentTime);
+      currentMinutes = Math.trunc(currentTime / 60);
+      currentSeconds = currentTime % 60;
+        trackLine.value = currentTime;
+        currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
+        if (durationTrack === currentTime) {
+          nextTrack();
+        }
+    }, 100)
+  }
 };
 
 const pauseTrack = () => {
@@ -234,7 +235,7 @@ const changeBtnList = (btn) => {
 }
 
 toFavorite.addEventListener('click', addRemoveToFavorite);
-btnPlayTrack.addEventListener('click', () => playTrack());
+btnPlayTrack.addEventListener('click', playTrack);
 btnPauseTrack.addEventListener('click', pauseTrack);
 btnNextTrack.addEventListener('click', nextTrack);
 btnPrevTrack.addEventListener('click', prevTrack);
