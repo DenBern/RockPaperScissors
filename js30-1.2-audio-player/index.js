@@ -34,27 +34,19 @@ let currentMinutes = 0;
 let currentSeconds = 0;
 let timerId;
 
-window.onload = function () {
+window.onload = () => {
   trackNumber = 0;
   renderTrack();
-  audio.pause();
 };
 
 audio.load();
 
-// let playPromise = Promise.resolve();
-// function togglePlayState() {
-//   isPlay = !isPlay;
-//   if (isPlay) {
-//     playPromise = playPromise.then(() => {
-//       return audio.play();
-//     });
-//   } else {
-//     playPromise = playPromise.then(() => {
-//       audio.pause();
-//     });
-//   }
-// }
+audio.addEventListener('loadedmetadata', () => {
+  durationTrack = Math.round(audio.duration);
+  minutes = Math.trunc(durationTrack / 60);
+  seconds = durationTrack % 60;
+  trackLine.max = durationTrack;
+});
 
 const makeShortlist = () => {
   allTracks.innerHTML = '';
@@ -101,9 +93,13 @@ const changeShape = () => {
 
 changeShape();
 
-const setTrack = (track) => {
-  audio.src = `${tracks[track].src}`;
-  audio.currentTime = 0;
+const setTrack = () => {
+  try {
+    audio.src = `${tracks[trackNumber].src}`;
+    audio.currentTime = 0;
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const setVolume = () => audio.volume = inputVolume.value / 100;
@@ -131,7 +127,7 @@ const playTrack = () => {
     audio.currentTime = pausedTime;
   } else {
     isPaused = false;
-    setTrack(trackNumber);
+    setTrack();
   }
   audio.play();
   timerId = setInterval(() => {
@@ -240,12 +236,6 @@ const changeBtnList = (btn) => {
   }
 }
 
-audio.addEventListener('loadedmetadata', () => {
-  durationTrack = Math.round(audio.duration);
-  minutes = Math.trunc(durationTrack / 60);
-  seconds = durationTrack % 60;
-  trackLine.max = durationTrack;
-});
 toFavorite.addEventListener('click', addRemoveToFavorite);
 btnPlayTrack.addEventListener('click', () => playTrack());
 btnPauseTrack.addEventListener('click', pauseTrack);
