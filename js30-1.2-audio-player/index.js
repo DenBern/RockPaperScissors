@@ -94,8 +94,8 @@ const changeShape = () => {
 changeShape();
 
 const setTrack = () => {
-    audio.src = `${tracks[trackNumber].src}`;
-    audio.currentTime = 0;
+  audio.src = `${tracks[trackNumber].src}`;
+  audio.currentTime = 0;
 }
 
 const setVolume = () => audio.volume = inputVolume.value / 100;
@@ -125,7 +125,11 @@ const playTrack = () => {
     isPaused = false;
     setTrack();
   }
-  setTimeout( () => audio.play(), 10);
+
+  audio.addEventListener('canplaythrough', () => {
+    audio.play();
+  }, { once: true });
+
   timerId = setInterval(() => {
     currentTime = Math.round(audio.currentTime);
     currentMinutes = Math.trunc(currentTime / 60);
