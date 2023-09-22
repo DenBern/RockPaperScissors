@@ -183,7 +183,7 @@ h2 {
 
 .track-line {
   width: 100%;
-  height: 4px;
+  height: 10px;
   border-radius: 5px;
   background: #fff;
   accent-color: rgba(249, 249, 250, 0.32);
@@ -271,15 +271,15 @@ h2 {
   accent-color: rgba(249, 249, 250, 0.32);
 }
 
-.track-line,
-.play-track,
-.next-track,
-.prev-track,
-.pause-track,
-.btn-speaker,
-.volume,
-.track-list,
-.favorite-list,
+.track-line:hover,
+.play-track:hover,
+.next-track:hover,
+.prev-track:hover,
+.pause-track:hover,
+.btn-speaker:hover,
+.volume:hover,
+.track-list:hover,
+.favorite-list:hover,
 .to-favorite:hover {
   cursor: pointer;
 }
@@ -306,27 +306,37 @@ footer {
   background: url(./assets/svg/github_logo.svg) no-repeat center;
 }
 
+.link:hover {
+  transform: scale(1.1);
+}
+
 .to-favorite:hover {
   transition: 1.5s;
   transform: rotate(360deg);
 }
 
-.to-favorite:active {
-  transition: 0.1s;
-  transform: scale(1.2);
+.prev-track:active {
+  transition: 0.5s;
+  transform: rotate(-30deg);
 }
 
 .next-track:active {
-  transform: scale(1.2);
-  transition: 0.1s;
-}
-
-.prev-track:active {
-  transform: scale(1.2);
-  transition: 0.1s;
-}
-
-.favorite-list:hover {
   transition: 0.5s;
+  transform: rotate(30deg);
+}
+
+.favorite-list:hover,
+.track-list:hover {
+  transition: 0.01s;
   transform: scale(1.1);
+}
+
+.btn-speaker:hover {
+  transform: scale(1.1);
+}
+
+.wrapper-next-track:hover,
+.wrapper-prev-track:hover,
+.wrapper-btn:hover {
+  background-color: #a571ff;
 }
