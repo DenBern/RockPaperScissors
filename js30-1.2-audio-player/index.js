@@ -83,13 +83,13 @@ const makeFavoriteTracks = () => {
     return favoriteTracks.innerHTML = '<li class="track">Not Found</li>';
   }
   favoriteTracks.innerHTML = '';
-  tracks.forEach((track, index) => {
-    favoritesStorage.forEach(fav => {
+  favoritesStorage.forEach(fav => {
+    tracks.forEach((track, index) => {
       if (fav === index) {
         favoriteTracks.innerHTML += `<li class="track">${track.track + ' - ' + track.author}</li>`;
       }
     })
-  });
+  })
 }
 
 makeFavoriteTracks();
@@ -132,7 +132,9 @@ const timeRender = () => {
   currentTime = Math.round(audio.currentTime);
   currentMinutes = Math.trunc(currentTime / 60);
   currentSeconds = currentTime % 60;
-  currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
+  if (isLineUpdate) {
+    currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
+  }
   if (isLineUpdate) {
     trackLine.value = currentTime;
   }
