@@ -1,5 +1,4 @@
 import {tracks} from './data.js';
-// const audio = document.getElementById('audio');
 const btnPlayTrack = document.querySelector('.play-track');
 const btnPauseTrack = document.querySelector('.pause-track');
 const btnNextTrack = document.querySelector('.next-track');
@@ -18,25 +17,24 @@ const allTracks = document.querySelector('.all-tracks');
 const favoriteTracks = document.querySelector('.favorite-tracks');
 const toFavorite = document.querySelector('.to-favorite');
 
-
-
 let favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
 
 const countTraks = tracks.length;
 let isMuted = false;
 let isPlay = false;
 let isPaused = false;
-let pausedTime = 0;
 let trackNumber = 0;
 let durationTrack = 0;
 let seconds = 0;
 let minutes = 0;
+let saveTimer = 0;
 let currentTime = 0;
 let currentMinutes = 0;
 let currentSeconds = 0;
-let timerId;
+let trackTimer;
 
 const audio = new Audio(tracks[trackNumber].src);
+
 window.onload = () => {
   trackNumber = 0;
   renderTrack();
@@ -44,13 +42,19 @@ window.onload = () => {
 
 audio.load();
 
-
 audio.addEventListener('loadedmetadata', () => {
   durationTrack = Math.round(audio.duration);
   minutes = Math.trunc(durationTrack / 60);
   seconds = durationTrack % 60;
   trackLine.max = durationTrack;
 });
+
+const changeTrackTime = (e) => {
+  saveTimer = e.target.value;
+  currentSeconds = saveTimer % 60;
+  currentMinutes = Math.trunc(saveTimer / 60)
+  currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
+}
 
 const makeShortlist = () => {
   allTracks.innerHTML = '';
@@ -60,6 +64,18 @@ const makeShortlist = () => {
 }
 
 makeShortlist();
+
+const currentTrackInList = () => {
+  allTracks.childNodes.forEach(node => {
+    if (node.textContent === (tracks[trackNumber].track + ' - ' + tracks[trackNumber].author)) {
+      node.style.color = '#fa4be4';
+    } else {
+      node.style.color = '#fff';
+    }
+  })
+}
+
+currentTrackInList();
 
 const makeFavoriteTracks = () => {
   if (!favoritesStorage.length) {
@@ -76,6 +92,7 @@ const makeFavoriteTracks = () => {
 }
 
 makeFavoriteTracks();
+
 
 const renderTrack = () => {
   author.forEach(item => item.textContent = `${tracks[trackNumber].author}`);
@@ -101,7 +118,6 @@ const setVolume = () => audio.volume = inputVolume.value / inputVolume.max;
 
 setVolume();
 
-
 const toggleBtn = () => {
   if (isPlay) {
     btnPlayTrack.style.display = 'none';
@@ -112,56 +128,60 @@ const toggleBtn = () => {
   }
 };
 
+const timeRender = () => {
+  currentTime = Math.round(audio.currentTime);
+  currentMinutes = Math.trunc(currentTime / 60);
+  currentSeconds = currentTime % 60;
+  currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
+  trackLine.value = currentTime;
+  if (durationTrack === currentTime) nextTrack();
+}
+
 const playTrack = () => {
-  clearInterval(timerId);
+  clearInterval(trackTime);
   isPlay = true;
   toggleBtn();
-
+  currentTrackInList();
   if (isPaused) {
     isPaused = false;
-    audio.currentTime = pausedTime;
-  } else {
-    audio.src = `${tracks[trackNumber].src}`;
-    audio.currentTime = 0;
-  }
-
-  if (isPlay) {
+    audio.currentTime = saveTimer;
     audio.play();
-    timerId = setInterval(() => {
-      currentTime = Math.round(audio.currentTime);
-      currentMinutes = Math.trunc(currentTime / 60);
-      currentSeconds = currentTime % 60;
-      trackLine.value = currentTime;
-      currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
-      if (durationTrack === currentTime) nextTrack();
-    }, 100);
+    trackTimer = setInterval(timeRender, 100);
+  } else {
+    isPaused = false;
+    audio.src = `${tracks[trackNumber].src}`;
+    audio.currentTime = saveTimer;
+    audio.play();
+    trackTimer = setInterval(timeRender, 100);
   }
 };
 
 const pauseTrack = () => {
+  audio.pause();
+  saveTimer = audio.currentTime;
   isPaused = true;
   isPlay = false;
-  pausedTime = Math.round(audio.currentTime);
-  audio.pause();
   toggleBtn();
-  clearInterval(timerId);
+  clearInterval(trackTime);
 }
 
 const nextTrack = () => {
+  saveTimer = 0
   isPaused = false;
   trackNumber === countTraks - 1 ? trackNumber = 0 : trackNumber += 1;
-  trackLine.value = 0;
-  audio.currentTime = 0;
+  trackLine.value = trackLine.min;
+  audio.currentTime = saveTimer;
   playTrack();
   renderTrack();
   changeShape();
 }
 
 const prevTrack = () => {
+  saveTimer = 0
   isPaused = false;
   trackNumber === 0 ? trackNumber = countTraks - 1 : trackNumber -= 1;
-  trackLine.value = 0;
-  audio.currentTime = 0;
+  trackLine.value = trackLine.min;
+  audio.currentTime = saveTimer;
   playTrack();
   renderTrack();
   changeShape();
@@ -194,8 +214,6 @@ const changeVolume = (vol) => {
     volume = 0.5;
   }
 }
-
-const changeTrackTime = (e) => audio.currentTime = e.target.value;
 
 const addRemoveToFavorite = () => {
   favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -237,6 +255,7 @@ btnNextTrack.addEventListener('click', nextTrack);
 btnPrevTrack.addEventListener('click', prevTrack);
 btnSpeaker.addEventListener('click', muted);
 inputVolume.addEventListener('input', () => changeVolume(inputVolume));
+trackLine.addEventListener('click', (e) => audio.currentTime = e.target.value);
 trackLine.addEventListener('input', (e) => changeTrackTime(e));
 btnTrackList.addEventListener('click', () => changeBtnList(btnTrackList));
 btnFavoriteList.addEventListener('click', () => changeBtnList(btnFavoriteList));
