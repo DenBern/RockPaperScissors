@@ -17,9 +17,9 @@ const allTracks = document.querySelector('.all-tracks');
 const favoriteTracks = document.querySelector('.favorite-tracks');
 const toFavorite = document.querySelector('.to-favorite');
 
-let favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
 
 const countTraks = tracks.length;
+let favoritesStorage = JSON.parse(localStorage.getItem('favorites')) || [];
 let isMuted = false;
 let isPlay = false;
 let isPaused = false;
@@ -32,6 +32,7 @@ let currentTime = 0;
 let currentMinutes = 0;
 let currentSeconds = 0;
 let trackTimer;
+let isLineUpdate = true;
 
 const audio = new Audio(tracks[trackNumber].src);
 
@@ -93,7 +94,6 @@ const makeFavoriteTracks = () => {
 
 makeFavoriteTracks();
 
-
 const renderTrack = () => {
   author.forEach(item => item.textContent = `${tracks[trackNumber].author}`);
   currentTrack.textContent = `${tracks[trackNumber].track}`;
@@ -133,7 +133,9 @@ const timeRender = () => {
   currentMinutes = Math.trunc(currentTime / 60);
   currentSeconds = currentTime % 60;
   currentTrackTime.textContent = `${currentMinutes + ':' + (currentSeconds < 10 ? '0' + currentSeconds : currentSeconds)}`;
-  trackLine.value = currentTime;
+  if (isLineUpdate) {
+    trackLine.value = currentTime;
+  }
   if (durationTrack === currentTime) nextTrack();
 }
 
@@ -255,6 +257,8 @@ btnNextTrack.addEventListener('click', nextTrack);
 btnPrevTrack.addEventListener('click', prevTrack);
 btnSpeaker.addEventListener('click', muted);
 inputVolume.addEventListener('input', () => changeVolume(inputVolume));
+trackLine.addEventListener('mousedown', () => isLineUpdate = false);
+trackLine.addEventListener('mouseup', () => isLineUpdate = true);
 trackLine.addEventListener('click', (e) => audio.currentTime = e.target.value);
 trackLine.addEventListener('input', (e) => changeTrackTime(e));
 btnTrackList.addEventListener('click', () => changeBtnList(btnTrackList));
