@@ -252,6 +252,7 @@ const changeBtnList = (btn) => {
   }
 }
 
+//Event listeners
 toFavorite.addEventListener('click', addRemoveToFavorite);
 btnPlayTrack.addEventListener('click', playTrack);
 btnPauseTrack.addEventListener('click', pauseTrack);
