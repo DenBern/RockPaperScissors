@@ -5,6 +5,8 @@
 }
 
 body {
+  font-family: 'Lato', sans-serif;
+  font-size: 2vh;
   background-color: #D9D9D9;
 }
 
@@ -17,11 +19,13 @@ header {
   background: #fff;
   border-radius: 5vw;
   margin: 1vh auto;
-  padding: 1vh;
+  padding: 1vh 2vw;
 }
 
 input {
-  width: 20vw;
+  font-family: 'Lato', sans-serif;
+  font-size: 2vh;
+  width: 15vw;
   height: 3vh;
   margin: 0 1vw;
   border: none;
@@ -39,12 +43,12 @@ input:active {
   border: none;
 }
 
-.search-container {
+.container-search {
+  width: 20vw;
   display: flex;
   align-items: center;
-  border: 1px solid #D9D9D9;
-  border-radius: 5px;
-  background-color: #D9D9D9;
+  border-radius: 5vh;
+  background-color: #d9d9d98f;
 }
 
 .search {
@@ -53,12 +57,29 @@ input:active {
   background: url('./assets/svg/search_icon.svg') no-repeat center / contain;
 }
 
-button {
-  border: none;
+.search:hover {
+  transition: 0.5s;
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .container-keyword {
-  width: 20vw;
+  border-radius: 1vh;
+  background-color: #d9d9d98f;
+  padding: 01vh;
+  text-align: center;
+  width: max-content;
+}
+
+.container-description {
+  border-radius: 5vh;
+  background-color: #d9d9d98f;
+  padding: 01vh;
+  text-align: center;
+}
+
+button {
+  border: none;
 }
 
 .container {
@@ -75,7 +96,7 @@ button {
 }
 
 .full-photo {
-  width: 40vw;
+  width: 65vw;
   height: 65vh;
   transition: 0.7s;
   background-position: center;

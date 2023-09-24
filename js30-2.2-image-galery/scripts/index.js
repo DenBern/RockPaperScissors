@@ -1,57 +1,24 @@
-import { getPreviewImages, getImageById, previewImagesId, photoById } from "./service.js"
+import { setPreviewPhotos } from "./setPreviewPhotos.js";
 
-const preview = document.querySelector('.preview-photos');
-const fullSizePhoto = document.querySelector('.full-photo');
+export const preview = document.querySelector('.preview-photos');
+export const keywordSearch = document.querySelector('.keyword');
+export const fullSizePhoto = document.querySelector('.full-photo');
+export const keywordDescription = document.querySelector('.description');
 const input = document.getElementById('search');
-const keywordSearch = document.querySelector('.keyword');
-const keywordDescription = document.querySelector('.description');
+const searchBtn = document.querySelector('.search');
 
-let idPhoto;
-let allPhoto;
+let defaultKeyword = ['travel', 'city', 'beautiful', 'summer', 'night', 'sea', 'ocean', 'heavens', 'sunset', 'space'];
 let keyWord = null;
-let defaultKeyword = 'css';
+const randomNumber = Math.floor(Math.random() * (defaultKeyword.length));
 
-const loadingImages = async (keyword) => {
-  await getPreviewImages(keyword.toLowerCase());
-  preview.innerHTML = '';
-  keywordSearch.textContent = `${(keyWord ?? defaultKeyword).toLowerCase()}`;
-  previewImagesId.forEach((img, index) => {
-    if (index === 0) {
-      fullSizePhoto.style.backgroundImage = `url(${img.mediumSize})`;
-      fullSizePhoto.setAttribute('href', `${img.originSize}`);
-      keywordDescription.textContent = `${img.description.length > 80 ? img.description.substr(0, 80) + '...' : img.description}`;
-    }
-    const photo  = document.createElement('div');
-    photo.classList.add('photo');
-    photo.setAttribute('id', `${img.imgId}`)
-    photo.style.background = `url(${img.thumbnail}) no-repeat center / cover`;
-    preview.appendChild(photo);
-  })
-
-  allPhoto = document.querySelectorAll('.photo');
-  allPhoto.forEach(photo => {
-    photo.addEventListener('click', () => {
-      idPhoto = photo.id;
-      setImage(idPhoto)
-    });
-  });
-}
-
-loadingImages(defaultKeyword)
-
-const setImage = async (idPhoto) => {
-  await getImageById(idPhoto);
-  fullSizePhoto.style.backgroundImage = `url(${photoById.mediumSize})`;
-  fullSizePhoto.setAttribute('href', `${photoById.originSize}`);
-  keywordDescription.textContent = `${photoById.description.length > 80 ? photoById.description.substr(0, 80) + '...' : photoById.description}`;
-}
+setPreviewPhotos(defaultKeyword[randomNumber]);
 
 input.addEventListener('input', (e) => {
   keyWord = e.target.value;
 });
-
+searchBtn.addEventListener('click', () => setPreviewPhotos(keyWord));
 document.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-    loadingImages(keyWord);
+    setPreviewPhotos(keyWord);
   }
-})
+});
