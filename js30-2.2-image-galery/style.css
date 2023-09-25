@@ -92,7 +92,7 @@ button {
 }
 
 .container {
-  max-width: 78vw;
+  max-width: 90vw;
   margin: 0 auto;
 }
 
@@ -116,6 +116,20 @@ button {
 .full-photo:hover {
   opacity: 0.6;
   transition: 0.7s;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.next-photos,
+.prev-photos {
+  width: 3vw;
+  height: 6vh;
+  border-radius: 3vh;
+  font-size: 1.5vh;
 }
 
 .preview-photos {

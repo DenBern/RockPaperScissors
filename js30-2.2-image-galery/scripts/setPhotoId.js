@@ -1,5 +1,5 @@
 import { getImageById, photoById } from "./service.js";
-import {fullSizePhoto, keywordDescription} from "./index.js";
+import {fullSizePhoto, keywordDescription} from "./variables.js";
 
 export const setPhotoId = async (id) => {
     await getImageById(id)

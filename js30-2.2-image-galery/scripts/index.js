@@ -1,19 +1,11 @@
 import { setPreviewPhotos } from "./setPreviewPhotos.js";
+import { setNextPhotos } from "./setNextPhotos.js";
+import { defaultKeyword,randomNumber, input, searchBtn, clearBtn } from "./variables.js";
 
-export const preview = document.querySelector('.preview-photos');
-export const keywordSearch = document.querySelector('.keyword');
-export const fullSizePhoto = document.querySelector('.full-photo');
-export const keywordDescription = document.querySelector('.description');
-export const section = document.querySelector('section');
-const input = document.getElementById('search');
-const searchBtn = document.querySelector('.search');
-const clearBtn = document.querySelector('.clear');
+export let keyWord = defaultKeyword[randomNumber];
+setPreviewPhotos(keyWord);
+setNextPhotos();
 
-let defaultKeyword = ['travel', 'city', 'beautiful', 'summer', 'night', 'sea', 'ocean', 'heavens', 'sunset', 'space'];
-let keyWord = null;
-const randomNumber = Math.floor(Math.random() * (defaultKeyword.length));
-
-setPreviewPhotos(defaultKeyword[randomNumber]);
 
 const changeBtnSearch = () => {
   if (searchBtn.style.display !== 'none') {
@@ -27,7 +19,11 @@ const changeBtnSearch = () => {
 
 input.addEventListener('input', (e) => {
   keyWord = e.target.value;
+  if (!e.target.value && searchBtn.style.display === 'none') {
+    changeBtnSearch()
+  }
 });
+
 searchBtn.addEventListener('click', () => {
   if (!keyWord) return;
   setPreviewPhotos(keyWord);
@@ -40,8 +36,9 @@ document.addEventListener('keypress', (e) => {
     changeBtnSearch();
   }
 });
+
 clearBtn.addEventListener('click', () => {
   input.value = '';
   keyWord = input.value;
   changeBtnSearch();
-})
+});

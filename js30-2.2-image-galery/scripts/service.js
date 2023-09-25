@@ -1,8 +1,8 @@
 const _base = 'https://api.unsplash.com/';
 const _search = 'search/photos?query=';
 const _id = 'photos/';
-const _clientId = 'SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
-const _perPage = 'per_page=11';
+const _clientId = 'XMkSjtWOrppQpVs1-aBriPPkhcqLcns0s1R_XDqZbp8';
+const _perPage = 'per_page=10';
 
 // myKey = 'XMkSjtWOrppQpVs1-aBriPPkhcqLcns0s1R_XDqZbp8';
 // secondKey = 'SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
@@ -10,6 +10,7 @@ const _perPage = 'per_page=11';
 let previewImagesId = [];
 let photoById = {};
 let loading = false;
+let totalPages = 0;
 
 const getData = async (url) => {
   let res = await fetch(url);
@@ -19,30 +20,31 @@ const getData = async (url) => {
   return await res.json();
 };
 
-const getPreviewImages = async (search) => {
+const getPreviewImages = async (search, page = 1) => {
   previewImagesId = [];
   loading = true;
-  await getData(`${_base}${_search}${search}&${_perPage}&client_id=${_clientId}`)
+  await getData(`${_base}${_search}${search}&${_perPage}&page=${page}&client_id=${_clientId}`)
   .then(images => {
-      images.results.forEach((res, index) => {
-        if (index === 0) {
-          previewImagesId = [
-            {
-              description: res.description,
-              originSize: res.urls.raw,
-              imgId: res.id,
-              thumbnail: res.urls.thumb,
-              mediumSize: res.urls.regular,
-            }
-          ];
-        } else {
-          previewImagesId = [
-            ...previewImagesId,
-            {
-              imgId: res.id,
-              thumbnail: res.urls.thumb,
-            }
-          ];
+    totalPages = images.total_pages;
+    images.results.forEach((res, index) => {
+      if (index === 0) {
+        previewImagesId = [
+          {
+            description: res.description,
+            originSize: res.urls.raw,
+            imgId: res.id,
+            thumbnail: res.urls.thumb,
+            mediumSize: res.urls.regular,
+          }
+        ];
+      } else {
+        previewImagesId = [
+          ...previewImagesId,
+          {
+            imgId: res.id,
+            thumbnail: res.urls.thumb,
+          }
+        ];
       }
     })
   })
@@ -65,4 +67,4 @@ const getImageById = async (id) => {
     })
 }
 
-export {previewImagesId, getPreviewImages, getImageById, photoById}
+export {previewImagesId, getPreviewImages, getImageById, photoById, totalPages}

@@ -1,13 +1,12 @@
 import { previewImagesId, getPreviewImages } from "./service.js";
 import { setPhotoId } from "./setPhotoId.js";
-import { preview, keywordSearch, fullSizePhoto, keywordDescription, section } from "./index.js";
+import {preview, keywordSearch, fullSizePhoto, keywordDescription, section, notFound} from "./variables.js";
 
-let idPhoto;
-let allPhoto;
-let notFound = document.createElement('div');
+export const setPreviewPhotos = async (keyword, page) => {
+  let allPhoto;
+  let idPhoto;
 
-export const setPreviewPhotos = async (keyword) => {
-  await getPreviewImages(keyword.toLowerCase());
+  await getPreviewImages(keyword.toLowerCase(), page);
   preview.innerHTML = '';
   keywordSearch.textContent = `${(keyword ?? defaultKeyword[randomNumber]).toLowerCase()}`;
   if (previewImagesId.length === 0) {
