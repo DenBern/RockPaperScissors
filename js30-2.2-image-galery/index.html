@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swap" rel="stylesheet">
   <title>Search photos</title>
 </head>
+
 <body>
 
   <header>
@@ -27,7 +29,15 @@
   <div class="container">
     <main>
       <section class="photos">
-        <a class="full-photo" target="_blank"></a>
+        <div class="wrapper-full-photo">
+          <div class="container-spinner">
+            <div class="spinner"></div>
+          </div>
+          <a class="full-photo" target="_blank"></a>
+          <div class="error-id">
+            Something went wrong. Do it again later!
+          </div>
+        </div>
         <div class="slider">
           <button class="prev-photos">Prev</button>
           <div class="preview-photos"></div>
@@ -35,7 +45,15 @@
         </div>
       </section>
     </main>
+    <footer>
+      <div class="links">
+        <span class="year-create">2023</span>
+        <a class="link link-school" href="https://rs.school/js-stage0/" target="_blank"></a>
+        <a class="link link-github" href="https://github.com/DenBern" target="_blank"></a>
+      </div>
+    </footer>
   </div>
   <script src="./scripts/index.js" type="module"></script>
 </body>
+
 </html>

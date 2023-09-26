@@ -9,8 +9,8 @@ const _perPage = 'per_page=10';
 
 let previewImagesId = [];
 let photoById = {};
-let loading = false;
 let totalPages = 0;
+let errorLoadedId = false;
 
 const getData = async (url) => {
   let res = await fetch(url);
@@ -22,11 +22,10 @@ const getData = async (url) => {
 
 const getPreviewImages = async (search, page = 1) => {
   previewImagesId = [];
-  loading = true;
   await getData(`${_base}${_search}${search}&${_perPage}&page=${page}&client_id=${_clientId}`)
-  .then(images => {
-    totalPages = images.total_pages;
-    images.results.forEach((res, index) => {
+  .then(data => {
+    totalPages = data.total_pages;
+    data.results.forEach((res, index) => {
       if (index === 0) {
         previewImagesId = [
           {
@@ -54,6 +53,7 @@ const getPreviewImages = async (search, page = 1) => {
 };
 
 const getImageById = async (id) => {
+  errorLoadedId = false;
   await getData(`${_base}${_id}${id}?client_id=${_clientId}`)
     .then((res) => {
       photoById = {
@@ -63,8 +63,9 @@ const getImageById = async (id) => {
       };
     })
     .catch((err) => {
+      errorLoadedId = true;
       console.log(err);
     })
 }
+export {previewImagesId, getPreviewImages, getImageById, photoById, totalPages, errorLoadedId}
 
-export {previewImagesId, getPreviewImages, getImageById, photoById, totalPages}

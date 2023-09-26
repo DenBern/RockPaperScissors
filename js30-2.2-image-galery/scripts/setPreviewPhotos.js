@@ -22,7 +22,7 @@ export const setPreviewPhotos = async (keyword, page) => {
         fullSizePhoto.style.backgroundImage = `url(${img.mediumSize})`;
         fullSizePhoto.setAttribute('href', `${img.originSize}`);
         if (img.description) {
-          keywordDescription.textContent = `${img.description.length > 80 ? img.description.substr(0, 40) + '...' : img.description}`
+          keywordDescription.textContent = `${img.description}`
         } else {
           keywordDescription.textContent = 'Not found'
         }

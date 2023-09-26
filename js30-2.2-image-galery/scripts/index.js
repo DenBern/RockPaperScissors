@@ -6,7 +6,6 @@ export let keyWord = defaultKeyword[randomNumber];
 setPreviewPhotos(keyWord);
 setNextPhotos();
 
-
 const changeBtnSearch = () => {
   if (searchBtn.style.display !== 'none') {
     searchBtn.style.display = 'none';
