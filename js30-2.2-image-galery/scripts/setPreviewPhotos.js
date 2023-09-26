@@ -1,30 +1,47 @@
-import { previewImagesId, getPreviewImages } from "./service.js";
+import { previewImagesId, getPreviewImages, error, totalResults } from "./service.js";
 import { setPhotoId } from "./setPhotoId.js";
-import {preview, keywordSearch, fullSizePhoto, keywordDescription, section, notFound} from "./variables.js";
+import {
+  preview,
+  keywordSearch,
+  fullSizePhoto,
+  keywordDescription,
+  empty,
+  notFound,
+  errorId,
+  btnNextPhotos,
+  btnPrevPhotos
+} from "./variables.js";
 
 export const setPreviewPhotos = async (keyword, page) => {
   let allPhoto;
   let idPhoto;
-
   await getPreviewImages(keyword.toLowerCase(), page);
+  if (error) {
+    fullSizePhoto.style.display = 'none';
+    errorId.style.display = 'flex';
+    btnPrevPhotos.setAttribute('disabled', '');
+    btnNextPhotos.setAttribute('disabled', '');
+    keywordDescription.textContent = '';
+  }
   preview.innerHTML = '';
   keywordSearch.textContent = `${(keyword ?? defaultKeyword[randomNumber]).toLowerCase()}`;
-  if (previewImagesId.length === 0) {
-    preview.innerHTML = '';
-    notFound.classList.add('not-found');
-    notFound.textContent = 'Not found photos';
-    section.appendChild(notFound);
-  } else {
+  if (!totalResults) {
+    fullSizePhoto.style.display = 'none';
+    empty.style.display = 'flex'
+  }
+  if (previewImagesId.length !== 0 && !error) {
+    errorId.style.display = 'none';
+    empty.style.display = 'none'
+    fullSizePhoto.style.display = 'block';
     notFound.innerHTML = '';
     preview.innerHTML = '';
+    btnNextPhotos.removeAttribute('disabled', '');
     previewImagesId.forEach((img, index) => {
       if (index === 0) {
         fullSizePhoto.style.backgroundImage = `url(${img.mediumSize})`;
         fullSizePhoto.setAttribute('href', `${img.originSize}`);
         if (img.description) {
           keywordDescription.textContent = `${img.description}`
-        } else {
-          keywordDescription.textContent = 'Not found'
         }
       }
       const photo  = document.createElement('div');
@@ -32,7 +49,7 @@ export const setPreviewPhotos = async (keyword, page) => {
       photo.setAttribute('id', `${img.imgId}`)
       photo.style.background = `url(${img.thumbnail}) no-repeat center / cover`;
       preview.appendChild(photo);
-    })
+    });
   }
 
   allPhoto = document.querySelectorAll('.photo');

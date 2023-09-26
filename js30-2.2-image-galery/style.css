@@ -87,7 +87,13 @@ input:active {
   width: 40vw;
   border-radius: 5vh;
   background-color: #d9d9d98f;
-  padding: 01vh;
+  padding: 1vh;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -111,8 +117,18 @@ button {
 }
 
 .wrapper-full-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 60vh;
+}
+
+.wrapper-photo-id {
+  display: flex;
+  justify-content: center;
+  width: 75vw;
+  height: 100%;
 }
 
 .full-photo {
@@ -123,7 +139,6 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  object-fit: cover;
 }
 
 .full-photo:hover {
@@ -135,6 +150,7 @@ button {
   display: flex;
   align-items: center;
   gap: 2vw;
+  width: 90%;
 }
 
 .next-photos,
@@ -147,15 +163,17 @@ button {
 
 .preview-photos {
   display: flex;
-  gap: 2vw;
+  justify-content: space-evenly;
   padding: 0.8vh;
   border-radius: 1vh;
   background: #fff;
+  width: 100%;
+  height: 17vh;
 }
 
 .photo {
-  width: 5vw;
-  height: 12vh;
+  width: 6vw;
+  height: 100%;
   border-radius: 10%;
   transition: 0.5s;
 }
@@ -211,7 +229,32 @@ button {
 
 .error-id {
   display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   height: 100%;
+}
+
+.empty-result {
+  width: 40vw;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  background: url(./assets/svg/empty_results.svg) no-repeat center;
+  background-size: contain;
+}
+
+.exclamation {
+  width: 20vw;
+  height: 20vh;
+  background: url(./assets/svg/exclamation_circle.svg) no-repeat center;
+  background-size: contain;
+}
+
+.text-error {
+  font-size: 3vh;
 }
 
 @keyframes spin {

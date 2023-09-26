@@ -9,6 +9,9 @@ export const clearBtn = document.querySelector('.clear');
 export const spinner = document.querySelector('.container-spinner');
 export const wrapperPhotoId = document.querySelector('.wrapper-full-photo');
 export const errorId = document.querySelector('.error-id');
+export const btnNextPhotos = document.querySelector('.next-photos');
+export const btnPrevPhotos = document.querySelector('.prev-photos');
+export const empty = document.querySelector('.empty-result');
 
 export let defaultKeyword = ['travel', 'city', 'beautiful', 'summer', 'night', 'sea', 'ocean', 'heavens', 'sunset', 'space'];
 export const randomNumber = Math.floor(Math.random() * (defaultKeyword.length));
