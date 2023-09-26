@@ -15,6 +15,7 @@ import {
 export const setPreviewPhotos = async (keyword, page) => {
   let allPhoto;
   let idPhoto;
+  if (keyword === '') return;
   await getPreviewImages(keyword.toLowerCase(), page);
   if (error) {
     fullSizePhoto.style.display = 'none';
@@ -25,9 +26,10 @@ export const setPreviewPhotos = async (keyword, page) => {
   }
   preview.innerHTML = '';
   keywordSearch.textContent = `${(keyword ?? defaultKeyword[randomNumber]).toLowerCase()}`;
-  if (!totalResults) {
+  if (!totalResults && !error) {
     fullSizePhoto.style.display = 'none';
-    empty.style.display = 'flex'
+    empty.style.display = 'flex';
+    keywordDescription.textContent = '';
   }
   if (previewImagesId.length !== 0 && !error) {
     errorId.style.display = 'none';
@@ -40,9 +42,7 @@ export const setPreviewPhotos = async (keyword, page) => {
       if (index === 0) {
         fullSizePhoto.style.backgroundImage = `url(${img.mediumSize})`;
         fullSizePhoto.setAttribute('href', `${img.originSize}`);
-        if (img.description) {
-          keywordDescription.textContent = `${img.description}`
-        }
+        keywordDescription.textContent = `${img.description ?? 'Not found'}`;
       }
       const photo  = document.createElement('div');
       photo.classList.add('photo');

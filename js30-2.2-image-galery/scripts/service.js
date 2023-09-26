@@ -1,7 +1,7 @@
 const _base = 'https://api.unsplash.com/';
 const _search = 'search/photos?query=';
 const _id = 'photos/';
-const _clientId = 'XMkSjtWOrppQpVs1-aBriPPkhcqLcns0s1R_XDqZbp8';
+const _clientId = 'SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
 const _perPage = 'per_page=10';
 
 // myKey = 'XMkSjtWOrppQpVs1-aBriPPkhcqLcns0s1R_XDqZbp8';
@@ -26,7 +26,6 @@ const getPreviewImages = async (search, page = 1) => {
   previewImagesId = [];
   await getData(`${_base}${_search}${search}&${_perPage}&page=${page}&client_id=${_clientId}`)
   .then(data => {
-    console.log(data)
     totalResults = data.total;
     totalPages = data.total_pages;
     data.results.forEach((res, index) => {

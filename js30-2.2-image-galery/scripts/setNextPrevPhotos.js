@@ -3,7 +3,7 @@ import { setPreviewPhotos } from "./setPreviewPhotos.js"
 import { defaultKeyword, randomNumber, btnNextPhotos, btnPrevPhotos} from "./variables.js";
 import { totalPages } from "./service.js";
 
-export const setNextPhotos = () => {
+export const setNextPrevPhotos = () => {
   let page = 1;
   if (page === 1) btnPrevPhotos.setAttribute('disabled', '');
 
