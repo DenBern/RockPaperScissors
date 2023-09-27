@@ -1,5 +1,6 @@
-import { previewImagesId, getPreviewImages, error, totalResults } from "./service.js";
+import { previewImagesId, getPreviewImages, error, totalResults, totalPages } from "./service.js";
 import { setPhotoId } from "./setPhotoId.js";
+import { spinnerOn, loadingImageId } from "./setPhotoId.js";
 import {
   preview,
   keywordSearch,
@@ -16,6 +17,9 @@ export const setPreviewPhotos = async (keyword, page) => {
   let allPhoto;
   let idPhoto;
   if (keyword === '') return;
+  spinnerOn(!loadingImageId);
+  errorId.style.display = 'none';
+  empty.style.display = 'none';
   await getPreviewImages(keyword.toLowerCase(), page);
   if (error) {
     fullSizePhoto.style.display = 'none';
@@ -30,14 +34,17 @@ export const setPreviewPhotos = async (keyword, page) => {
     fullSizePhoto.style.display = 'none';
     empty.style.display = 'flex';
     keywordDescription.textContent = '';
+    btnNextPhotos.setAttribute('disabled', '');
   }
   if (previewImagesId.length !== 0 && !error) {
+    if (page !== totalPages) {
+      btnNextPhotos.removeAttribute('disabled', '');
+    }
     errorId.style.display = 'none';
     empty.style.display = 'none'
     fullSizePhoto.style.display = 'block';
     notFound.innerHTML = '';
     preview.innerHTML = '';
-    btnNextPhotos.removeAttribute('disabled', '');
     previewImagesId.forEach((img, index) => {
       if (index === 0) {
         fullSizePhoto.style.backgroundImage = `url(${img.mediumSize})`;
@@ -51,6 +58,7 @@ export const setPreviewPhotos = async (keyword, page) => {
       preview.appendChild(photo);
     });
   }
+  spinnerOn(loadingImageId);
 
   allPhoto = document.querySelectorAll('.photo');
   allPhoto.forEach(photo => {
@@ -59,6 +67,7 @@ export const setPreviewPhotos = async (keyword, page) => {
       setPhotoId(idPhoto);
     });
   });
+
 }
 
 

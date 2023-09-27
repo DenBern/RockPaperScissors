@@ -150,14 +150,14 @@ button {
   display: flex;
   align-items: center;
   gap: 2vw;
-  width: 90%;
+  width: 100%;
 }
 
 .next-photos,
 .prev-photos {
-  width: 3vw;
-  height: 6vh;
-  border-radius: 3vh;
+  width: 70px;
+  height: 50px;
+  border-radius: 10px;
   font-size: 1.5vh;
 }
 
@@ -262,10 +262,22 @@ button {
   100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 1366px) and (min-width: 766px) {
+@media (max-width: 1366px) and (min-width: 769px) {
+  .preview-photos {
+    gap: 0.5vw;
+    height: 12vh;
+  }
+
   .next-photos,
   .prev-photos {
-    width: 7vw;
+    border-radius: 1.5vh;
+  }
+}
+@media (max-width: 768px) and (min-width: 500px) {
+  .preview-photos {
+    justify-content: baseline;
+    gap: 0.5vw;
+    height: 12vh;
   }
 
 }

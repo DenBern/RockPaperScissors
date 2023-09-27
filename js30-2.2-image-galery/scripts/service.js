@@ -29,7 +29,15 @@ const getPreviewImages = async (search, page = 1) => {
     totalResults = data.total;
     totalPages = data.total_pages;
     data.results.forEach((res, index) => {
-      if (index === 0) {
+      if (index) {
+        previewImagesId = [
+          ...previewImagesId,
+          {
+            imgId: res.id,
+            thumbnail: res.urls.thumb,
+          }
+        ];
+      } else {
         previewImagesId = [
           {
             description: res.description,
@@ -39,16 +47,9 @@ const getPreviewImages = async (search, page = 1) => {
             mediumSize: res.urls.regular,
           }
         ];
-      } else {
-        previewImagesId = [
-          ...previewImagesId,
-          {
-            imgId: res.id,
-            thumbnail: res.urls.thumb,
-          }
-        ];
       }
-    })
+    });
+    error = false;
   })
   .catch((err) => {
     console.log(err);
@@ -65,6 +66,7 @@ const getImageById = async (id) => {
         mediumSize: res.urls.regular,
         originSize: res.urls.raw,
       };
+      error = false;
     })
     .catch((err) => {
       error = true;
@@ -78,6 +80,6 @@ export {
   photoById,
   totalPages,
   totalResults,
-  error
+  error,
 }
 

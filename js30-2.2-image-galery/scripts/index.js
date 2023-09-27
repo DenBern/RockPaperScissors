@@ -1,6 +1,7 @@
 import { setPreviewPhotos } from "./setPreviewPhotos.js";
 import { setNextPrevPhotos } from "./setNextPrevPhotos.js";
 import { defaultKeyword,randomNumber, input, searchBtn, clearBtn } from "./variables.js";
+import { page } from "./setNextPrevPhotos.js";
 
 export let keyWord = defaultKeyword[randomNumber];
 setPreviewPhotos(keyWord);
@@ -14,11 +15,11 @@ const changeBtnSearch = () => {
     clearBtn.style.display = 'none';
     searchBtn.style.display = 'block';
   }
-}
+};
 
 if (input.value === '') {
-  searchBtn.setAttribute('disabled', '')
-}
+  searchBtn.setAttribute('disabled', '');
+};
 
 input.addEventListener('input', (e) => {
   keyWord = e.target.value;
@@ -34,11 +35,11 @@ searchBtn.addEventListener('click', () => {
   if (!keyWord) return;
   setPreviewPhotos(keyWord);
   changeBtnSearch();
-})
+});
 
 document.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-    setPreviewPhotos(keyWord);
+    setPreviewPhotos(keyWord, page);
     changeBtnSearch();
   }
 });
