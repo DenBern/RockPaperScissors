@@ -1,76 +1,63 @@
-import { previewImagesId, getPreviewImages, error, totalResults, totalPages } from "./service.js";
+import { emptyState } from "./emptyState.js";
+import { errorState } from "./errorState.js";
+import { loadingState } from "./loadingState.js";
+import { renderPhotos } from "./renderPhotos.js";
 import { setPhotoId } from "./setPhotoId.js";
-import { spinnerOn, loadingImageId } from "./setPhotoId.js";
+import { previewImagesId,
+  getPreviewImages,
+  error,
+  totalResults,
+  totalPages,
+  loadingData,
+  setError,
+  setEmptyState,
+  setLoadingData
+} from "./service.js";
 import {
   preview,
   keywordSearch,
-  fullSizePhoto,
-  keywordDescription,
-  empty,
-  notFound,
-  errorId,
   btnNextPhotos,
-  btnPrevPhotos
+  btnPrevPhotos,
 } from "./variables.js";
 
-export const setPreviewPhotos = async (keyword, page) => {
-  let allPhoto;
-  let idPhoto;
-  if (keyword === '') return;
-  spinnerOn(!loadingImageId);
-  errorId.style.display = 'none';
-  empty.style.display = 'none';
-  await getPreviewImages(keyword.toLowerCase(), page);
-  if (error) {
-    fullSizePhoto.style.display = 'none';
-    errorId.style.display = 'flex';
-    btnPrevPhotos.setAttribute('disabled', '');
-    btnNextPhotos.setAttribute('disabled', '');
-    keywordDescription.textContent = '';
-  }
+const clearPreviewPhotos = () => {
   preview.innerHTML = '';
-  keywordSearch.textContent = `${(keyword ?? defaultKeyword[randomNumber]).toLowerCase()}`;
-  if (!totalResults && !error) {
-    fullSizePhoto.style.display = 'none';
-    empty.style.display = 'flex';
-    keywordDescription.textContent = '';
-    btnNextPhotos.setAttribute('disabled', '');
-  }
-  if (previewImagesId.length !== 0 && !error) {
-    if (page !== totalPages) {
-      btnNextPhotos.removeAttribute('disabled', '');
-    }
-    if(page === 1) {
-      btnPrevPhotos.setAttribute('disabled', '');
-    }
-    errorId.style.display = 'none';
-    empty.style.display = 'none'
-    fullSizePhoto.style.display = 'block';
-    notFound.innerHTML = '';
-    preview.innerHTML = '';
-    previewImagesId.forEach((img, index) => {
-      if (index === 0) {
-        fullSizePhoto.style.backgroundImage = `url(${img.mediumSize})`;
-        fullSizePhoto.setAttribute('href', `${img.originSize}`);
-        keywordDescription.textContent = `${img.description ?? 'Not found'}`;
-      }
-      const photo  = document.createElement('div');
-      photo.classList.add('photo');
-      photo.setAttribute('id', `${img.imgId}`)
-      photo.style.background = `url(${img.thumbnail}) no-repeat center / cover`;
-      preview.appendChild(photo);
-    });
-  }
-  spinnerOn(loadingImageId);
+}
+export let allPhotos = [];
 
-  allPhoto = document.querySelectorAll('.photo');
-  allPhoto.forEach(photo => {
-    photo.addEventListener('click', () => {
-      idPhoto = photo.id;
-      setPhotoId(idPhoto);
+export const setPreviewPhotos = async (keyword, page) => {
+  if (keyword === '') return;
+  setError(false);
+  setEmptyState(false);
+  errorState(error);
+  emptyState(totalResults);
+  setLoadingData(true);
+  loadingState(loadingData);
+
+  await getPreviewImages(keyword.toLowerCase(), page);
+
+  loadingState(false);
+  clearPreviewPhotos();
+  keywordSearch.textContent = `${(keyword ?? defaultKeyword[randomNumber]).toLowerCase()}`;
+  if (error) errorState(error);
+  if (!totalResults && !error) emptyState(true);
+  if (totalResults && !error) {
+    if (page !== totalPages) btnNextPhotos.removeAttribute('disabled', '');
+    if(page === 1) btnPrevPhotos.setAttribute('disabled', '');
+    errorState(error);
+    emptyState(!totalResults);
+    clearPreviewPhotos();
+    previewImagesId.forEach((photo, index) => {
+      renderPhotos(photo, index);
+    });
+    loadingState(loadingData);
+  }
+  allPhotos = document.querySelectorAll('.photo');
+  allPhotos.forEach(photo => {
+    photo.addEventListener('click', (e) => {
+      setPhotoId(e.target.id);
     });
   });
-
 }
 
 

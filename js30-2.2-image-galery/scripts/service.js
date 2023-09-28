@@ -11,7 +11,20 @@ let previewImagesId = [];
 let photoById = {};
 let totalPages = 0;
 let error = false;
-let totalResults = 0;
+let totalResults = false;
+let loadingData = false;
+
+const setError = (value) => {
+  error = value;
+};
+
+const setEmptyState = (value) => {
+  totalResults = value;
+};
+
+const setLoadingData = (value) => {
+  loadingData = value;
+};
 
 const getData = async (url) => {
   let res = await fetch(url);
@@ -22,11 +35,12 @@ const getData = async (url) => {
 };
 
 const getPreviewImages = async (search, page = 1) => {
+  loadingData = false;
   error = false;
   previewImagesId = [];
   await getData(`${_base}${_search}${search}&${_perPage}&page=${page}&client_id=${_clientId}`)
   .then(data => {
-    totalResults = data.total;
+    totalResults = Boolean(data.total);
     totalPages = data.total_pages;
     data.results.forEach((res, index) => {
       if (index) {
@@ -49,14 +63,17 @@ const getPreviewImages = async (search, page = 1) => {
         ];
       }
     });
+    loadingData = false;
     error = false;
   })
   .catch((err) => {
+    loadingData = false;
     error = true;
   })
 };
 
 const getImageById = async (id) => {
+  loadingData = true;
   error = false;
   await getData(`${_base}${_id}${id}?client_id=${_clientId}`)
     .then((res) => {
@@ -65,6 +82,7 @@ const getImageById = async (id) => {
         mediumSize: res.urls.regular,
         originSize: res.urls.raw,
       };
+      loadingData = false;
       error = false;
     })
     .catch((err) => {
@@ -73,11 +91,15 @@ const getImageById = async (id) => {
 }
 export {
   previewImagesId,
-  getPreviewImages,
-  getImageById,
   photoById,
   totalPages,
   totalResults,
   error,
+  loadingData,
+  getPreviewImages,
+  getImageById,
+  setError,
+  setEmptyState,
+  setLoadingData,
 }
 

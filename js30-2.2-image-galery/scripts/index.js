@@ -1,7 +1,8 @@
-import { setPreviewPhotos } from "./setPreviewPhotos.js";
+import { allPhotos, setPreviewPhotos } from "./setPreviewPhotos.js";
 import { setNextPrevPhotos } from "./setNextPrevPhotos.js";
 import { defaultKeyword,randomNumber, input, searchBtn, clearBtn } from "./variables.js";
 import { page } from "./setNextPrevPhotos.js";
+import { setPhotoId } from "./setPhotoId.js";
 
 export let keyWord = defaultKeyword[randomNumber];
 setPreviewPhotos(keyWord);
