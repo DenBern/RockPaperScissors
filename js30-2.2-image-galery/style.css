@@ -26,7 +26,6 @@ header {
 input {
   font-family: 'Lato', sans-serif;
   font-size: 2vh;
-  width: 15vw;
   height: 3vh;
   margin: 0 1vw;
   border: none;
@@ -45,7 +44,7 @@ input:active {
 }
 
 .container-search {
-  width: 20vw;
+  width: max-content;
   display: flex;
   align-items: center;
   border-radius: 5vh;
@@ -93,7 +92,7 @@ input:active {
   text-overflow: ellipsis;
 }
 
-.description {
+.container-description p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -163,7 +162,7 @@ button {
 
 .preview-photos {
   display: flex;
-  justify-content: space-evenly;
+  gap: 0.5vw;
   padding: 0.8vh;
   border-radius: 1vh;
   background: #fff;
@@ -172,6 +171,7 @@ button {
 }
 
 .photo {
+  flex: 1 1 auto;
   width: 6vw;
   height: 100%;
   border-radius: 10%;
@@ -262,10 +262,10 @@ button {
   100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 1366px) and (min-width: 769px) {
+@media (max-width: 1366px) and (min-width: 997px) {
   .preview-photos {
     gap: 0.5vw;
-    height: 12vh;
+    height: 15vh;
   }
 
   .next-photos,
@@ -273,11 +273,84 @@ button {
     border-radius: 1.5vh;
   }
 }
-@media (max-width: 768px) and (min-width: 500px) {
+
+@media (max-width: 996px) and (min-width: 360px) {
   .preview-photos {
-    justify-content: baseline;
     gap: 0.5vw;
-    height: 12vh;
+    height: 15vh;
   }
 
+  header {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  input {
+    width: 30vw;
+  }
+
+  .search,
+  .clear {
+    width: 7vw;
+  }
+
+  .container-search {
+    width: max-content;
+  }
+
+  .container-keyword {
+    width: 80%;
+  }
+
+  .container-description {
+    grid-column: span 2;
+    grid-row: 2;
+    width: 100%;
+  }
+
+  .wrapper-full-photo {
+    height: 50vh;
+  }
 }
+
+@media (max-width: 767px) and (min-width: 360px) {
+  .preview-photos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 25vh;
+  }
+
+  .photo {
+    width: 100%;
+  }
+
+  .wrapper-full-photo {
+    height: 45vh;
+  }
+}
+
+@media (max-width: 480px) and (min-width: 360px) {
+  .preview-photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: 40vh;
+  }
+
+  .wrapper-full-photo {
+    height: 30vh;
+  }
+
+  input {
+    font-size: 1.6vh;
+  }
+
+  .photo:last-child {
+    grid-column: 2 / 3;
+    grid-row: 4;
+  }
+}
+
+
