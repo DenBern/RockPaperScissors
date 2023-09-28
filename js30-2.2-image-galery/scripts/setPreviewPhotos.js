@@ -40,6 +40,9 @@ export const setPreviewPhotos = async (keyword, page) => {
     if (page !== totalPages) {
       btnNextPhotos.removeAttribute('disabled', '');
     }
+    if(page === 1) {
+      btnPrevPhotos.setAttribute('disabled', '');
+    }
     errorId.style.display = 'none';
     empty.style.display = 'none'
     fullSizePhoto.style.display = 'block';

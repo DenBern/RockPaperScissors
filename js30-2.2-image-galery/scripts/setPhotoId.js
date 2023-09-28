@@ -28,8 +28,6 @@ export const setPhotoId = async (id) => {
     fullSizePhoto.style.display = 'flex';
     fullSizePhoto.style.backgroundImage = `url(${photoById.mediumSize})`;
     fullSizePhoto.setAttribute('href', `${photoById.originSize}`);
-    btnNextPhotos.removeAttribute('disabled', '');
-    btnPrevPhotos.removeAttribute('disabled', '');
     if (photoById.description) {
       keywordDescription.textContent = `${photoById.description}`;
     };

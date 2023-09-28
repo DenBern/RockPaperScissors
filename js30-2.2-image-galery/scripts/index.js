@@ -39,6 +39,8 @@ searchBtn.addEventListener('click', () => {
 
 document.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
+    keyWord = input.value;
+    if (keyWord === '') return
     setPreviewPhotos(keyWord, page);
     changeBtnSearch();
   }
