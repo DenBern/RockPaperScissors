@@ -1,7 +1,7 @@
 const _base = 'https://api.unsplash.com/';
 const _search = 'search/photos?query=';
 const _id = 'photos/';
-const _clientId = 'SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
+const _clientId = 'XMkSjtWOrppQpVs1-aBriPPkhcqLcns0s1R_XDqZbp8';
 const _perPage = 'per_page=10';
 
 // myKey = 'XMkSjtWOrppQpVs1-aBriPPkhcqLcns0s1R_XDqZbp8';
@@ -52,7 +52,6 @@ const getPreviewImages = async (search, page = 1) => {
     error = false;
   })
   .catch((err) => {
-    console.log(err);
     error = true;
   })
 };
@@ -70,7 +69,6 @@ const getImageById = async (id) => {
     })
     .catch((err) => {
       error = true;
-      console.log(err);
     })
 }
 export {
