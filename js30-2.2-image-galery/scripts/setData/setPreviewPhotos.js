@@ -1,10 +1,12 @@
-import { emptyState } from "./emptyState.js";
-import { errorState } from "./errorState.js";
-import { loadingState } from "./loadingState.js";
-import { renderPhotos } from "./renderPhotos.js";
-import { setPhotoId } from "./setPhotoId.js";
-import { previewImagesId,
-  getPreviewImages,
+import { emptyState } from "../states/emptyState.js";
+import { errorState } from "../states/errorState.js";
+import { loadingState } from "../states/loadingState.js";
+import { renderPreviewPhotos } from "../renderComponents/renderPreviewPhotos.js";
+import { setPhotoById } from "./setPhotoById.js";
+import { clearPreviewPhotos } from "../helpers/heplers.js";
+import {
+  previewPhotos,
+  getPreviewPhotos,
   error,
   totalResults,
   totalPages,
@@ -12,21 +14,25 @@ import { previewImagesId,
   setError,
   setEmptyState,
   setLoadingData
-} from "./service.js";
+} from "../service/unsplashService.js";
 import {
-  preview,
+  input,
+  searchBtn,
   keywordSearch,
   btnNextPhotos,
   btnPrevPhotos,
-} from "./variables.js";
+} from "../variables/variables.js";
 
-const clearPreviewPhotos = () => {
-  preview.innerHTML = '';
-}
 export let allPhotos = [];
 
 export const setPreviewPhotos = async (keyword, page) => {
   if (keyword === '') return;
+  if (input.value === '') {
+    searchBtn.setAttribute('disabled', '');
+  };
+  if (page === 1) {
+    btnPrevPhotos.setAttribute('disabled', '');
+  };
   setError(false);
   setEmptyState(false);
   errorState(error);
@@ -34,11 +40,11 @@ export const setPreviewPhotos = async (keyword, page) => {
   setLoadingData(true);
   loadingState(loadingData);
 
-  await getPreviewImages(keyword.toLowerCase(), page);
+  await getPreviewPhotos(keyword.toLowerCase(), page);
 
   loadingState(false);
   clearPreviewPhotos();
-  keywordSearch.textContent = `${(keyword ?? defaultKeyword[randomNumber]).toLowerCase()}`;
+  keywordSearch.textContent = `${(keyword ?? defaultKeyword[randomCount]).toLowerCase()}`;
   if (error) errorState(error);
   if (!totalResults && !error) emptyState(true);
   if (totalResults && !error) {
@@ -47,17 +53,17 @@ export const setPreviewPhotos = async (keyword, page) => {
     errorState(error);
     emptyState(!totalResults);
     clearPreviewPhotos();
-    previewImagesId.forEach((photo, index) => {
-      renderPhotos(photo, index);
+    previewPhotos.forEach((photo, index) => {
+      renderPreviewPhotos(photo, index);
     });
     loadingState(loadingData);
   }
   allPhotos = document.querySelectorAll('.photo');
   allPhotos.forEach(photo => {
     photo.addEventListener('click', (e) => {
-      setPhotoId(e.target.id);
+      setPhotoById(e.target.id);
     });
   });
-}
+};
 
 

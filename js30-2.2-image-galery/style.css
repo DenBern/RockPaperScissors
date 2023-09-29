@@ -172,6 +172,11 @@ button {
   background-color: #b0b0b0;
 }
 
+.next-photos:active,
+.prev-photos:active {
+  opacity: 0.2;
+}
+
 .preview-photos {
   display: flex;
   gap: 0.5vw;

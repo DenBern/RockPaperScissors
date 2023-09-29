@@ -1,7 +1,6 @@
-import { fullSizePhoto, keywordDescription, preview } from "./variables.js";
+import { fullSizePhoto, keywordDescription, preview } from "../variables/variables.js";
 
-export const renderPhotos = (photo, index) => {
-
+export const renderPreviewPhotos = (photo, index) => {
   if (!index) {
     fullSizePhoto.style.backgroundImage = `url(${photo.mediumSize})`;
     fullSizePhoto.setAttribute('href', `${photo.originSize}`);
@@ -12,4 +11,4 @@ export const renderPhotos = (photo, index) => {
   photoThumbnail.setAttribute('id', `${photo.imgId}`)
   photoThumbnail.style.background = `url(${photo.thumbnail}) no-repeat center / cover`;
   preview.appendChild(photoThumbnail);
-}
+};

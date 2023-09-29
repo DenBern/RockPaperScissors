@@ -1,5 +1,5 @@
-import { spinner, fullSizePhoto } from "./variables.js";
-import { error, totalResults } from "./service.js";
+import { spinner, fullSizePhoto } from "../variables/variables.js";
+import { error, totalResults } from "../service/unsplashService.js";
 
 export const loadingState = (loading) => {
   if (loading) {

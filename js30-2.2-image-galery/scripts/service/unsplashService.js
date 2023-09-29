@@ -7,7 +7,7 @@ const _perPage = 'per_page=10';
 // myKey = 'XMkSjtWOrppQpVs1-aBriPPkhcqLcns0s1R_XDqZbp8';
 // secondKey = 'SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
 
-let previewImagesId = [];
+let previewPhotos = [];
 let photoById = {};
 let totalPages = 0;
 let error = false;
@@ -34,25 +34,25 @@ const getData = async (url) => {
   return await res.json();
 };
 
-const getPreviewImages = async (search, page = 1) => {
-  loadingData = false;
+const getPreviewPhotos = async (search, page = 1) => {
+  loadingData = true;
   error = false;
-  previewImagesId = [];
+  previewPhotos = [];
   await getData(`${_base}${_search}${search}&${_perPage}&page=${page}&client_id=${_clientId}`)
   .then(data => {
     totalResults = Boolean(data.total);
     totalPages = data.total_pages;
     data.results.forEach((res, index) => {
       if (index) {
-        previewImagesId = [
-          ...previewImagesId,
+        previewPhotos = [
+          ...previewPhotos,
           {
             imgId: res.id,
             thumbnail: res.urls.thumb,
           }
         ];
       } else {
-        previewImagesId = [
+        previewPhotos = [
           {
             description: res.description,
             originSize: res.urls.raw,
@@ -64,15 +64,14 @@ const getPreviewImages = async (search, page = 1) => {
       }
     });
     loadingData = false;
-    error = false;
   })
-  .catch((err) => {
+  .catch(() => {
     loadingData = false;
     error = true;
   })
 };
 
-const getImageById = async (id) => {
+const getPhotoById = async (id) => {
   loadingData = true;
   error = false;
   await getData(`${_base}${_id}${id}?client_id=${_clientId}`)
@@ -85,21 +84,23 @@ const getImageById = async (id) => {
       loadingData = false;
       error = false;
     })
-    .catch((err) => {
+    .catch(() => {
+      loadingData = false;
       error = true;
     })
-}
+};
+
 export {
-  previewImagesId,
+  previewPhotos,
   photoById,
   totalPages,
   totalResults,
   error,
   loadingData,
-  getPreviewImages,
-  getImageById,
+  getPreviewPhotos,
+  getPhotoById,
   setError,
   setEmptyState,
   setLoadingData,
-}
+};
 

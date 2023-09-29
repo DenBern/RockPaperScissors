@@ -1,4 +1,9 @@
-import { fullSizePhoto, errorId, btnNextPhotos, btnPrevPhotos, keywordDescription } from "./variables.js";
+import {
+  fullSizePhoto,
+  errorId, btnNextPhotos,
+  btnPrevPhotos,
+  keywordDescription,
+} from "../variables/variables.js";
 
 export const errorState = (err) => {
   if (err) {
@@ -11,4 +16,4 @@ export const errorState = (err) => {
     errorId.style.display = 'none';
     fullSizePhoto.style.display = 'flex';
   }
-}
+};

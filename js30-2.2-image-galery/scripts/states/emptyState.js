@@ -1,4 +1,10 @@
-import { fullSizePhoto, empty, keywordDescription, btnNextPhotos, btnPrevPhotos } from "./variables.js";
+import {
+  fullSizePhoto,
+  empty,
+  keywordDescription,
+  btnNextPhotos,
+  btnPrevPhotos,
+} from "../variables/variables.js";
 
 export const emptyState = (emptyState) => {
   if (emptyState) {
@@ -11,4 +17,4 @@ export const emptyState = (emptyState) => {
     fullSizePhoto.style.display = 'none';
     empty.style.display = 'none';
   }
-}
+};
