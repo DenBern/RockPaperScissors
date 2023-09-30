@@ -1,4 +1,5 @@
-import { searchBtn,
+import {
+  searchBtn,
   clearBtn,
   input,
   keyword,
@@ -25,7 +26,6 @@ export const eventListeners = () => {
   });
 
   searchBtn.addEventListener('click', () => {
-    console.log(keyword)
     setPage(1);
     if (!keyword) return;
     setPreviewPhotos(keyword, page);
