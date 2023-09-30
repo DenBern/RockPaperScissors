@@ -1,5 +1,6 @@
 import { setPreviewPhotos } from "../setData/setPreviewPhotos.js";
-import { keyword,
+import {
+  keyword,
   defaultKeyword,
   btnNextPhotos,
   btnPrevPhotos,

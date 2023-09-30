@@ -19,7 +19,7 @@ export const setPhotoById = async (id) => {
   await getPhotoById(id);
 
   if (error) {
-    setLoadingData(false)
+    setLoadingData(false);
     loadingState(loadingData);
     errorState(error);
   } else {

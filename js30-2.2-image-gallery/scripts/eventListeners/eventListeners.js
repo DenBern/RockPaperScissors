@@ -39,7 +39,7 @@ export const eventListeners = () => {
       setKeyword(input.value);
       setPreviewPhotos(keyword, page);
       changeBtnSearch();
-    }
+    };
   });
 
   clearBtn.addEventListener('click', () => {

@@ -8,7 +8,7 @@ export const renderPreviewPhotos = (photo, index) => {
   }
   const photoThumbnail  = document.createElement('div');
   photoThumbnail.classList.add('photo');
-  photoThumbnail.setAttribute('id', `${photo.imgId}`)
+  photoThumbnail.setAttribute('id', `${photo.imgId}`);
   photoThumbnail.style.background = `url(${photo.thumbnail}) no-repeat center / cover`;
   preview.appendChild(photoThumbnail);
 };

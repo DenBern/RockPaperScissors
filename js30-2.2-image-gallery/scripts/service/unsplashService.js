@@ -65,7 +65,7 @@ const getPreviewPhotos = async (search, page = 1) => {
   .catch(() => {
     loadingData = false;
     error = true;
-  })
+  });
 };
 
 const getPhotoById = async (id) => {
@@ -84,7 +84,7 @@ const getPhotoById = async (id) => {
     .catch(() => {
       loadingData = false;
       error = true;
-    })
+    });
 };
 
 export {
