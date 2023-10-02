@@ -7,7 +7,7 @@ import {
   screensWrapper
 } from "../../../variables.js";
 
-export const scissorsScreenContent = () => {
+export const scissorsContent = () => {
   scissorsScreenContainer.classList.add('scissors-screen');
 
   title.textContent = 'Scissors';

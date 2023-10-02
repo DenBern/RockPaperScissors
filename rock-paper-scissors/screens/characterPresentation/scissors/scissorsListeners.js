@@ -1,5 +1,5 @@
 import { btnNext, scissors, scissorsCircle } from "../../../variables.js";
-import { scissorsScreenAnimation } from "./scissorsScreenAnimation/scissorsScreenAnimation.js";
+import { scissorsAnimation } from "./scissorsAnimation.js";
 export const scissorsListeners = () => {
   scissors.addEventListener('animationend', () => {
     scissors.style.left = '100px';
@@ -9,5 +9,5 @@ export const scissorsListeners = () => {
     scissors.style.left = '100px';
   });
 
-  btnNext.addEventListener('click', scissorsScreenAnimation)
+  btnNext.addEventListener('click', scissorsAnimation)
 }

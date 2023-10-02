@@ -1,5 +1,5 @@
-import { scissors, scissorsCircle } from "../../../../variables.js";
-export const scissorsScreenAnimation = () => {
+import { scissors, scissorsCircle } from "../../../variables.js";
+export const scissorsAnimation = () => {
   scissors.style.left = '-190px';
   scissors.style.transform = 'scale(1)';
   scissorsCircle.style.left = '-470px';
@@ -12,5 +12,5 @@ export const scissorsScreenAnimation = () => {
   scissorsCircle.animate([
     {top: '360px', left: '100px'},
     {top: '240px', left: '-470px'},
-  ], 700)
+  ], 700);
 };
