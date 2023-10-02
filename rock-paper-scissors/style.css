@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter;
+  display: flex;
+  align-items: center;
+  background-color: #80808070;
+  height: 100vh;
+}
+
+.screens-wrapper {
+  width: 430px;
+  height: 650px;
+  background-color: #fff;
+  margin: 0 auto;
+  border-radius: 40px;
+}
+
+.greeting-screen {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+.greeting {
+  position: absolute;
+  width: 324px;
+  height: 259px;
+  overflow: hidden;
+}
+
+h1 {
+  position: absolute;
+  bottom: 100px;
+  color: #D94690;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  animation: h1 0.7s linear;
+}
+
+.letter-r {
+  color: #D94690;
+}
+
+.letter-p {
+  color: #F0CA44;
+}
+
+.letter-s {
+  color: #5BC6E0;
+}
+
+.rock-greeting {
+  position: absolute;
+  bottom: 25px;
+  left: 85px;
+  z-index: 4;
+  animation: rock 0.7s linear;
+}
+
+.paper-greeting {
+  position: absolute;
+  top: 16px;
+  left: 47px;
+  z-index: 3;
+  animation: paper 0.7s linear;
+}
+
+.scissors-greeting {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  z-index: 2;
+  animation: scissors 0.7s linear;
+}
+
+.shadow-small {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  z-index: 2;
+  animation: shadow-small 0.7s linear;
+}
+
+.shadow-big {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  z-index: 2;
+  animation: shadow-big 0.7 linear;
+}
+
+/***** Animation greeting *****/
+
+@keyframes h1 {
+  from {bottom: -85px;}
+  to {bottom: 100px;}
+}
+
+@keyframes rock {
+  from {
+    bottom: -175px;
+    left: 85px;
+  };
+  to {
+    bottom: 25px;
+    left: 85px;
+  };
+}
+
+@keyframes rock {
+  from {
+    bottom: -175px;
+    left: 85px;
+  };
+  to {
+    bottom: 25px;
+    left: 85px;
+  };
+}
+
+@keyframes paper {
+  from {
+    top: -235px;
+    left: 77px;
+  };
+  to {
+    top: 16px;
+    left: 47px;
+  };
+}
+
+@keyframes scissors {
+  from {
+    top: -36px;
+    right: -140px;
+  };
+  to {
+    top: 2px;
+    right: 10px;
+  };
+}
+
+@keyframes shadow-small {
+  from {
+    top: -36px;
+    right: -140px;
+  };
+  to {
+    bottom: 20px;
+    right: 0;
+  };
+}
+
+@keyframes shadow-big {
+  from {
+    top: -36px;
+    right: -140px;
+  };
+  to {
+    bottom: 0;
+    left: 10px;
+  };
+}
