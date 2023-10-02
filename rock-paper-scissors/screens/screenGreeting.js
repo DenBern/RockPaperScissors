@@ -1,4 +1,5 @@
 import { screensWrapper } from "../variables.js";
+import { scissorsScreenRender } from "./characterPresentation/scissors/scissorsScreenRender.js";
 export const screenGreeting = () => {
   const greetingScreen = document.createElement('div');
   greetingScreen.classList.add('greeting-screen');
@@ -40,11 +41,20 @@ export const screenGreeting = () => {
   greeting.append(shadowBig);
   greetingScreen.append(gameTitle);
 
+  const btnTap = document.createElement('button');
 
   setTimeout(() => {
-    const btnTap = document.createElement('button');
     btnTap.classList.add('btn-tap');
     btnTap.textContent = "Click"
     greetingScreen.append(btnTap)
   }, 1000);
+
+  btnTap.addEventListener('click', () => {
+    greetingScreen.style.zIndex = 1;
+    greetingScreen.style.opacity = 0;
+    setTimeout(() => {
+      greetingScreen.style.display = "none";
+      scissorsScreenRender();
+    }, 500)
+  })
 }
