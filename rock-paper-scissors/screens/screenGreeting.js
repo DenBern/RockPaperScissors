@@ -42,5 +42,9 @@ export const screenGreeting = () => {
 
 
   setTimeout(() => {
-  }, 1500)
+    const btnTap = document.createElement('button');
+    btnTap.classList.add('btn-tap');
+    btnTap.textContent = "Click"
+    greetingScreen.append(btnTap)
+  }, 1000);
 }
