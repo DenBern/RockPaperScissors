@@ -1,4 +1,4 @@
-import { btnNext, rockScreenContainer, incrementCount, btnPrev } from "../../../variables.js";
+import { btnNext, rockScreenContainer, incrementCount, btnPrev, currentIcon, paperScreenContainer } from "../../../variables.js";
 import { scissorsAnimation } from "./scissorsAnimation.js";
 export const scissorsListeners = () => {
   // scissors.addEventListener('animationend', () => {
@@ -11,10 +11,18 @@ export const scissorsListeners = () => {
 
   btnNext.addEventListener('click', () => {
     incrementCount ();
-    scissorsAnimation();
-    rockScreenContainer.style.transform = 'translateX(-215px)';
-    btnNext.style.right = '45px';
-    btnPrev.style.bottom = '15px';
-    btnPrev.style.right = '200px';
+    if (currentIcon === 2) {
+      scissorsAnimation();
+      rockScreenContainer.style.transform = 'translateX(-215px)';
+      btnNext.style.right = '45px';
+      btnPrev.style.bottom = '15px';
+      btnPrev.style.right = '200px';
+      btnPrev.classList.add('btn-prev');
+    }
+
+    if (currentIcon === 3) {
+      rockScreenContainer.style.transform = 'translateX(-750px)';
+      paperScreenContainer.style.transform = 'translateX(0)';
+    }
   });
 }

@@ -10,6 +10,7 @@ import {
 export const rockContent = () => {
   rockScreenContainer.classList.add('rock-screen');
   titleRock.textContent = 'Rock';
+  titleRock.classList.add('title-rock');
   rockCircle.classList.add('rock-circle');
 
   rock.src = "../../assets/svg/greeting/presentation/rock.svg";

@@ -6,3 +6,9 @@
 
 import {scissorsRender} from "./screens/characterPresentation/scissors/scissorsRender.js";
 scissorsRender();
+
+// import { paperRender } from "./screens/characterPresentation/paper/paperRender.js";
+// paperRender();
+
+// import { rockRender } from "./screens/characterPresentation/rock/rockRender.js";
+// rockRender();

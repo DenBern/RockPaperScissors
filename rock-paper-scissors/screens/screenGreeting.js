@@ -1,5 +1,4 @@
 import { screensWrapper } from "../variables.js";
-import { rockRender } from "./characterPresentation/rock/rockRender.js";
 import { scissorsRender } from "./characterPresentation/scissors/scissorsRender.js";
 export const screenGreeting = () => {
   const greetingScreen = document.createElement('div');
@@ -35,19 +34,15 @@ export const screenGreeting = () => {
   scissors.src = "../assets/svg/greeting/scissors.svg";
   shadowSmall.src = "../assets/svg/greeting/shadowEllipse1.svg";
   shadowBig.src = "../assets/svg/greeting/shadowEllipse2.svg";
-  greeting.append(rock);
-  greeting.append(paper);
-  greeting.append(scissors);
-  greeting.append(shadowSmall);
-  greeting.append(shadowBig);
+  greeting.append(rock, paper, scissors, shadowSmall, shadowBig);
   greetingScreen.append(gameTitle);
 
   const btnTap = document.createElement('button');
 
   setTimeout(() => {
     btnTap.classList.add('btn-tap');
-    btnTap.textContent = "Click"
-    greetingScreen.append(btnTap)
+    btnTap.textContent = "Click";
+    greetingScreen.append(btnTap);
   }, 1000);
 
   btnTap.addEventListener('click', () => {
@@ -56,7 +51,6 @@ export const screenGreeting = () => {
     setTimeout(() => {
       greetingScreen.style.display = "none";
       scissorsRender();
-      rockRender();
-    }, 500)
+    }, 500);
   })
 }
