@@ -11,6 +11,20 @@ body {
   background-color: #80808070;
   height: 100vh;
 }
+/* All greeting screen */
+
+.icons-wrapper {
+  position: absolute;
+  top: 410px;
+  left: 225px;
+  z-index: 4;
+  display: flex;
+  gap: 20px;
+}
+
+.icons {
+  object-fit: none;
+}
 
 button {
   width: 111px;
@@ -27,6 +41,8 @@ button {
 }
 
 .screens-wrapper {
+  position: relative;
+  display: flex;
   width: 430px;
   height: 650px;
   background-color: #fff;
@@ -168,15 +184,18 @@ h1 {
 /* Scissors screen */
 
 .scissors-screen {
+  display: block;
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: inherit;
   z-index: 2;
-}
+  transition: 1s;
+  transform: translateX(0);
+  }
 
 .scissors {
-  width: 180px;
+  /* width: 180px; */
   position: absolute;
   top: 40px;
   left: 100px;
@@ -202,7 +221,7 @@ h1 {
 
 h2 {
   position: absolute;
-  left: 60px;
+  left: 135px;
   top: 115px;
   color: #FFF;
   font-size: 50px;
@@ -213,12 +232,85 @@ h2 {
 
 .btn-next {
   position: absolute;
+  bottom: 15px;
+  right: 160px;
+  background: url(./assets/svg/buttons/btnNext.svg) no-repeat center;
+  z-index: 3;
+  transition: 1s;
+  animation: btn-next 0.7s linear;
+}
+
+.btn-prev {
+  position: absolute;
+  bottom: -70px;
+  right: 200px;
+  background: url(./assets/svg/buttons/btnPrev.svg) no-repeat center;
+  z-index: 3;
+  transition: 1s;
+  animation: btn-prev 0.7s linear;
+}
+
+/***** Rock screen *****/
+
+.rock-screen {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  z-index: 2;
+  transform: translateX(0);
+  transition: 1s;
+  transform: translateX(220px);
+}
+
+.rock {
+  /* width: 180px; */
+  position: absolute;
+  top: 435px;
+  left: 470px;
+  z-index: 1;
+  animation: rock-present 0.6s linear;
+}
+
+.rock-circle {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 655px;
+  left: 290px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background-color: #D94690;
+  opacity: 1;
+  animation: rock-circle 0.8s linear;
+  z-index: 2;
+}
+
+.title-rock {
+  position: absolute;
+  left: 170px;
+  top: 480px;
+  color: #FFF;
+  font-size: 50px;
+  padding-top: 20px;
+  opacity: 1;
+  transition: 1s;
+  animation: title-rock 0.7s linear;
+  z-index: 2;
+}
+
+/* .btn-next {
+  position: absolute;
   bottom: 70px;
-  right: 315px;
+  right: 390px;
   background: url(./assets/svg/buttons/btnNext.svg) no-repeat center;
   z-index: 3;
   animation: btn-next 0.7s linear;
-}
+} */
+
 
 /***** Animation welcome *****/
 
@@ -306,7 +398,7 @@ h2 {
   };
 }
 
-/* Animation present scissors*/
+/***** Animation present scissors *****/
 
 @keyframes scissors-circle {
   from {opacity: 0.1;}
@@ -327,4 +419,26 @@ h2 {
 @keyframes btn-next {
   from {opacity: 0;}
   to {opacity: 1;}
+}
+
+@keyframes btn-prev {
+  from {bottom: -70px; right: 200px;}
+  to {bottom: 15px;}
+}
+
+/***** Animation present rock *****/
+
+@keyframes rock-circle {
+  from {top: 655px; left: 290px;}
+  to {top: 360px; left: 30px;}
+}
+
+@keyframes rock-present {
+  from {top: 435px; left: 470px;}
+  to {top: 40px; left: 100px;}
+}
+
+@keyframes title-rock {
+  from {left: 440px; top: 160px;}
+  to {left: 170px; top: 480px;}
 }

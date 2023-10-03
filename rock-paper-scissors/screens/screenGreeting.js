@@ -1,4 +1,5 @@
 import { screensWrapper } from "../variables.js";
+import { rockRender } from "./characterPresentation/rock/rockRender.js";
 import { scissorsRender } from "./characterPresentation/scissors/scissorsRender.js";
 export const screenGreeting = () => {
   const greetingScreen = document.createElement('div');
@@ -55,6 +56,7 @@ export const screenGreeting = () => {
     setTimeout(() => {
       greetingScreen.style.display = "none";
       scissorsRender();
+      rockRender();
     }, 500)
   })
 }

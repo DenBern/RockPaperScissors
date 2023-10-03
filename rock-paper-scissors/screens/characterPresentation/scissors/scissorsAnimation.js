@@ -1,9 +1,11 @@
-import { scissors, scissorsCircle } from "../../../variables.js";
+import { scissors, scissorsCircle, scissorsScreenContainer } from "../../../variables.js";
+import { rockRender } from "../rock/rockRender.js";
 export const scissorsAnimation = () => {
   scissors.style.left = '-190px';
   scissors.style.transform = 'scale(1)';
-  scissorsCircle.style.left = '-490px';
-  scissorsCircle.style.top = '240px'
+  scissorsCircle.style.left = '-265px';
+  scissorsCircle.style.top = '140px';
+  scissorsScreenContainer.style.transform = 'translateX(-220px)'; //or -435px if block display: none;
 
   scissors.animate([
     {top: '40px', left: '100px'},
@@ -11,6 +13,13 @@ export const scissorsAnimation = () => {
   ], 700);
   scissorsCircle.animate([
     {top: '360px', left: '30px'},
-    {top: '240px', left: '-490px'},
+    {top: '140px', left: '-265px'},
   ], 700);
+
+  // When the animation ended, rock-screen shifts...
+  // setTimeout(() => {
+  //   scissorsScreenContainer.style.display = 'none';
+  // }, 1000)
+
+  rockRender();
 };
