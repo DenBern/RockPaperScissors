@@ -1,4 +1,4 @@
-import { welcomeRender } from "./screens/welcome/welcomeRender.js";
-// import { scissorsScreenRender } from "./screens/characterPresentation/scissors/scissorsScreenRender.js";
-welcomeRender();
-// scissorsScreenRender();
+// import { welcomeRender } from "./screens/welcome/welcomeRender.js";
+import { scissorsRender } from "./screens/characterPresentation/scissors/scissorsRender.js";
+// welcomeRender();
+scissorsRender();

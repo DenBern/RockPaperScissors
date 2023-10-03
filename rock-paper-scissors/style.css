@@ -23,6 +23,7 @@ button {
   font-weight: 600;
   line-height: normal;
   border: none;
+  border-radius: inherit;
 }
 
 .screens-wrapper {
@@ -189,9 +190,9 @@ h1 {
   flex-direction: column;
   align-items: center;
   top: 360px;
-  left: 100px;
-  width: 400px;
-  height: 400px;
+  left: 30px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
   background-color: #5BC6E0;
   opacity: 1;
@@ -212,9 +213,11 @@ h2 {
 
 .btn-next {
   position: absolute;
-  top: 215px;
-  left: 170px;
+  bottom: 70px;
+  right: 315px;
   background: url(./assets/svg/buttons/btnNext.svg) no-repeat center;
+  z-index: 3;
+  animation: btn-next 0.7s linear;
 }
 
 /***** Animation welcome *****/
@@ -319,4 +322,9 @@ h2 {
     top: 40px;
     left: 100px;
   }
+}
+
+@keyframes btn-next {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }

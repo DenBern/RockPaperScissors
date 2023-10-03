@@ -1,3 +1,4 @@
+// Screens wrapper
 const screensWrapper = document.querySelector('.screens-wrapper');
 
 // Btns all screens

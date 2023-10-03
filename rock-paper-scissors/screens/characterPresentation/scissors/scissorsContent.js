@@ -20,9 +20,10 @@ export const scissorsContent = () => {
   btnNext.classList.add('btn-next');
 
   scissorsCircle.append(title)
-  scissorsCircle.append(btnNext)
+  // scissorsCircle.append(btnNext)
   scissorsScreenContainer.append(scissorsCircle)
   scissorsScreenContainer.append(scissors)
 
+  screensWrapper.append(btnNext)
   screensWrapper.append(scissorsScreenContainer);
 }
