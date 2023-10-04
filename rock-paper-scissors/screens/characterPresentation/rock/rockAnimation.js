@@ -1,15 +1,14 @@
 import { btnPrev, rockCircle, titleRock, rock, currentIcon } from "../../../variables.js";
 
 export const rockAnimation = () => {
-  console.log('animation');
   if (currentIcon === 2) {
-    rock.style.left = '-45px';
     rock.style.top = '40px';
-    rockCircle.style.left = '-115px';
+    rock.style.left = '-45px';
     rockCircle.style.top = '360px';
-    btnPrev.style.bottom = '15px';
-    titleRock.style.left = '165px';
+    rockCircle.style.left = '-115px';
     titleRock.style.top = '480px';
+    titleRock.style.left = '165px';
+    btnPrev.style.bottom = '15px';
 
     rock.animate([
       {top: '430px', left: '310px'},
@@ -22,18 +21,18 @@ export const rockAnimation = () => {
     ], 700);
 
     titleRock.animate([
-      {left: '500px', top: '80px'},
-      {left: '165px', top: '480px'},
+      {top: '80px', left: '500px'},
+      {top: '480px', left: '165px'}
     ], 700);
   };
 
   if (currentIcon === 3) {
-    rock.style.left = '-440px';
     rock.style.top = '40px';
-    rockCircle.style.left = '-645px';
+    rock.style.left = '-440px';
     rockCircle.style.top = '140px';
-    titleRock.style.left = '-320px';
+    rockCircle.style.left = '-645px';
     titleRock.style.top = '480px';
+    titleRock.style.left = '-320px';
 
     rock.animate([
       {top: '40px', left: '-45px'},
@@ -46,8 +45,8 @@ export const rockAnimation = () => {
     ], 700);
 
     titleRock.animate([
-      {left: '170px', top: '480px'},
-      {left: '-320px'},
+      {top: '480px', left: '170px'},
+      {left: '-320px'}
     ], 700);
-  }
+  };
 }

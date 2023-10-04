@@ -1,48 +1,50 @@
 import { rockCircle, titleRock, rock, rockScreenContainer } from "../../../variables.js";
 
 export const rockAnimationBack = (count) => {
-  // titleRock.style.left = '440px';
-  // titleRock.style.top = '160px';
   if (count === 1) {
-    rock.style.left = '40px';
-    rockCircle.style.left = '290px';
-    rockCircle.style.top = '655px';
+    rock.style.top = '430px';
+    rock.style.left = '310px';
+    rockCircle.style.top = '700px';
+    rockCircle.style.left = '210px';
+    titleRock.style.top = '80px';
+    titleRock.style.left = '500px';
 
     rock.animate([
-      {top: '40px', left: '100px'},
-      {top: '435px', left: '470px'},
+      {top: '40px', left: '-45px'},
+      {top: '430px', left: '310px'},
     ], 700);
     rockCircle.animate([
-      {top: '360px', left: '30px'},
-      {top: '655px', left: '290px'},
+      {top: '360px', left: '-115px'},
+      {top: '700px', left: '210px'},
     ], 700);
+
     titleRock.animate([
-      {left: '440px', top: '160px'},
-      {left: '170px', top: '480px'},
-    ]);
-    console.log('rock animation back')
-    // rockScreenContainer.style.transform = 'translateX(-215px)';
+      {top: '480px', left: '165px'},
+      {top: '80px', left: '500px'},
+    ], 700);
   };
 
   if (count === 2) {
-    console.log('count 2');
-    rock.style.left = '100px';
-    rockCircle.style.left = '30px';
+    rock.style.top = '40px';
+    rock.style.left = '-45px';
     rockCircle.style.top = '360px';
+    rockCircle.style.left = '-115px';
+    titleRock.style.top = '480px';
+    titleRock.style.left = '165px';
 
     rock.animate([
-      {left: '-190px'},
-      {top: '40px', left: '100px'},
+      {top: '40px', left: '-440px'},
+      {top: '40px', left: '-45px'},
     ], 700);
-    rockCircle.animate([
-      {top: '140px', left: '-265px'},
-      {top: '360px', left: '30px'},
-    ], 700);
-    rockScreenContainer.style.transform = 'translateX(-155px)';
 
-    // titleRock.animate([
-    //   {left: '440px', top: '160px'},
-    //   {left: '170px', top: '480px'},
-    // ]);
+    rockCircle.animate([
+      {top: '140px', left: '-645px'},
+      {top: '360px', left: '-115px'},
+    ], 700);
+
+    titleRock.animate([
+      {top: '480px', left: '-320px'},
+      {top: '480px', left: '165px'}
+    ], 700);
   };
 }

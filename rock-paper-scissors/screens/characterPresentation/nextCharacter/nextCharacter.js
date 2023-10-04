@@ -6,7 +6,6 @@ import { paperAnimation } from "../paper/paperAnimation.js";
 export const nextCharacter = () => {
   btnNext.addEventListener('click', () => {
     incrementCount();
-    console.log(currentIcon)
     if (currentIcon === 2) {
       scissorsAnimation();
       rockAnimation(currentIcon);

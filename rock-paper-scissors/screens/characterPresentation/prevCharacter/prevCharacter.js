@@ -11,7 +11,6 @@ export const prevCharacter = () => {
       scissorsAnimationBack();
       btnPrev.style.bottom = '-75px';
       rockAnimationBack(currentIcon);
-      rockScreenContainer.style.transform = 'translateX(225px)';
     };
 
     if (currentIcon === 2) {

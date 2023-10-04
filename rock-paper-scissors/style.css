@@ -196,7 +196,6 @@ h1 {
 }
 
 .scissors {
-  /* width: 180px; */
   position: absolute;
   top: 40px;
   left: 100px;
@@ -265,7 +264,6 @@ h1 {
 }
 
 .rock {
-  /* width: 180px; */
   position: absolute;
   top: 40px;
   left: 310px;
@@ -316,7 +314,6 @@ h1 {
 }
 
 .paper {
-  /* width: 180px; */
   position: absolute;
   top: 40px;
   left: 260px;
