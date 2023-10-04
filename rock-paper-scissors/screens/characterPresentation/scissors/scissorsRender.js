@@ -1,7 +1,6 @@
-import { scissorsListeners } from "./scissorsListeners.js";
 import { scissorsContent } from "./scissorsContent.js";
-import { currentIcon } from "../../../variables.js";
+import { nextCharacter } from "../nextCharacter/nextCharacter.js";
 export const scissorsRender = () => {
   scissorsContent();
-  scissorsListeners();
+  nextCharacter()
 }

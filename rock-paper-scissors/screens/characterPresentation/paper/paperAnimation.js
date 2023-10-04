@@ -1,4 +1,4 @@
-import { btnPrev, paperCircle, rockCircle, titleRock } from "../../../variables";
+import { paperCircle, paperCircle } from "../../../variables";
 
 export const paperAnimation = () => {
   paper.style.left = '-190px';
@@ -6,7 +6,6 @@ export const paperAnimation = () => {
   paperCircle.style.left = '30px';
   paperCircle.style.top = '360px';
 
-  // scissorsScreenContainer.style.transform = 'translateX(-220px)';
   paper.animate([
     {top: '-190px', left: '100px'},
     {top: '40px', left: '100px'},
@@ -15,6 +14,4 @@ export const paperAnimation = () => {
     {top: '0', left: '30px'},
     {top: '360px', left: '-265px'},
   ], 700);
-
-  paperScreenContainer.style.transform = 'translateX(-220px)';
 }

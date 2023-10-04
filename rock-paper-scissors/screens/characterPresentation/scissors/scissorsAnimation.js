@@ -1,5 +1,4 @@
 import { scissors, scissorsCircle, scissorsScreenContainer } from "../../../variables.js";
-import { rockRender } from "../rock/rockRender.js";
 export const scissorsAnimation = () => {
   scissors.style.left = '-190px';
   scissors.style.transform = 'scale(1)';
@@ -20,6 +19,4 @@ export const scissorsAnimation = () => {
   // setTimeout(() => {
   //   scissorsScreenContainer.style.display = 'none';
   // }, 1000)
-
-  rockRender();
 };

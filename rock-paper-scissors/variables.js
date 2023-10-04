@@ -22,13 +22,8 @@ paperIcon.classList.add('icons')
 iconsWrapper.append(scissorsIcon, rockIcon, paperIcon);
 
 let currentIcon = 1;
-const incrementCount = () => {
-  currentIcon ++;
-}
-
-const decrementCount = () => {
-  currentIcon --;
-}
+const incrementCount = () => currentIcon = currentIcon + 1;
+const decrementCount = () => currentIcon = currentIcon - 1;
 
 //Welcome screen
 
