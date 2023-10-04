@@ -7,8 +7,8 @@ export const scissorsAnimationBack = () => {
   scissorsScreenContainer.style.transform = 'translateX(0)';
 
   scissors.animate([
-    {top: '40px', left: '-190px', transform: 'scale(1)'},
-    {left: '100px', transform: 'scale(0.5)'},
+    {top: '40px', left: '-190px', transform: 'scale(0.5)'},
+    {left: '100px', transform: 'scale(1)'},
   ], 700);
   scissorsCircle.animate([
     {top: '140px', left: '-265px'},

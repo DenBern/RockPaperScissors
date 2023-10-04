@@ -1,5 +1,5 @@
 import { screensWrapper } from "../variables.js";
-import { scissorsRender } from "./characterPresentation/scissors/scissorsRender.js";
+import { characterPresent } from "./characterPresentation/characterPresent.js";
 export const screenGreeting = () => {
   const greetingScreen = document.createElement('div');
   greetingScreen.classList.add('greeting-screen');
@@ -50,7 +50,7 @@ export const screenGreeting = () => {
     greetingScreen.style.opacity = 0;
     setTimeout(() => {
       greetingScreen.style.display = "none";
-      scissorsRender();
+      characterPresent();
     }, 500);
   })
 }

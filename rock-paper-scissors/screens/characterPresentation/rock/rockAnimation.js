@@ -1,26 +1,53 @@
-import { btnPrev, rockCircle, titleRock, rock, rockScreenContainer } from "../../../variables.js";
+import { btnPrev, rockCircle, titleRock, rock, currentIcon } from "../../../variables.js";
 
 export const rockAnimation = () => {
-  rock.style.left = '-190px';
-  rockCircle.style.left = '-265px';
-  rockCircle.style.top = '140px';
-  btnPrev.style.bottom = '15px';
-  titleRock.style.left = '-190px';
-  titleRock.style.top = '480px';
-  rockScreenContainer.style.transform = 'translateX(-365px)';
+  console.log('animation');
+  if (currentIcon === 2) {
+    rock.style.left = '-45px';
+    rock.style.top = '40px';
+    rockCircle.style.left = '-115px';
+    rockCircle.style.top = '360px';
+    btnPrev.style.bottom = '15px';
+    titleRock.style.left = '165px';
+    titleRock.style.top = '480px';
 
-  rock.animate([
-    {top: '40px', left: '100px'},
-    {left: '-190px'},
-  ], 700);
+    rock.animate([
+      {top: '430px', left: '310px'},
+      {top: '40px', left: '-45px'},
+    ], 700);
 
-  rockCircle.animate([
-    {top: '360px', left: '30px'},
-    {top: '140px', left: '-265px'},
-  ], 700);
+    rockCircle.animate([
+      {top: '700px', left: '210px'},
+      {top: '360px', left: '-115px'},
+    ], 700);
 
-  titleRock.animate([
-    {left: '170px'},
-    {left: '-190px'}
-  ], 700);
+    titleRock.animate([
+      {left: '500px', top: '80px'},
+      {left: '165px', top: '480px'},
+    ], 700);
+  };
+
+  if (currentIcon === 3) {
+    rock.style.left = '-440px';
+    rock.style.top = '40px';
+    rockCircle.style.left = '-645px';
+    rockCircle.style.top = '140px';
+    titleRock.style.left = '-320px';
+    titleRock.style.top = '480px';
+
+    rock.animate([
+      {top: '40px', left: '-45px'},
+      {top: '40px', left: '-440px'},
+    ], 700);
+
+    rockCircle.animate([
+      {top: '360px', left: '-115px'},
+      {top: '140px', left: '-645px'},
+    ], 700);
+
+    titleRock.animate([
+      {left: '170px', top: '480px'},
+      {left: '-320px'},
+    ], 700);
+  }
 }

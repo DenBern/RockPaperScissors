@@ -1,17 +1,22 @@
-import { paperCircle, paperCircle } from "../../../variables";
+import { paperCircle, paper, titlePaper } from "../../../variables.js";
 
 export const paperAnimation = () => {
-  paper.style.left = '-190px';
-  paper.style.transform = 'scale(1)';
-  paperCircle.style.left = '30px';
+  paper.style.left = '-195px';
+  paperCircle.style.left = '-265px';
   paperCircle.style.top = '360px';
+  titlePaper.style.left = '165px';
 
   paper.animate([
-    {top: '-190px', left: '100px'},
-    {top: '40px', left: '100px'},
+    {top: '40px', left: '260px'},
+    {top: '40px', left: '-195px'},
   ], 700);
   paperCircle.animate([
-    {top: '0', left: '30px'},
+    {top: '700px', left: '210px'},
     {top: '360px', left: '-265px'},
+  ], 700);
+
+  titlePaper.animate([
+    {top: '480px', left: '500px'},
+    {top:'480px', left: '165px'},
   ], 700);
 }

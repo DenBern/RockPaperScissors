@@ -1,5 +1,4 @@
 import { paper, paperCircle } from "../../../variables.js";
-import { paperRender } from "./paperRender.js";
 
 export const paperListeners = () => {
   paper.addEventListener('animationend', () => {

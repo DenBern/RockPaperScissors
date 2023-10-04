@@ -5,9 +5,9 @@ const screensWrapper = document.querySelector('.screens-wrapper');
 const btnNext = document.createElement('button');
 btnNext.classList.add('btn-next');
 const btnPrev = document.createElement('button');
+btnPrev.classList.add('btn-prev');
 
 // Icons
-
 const iconsWrapper = document.createElement('div');
 const scissorsIcon = document.createElement('img');
 const rockIcon = document.createElement('img');
@@ -21,14 +21,15 @@ rockIcon.classList.add('icons');
 paperIcon.classList.add('icons')
 iconsWrapper.append(scissorsIcon, rockIcon, paperIcon);
 
-let currentIcon = 1;
-const incrementCount = () => currentIcon = currentIcon + 1;
-const decrementCount = () => currentIcon = currentIcon - 1;
 
 //Welcome screen
-
 const screenWelcome = document.createElement('div');
 const btnWelcome = document.createElement('button');
+
+//Change character screen
+let currentIcon = 1;
+const incrementCount = () => currentIcon ++;
+const decrementCount = () => currentIcon --;
 
 // Scissors screen
 const scissorsScreenContainer = document.createElement('div');
@@ -49,7 +50,6 @@ const paperCircle = document.createElement('div');
 const titlePaper = document.createElement('h2');
 titlePaper.classList.add('title-paper');
 const paper = document.createElement('img');
-
 
 export {
   screensWrapper,
