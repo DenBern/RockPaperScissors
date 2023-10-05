@@ -1,8 +1,9 @@
-import { btnPrev } from "../../variables.js";
+import { btnNext, btnPrev } from "../../variables.js";
 
 export const changeBtnPresent = (value) => {
   if (value === 3) {
     btnPrev.style.right = '240px';
+    btnNext.textContent = 'Let’s Start';
   };
 
   if (value === 2) {
