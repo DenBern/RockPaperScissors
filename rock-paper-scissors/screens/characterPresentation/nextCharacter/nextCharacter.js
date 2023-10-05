@@ -3,10 +3,15 @@ import { scissorsAnimation } from "../scissors/scissorsAnimation.js";
 import { rockAnimation } from "../rock/rockAnimation.js";
 import { paperAnimation } from "../paper/paperAnimation.js";
 import { changeBtnPresent, changeIcons } from "../../../scripts/helpers/helpers.js";
+import { checkLogIn } from "../../../scripts/localStorage/checkLogIn.js";
 
 export const nextCharacter = () => {
   btnNext.addEventListener('click', () => {
     incrementCount();
+    if (currentIcon < 4) {
+      changeIcons(currentIcon);
+    };
+
     if (currentIcon === 2) {
       scissorsAnimation();
       rockAnimation(currentIcon);
@@ -21,7 +26,8 @@ export const nextCharacter = () => {
       changeBtnPresent(currentIcon);
     };
 
-    changeIcons(currentIcon);
-
+    if (currentIcon === 4) {
+      checkLogIn();
+    };
   });
 }

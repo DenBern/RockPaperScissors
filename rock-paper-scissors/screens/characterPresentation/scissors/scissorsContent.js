@@ -14,7 +14,6 @@ export const scissorsContent = () => {
   titleScissors.classList.add('title-scissors');
   scissorsCircle.classList.add('scissors-circle');
 
-
   scissors.src = "../../assets/svg/greeting/presentation/scissors.svg";
   scissors.classList.add('scissors');
 

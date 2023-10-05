@@ -1,13 +1,16 @@
-import { btnNext, btnPrev } from "../../variables.js";
+import { arrowNext, btnNext, btnPrev } from "../../variables.js";
 
 export const changeBtnPresent = (value) => {
-  if (value === 3) {
-    btnPrev.style.right = '240px';
-    btnNext.textContent = 'Let’s Start';
-  };
-
-  if (value === 2) {
-    btnPrev.style.right = '200px';
+  switch (value) {
+    case 3:
+      btnPrev.style.right = '240px';
+      btnNext.textContent = 'Let’s Start';
+      break;
+    case 2:
+      btnNext.textContent = 'Next';
+      btnNext.append(arrowNext);
+      btnPrev.style.right = '200px';
+      break;
   };
 };
 

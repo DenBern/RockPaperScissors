@@ -29,6 +29,22 @@ const paperIcon = `<svg width="10" height="17" viewBox="0 0 10 17" fill="none" x
 <path id="paper-path" fill-rule="evenodd" clip-rule="evenodd" d="M5.95392 1.13989C6.20119 1.36861 6.36321 1.72555 6.36321 2.13654V2.32983C6.53363 2.25419 6.71365 2.2211 6.89528 2.2211C7.20708 2.2211 7.52447 2.32366 7.7723 2.55332C8.02014 2.78298 8.18159 3.14347 8.18159 3.55601V4.34729C8.35202 4.27154 8.53785 4.23856 8.7195 4.23856C9.03034 4.23856 9.34342 4.34206 9.59069 4.57078C9.83795 4.7995 9.99996 5.15643 9.99996 5.56742V11.0762C9.99996 12.7491 9.3861 14.0521 8.45638 14.9118C7.5267 15.7714 6.29759 16.1923 5.0769 16.1923C3.8562 16.1923 2.63295 15.7714 1.70324 14.9118C0.773548 14.0521 0.153809 12.7491 0.153809 11.0762V7.67549C0.153809 7.26415 0.320967 6.90738 0.568949 6.67884C0.816925 6.45029 1.12879 6.34662 1.44012 6.34662C1.6221 6.34662 1.80731 6.37971 1.97804 6.45534V3.54997C1.97804 3.13898 2.14006 2.78204 2.38734 2.55332C2.63459 2.3246 2.95354 2.21506 3.26436 2.21506C3.44649 2.21506 3.62562 2.25366 3.79643 2.32983V2.13654C3.79643 1.72555 3.95844 1.36861 4.20571 1.13989C4.45296 0.911171 4.76608 0.807678 5.0769 0.807678C5.39737 0.814759 5.74966 0.95597 5.95392 1.13989ZM5.0769 1.58083C4.9336 1.58083 4.79603 1.6274 4.70271 1.71372C4.60936 1.80005 4.54483 1.91744 4.54483 2.13654V8.30368C4.54764 8.50791 4.36834 8.69576 4.17062 8.69576C3.97292 8.69576 3.79364 8.50791 3.79643 8.30368V3.58017C3.8099 3.39504 3.7167 3.24794 3.63855 3.12715C3.54525 3.04082 3.40766 2.98822 3.26436 2.98822C3.12107 2.98822 2.97764 3.04082 2.88431 3.12715C2.79099 3.21347 2.72644 3.33086 2.72644 3.54997C2.72644 6.02458 2.72644 8.49411 2.72644 10.9674C2.72924 11.1717 2.54995 11.3595 2.35223 11.3595C2.15453 11.3595 1.97525 11.1717 1.97804 10.9674V7.71172C1.99244 7.52649 1.89938 7.37854 1.82019 7.25871C1.72633 7.17221 1.58457 7.11978 1.44012 7.11978C1.2957 7.11978 1.15979 7.17221 1.06593 7.25871C0.972073 7.3452 0.902213 7.45674 0.902213 7.67549V11.0762C0.902213 12.5571 1.42449 13.6206 2.20024 14.3379C2.97598 15.0552 4.02366 15.4191 5.0769 15.4191C6.13013 15.4191 7.17782 15.0552 7.95357 14.3379C8.7293 13.6206 9.25156 12.5571 9.25156 11.0762V5.56742C9.25156 5.34832 9.18703 5.23697 9.0937 5.15064C9.00038 5.06432 8.8628 5.01172 8.7195 5.01172C8.5762 5.01172 8.43863 5.06432 8.3453 5.15064C8.19575 5.29816 8.18335 5.43014 8.18159 5.60971V8.99831C8.18439 9.20254 8.0051 9.39039 7.80739 9.39039C7.60968 9.39039 7.43041 9.20254 7.43319 8.99831C7.43319 7.18261 7.43319 5.3702 7.43319 3.55601C7.43319 3.33502 7.36931 3.21425 7.27533 3.12715C7.18133 3.04005 7.03925 2.98822 6.89528 2.98822C6.75131 2.98822 6.61508 3.04005 6.52107 3.12715C6.42707 3.21425 6.36321 3.33502 6.36321 3.55601V8.36408C6.36602 8.56831 6.18673 8.75616 5.98902 8.75616C5.7913 8.75616 5.61203 8.56831 5.61482 8.36408C5.61295 6.28653 5.61482 4.21002 5.61482 2.13654C5.61482 1.91744 5.54443 1.80005 5.45111 1.71372C5.35778 1.6274 5.22018 1.58083 5.0769 1.58083Z" fill="white"/>
 </svg>
 `;
+const startGameIcon = `<svg width="101" height="51" viewBox="0 0 101 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Play-icon">
+<path id="Rectangle" d="M75.5 1H25.5C11.969 1 1 11.969 1 25.5C1 39.031 11.969 50 25.5 50H75.5C89.031 50 100 39.031 100 25.5C100 11.969 89.031 1 75.5 1Z" fill="white" stroke="#232586"/>
+<path id="Path-17-Copy" fill-rule="evenodd" clip-rule="evenodd" d="M39 13.6272V37.3729C39 38.2715 40.2475 39 41.7864 39C42.5953 39 43.3643 38.7947 43.8936 38.4375L61.3208 26.6753C62.22 26.0683 62.2271 25.1691 61.3375 24.5574L43.9103 12.5739C42.9142 11.8889 41.1557 11.8052 39.9827 12.3869C39.3593 12.6961 39 13.1496 39 13.6272Z" fill="#4847C4"/>
+</g>
+</svg>
+`;
+const menuGameIcon = `<svg width="32" height="27" viewBox="0 0 32 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Menu-icon">
+<path id="Rectangle" d="M26.0426 0.5H5.95777C4.4348 0.5 3.2002 1.73461 3.2002 3.25758C3.2002 4.78054 4.4348 6.01515 5.95777 6.01515H26.0426C27.5656 6.01515 28.8002 4.78054 28.8002 3.25758C28.8002 1.73461 27.5656 0.5 26.0426 0.5Z" fill="#FBC399"/>
+<path id="Rectangle-Copy" d="M29.2424 10.7424H2.75758C1.23461 10.7424 0 11.977 0 13.5C0 15.023 1.23461 16.2576 2.75758 16.2576H29.2424C30.7654 16.2576 32 15.023 32 13.5C32 11.977 30.7654 10.7424 29.2424 10.7424Z" fill="#FBC399"/>
+<path id="Rectangle-Copy-4" d="M26.0426 20.9849H5.95777C4.4348 20.9849 3.2002 22.2195 3.2002 23.7424C3.2002 25.2654 4.4348 26.5 5.95777 26.5H26.0426C27.5656 26.5 28.8002 25.2654 28.8002 23.7424C28.8002 22.2195 27.5656 20.9849 26.0426 20.9849Z" fill="#FBC399"/>
+</g>
+</svg>
+`;
+
 const iconsWrapper = document.createElement('div');
 iconsWrapper.classList.add('icons-wrapper');
 
@@ -73,6 +89,62 @@ const titlePaper = document.createElement('h2');
 titlePaper.classList.add('title-paper');
 const paper = document.createElement('img');
 
+// Register and log in
+
+let userName = '';
+const setUserName = (value) => {
+  userName = value;
+};
+
+// User logged
+const navBar = document.createElement('div');
+navBar.classList.add('nav-bar');
+const startGameContainer = document.createElement('button');
+const menuGameContainer = document.createElement('button');
+startGameContainer.classList.add('btn-start');
+menuGameContainer.classList.add('btn-menu');
+const userInfo = document.createElement('div');
+const shadowPreview = document.createElement('img');
+const bloodPreview = document.createElement('img');
+const handMale = document.createElement('img');
+const handFemale = document.createElement('img');
+const loggedLogo = document.createElement('div');
+
+// Start game
+const computerChangeShadow = document.createElement('img');
+const userChangeShadow = document.createElement('img');
+const computerChangeContainer = document.createElement('div');
+const userChangeContainer = document.createElement('div');
+
+userChangeShadow.src = './assets/svg/hands/shadow/userChange.svg';
+computerChangeShadow.src = './assets/svg/hands/shadow/computerChange.svg';
+
+computerChangeContainer.append(computerChangeShadow);
+userChangeContainer.append(userChangeShadow);
+
+const gameButtons = document.createElement('div');
+gameButtons.classList.add('game-buttons');
+const rockButton  = document.createElement('button');
+rockButton.innerHTML = rockIcon;
+rockButton.textContent = 'Rock';
+rockButton.classList.add('rock-button')
+const paperButton  = document.createElement('button');
+paperButton.innerHTML = paperIcon;
+paperButton.textContent = 'Paper';
+paperButton.classList.add('paper-button');
+const scissorsButton  = document.createElement('button');
+scissorsButton.innerHTML = scissorsIcon;
+scissorsButton.textContent = 'Scissors';
+scissorsButton.classList.add('scissors-button')
+const randomButton  = document.createElement('button');
+randomButton.textContent = 'Random';
+randomButton.classList.add('random-button');
+
+const randomPaperBtns = document.createElement('div');
+randomPaperBtns.append(paperButton, randomButton);
+
+
+
 export {
   screensWrapper,
   scissorsScreenContainer,
@@ -99,4 +171,25 @@ export {
   rockIcon,
   scissorsIcon,
   paperIcon,
+  userName,
+  setUserName,
+  menuGameIcon,
+  startGameIcon,
+  navBar,
+  startGameContainer,
+  menuGameContainer,
+  userInfo,
+  shadowPreview,
+  bloodPreview,
+  handFemale,
+  handMale,
+  loggedLogo,
+  computerChangeContainer,
+  userChangeContainer,
+  gameButtons,
+  rockButton,
+  paperButton,
+  scissorsButton,
+  randomButton,
+  randomPaperBtns,
 };
