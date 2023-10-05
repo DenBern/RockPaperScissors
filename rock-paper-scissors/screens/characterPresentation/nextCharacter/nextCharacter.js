@@ -1,7 +1,8 @@
-import { btnNext, btnPrev, currentIcon, incrementCount, rockScreenContainer,paperScreenContainer } from "../../../variables.js"
+import { btnNext, btnPrev, currentIcon, incrementCount, rockScreenContainer,paperScreenContainer, rockIcon } from "../../../variables.js"
 import { scissorsAnimation } from "../scissors/scissorsAnimation.js";
 import { rockAnimation } from "../rock/rockAnimation.js";
 import { paperAnimation } from "../paper/paperAnimation.js";
+import { changeBtnPresent, changeIcons } from "../../../scripts/helpers/helpers.js";
 
 export const nextCharacter = () => {
   btnNext.addEventListener('click', () => {
@@ -17,6 +18,10 @@ export const nextCharacter = () => {
     if (currentIcon === 3) {
       rockAnimation (currentIcon);
       paperAnimation();
+      changeBtnPresent(currentIcon);
     };
+
+    changeIcons(currentIcon);
+
   });
 }
