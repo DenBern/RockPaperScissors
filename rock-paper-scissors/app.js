@@ -1,4 +1,4 @@
-// import { welcomeRender } from "./screens/welcome/welcomeRender.js";
+// import { welcomeRender } from "./scripts/screens/welcome/welcomeRender.js";
 // welcomeRender();
 
 // import { screenGreeting } from "./screens/screenGreeting.js";
@@ -21,5 +21,5 @@
 // import { checkLogIn } from "./scripts/localStorage/checkLogIn.js";
 // checkLogIn();
 
-import { startGameRender }  from "./screens/startGame/startGameRender.js";
-startGameRender()
+import { startGameRender }  from "./scripts/screens/startGame/startGameRender.js";
+startGameRender();

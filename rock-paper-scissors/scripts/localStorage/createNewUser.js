@@ -1,4 +1,4 @@
-import { userLoggedRender } from "../../screens/userLogged/userLoggedRender.js";
+import { userLoggedRender } from "../screens/userLogged/userLoggedRender.js";
 export const createNewUser = (login) => {
   let newUser = {
     login: `${login}`,

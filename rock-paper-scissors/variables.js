@@ -110,7 +110,7 @@ const handMale = document.createElement('img');
 const handFemale = document.createElement('img');
 const loggedLogo = document.createElement('div');
 
-// Start game
+// In game
 const computerChangeShadow = document.createElement('img');
 const userChangeShadow = document.createElement('img');
 const computerChangeContainer = document.createElement('div');
@@ -135,15 +135,32 @@ paperButton.classList.add('paper-button');
 const scissorsButton  = document.createElement('button');
 scissorsButton.innerHTML = scissorsIcon;
 scissorsButton.textContent = 'Scissors';
-scissorsButton.classList.add('scissors-button')
+scissorsButton.classList.add('scissors-button');
+
 const randomButton  = document.createElement('button');
 randomButton.textContent = 'Random';
 randomButton.classList.add('random-button');
 
 const randomPaperBtns = document.createElement('div');
+randomPaperBtns.classList.add('random-paper-btns');
+
+const randomIcon = document.createElement('img');
+randomIcon.src = './assets/svg/randomIcon.svg';
+randomButton.append(randomIcon);
+
+const scissorsIconAction = document.createElement('img');
+scissorsIconAction.src = './assets/svg/scissorsIcon.svg';
+scissorsButton.append(scissorsIconAction);
+
+const rockIconAction = document.createElement('img');
+rockIconAction.src = './assets/svg/rockIcon.svg';
+rockButton.append(rockIconAction);
+
+const paperIconAction = document.createElement('img');
+paperIconAction.src = './assets/svg/paperIcon.svg';
+paperButton.append(paperIconAction);
+
 randomPaperBtns.append(paperButton, randomButton);
-
-
 
 export {
   screensWrapper,

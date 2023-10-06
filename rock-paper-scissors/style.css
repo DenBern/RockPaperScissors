@@ -560,6 +560,12 @@ h1 {
   background: none;
 }
 
+.btn-start:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
 /***** Start game *****/
 
 .start-game {
@@ -567,6 +573,8 @@ h1 {
   width: 100%;
   height: 100%;
   background-color: #4847C4;
+  animation: start-game 0.5s linear;
+  opacity: 1;
 }
 
 .user-change-container {
@@ -600,9 +608,12 @@ h1 {
 
 .game-buttons {
   position: absolute;
-  bottom: 0;
+  bottom: -60px;
   display: flex;
-  left: 30%;
+  align-items: center;
+  gap: 20px;
+  left: 6%;
+  z-index: 4;
 }
 
 .rock-button,
@@ -610,6 +621,9 @@ h1 {
 .scissors-button,
 .random-button {
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
   background: none;
   background-color: #232586;
   opacity: 0.7;
@@ -620,16 +634,71 @@ h1 {
   font-weight: 400;
   line-height: normal;
   border-radius: 50%;
+  width: 104px;
+  height: 104px;
+  transition: 0.7s;
+}
+
+.rock-button:disabled,
+.paper-button:disabled,
+.scissors-button:disabled,
+.random-button:disabled {
+  color: #fff;
 }
 
 .random-button {
-  width: 104px;
-  height: 104px;
+  position: relative;
+  width: 130px;
+  height: 135px;
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
-  background: url(./assets/svg/randomIcon.svg) no-repeat center;
+  justify-content: flex-end;
+  padding-top: 15px;
   background-color: #232586;
+}
+
+.random-paper-btns {
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.timer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 6;
+  right: 125px;
+  color: #FFB24C;
+  font-family: Inter;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/***** Player click *****/
+
+.user-item-container {
+  position: absolute;
+  z-index: 3;
+  bottom: -75px;
+  left: 125px;
+}
+
+.computer-item-container {
+  position: absolute;
+  z-index: 3;
+  left: 100px;
+  bottom: 250px;
+  animation: visible-item 0.5s linear;
+}
+
+@keyframes visible-item {
+  from {bottom: 660px}
+  to {bottom: 250px}
 }
 
 /***** Animation welcome *****/
@@ -782,4 +851,9 @@ h1 {
   to {
     transform: rotate(-10deg);
   }
+}
+
+@keyframes start-game {
+  from {opacity: 0.5;}
+  to {opacity: 1;}
 }
