@@ -111,16 +111,17 @@ const handFemale = document.createElement('img');
 const loggedLogo = document.createElement('div');
 
 // In game
+const startGameWrapper = document.createElement('div');
 const computerChangeShadow = document.createElement('img');
-const userChangeShadow = document.createElement('img');
+const playerChangeShadow = document.createElement('img');
 const computerChangeContainer = document.createElement('div');
-const userChangeContainer = document.createElement('div');
+const playerChangeContainer = document.createElement('div');
 
-userChangeShadow.src = './assets/svg/hands/shadow/userChange.svg';
+playerChangeShadow.src = './assets/svg/hands/shadow/userChange.svg';
 computerChangeShadow.src = './assets/svg/hands/shadow/computerChange.svg';
 
 computerChangeContainer.append(computerChangeShadow);
-userChangeContainer.append(userChangeShadow);
+playerChangeContainer.append(playerChangeShadow);
 
 const gameButtons = document.createElement('div');
 gameButtons.classList.add('game-buttons');
@@ -162,6 +163,13 @@ paperButton.append(paperIconAction);
 
 randomPaperBtns.append(paperButton, randomButton);
 
+
+  const playerItemContainer = document.createElement('div');
+  const itemPlayerIcon = document.createElement('img');
+
+  const computerItemContainer = document.createElement('div');
+  const itemComputerIcon = document.createElement('img');
+
 export {
   screensWrapper,
   scissorsScreenContainer,
@@ -202,11 +210,16 @@ export {
   handMale,
   loggedLogo,
   computerChangeContainer,
-  userChangeContainer,
+  playerChangeContainer,
   gameButtons,
   rockButton,
   paperButton,
   scissorsButton,
   randomButton,
   randomPaperBtns,
+  startGameWrapper,
+  playerItemContainer,
+  itemPlayerIcon,
+  computerItemContainer,
+  itemComputerIcon,
 };

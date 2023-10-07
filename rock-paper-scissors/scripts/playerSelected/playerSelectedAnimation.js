@@ -1,20 +1,20 @@
-import { computerChangeContainer, userChangeContainer } from "../../variables.js";
+import { computerChangeContainer, playerChangeContainer } from "../../variables.js";
 
 export const playerSelectedAnimation = () => {
-  computerChangeContainer.style.bottom = '400px';
+  computerChangeContainer.style.bottom = '600px';
   computerChangeContainer.style.opacity = 0.5;
-  userChangeContainer.style.top = '670px';
-  userChangeContainer.style.opacity = '0.5';
+  playerChangeContainer.style.top = '670px';
+  playerChangeContainer.style.opacity = '0.5';
 
   computerChangeContainer.style.animationPlayState = 'paused';
-  userChangeContainer.style.animationPlayState = 'paused';
+  playerChangeContainer.style.animationPlayState = 'paused';
 
   computerChangeContainer.animate([
     {opacity: 1, bottom: '150px'},
-    {opacity: 0.5, bottom: '400px'}
+    {opacity: 0.5, bottom: '600px'}
   ], 700);
 
-  userChangeContainer.animate([
+  playerChangeContainer.animate([
     {opacity: 1, top: '425px'},
     {opacity: 0.5, top: '670px'}
   ], 700);

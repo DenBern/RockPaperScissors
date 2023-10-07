@@ -1,4 +1,14 @@
-import { bloodPreview, handFemale, handMale, loggedLogo, navBar, screensWrapper, shadowPreview, startGameContainer, userInfo } from "../../../variables.js";
+import {
+  bloodPreview,
+  handFemale,
+  handMale,
+  loggedLogo,
+  navBar,
+  screensWrapper,
+  shadowPreview,
+  startGameContainer,
+  userInfo,
+} from "../../../variables.js";
 import { startGameRender } from "../startGame/startGameRender.js";
 
 export const userLoggedListeners = () => {
@@ -12,7 +22,7 @@ export const userLoggedListeners = () => {
     loggedLogo.style.opacity = '0';
     navBar.style.top = '100px';
     setTimeout(() => {
-      screensWrapper.innerHTML = ''; // or startGameScreen!!!!!
+      screensWrapper.innerHTML = '';
       startGameRender();
     }, 750);
   });

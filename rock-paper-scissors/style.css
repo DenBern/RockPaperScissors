@@ -577,12 +577,12 @@ h1 {
   opacity: 1;
 }
 
-.user-change-container {
+.player-change-container {
   position: relative;
   top: 425px;
   left: 138px;
   transform: rotate(0);
-  animation: user-change 0.6s ease-in-out infinite;
+  animation: player-change 0.6s ease-in-out infinite;
   animation-direction: alternate;
   z-index: 2;
   animation-delay: 3s;
@@ -613,7 +613,7 @@ h1 {
   align-items: center;
   gap: 20px;
   left: 6%;
-  z-index: 4;
+  z-index: 5;
 }
 
 .rock-button,
@@ -681,24 +681,53 @@ h1 {
 
 /***** Player click *****/
 
-.user-item-container {
+.player-item-container {
   position: absolute;
   z-index: 3;
-  bottom: -75px;
-  left: 125px;
+  bottom: -100px;
+  left: 150px;
+  animation: visible-item-player 0.7s linear;
 }
 
 .computer-item-container {
   position: absolute;
   z-index: 3;
   left: 100px;
-  bottom: 250px;
-  animation: visible-item 0.5s linear;
+  bottom: 290px;
+  animation: visible-item-computer 0.7s linear;
 }
 
-@keyframes visible-item {
-  from {bottom: 660px}
-  to {bottom: 250px}
+.blood-item-container {
+  position: absolute;
+  top: 165px;
+  right: 135px;
+  z-index: 2;
+  rotate: 95deg;
+  transform: scale(1.8);
+  animation: visible-blood 0.7s linear;
+}
+
+.winner-pop-up {
+  position: absolute;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 60%;
+  margin: auto auto;
+  z-index: 6;
+  border-radius: 20px;
+  padding: 80px 30px;
+}
+
+.title-winner {
+  color: #000;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 /***** Animation welcome *****/
@@ -835,7 +864,7 @@ h1 {
 
 /***** Start game *****/
 
-@keyframes user-change {
+@keyframes player-change {
   from {
     transform: rotate(0deg);
   }
@@ -853,7 +882,24 @@ h1 {
   }
 }
 
-@keyframes start-game {
+/***** Animation click button *****/
+
+@keyframes visible-item-computer {
+  from {bottom: 660px}
+  to {bottom: 290px}
+}
+
+@keyframes visible-item-player {
+  from {bottom: -500px}
+  to {bottom: -100px}
+}
+
+@keyframes visible-blood {
+  from {transform: scale(0.2);}
+  to {transform: scale(1.8);}
+}
+
+/* @keyframes start-game {
   from {opacity: 0.5;}
   to {opacity: 1;}
-}
+} */

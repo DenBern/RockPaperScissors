@@ -1,13 +1,14 @@
 import { arrowNext,
   btnNext,
   btnPrev,
+  computerItemContainer,
   paperButton,
+  playerChangeContainer,
+  playerItemContainer,
   randomButton,
   rockButton,
-  scissors,
   scissorsButton,
-  computerChangeContainer,
-  userChangeContainer,
+  startGameWrapper
 } from "../../variables.js";
 import { winnerSelectionRender } from "../winnerSelection/winnerSelectionRender.js";
 
@@ -90,10 +91,11 @@ export const disabledActionBtns = () => {
 };
 
 export const enabledActionBtns = () => {
-  rockButton.removeAttribute('disabled', '');
-  paperButton.removeAttribute('disabled', '');
-  scissorsButton.removeAttribute('disabled', '');
-  randomButton.removeAttribute('disabled', '');
+  [rockButton, paperButton, scissorsButton, randomButton].forEach(btn => {
+    btn.removeAttribute('disabled', '');
+    btn.style.backgroundColor = '#232586';
+    btn.style.opacity = 0.7;
+  });
 };
 
 export const getRandomItem = () => {
@@ -109,11 +111,18 @@ export const whoIsWinner = (player, computer) => {
     computer: '',
   };
   if (player === 'Rock' && computer === 'Paper') gameEnd = {winner: 'computer', player: player, computer: computer};
-  if (player === 'Rock' && computer === 'Scissors') gameEnd = {winner: 'user', player: player, computer: computer}
-  if (player === 'Paper' && computer === 'Rock') gameEnd = {winner: 'user', player: player, computer: computer};
+  if (player === 'Rock' && computer === 'Scissors') gameEnd = {winner: 'player', player: player, computer: computer}
+  if (player === 'Paper' && computer === 'Rock') gameEnd = {winner: 'player', player: player, computer: computer};
   if (player === 'Paper' && computer === 'Scissors') gameEnd = {winner: 'computer', player: player, computer: computer};
   if (player === 'Scissors' && computer === 'Rock') gameEnd = {winner: 'computer', player: player, computer: computer};
-  if (player === 'Scissors' && computer === 'Paper') gameEnd = {winner: 'user', player: player, computer: computer}
+  if (player === 'Scissors' && computer === 'Paper') gameEnd = {winner: 'player', player: player, computer: computer}
   if (player === computer) gameEnd = {winner: 'drow', player: player, computer: computer};
   winnerSelectionRender(gameEnd);
+}
+
+export const resetStyleStartGame = () => {
+  enabledActionBtns();
+  startGameWrapper.innerHTML = ''
+  startGameWrapper.style.alignItems = '';
+  startGameWrapper.style.justifyContent = '';
 }
