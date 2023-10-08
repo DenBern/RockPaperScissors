@@ -1,27 +1,16 @@
-import { arrowNext,
-  btnNext,
-  btnPrev,
-  computerItemContainer,
-  paperButton,
-  playerChangeContainer,
-  playerItemContainer,
-  randomButton,
-  rockButton,
-  scissorsButton,
-  startGameWrapper
-} from "../../variables.js";
+import * as variables from "../../variables.js"
 import { winnerSelectionRender } from "../winnerSelection/winnerSelectionRender.js";
 
 export const changeBtnPresent = (value) => {
   switch (value) {
     case 3:
-      btnPrev.style.right = '240px';
-      btnNext.textContent = 'Let’s Start';
+      variables.btnPrev.style.right = '240px';
+      variables.btnNext.textContent = 'Let’s Start';
       break;
     case 2:
-      btnNext.textContent = 'Next';
-      btnNext.append(arrowNext);
-      btnPrev.style.right = '200px';
+      variables.btnNext.textContent = 'Next';
+      variables.btnNext.append(variables.arrowNext);
+      variables.btnPrev.style.right = '200px';
       break;
   };
 };
@@ -43,7 +32,7 @@ export const changeIcons = (counter) => {
   switch (counter) {
     case 1:
       pathScisssors.setAttribute('fill', '#FFCC01');
-      pathRock.setAttribute('fill', '#fff')
+      pathRock.setAttribute('fill', '#fff');
       break;
     case 2:
       pathScisssors.setAttribute('fill', '#90C67B');
@@ -84,14 +73,14 @@ export const changeActionButtons = (btn) => {
 };
 
 export const disabledActionBtns = () => {
-  rockButton.setAttribute('disabled', '');
-  paperButton.setAttribute('disabled', '');
-  scissorsButton.setAttribute('disabled', '');
-  randomButton.setAttribute('disabled', '');
+  variables.rockButton.setAttribute('disabled', '');
+  variables.paperButton.setAttribute('disabled', '');
+  variables.scissorsButton.setAttribute('disabled', '');
+  variables.randomButton.setAttribute('disabled', '');
 };
 
 export const enabledActionBtns = () => {
-  [rockButton, paperButton, scissorsButton, randomButton].forEach(btn => {
+  [variables.rockButton, variables.paperButton, variables.scissorsButton, variables.randomButton].forEach(btn => {
     btn.removeAttribute('disabled', '');
     btn.style.backgroundColor = '#232586';
     btn.style.opacity = 0.7;
@@ -105,24 +94,18 @@ export const getRandomItem = () => {
 };
 
 export const whoIsWinner = (player, computer) => {
-  let gameEnd = {
-    winner: '',
-    player: '',
-    computer: '',
-  };
-  if (player === 'Rock' && computer === 'Paper') gameEnd = {winner: 'computer', player: player, computer: computer};
-  if (player === 'Rock' && computer === 'Scissors') gameEnd = {winner: 'player', player: player, computer: computer}
-  if (player === 'Paper' && computer === 'Rock') gameEnd = {winner: 'player', player: player, computer: computer};
-  if (player === 'Paper' && computer === 'Scissors') gameEnd = {winner: 'computer', player: player, computer: computer};
-  if (player === 'Scissors' && computer === 'Rock') gameEnd = {winner: 'computer', player: player, computer: computer};
-  if (player === 'Scissors' && computer === 'Paper') gameEnd = {winner: 'player', player: player, computer: computer}
-  if (player === computer) gameEnd = {winner: 'drow', player: player, computer: computer};
-  winnerSelectionRender(gameEnd);
-}
+  let winner = '';
+  variables.itemsGame[player] === computer
+    ? winner = 'Computer'
+    : player === computer
+    ? winner = 'Draw'
+    : winner = 'Player'
+  winnerSelectionRender(winner, player, computer);
+};
 
 export const resetStyleStartGame = () => {
   enabledActionBtns();
-  startGameWrapper.innerHTML = ''
-  startGameWrapper.style.alignItems = '';
-  startGameWrapper.style.justifyContent = '';
+  variables.startGameWrapper.innerHTML = '';
+  variables.startGameWrapper.style.alignItems = '';
+  variables.startGameWrapper.style.justifyContent = '';
 }

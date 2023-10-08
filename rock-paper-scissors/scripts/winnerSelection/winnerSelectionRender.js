@@ -1,5 +1,5 @@
 import { winnerSelectionContent } from "../winnerSelection/winnerSelectionContent.js";
-export const winnerSelectionRender = (gameEnd) => {
-  const { winner, player, computer } = gameEnd;
+
+export const winnerSelectionRender = (winner, player, computer) => {
   winnerSelectionContent(winner, player, computer);
 };

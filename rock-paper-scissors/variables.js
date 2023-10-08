@@ -164,11 +164,17 @@ paperButton.append(paperIconAction);
 randomPaperBtns.append(paperButton, randomButton);
 
 
-  const playerItemContainer = document.createElement('div');
-  const itemPlayerIcon = document.createElement('img');
+const playerItemContainer = document.createElement('div');
+const itemPlayerIcon = document.createElement('img');
 
-  const computerItemContainer = document.createElement('div');
-  const itemComputerIcon = document.createElement('img');
+const computerItemContainer = document.createElement('div');
+const itemComputerIcon = document.createElement('img');
+
+const itemsGame = {
+  'Rock': 'Paper',
+  'Scissors': 'Rock',
+  'Paper': 'Scissors',
+};
 
 export {
   screensWrapper,
@@ -222,4 +228,5 @@ export {
   itemPlayerIcon,
   computerItemContainer,
   itemComputerIcon,
+  itemsGame,
 };

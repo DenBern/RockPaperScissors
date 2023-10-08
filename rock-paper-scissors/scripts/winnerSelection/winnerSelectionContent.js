@@ -4,6 +4,9 @@ import { playerItemContainer, computerItemContainer, itemPlayerIcon, itemCompute
 export const winnerSelectionContent = (winner, player, computer) => {
   console.log(winner, player, computer);
 
+  startGameWrapper.style.alignItems = '';
+  startGameWrapper.style.justifyContent = '';
+
   playerItemContainer.classList.add('player-item-container');
   computerItemContainer.classList.add('computer-item-container');
 
@@ -14,6 +17,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
   playerItemContainer.append(itemPlayerIcon);
 
   itemComputerIcon.src = `../../assets/svg/hands/computer/computer-${computer}-hand.svg`;
+  computerItemContainer.append(itemComputerIcon);
 
   const bloodItemContainer = document.createElement('div');
   bloodItemContainer.classList.add('blood-item-container');
@@ -23,15 +27,15 @@ export const winnerSelectionContent = (winner, player, computer) => {
   bloodItemContainer.append(bloodIcon);
 
   switch (winner) {
-    case 'player':
+    case 'Player':
       playerItemContainer.style.zIndex = '4';
       computerItemContainer.style.zIndex = '2';
       break;
-    case 'computer':
+    case 'Computer':
       playerItemContainer.style.zIndex = '2';
       computerItemContainer.style.zIndex = '4';
       break;
-    case 'drow':
+    case 'Draw':
       playerItemContainer.style.bottom = '-220px';
       computerItemContainer.style.bottom = '380px';
       playerItemContainer.animate([
@@ -42,24 +46,20 @@ export const winnerSelectionContent = (winner, player, computer) => {
         {bottom: '660px'},
         {bottom: '380px'}
       ], 700);
-      // playerItemContainer.style.bottom = '-220px';
-      // computerItemContainer.style.bottom = '380px';
+      playerItemContainer.style.bottom = '-220px';
+      computerItemContainer.style.bottom = '380px';
       bloodItemContainer.style.display = 'none';
       break;
   };
 
-  computerItemContainer.append(itemComputerIcon)
   startGameWrapper.append(playerItemContainer, computerItemContainer, bloodItemContainer);
-
-  startGameWrapper.style.alignItems = '';
-  startGameWrapper.style.justifyContent = '';
 
   const winnerPopUp = document.createElement('div');
   winnerPopUp.classList.add('winner-pop-up');
 
   const titleWinner = document.createElement('p');
   titleWinner.classList.add('title-winner');
-  titleWinner.textContent = `${winner === 'player' ? 'You won!' : 'You lose!'}`;
+  titleWinner.textContent = `${winner === 'Player' ? 'You won!' : winner === 'Draw' ? 'Draw' : 'You lose!'}`;
 
   const logoPlayer = document.createElement('img');
   logoPlayer.src = '../../assets/svg/winner/logoPlayer.svg';

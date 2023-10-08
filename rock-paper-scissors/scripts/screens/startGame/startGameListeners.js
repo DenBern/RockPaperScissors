@@ -5,31 +5,28 @@ import { playerSelectedRender } from "../../playerSelected/playerSelectedRender.
 import { playerSelected } from "../../playerSelected/playerSelected.js";
 
 export const startGameListeners = () => {
-  rockButton.addEventListener('click', () => {
-    changeActionButtons(rockButton);
+  const selectItem = (btn) => {
+    changeActionButtons(btn);
     disabledActionBtns();
     playerSelectedRender();
-    whoIsWinner(playerSelected(rockButton), computerSelected());
-  });
+    btn.textContent === 'Random' ? whoIsWinner(getRandomItem(), computerSelected()) : whoIsWinner(playerSelected(btn), computerSelected());
+    removeEventListeners();
+  };
 
-  paperButton.addEventListener('click', () => {
-    changeActionButtons(paperButton);
-    disabledActionBtns();
-    playerSelectedRender(paperButton);
-    whoIsWinner(playerSelected(paperButton), computerSelected());
-  });
+  const rockButtonClickHandler = () => selectItem(rockButton);
+  const paperButtonClickHandler = () => selectItem(paperButton);
+  const scissorsButtonClickHandler = () => selectItem(scissorsButton);
+  const randomButtonClickHandler = () => selectItem(randomButton);
 
-  scissorsButton.addEventListener('click', () => {
-    changeActionButtons(scissorsButton);
-    disabledActionBtns();
-    playerSelectedRender(scissorsButton);
-    whoIsWinner(playerSelected(scissorsButton), computerSelected());
-  });
+  rockButton.addEventListener('click', rockButtonClickHandler)
+  paperButton.addEventListener('click', paperButtonClickHandler)
+  scissorsButton.addEventListener('click', scissorsButtonClickHandler)
+  randomButton.addEventListener('click', randomButtonClickHandler)
 
-  randomButton.addEventListener('click', () => {
-    changeActionButtons(randomButton);
-    disabledActionBtns();
-    playerSelectedRender(randomButton);
-    whoIsWinner(getRandomItem(), computerSelected())
-  });
+  function removeEventListeners() {
+    rockButton.removeEventListener('click', rockButtonClickHandler);
+    paperButton.removeEventListener('click', paperButtonClickHandler);
+    scissorsButton.removeEventListener('click', scissorsButtonClickHandler);
+    randomButton.removeEventListener('click', randomButtonClickHandler);
+  };
 }
