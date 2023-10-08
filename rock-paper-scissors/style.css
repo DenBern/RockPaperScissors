@@ -728,22 +728,23 @@ h1 {
 
 .computer-progress-wrapper {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   width: 100px;
 }
 
 .current-progress-computer {
-  background-color: #E95847;
-  width: 100%;
+  width: 60%;
   height: 8px;
   border-radius: 5px;
+  background-color: #E95847;
 }
 
 .current-progress-player {
-  background-color: #90C67B;
-  width: 100%;
+  width: 80%;
   height: 8px;
   border-radius: 5px;
+  background-color: #90C67B;
 }
 
 /***** Player click *****/
