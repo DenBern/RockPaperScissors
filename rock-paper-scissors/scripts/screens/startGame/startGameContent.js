@@ -9,6 +9,8 @@ import {
   rockButton,
   startGameWrapper,
   maxWins,
+  playerLose,
+  playerWin,
 } from "../../../variables.js";
 import { playerSelectedAnimationBack } from "../../playerSelected/playerSelectedAnimationBack.js";
 
@@ -43,12 +45,14 @@ export const startGameContent = () => {
 
   const currentProgressPlayer = document.createElement('div');
   currentProgressPlayer.classList.add('current-progress-player');
+  currentProgressPlayer.style.width = `${(100 / maxWins)* playerWin}%`;
   playerProgressWrapper.append(currentProgressPlayer);
 
   const computerProgressWrapper = document.createElement('div');
   computerProgressWrapper.classList.add('computer-progress-wrapper');
   const currentProgressComputer = document.createElement('div');
   currentProgressComputer.classList.add('current-progress-computer');
+  currentProgressComputer.style.width = `${(100 / maxWins) * playerLose}%`;
   computerProgressWrapper.append(currentProgressComputer);
 
   const computerIcon = document.createElement('img');

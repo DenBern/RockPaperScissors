@@ -734,14 +734,12 @@ h1 {
 }
 
 .current-progress-computer {
-  width: 60%;
   height: 8px;
   border-radius: 5px;
   background-color: #E95847;
 }
 
 .current-progress-player {
-  width: 80%;
   height: 8px;
   border-radius: 5px;
   background-color: #90C67B;

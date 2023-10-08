@@ -4,7 +4,9 @@ import {
   computerItemContainer,
   itemPlayerIcon,
   itemComputerIcon,
-  startGameWrapper
+  startGameWrapper,
+  setPlayerWin,
+  setPlayerLose
 } from "../../variables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
@@ -24,12 +26,14 @@ export const winnerSelectionContent = (winner, player, computer) => {
 
   switch (winner) {
     case 'Player':
+      setPlayerWin();
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '4';
       computerItemContainer.style.zIndex = '2';
       break;
     case 'Computer':
+      setPlayerLose();
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '2';

@@ -182,6 +182,11 @@ const itemsGame = {
 };
 
 const maxWins = 5;
+let playerWin = 0;
+let playerLose = 0;
+
+const setPlayerWin = () => playerWin ++;
+const setPlayerLose = () => playerLose ++;
 
 export {
   maxWins,
@@ -241,4 +246,8 @@ export {
   computerItemContainer,
   itemComputerIcon,
   itemsGame,
+  setPlayerLose,
+  setPlayerWin,
+  playerWin,
+  playerLose,
 };
