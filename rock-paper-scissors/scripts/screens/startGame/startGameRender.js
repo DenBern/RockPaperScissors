@@ -1,4 +1,3 @@
-import { paperButton, randomButton, rockButton, scissorsButton } from "../../../variables.js";
 import { disabledActionBtns } from "../../helpers/helpers.js";
 import { startGameContent } from "./startGameContent.js";
 import { startGameListeners } from "./startGameListeners.js";

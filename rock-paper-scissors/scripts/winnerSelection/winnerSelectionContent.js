@@ -4,18 +4,10 @@ import { playerItemContainer, computerItemContainer, itemPlayerIcon, itemCompute
 export const winnerSelectionContent = (winner, player, computer) => {
   console.log(winner, player, computer);
 
-  startGameWrapper.style.alignItems = '';
-  startGameWrapper.style.justifyContent = '';
-
   playerItemContainer.classList.add('player-item-container');
   computerItemContainer.classList.add('computer-item-container');
-
-  playerItemContainer.innerHTML = '';
-  computerItemContainer.innerHTML = ''
-
   itemPlayerIcon.src = `../../assets/svg/hands/player/player-${player}-hand.svg`;
   playerItemContainer.append(itemPlayerIcon);
-
   itemComputerIcon.src = `../../assets/svg/hands/computer/computer-${computer}-hand.svg`;
   computerItemContainer.append(itemComputerIcon);
 
@@ -28,10 +20,14 @@ export const winnerSelectionContent = (winner, player, computer) => {
 
   switch (winner) {
     case 'Player':
+      playerItemContainer.style.bottom = '-100px';
+      computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '4';
       computerItemContainer.style.zIndex = '2';
       break;
     case 'Computer':
+      playerItemContainer.style.bottom = '-100px';
+      computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '2';
       computerItemContainer.style.zIndex = '4';
       break;
@@ -46,9 +42,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
         {bottom: '660px'},
         {bottom: '380px'}
       ], 700);
-      playerItemContainer.style.bottom = '-220px';
-      computerItemContainer.style.bottom = '380px';
-      bloodItemContainer.style.display = 'none';
+      bloodItemContainer.innerHTML = ''
       break;
   };
 

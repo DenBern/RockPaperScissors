@@ -3,7 +3,7 @@ import { scissorsAnimation } from "../scissors/scissorsAnimation.js";
 import { rockAnimation } from "../rock/rockAnimation.js";
 import { paperAnimation } from "../paper/paperAnimation.js";
 import { changeBtnPresent, changeIcons } from "../../../../scripts/helpers/helpers.js";
-import { checkLogIn } from "../../../../scripts/localStorage/checkLogIn.js";
+import { registerLogInUserRender } from "../../registerUser/registerLogInUserRender.js";
 
 export const nextCharacter = () => {
   btnNext.addEventListener('click', () => {
@@ -27,7 +27,7 @@ export const nextCharacter = () => {
     };
 
     if (currentIcon === 4) {
-      checkLogIn();
+      registerLogInUserRender();
     };
   });
 }

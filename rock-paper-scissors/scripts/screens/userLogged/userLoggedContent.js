@@ -1,6 +1,5 @@
 import { getUserLoggedData } from "../../localStorage/getUserLoggedData.js";
 import {
-  userName,
   screensWrapper,
   menuGameIcon,
   startGameIcon,
@@ -13,13 +12,12 @@ import {
   handFemale,
   handMale,
   loggedLogo,
+  userName,
 } from "../../../variables.js";
 
 export const userLoggedContent = () => {
   screensWrapper.innerHTML = '';
-
-  const {login, lose, win} = getUserLoggedData('Denis');
-  console.log(login)
+  const {login, round, win, lose, draw, clickRock, clickPaper, clickScissors, clickRandom} = getUserLoggedData(userName);
 
   const userLoggedScreen = document.createElement('div');
   userLoggedScreen.classList.add('user-logged');

@@ -1,6 +1,7 @@
 import { screensWrapper } from "../../../variables.js";
+import { checkLogIn } from "../../localStorage/checkLogIn.js";
 
-export const registerUserContent = () => {
+export const registerLogInUserContent = () => {
   screensWrapper.innerHTML = '';
   const logo = document.createElement('img');
   logo.src = '../../assets/svg/logoRegister.svg';
@@ -33,11 +34,13 @@ export const registerUserContent = () => {
 
   const navBar = document.createElement('div');
   navBar.classList.add('nav-bar');
-  
-  btnRegistered.classList.add('btn-registered');
-  btnRegistered.setAttribute('disabled', '');
 
-  registerScreenContainer.append(logo, titleLogo,wrapperInput, dividerContainer, btnRegistered)
+  const btnRegisteredLogIn = document.createElement('button');
+  btnRegisteredLogIn.textContent = `${checkLogIn() ? 'Log in' : 'Registered'}`;
+  btnRegisteredLogIn.classList.add('btn-registered');
+  btnRegisteredLogIn.setAttribute('disabled', '');
+
+  registerScreenContainer.append(logo, titleLogo,wrapperInput, dividerContainer, btnRegisteredLogIn)
 
   screensWrapper.append(registerScreenContainer);
 }

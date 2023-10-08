@@ -62,7 +62,9 @@ iconsWrapper.append(scissorsConntainer, rockConntainer, paperConntainer);
 
 //Welcome screen
 const screenWelcome = document.createElement('div');
-const btnWelcome = document.createElement('button');
+const welcomeTitleScissors = document.createElement('span');
+const welcomeTitleRock = document.createElement('span');
+const welcomeTitlePaper = document.createElement('span');
 
 //Change character screen
 let currentIcon = 1;
@@ -95,6 +97,9 @@ let userName = '';
 const setUserName = (value) => {
   userName = value;
 };
+const userNotFound = document.createElement('div');
+userNotFound.classList.add('user-not-found');
+const userNotFoundText = document.createElement('span');
 
 // User logged
 const navBar = document.createElement('div');
@@ -176,6 +181,10 @@ const itemsGame = {
   'Paper': 'Scissors',
 };
 
+const maxWins = 3;
+const maxSeconds = 30;
+
+
 export {
   screensWrapper,
   scissorsScreenContainer,
@@ -185,7 +194,9 @@ export {
   btnNext,
   btnPrev,
   screenWelcome,
-  btnWelcome,
+  welcomeTitleScissors,
+  welcomeTitlePaper,
+  welcomeTitleRock,
   iconsWrapper,
   rockScreenContainer,
   rockCircle,
@@ -203,6 +214,8 @@ export {
   scissorsIcon,
   paperIcon,
   userName,
+  userNotFound,
+  userNotFoundText,
   setUserName,
   menuGameIcon,
   startGameIcon,
