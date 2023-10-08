@@ -1,9 +1,13 @@
 import { startGameRender } from "../screens/startGame/startGameRender.js";
-import { playerItemContainer, computerItemContainer, itemPlayerIcon, itemComputerIcon, startGameWrapper } from "../../variables.js";
+import {
+  playerItemContainer,
+  computerItemContainer,
+  itemPlayerIcon,
+  itemComputerIcon,
+  startGameWrapper
+} from "../../variables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
-  console.log(winner, player, computer);
-
   playerItemContainer.classList.add('player-item-container');
   computerItemContainer.classList.add('computer-item-container');
   itemPlayerIcon.src = `../../assets/svg/hands/player/player-${player}-hand.svg`;

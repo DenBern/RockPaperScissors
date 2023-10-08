@@ -181,11 +181,10 @@ const itemsGame = {
   'Paper': 'Scissors',
 };
 
-const maxWins = 3;
-const maxSeconds = 30;
-
+const maxWins = 5;
 
 export {
+  maxWins,
   screensWrapper,
   scissorsScreenContainer,
   scissorsCircle,

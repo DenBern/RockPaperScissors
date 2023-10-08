@@ -56,5 +56,5 @@ export const screenGreeting = () => {
       console.log(checkLogIn());
       checkLogIn() ? registerLogInUserRender(checkLogIn()) : characterPresent();
     }, 500);
-  })
+  });
 }

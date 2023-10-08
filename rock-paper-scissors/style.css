@@ -689,6 +689,63 @@ h1 {
   line-height: normal;
 }
 
+.progress-game {
+  position: absolute;
+  top: 310px;
+  left: 255px;
+  height: 10px;
+  transform: rotate(-90deg);
+  background-color: #232586;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.progress-player-icon,
+.progress-computer-icon {
+  transform: rotate(90deg);
+}
+
+.progress-divider {
+  position: relative;
+  width: 2px;
+  height: 18px;
+  background-color: #808080;
+}
+
+.progress-line {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 202px;
+}
+
+.player-progress-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.computer-progress-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.current-progress-computer {
+  background-color: #E95847;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+}
+
+.current-progress-player {
+  background-color: #90C67B;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+}
+
 /***** Player click *****/
 
 .player-item-container {
