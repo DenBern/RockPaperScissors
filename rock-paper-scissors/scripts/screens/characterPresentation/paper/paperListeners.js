@@ -10,4 +10,4 @@ export const paperListeners = () => {
     paperCircle.style.left = '30px';
     paperCircle.style.top = '360px';
   });
-}
+};

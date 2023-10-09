@@ -23,4 +23,4 @@ export const userLoggedAnimationStart = () => {
       screensWrapper.innerHTML = '';
       startGameRender();
     }, 750);
-}
+};

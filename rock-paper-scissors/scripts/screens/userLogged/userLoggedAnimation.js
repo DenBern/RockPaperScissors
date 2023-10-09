@@ -20,14 +20,17 @@ export const userLoggedAnimation = () => {
     {right: '440px'},
     {right: '160px'}
   ], 700);
+
   handMale.animate([
     {left: '440px'},
     {left: '200px'}
   ], 700);
+
   bloodPreview.animate([
     {opacity: '0.2'},
     {opacity: '1'}
   ], 700);
+
   userNotFound.style.opacity = 1;
-  startGameContainer.removeEventListener('click', userLoggedAnimationStart)
-}
+  startGameContainer.removeEventListener('click', userLoggedAnimationStart);
+};

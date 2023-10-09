@@ -9,6 +9,7 @@ export const userLoggedRender = () => {
   userLoggedListeners();
 
   userNotFound.innerHTML = '';
+
   if (getUserLoggedData(userName)) {
     userLoggedContent();
   } else {
@@ -21,4 +22,4 @@ export const userLoggedRender = () => {
       userNotFound.style.opacity = 0;
     }, 2000);
   };
-}
+};

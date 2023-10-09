@@ -15,4 +15,4 @@ export const scissorsAnimationBack = () => {
     {top: '140px', left: '-500px'},
     {top: '360px', left: '30px'},
   ], 700);
-}
+};

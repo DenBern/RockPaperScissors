@@ -11,9 +11,9 @@ export const paperContent = () => {
   titlePaper.textContent = 'Paper';
   paperCircle.classList.add('paper-circle');
 
-  paper.src = "../../assets/svg/greeting/presentation/paper.svg";
+  paper.src = "./assets/svg/greeting/presentation/paper.svg";
   paper.classList.add('paper');
   paperScreenContainer.append(paper, paperCircle);
 
   screensWrapper.append(paperScreenContainer, titlePaper);
-}
+};

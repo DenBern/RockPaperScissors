@@ -14,7 +14,7 @@ export const scissorsContent = () => {
   titleScissors.classList.add('title-scissors');
   scissorsCircle.classList.add('scissors-circle');
 
-  scissors.src = "../../assets/svg/greeting/presentation/scissors.svg";
+  scissors.src = "./assets/svg/greeting/presentation/scissors.svg";
   scissors.classList.add('scissors');
 
   scissorsCircle.append(titleScissors);
@@ -24,4 +24,4 @@ export const scissorsContent = () => {
   screensWrapper.append(btnNext);
   screensWrapper.append(scissorsScreenContainer);
   screensWrapper.append(iconsWrapper);
-}
+};

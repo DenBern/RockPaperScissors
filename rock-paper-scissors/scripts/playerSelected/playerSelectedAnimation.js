@@ -18,4 +18,4 @@ export const playerSelectedAnimation = () => {
     {opacity: 1, top: '425px'},
     {opacity: 0.5, top: '670px'}
   ], 700);
-}
+};

@@ -21,15 +21,15 @@ import {
 export const winnerSelectionContent = (winner, player, computer) => {
   playerItemContainer.classList.add('player-item-container');
   computerItemContainer.classList.add('computer-item-container');
-  itemPlayerIcon.src = `../../assets/svg/hands/player/player-${player}-hand.svg`;
+  itemPlayerIcon.src = `./assets/svg/hands/player/player-${player}-hand.svg`;
   playerItemContainer.append(itemPlayerIcon);
-  itemComputerIcon.src = `../../assets/svg/hands/computer/computer-${computer}-hand.svg`;
+  itemComputerIcon.src = `./assets/svg/hands/computer/computer-${computer}-hand.svg`;
   computerItemContainer.append(itemComputerIcon);
 
   const bloodItemContainer = document.createElement('div');
   bloodItemContainer.classList.add('blood-item-container');
   const bloodIcon = document.createElement('img');
-  bloodIcon.src = '../../assets/svg/mainmenu/blood.svg';
+  bloodIcon.src = './assets/svg/mainmenu/blood.svg';
   bloodIcon.classList.add('blood-icon');
   bloodItemContainer.append(bloodIcon);
 
@@ -116,11 +116,9 @@ export const winnerSelectionContent = (winner, player, computer) => {
       winnerPopUp.style.display = 'none';
       if (playerLose < maxWins && playerWin < maxWins) {
         startGameRender();
-        console.log('next round');
       } else {
         startGameWrapper.append(endGamePopUpWrapper);
         resetWinsLose();
-        console.log('end game')
       };
       clearTimeout(displayNone)
     }, 1500);

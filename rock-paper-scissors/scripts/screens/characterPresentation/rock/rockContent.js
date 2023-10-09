@@ -13,7 +13,7 @@ export const rockContent = () => {
   titleRock.classList.add('title-rock');
   rockCircle.classList.add('rock-circle');
 
-  rock.src = "../../assets/svg/greeting/presentation/rock.svg";
+  rock.src = "./assets/svg/greeting/presentation/rock.svg";
   rock.classList.add('rock');
   rockScreenContainer.append(rock, rockCircle);
 

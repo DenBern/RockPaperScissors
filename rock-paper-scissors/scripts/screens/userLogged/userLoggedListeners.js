@@ -3,4 +3,4 @@ import { userLoggedAnimationStart } from "./userLoggedAnimationStart.js";
 
 export const userLoggedListeners = () => {
   startGameContainer.addEventListener('click', userLoggedAnimationStart);
-}
+};

@@ -22,4 +22,4 @@ export const paperAnimationBack = () => {
     {left: '165px'},
     {top: '480px', left: '500px'}
   ], 700);
-}
+};

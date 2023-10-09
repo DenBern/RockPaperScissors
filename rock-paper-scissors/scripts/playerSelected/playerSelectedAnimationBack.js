@@ -18,4 +18,4 @@ export const playerSelectedAnimationBack = () => {
     {opacity: 0.5, top: '670px'},
     {opacity: 1, top: '425px'}
   ], 700);
-}
+};

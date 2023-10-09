@@ -13,6 +13,7 @@ export const rockAnimationBack = (count) => {
       {top: '40px', left: '-45px'},
       {top: '430px', left: '310px'},
     ], 700);
+  
     rockCircle.animate([
       {top: '360px', left: '-115px'},
       {top: '700px', left: '210px'},
@@ -47,4 +48,4 @@ export const rockAnimationBack = (count) => {
       {top: '480px', left: '165px'}
     ], 700);
   };
-}
+};

@@ -4,10 +4,10 @@ import { checkLogIn } from "../../localStorage/checkLogIn.js";
 export const registerLogInUserContent = () => {
   screensWrapper.innerHTML = '';
   const logo = document.createElement('img');
-  logo.src = '../../assets/svg/logoRegister.svg';
+  logo.src = './assets/svg/logoRegister.svg';
   logo.classList.add('logo-register');
   const titleLogo = document.createElement('img');
-  titleLogo.src = '../../assets/svg/titleLogo.svg';
+  titleLogo.src = './assets/svg/titleLogo.svg';
   titleLogo.classList.add('logo-title');
   const registerScreenContainer = document.createElement('div');
   registerScreenContainer.classList.add('register-screen');
@@ -43,4 +43,4 @@ export const registerLogInUserContent = () => {
   registerScreenContainer.append(logo, titleLogo,wrapperInput, dividerContainer, btnRegisteredLogIn)
 
   screensWrapper.append(registerScreenContainer);
-}
+};

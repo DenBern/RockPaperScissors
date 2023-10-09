@@ -42,20 +42,17 @@ export const startGameContent = () => {
   progressGame.classList.add('progress-game');
 
   const playerIcon = document.createElement('img');
-  playerIcon.src = '../../../assets/svg/process/playerIconProcess.svg';
+  playerIcon.src = './assets/svg/process/playerIconProcess.svg';
   playerIcon.classList.add('progress-player-icon');
 
   currentProgressPlayer.style.width = `${(100 / maxWins)* playerWin}%`;
   playerProgressWrapper.append(currentProgressPlayer);
 
   const computerIcon = document.createElement('img');
-  computerIcon.src = '../../../assets/svg/process/computerIconProcess.svg';
+  computerIcon.src = './assets/svg/process/computerIconProcess.svg';
   computerIcon.classList.add('progress-computer-icon');
   currentProgressComputer.style.width = `${(100 / maxWins) * playerLose}%`;
   computerProgressWrapper.append(currentProgressComputer);
-
-  // computerProgress.append(computerIcon);
-  // playerProgress.append(playerIcon);
 
   const progressDivider = document.createElement('div');
   progressDivider.classList.add('progress-divider');
@@ -86,4 +83,4 @@ export const startGameContent = () => {
 
   startGameWrapper.append(playerChangeContainer, computerChangeContainer, gameButtons,timerToStart, progressGame)
   screensWrapper.append(startGameWrapper);
-}
+};

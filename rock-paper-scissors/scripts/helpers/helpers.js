@@ -48,7 +48,7 @@ export const changeIcons = (counter) => {
       pathScisssors.setAttribute('fill', '#fff');
       pathRock.setAttribute('fill', '#fff');
       pathPaper.setAttribute('fill', '#fff')
-  }
+  };
 };
 
 export const changeActionButtons = (btn) => {
@@ -108,4 +108,4 @@ export const resetStyleStartGame = () => {
   variables.startGameWrapper.innerHTML = '';
   variables.startGameWrapper.style.alignItems = '';
   variables.startGameWrapper.style.justifyContent = '';
-}
+};

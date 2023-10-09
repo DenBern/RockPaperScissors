@@ -10,4 +10,4 @@ export const rockListeners = () => {
     rockCircle.style.left = '30px';
     rockCircle.style.top = '360px';
   });
-}
+};

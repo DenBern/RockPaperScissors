@@ -29,4 +29,4 @@ export const startGameListeners = () => {
     scissorsButton.removeEventListener('click', scissorsButtonClickHandler);
     randomButton.removeEventListener('click', randomButtonClickHandler);
   };
-}
+};

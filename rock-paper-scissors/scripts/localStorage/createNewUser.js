@@ -1,4 +1,3 @@
-import { userLoggedRender } from "../screens/userLogged/userLoggedRender.js";
 export const createNewUser = (login) => {
   let newUser = {
     login: `${login}`,
@@ -15,4 +14,4 @@ export const createNewUser = (login) => {
   let getUsers = JSON.parse(localStorage.getItem('users')) ?? [];
   let users = [...getUsers, newUser];
   localStorage.setItem('users', JSON.stringify(users));
-}
+};

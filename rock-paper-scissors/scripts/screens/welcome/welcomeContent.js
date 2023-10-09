@@ -1,4 +1,11 @@
-import { screenWelcome, welcomeTitleRock, welcomeTitlePaper, welcomeTitleScissors, screensWrapper } from "../../../variables.js";
+import {
+  screenWelcome,
+  welcomeTitleRock,
+  welcomeTitlePaper,
+  welcomeTitleScissors,
+  screensWrapper
+} from "../../../variables.js";
+
 export const welcomeContent = () => {
   screenWelcome.classList.add('welcome-screen');
 
@@ -13,4 +20,4 @@ export const welcomeContent = () => {
 
   screenWelcome.append(welcomeTitleRock, welcomeTitlePaper, welcomeTitleScissors);
   screensWrapper.append(screenWelcome);
-}
+};

@@ -49,4 +49,4 @@ export const rockAnimation = () => {
       {left: '-320px'}
     ], 700);
   };
-}
+};

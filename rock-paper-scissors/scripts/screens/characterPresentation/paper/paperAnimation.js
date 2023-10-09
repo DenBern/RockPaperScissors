@@ -20,4 +20,4 @@ export const paperAnimation = () => {
     {top: '480px', left: '500px'},
     {top:'480px', left: '165px'},
   ], 700);
-}
+};

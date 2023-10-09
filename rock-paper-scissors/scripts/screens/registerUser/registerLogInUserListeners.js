@@ -25,6 +25,6 @@ export const registerLogInUserListeners = () => {
       userLoggedRender();
     } else {
       userLoggedRender();
-    }
+    };
   });
-}
+};

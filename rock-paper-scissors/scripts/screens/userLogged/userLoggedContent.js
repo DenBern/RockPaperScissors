@@ -31,23 +31,11 @@ export const userLoggedContent = () => {
 
   userInfo.classList.add('user-info');
 
-  // const userPhotoName = document.createElement('div');
-  // userPhotoName.classList.add('user-photo-name');
-  // const userPhoto = document.createElement('div');
-  // userPhoto.classList.add('user-photo');
-  // const userLogin = document.createElement('p');
-  // userLogin.classList.add('user-name');
   userLogin.textContent = login;
 
   loggedLogo.classList.add('logged-logo');
 
-  // const winLoseGames = document.createElement('div');
-  // winLoseGames.classList.add('win-lose-games')
-  // const winGames = document.createElement('p');
-  // winGames.classList.add('win-games');
   winGames.textContent = `Win: ${win}`;
-  // const loseGames = document.createElement('lose-games');
-  // loseGames.classList.add('lose-games');
   loseGames.textContent = `Lose: ${lose}`;
 
   winLoseGames.append(winGames, loseGames);
@@ -58,16 +46,16 @@ export const userLoggedContent = () => {
   const previewGame = document.createElement('div');
   previewGame.classList.add('preview-game');
 
-  shadowPreview.src = '../../assets/svg/mainMenu/shadowPreview.svg';
+  shadowPreview.src = './assets/svg/mainMenu/shadowPreview.svg';
   shadowPreview.classList.add('shadow-preview');
 
-  bloodPreview.src = '../../assets/svg/mainMenu/blood.svg';
+  bloodPreview.src = './assets/svg/mainMenu/blood.svg';
   bloodPreview.classList.add('blood-preview');
 
-  handMale.src = '../../assets/svg/hands/preview/rockHandPreview.svg';
+  handMale.src = './assets/svg/hands/preview/rockHandPreview.svg';
   handMale.classList.add('hand-male');
 
-  handFemale.src = '../../assets/svg/hands/preview/scissorsHandPreview.svg';
+  handFemale.src = './assets/svg/hands/preview/scissorsHandPreview.svg';
   handFemale.classList.add('hand-female');
 
   previewGame.append(shadowPreview, bloodPreview, handMale, handFemale);
