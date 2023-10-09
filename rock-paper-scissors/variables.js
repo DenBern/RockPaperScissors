@@ -207,8 +207,8 @@ const itemsGame = {
 };
 
 const maxWins = 5;
-let playerWin = 4;
-let playerLose = 4;
+let playerWin = 0;
+let playerLose = 0;
 
 const setPlayerWin = () => playerWin ++;
 const setPlayerLose = () => playerLose ++;
