@@ -115,6 +115,21 @@ const handMale = document.createElement('img');
 const handFemale = document.createElement('img');
 const loggedLogo = document.createElement('div');
 
+const userPhotoName = document.createElement('div');
+userPhotoName.classList.add('user-photo-name');
+const userPhoto = document.createElement('div');
+userPhoto.classList.add('user-photo');
+const userLogin = document.createElement('p');
+userLogin.classList.add('user-name');
+
+const winLoseGames = document.createElement('div');
+winLoseGames.classList.add('win-lose-games')
+const winGames = document.createElement('p');
+winGames.classList.add('win-games');
+
+const loseGames = document.createElement('lose-games');
+loseGames.classList.add('lose-games');
+
 // In game
 const startGameWrapper = document.createElement('div');
 const computerChangeShadow = document.createElement('img');
@@ -175,6 +190,16 @@ const itemPlayerIcon = document.createElement('img');
 const computerItemContainer = document.createElement('div');
 const itemComputerIcon = document.createElement('img');
 
+const computerProgressWrapper = document.createElement('div');
+computerProgressWrapper.classList.add('computer-progress-wrapper');
+const currentProgressComputer = document.createElement('div');
+currentProgressComputer.classList.add('current-progress-computer');
+
+const playerProgressWrapper = document.createElement('div');
+playerProgressWrapper.classList.add('player-progress-wrapper')
+const currentProgressPlayer = document.createElement('div');
+currentProgressPlayer.classList.add('current-progress-player');
+
 const itemsGame = {
   'Rock': 'Paper',
   'Scissors': 'Rock',
@@ -182,11 +207,31 @@ const itemsGame = {
 };
 
 const maxWins = 5;
-let playerWin = 0;
-let playerLose = 0;
+let playerWin = 4;
+let playerLose = 4;
 
 const setPlayerWin = () => playerWin ++;
 const setPlayerLose = () => playerLose ++;
+const resetWinsLose = () => {
+  playerWin = 0;
+  playerLose = 0;
+}
+
+const buttonsHomeRestart= document.createElement('div');
+buttonsHomeRestart.classList.add('btns-home-restart')
+const btnHome = document.createElement('button');
+btnHome.classList.add('btn-home');
+const btnRestart = document.createElement('button');
+btnRestart.classList.add('btn-restart');
+
+const btnHomeIcon = document.createElement('img');
+btnHomeIcon.src = './assets/svg/endGame/maiMenu.svg';
+
+const btnRestartIcon = document.createElement('img');
+btnRestartIcon.src = './assets/svg/endGame/restartGame.svg';
+
+btnRestart.append(btnRestartIcon);
+btnHome.append(btnHomeIcon);
 
 export {
   maxWins,
@@ -250,4 +295,18 @@ export {
   setPlayerWin,
   playerWin,
   playerLose,
+  currentProgressComputer,
+  currentProgressPlayer,
+  computerProgressWrapper,
+  playerProgressWrapper,
+  buttonsHomeRestart,
+  btnHome,
+  btnRestart,
+  loseGames,
+  winGames,
+  winLoseGames,
+  userLogin,
+  userPhoto,
+  userPhotoName,
+  resetWinsLose,
 };

@@ -11,6 +11,10 @@ import {
   maxWins,
   playerLose,
   playerWin,
+  playerProgressWrapper,
+  computerProgressWrapper,
+  currentProgressPlayer,
+  currentProgressComputer,
 } from "../../../variables.js";
 import { playerSelectedAnimationBack } from "../../playerSelected/playerSelectedAnimationBack.js";
 
@@ -37,27 +41,18 @@ export const startGameContent = () => {
   const progressGame = document.createElement('div');
   progressGame.classList.add('progress-game');
 
-  const playerProgressWrapper = document.createElement('div');
-  playerProgressWrapper.classList.add('player-progress-wrapper')
   const playerIcon = document.createElement('img');
   playerIcon.src = '../../../assets/svg/process/playerIconProcess.svg';
   playerIcon.classList.add('progress-player-icon');
 
-  const currentProgressPlayer = document.createElement('div');
-  currentProgressPlayer.classList.add('current-progress-player');
   currentProgressPlayer.style.width = `${(100 / maxWins)* playerWin}%`;
   playerProgressWrapper.append(currentProgressPlayer);
-
-  const computerProgressWrapper = document.createElement('div');
-  computerProgressWrapper.classList.add('computer-progress-wrapper');
-  const currentProgressComputer = document.createElement('div');
-  currentProgressComputer.classList.add('current-progress-computer');
-  currentProgressComputer.style.width = `${(100 / maxWins) * playerLose}%`;
-  computerProgressWrapper.append(currentProgressComputer);
 
   const computerIcon = document.createElement('img');
   computerIcon.src = '../../../assets/svg/process/computerIconProcess.svg';
   computerIcon.classList.add('progress-computer-icon');
+  currentProgressComputer.style.width = `${(100 / maxWins) * playerLose}%`;
+  computerProgressWrapper.append(currentProgressComputer);
 
   // computerProgress.append(computerIcon);
   // playerProgress.append(playerIcon);

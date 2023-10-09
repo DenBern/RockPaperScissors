@@ -53,7 +53,6 @@ export const screenGreeting = () => {
     greetingScreen.style.opacity = 0;
     setTimeout(() => {
       greetingScreen.style.display = "none";
-      console.log(checkLogIn());
       checkLogIn() ? registerLogInUserRender(checkLogIn()) : characterPresent();
     }, 500);
   });

@@ -6,7 +6,16 @@ import {
   itemComputerIcon,
   startGameWrapper,
   setPlayerWin,
-  setPlayerLose
+  setPlayerLose,
+  playerLose,
+  maxWins,
+  playerWin,
+  currentProgressComputer,
+  currentProgressPlayer,
+  buttonsHomeRestart,
+  btnHome,
+  btnRestart,
+  resetWinsLose,
 } from "../../variables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
@@ -63,18 +72,59 @@ export const winnerSelectionContent = (winner, player, computer) => {
   titleWinner.classList.add('title-winner');
   titleWinner.textContent = `${winner === 'Player' ? 'You won!' : winner === 'Draw' ? 'Draw' : 'You lose!'}`;
 
-  const logoPlayer = document.createElement('img');
-  logoPlayer.src = '../../assets/svg/winner/logoPlayer.svg';
-  winnerPopUp.append(titleWinner, logoPlayer);
+  // const logoPlayer = document.createElement('img');
+  // logoPlayer.src = '../../assets/svg/winner/logoPlayer.svg';
+  winnerPopUp.append(titleWinner);
+
+  const endGamePopUpWrapper = document.createElement('div');
+  endGamePopUpWrapper.classList.add('end-game-pop-up-wrapper');
+
+  const endGamePopUpContainer = document.createElement('div');
+  endGamePopUpContainer.classList.add('end-game-pop-up-container');
+
+  const winnerLogo = document.createElement('div');
+  winnerLogo.classList.add('winner-logo');
+
+  const currentAccountWrapper = document.createElement('div');
+  currentAccountWrapper.classList.add('current-account-wrapper');
+
+  const winnerTitle = document.createElement('p');
+  winnerTitle.classList.add('winner-title');
+  winnerTitle.textContent = `${winner === 'Player' ? 'You win!' :  'Computer win!'}`;
+  const currentAccount = document.createElement('p');
+  currentAccount.classList.add('current-account');
+  currentAccount.textContent = `${playerWin +  ' : ' + playerLose}`
+
+  currentAccountWrapper.append(winnerTitle, currentAccount)
+
+  buttonsHomeRestart.append(btnHome, btnRestart)
+
+
+  endGamePopUpContainer.append(winnerLogo, currentAccountWrapper, buttonsHomeRestart)
+
+
+  endGamePopUpWrapper.append(endGamePopUpContainer);
+
 
   let popUpWinnerVisible = setTimeout(() => {
     startGameWrapper.append(winnerPopUp);
     startGameWrapper.style.alignItems = 'center';
     startGameWrapper.style.justifyContent = 'center';
-    setTimeout(() => {
+    currentProgressComputer.style.width = `${(100 / maxWins) * playerLose}%`;
+    currentProgressPlayer.style.width = `${(100 / maxWins) * playerWin}%`;
+    let displayNone = setTimeout(() => {
       winnerPopUp.style.display = 'none';
-      startGameRender();
+      if (playerLose < maxWins && playerWin < maxWins) {
+        startGameRender();
+        console.log('next round');
+      } else {
+        startGameWrapper.append(endGamePopUpWrapper);
+        resetWinsLose();
+        console.log('end game')
+      };
+      clearTimeout(displayNone)
     }, 1500);
+
     clearTimeout(popUpWinnerVisible);
   }, 1000);
 };

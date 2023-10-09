@@ -456,7 +456,7 @@ h1 {
 
 .user-info {
   position: relative;
-  top: 0;
+  top: -65px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -794,6 +794,69 @@ h1 {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+/***** Pop up end game *****/
+
+.end-game-pop-up-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70%;
+  background-color: #fff;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  z-index: 7;
+}
+
+.end-game-pop-up-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: auto 0;
+}
+
+.winner-logo {
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  background-color: #2B2870;
+}
+
+.current-account-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.winner-title {
+  color: #FFB24C;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.current-account {
+  color: #000;
+  font-size: 41px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.btns-home-restart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-home,
+.btn-restart {
+  width: 66px;
+  height: 52px;
 }
 
 /***** Animation welcome *****/
