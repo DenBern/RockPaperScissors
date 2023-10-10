@@ -29,7 +29,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
   const bloodItemContainer = document.createElement('div');
   bloodItemContainer.classList.add('blood-item-container');
   const bloodIcon = document.createElement('img');
-  bloodIcon.src = './assets/svg/mainmenu/blood.svg';
+  bloodIcon.src = './assets/svg/mainMenu/blood.svg';
   bloodIcon.classList.add('blood-icon');
   bloodItemContainer.append(bloodIcon);
 
