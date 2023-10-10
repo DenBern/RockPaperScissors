@@ -1,5 +1,5 @@
 import { changeActionButtons, disabledActionBtns, getRandomItem, whoIsWinner } from "../../helpers/helpers.js";
-import { paperButton, rockButton, scissorsButton, randomButton } from "../../../variables.js"
+import { paperButton, rockButton, scissorsButton, randomButton, incClicRock, incClickPaper, incClickScissors, incClickRandom  } from "../../../variables.js"
 import { computerSelected } from "../../computerSelected/computerSelected.js";
 import { playerSelectedRender } from "../../playerSelected/playerSelectedRender.js";
 import { playerSelected } from "../../playerSelected/playerSelected.js";
@@ -13,10 +13,25 @@ export const startGameListeners = () => {
     removeEventListeners();
   };
 
-  const rockButtonClickHandler = () => selectItem(rockButton);
-  const paperButtonClickHandler = () => selectItem(paperButton);
-  const scissorsButtonClickHandler = () => selectItem(scissorsButton);
-  const randomButtonClickHandler = () => selectItem(randomButton);
+  const rockButtonClickHandler = () => {
+    selectItem(rockButton);
+    incClicRock();
+  };
+
+  const paperButtonClickHandler = () => {
+    selectItem(paperButton);
+    incClickPaper();
+  };
+
+  const scissorsButtonClickHandler = () => {
+    selectItem(scissorsButton);
+    incClickScissors();
+  };
+
+  const randomButtonClickHandler = () => {
+    selectItem(randomButton);
+    incClickRandom();
+  };
 
   rockButton.addEventListener('click', rockButtonClickHandler)
   paperButton.addEventListener('click', paperButtonClickHandler)

@@ -1,3 +1,5 @@
+import { userFind } from "./scripts/localStorage/getUserLoggedData.js ";
+
 // Screens wrapper
 const screensWrapper = document.querySelector('.screens-wrapper');
 
@@ -207,15 +209,43 @@ const itemsGame = {
 };
 
 const maxWins = 5;
-let playerWin = 0;
-let playerLose = 0;
+let playerWin = 4;
+let playerLose = 4;
 
 const setPlayerWin = () => playerWin ++;
 const setPlayerLose = () => playerLose ++;
 const resetWinsLose = () => {
   playerWin = 0;
   playerLose = 0;
-}
+};
+
+let rounds = 0;
+let win =  0;
+let lose = 0;
+let draw = 0;
+let clickRock = 0;
+let clickPaper = 0;
+let clickScissors = 0;
+let clickRandom = 0;
+
+const setWin = (value) => win = value;
+const setLose = (value) => lose = value;
+const setDraw = (value) => draw = value;
+const setClickRock = (value) => clickRock = value;
+const setClickPaper = (value) => clickPaper = value;
+const setClickScissors= (value) => clickScissors = value;
+const setClickRandom = (value) => clickRandom = value;
+
+console.log(lose)
+
+const incRounds = () => rounds ++;
+const incWin = () => win ++;
+const incLose = () => lose ++;
+const incDraw = () => draw ++;
+const incClicRock = () => clickRock ++;
+const incClickPaper = () => clickPaper ++;
+const incClickScissors = () => clickScissors ++;
+const incClickRandom = () => clickRandom ++;
 
 const buttonsHomeRestart= document.createElement('div');
 buttonsHomeRestart.classList.add('btns-home-restart')
@@ -234,6 +264,21 @@ btnRestart.append(btnRestartIcon);
 btnHome.append(btnHomeIcon);
 
 export {
+  rounds,
+  win,
+  lose,
+  draw,
+  clickRock,
+  clickPaper,
+  clickScissors,
+  clickRandom,
+  incWin,
+  incLose,
+  incDraw,
+  incClicRock,
+  incClickPaper,
+  incClickScissors,
+  incClickRandom,
   maxWins,
   screensWrapper,
   scissorsScreenContainer,
@@ -309,4 +354,11 @@ export {
   userPhoto,
   userPhotoName,
   resetWinsLose,
+  setWin,
+    setLose,
+  setDraw,
+  setClickRock,
+  setClickPaper,
+  setClickScissors,
+  setClickRandom,
 };

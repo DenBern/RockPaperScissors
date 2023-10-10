@@ -16,6 +16,10 @@ import {
   btnHome,
   btnRestart,
   resetWinsLose,
+  incWin,
+  incLose,
+  incDraw,
+  win,
 } from "../../variables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
@@ -36,6 +40,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
   switch (winner) {
     case 'Player':
       setPlayerWin();
+      incWin();
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '4';
@@ -43,12 +48,14 @@ export const winnerSelectionContent = (winner, player, computer) => {
       break;
     case 'Computer':
       setPlayerLose();
+      incLose();
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '2';
       computerItemContainer.style.zIndex = '4';
       break;
     case 'Draw':
+      incDraw();
       playerItemContainer.style.bottom = '-220px';
       computerItemContainer.style.bottom = '380px';
       playerItemContainer.animate([
