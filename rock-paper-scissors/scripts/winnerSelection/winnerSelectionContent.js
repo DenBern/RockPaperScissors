@@ -21,9 +21,9 @@ import {
 export const winnerSelectionContent = (winner, player, computer) => {
   playerItemContainer.classList.add('player-item-container');
   computerItemContainer.classList.add('computer-item-container');
-  itemPlayerIcon.src = `./assets/svg/hands/player/player-${player}-hand.svg`;
+  itemPlayerIcon.src = `./assets/svg/hands/player/player-${player.toLowerCase()}-hand.svg`;
   playerItemContainer.append(itemPlayerIcon);
-  itemComputerIcon.src = `./assets/svg/hands/computer/computer-${computer}-hand.svg`;
+  itemComputerIcon.src = `./assets/svg/hands/computer/computer-${computer.toLowerCase()}-hand.svg`;
   computerItemContainer.append(itemComputerIcon);
 
   const bloodItemContainer = document.createElement('div');
@@ -72,8 +72,6 @@ export const winnerSelectionContent = (winner, player, computer) => {
   titleWinner.classList.add('title-winner');
   titleWinner.textContent = `${winner === 'Player' ? 'You won!' : winner === 'Draw' ? 'Draw' : 'You lose!'}`;
 
-  // const logoPlayer = document.createElement('img');
-  // logoPlayer.src = '../../assets/svg/winner/logoPlayer.svg';
   winnerPopUp.append(titleWinner);
 
   const endGamePopUpWrapper = document.createElement('div');
