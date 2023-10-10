@@ -30,7 +30,7 @@ export const startGameContent = () => {
   computerChangeContainer.classList.add('computer-change-container');
 
   const gameField = document.createElement('img');
-  gameField.src = '../../assets/svg/startGame/fieldShadow.svg';
+  gameField.src = './assets/svg/startGame/fieldShadow.svg';
   startGameWrapper.append(gameField);
   gameField.classList.add('game-field');
 
