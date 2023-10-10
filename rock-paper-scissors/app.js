@@ -23,3 +23,6 @@ welcomeRender();
 
 // import { startGameRender }  from "./scripts/screens/startGame/startGameRender.js";
 // startGameRender();
+
+// import { userLoggedRender } from "./scripts/screens/userLogged/userLoggedRender.js";
+// userLoggedRender();

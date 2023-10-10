@@ -19,13 +19,13 @@ import {
   winLoseGames,
   winGames,
   loseGames,
+  userLoggedScreen,
 } from "../../../variables.js";
 
 export const userLoggedContent = () => {
   screensWrapper.innerHTML = '';
   const {login, round, win, lose, draw, clickRock, clickPaper, clickScissors, clickRandom} = getUserLoggedData(userName);
 
-  const userLoggedScreen = document.createElement('div');
   userLoggedScreen.innerHTML = '';
   userLoggedScreen.classList.add('user-logged');
 

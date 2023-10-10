@@ -1,7 +1,6 @@
 export const createNewUser = (login) => {
   let newUser = {
     login: `${login}`,
-    rounds: 0,
     win: 0,
     lose: 0,
     draw: 0,

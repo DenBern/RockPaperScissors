@@ -445,6 +445,112 @@ h1 {
 
 /***** User logged *****/
 
+.player-score-wrapper {
+  position: absolute;
+  top: 660px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #4847C4;
+  z-index: 4;
+}
+
+.name-btn-close {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn-close-score {
+  width: 20px;
+  height: 20px;
+  background: url(./assets/svg/closeIcon.svg) no-repeat center;
+}
+
+.player-title {
+  color: #FFB24C;
+  font-family: Inter;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.wrapper-top-clicks {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.divider-score {
+  width: 2px;
+  height: 80%;
+  background-color: #FBC399;
+  margin: auto;
+}
+
+.top-results {
+  display: flex;
+}
+
+.wrapper-clicks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.icon-clicks-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.rock-icon {
+  width: 41px;
+  height: 45px;;
+  background: url(./assets/svg/rockIcon.svg) no-repeat center;
+}
+
+.paper-icon {
+  width: 38px;
+  height: 61px;;
+  background: url(./assets/svg/paperIcon.svg) no-repeat center;
+}
+
+.scissors-icon {
+  width: 38px;
+  height: 61px;;
+  background: url(./assets/svg/scissorsIcon.svg) no-repeat center;
+}
+
+.random-icon {
+  width: 32px;
+  height: 35px;;
+  background: url(./assets/svg/randomIcon.svg) no-repeat center;
+}
+
+.wins-icon {
+  width: 45px;
+  height: 35px;;
+  background: url(./assets/svg/winnerIcon.svg) no-repeat center;
+}
+
+.draw-icon {
+  width: 45px;
+  height: 41px;;
+  background: url(./assets/svg/drawIcon.svg) no-repeat center;
+}
+
+.lose-icon {
+  width: 45px;
+  height: 41px;;
+  background: url(./assets/svg/loseIcon.svg) no-repeat center;
+}
+
 .user-logged {
   width: 100%;
   gap: 15px;

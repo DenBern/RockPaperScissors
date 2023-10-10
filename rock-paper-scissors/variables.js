@@ -104,6 +104,7 @@ userNotFound.classList.add('user-not-found');
 const userNotFoundText = document.createElement('span');
 
 // User logged
+const userLoggedScreen = document.createElement('div');
 const navBar = document.createElement('div');
 navBar.classList.add('nav-bar');
 const startGameContainer = document.createElement('button');
@@ -132,7 +133,12 @@ winGames.classList.add('win-games');
 const loseGames = document.createElement('lose-games');
 loseGames.classList.add('lose-games');
 
+const playerScoreWrapper = document.createElement('div');
+const closeScore = document.createElement('button');
+closeScore.classList.add('btn-close-score');
+
 // In game
+
 const startGameWrapper = document.createElement('div');
 const computerChangeShadow = document.createElement('img');
 const playerChangeShadow = document.createElement('img');
@@ -219,7 +225,7 @@ const resetWinsLose = () => {
   playerLose = 0;
 };
 
-let rounds = 0;
+// let rounds = 0;
 let win =  0;
 let lose = 0;
 let draw = 0;
@@ -236,9 +242,7 @@ const setClickPaper = (value) => clickPaper = value;
 const setClickScissors= (value) => clickScissors = value;
 const setClickRandom = (value) => clickRandom = value;
 
-console.log(lose)
-
-const incRounds = () => rounds ++;
+// const incRounds = () => rounds ++;
 const incWin = () => win ++;
 const incLose = () => lose ++;
 const incDraw = () => draw ++;
@@ -264,7 +268,6 @@ btnRestart.append(btnRestartIcon);
 btnHome.append(btnHomeIcon);
 
 export {
-  rounds,
   win,
   lose,
   draw,
@@ -361,4 +364,7 @@ export {
   setClickPaper,
   setClickScissors,
   setClickRandom,
+  userLoggedScreen,
+  playerScoreWrapper,
+  closeScore,
 };
