@@ -22,6 +22,6 @@ export const playerScoreListeners = () => {
 
   function removeScoreClose () {
     closeScore.removeEventListener('click', handleClickScoreClose);
-  }
+  };
 
 };

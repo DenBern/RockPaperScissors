@@ -4,11 +4,9 @@ import {
   handMale,
   loggedLogo,
   navBar,
-  screensWrapper,
   shadowPreview,
   userInfo,
 } from "../../../variables.js";
-import { startGameRender } from "../startGame/startGameRender.js";
 
 export const userLoggedAnimationStart = () => {
   userInfo.style.top = '-65px';
@@ -19,8 +17,4 @@ export const userLoggedAnimationStart = () => {
   shadowPreview.style.opacity = '0.1';
   loggedLogo.style.opacity = '0';
   navBar.style.top = '100px';
-  setTimeout(() => {
-    screensWrapper.innerHTML = '';
-    startGameRender();
-  }, 750);
 };

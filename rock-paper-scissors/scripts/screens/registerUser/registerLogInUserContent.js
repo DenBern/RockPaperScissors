@@ -15,9 +15,10 @@ export const registerLogInUserContent = () => {
   const inputName = document.createElement('input');
   inputName.classList.add('input-name')
   inputName.setAttribute('type', 'text');
-  inputName.setAttribute('maxLength', '20');
+  inputName.setAttribute('maxLength', '10');
   inputName.setAttribute('minLength', '1');
   inputName.setAttribute('required', '');
+  inputName.setAttribute('autofocus', '')
   // inputName.setAttribute('pattern', '^[^\s()-]*$');
   inputName.placeholder = 'What is your name?';
 
@@ -36,7 +37,7 @@ export const registerLogInUserContent = () => {
   navBar.classList.add('nav-bar');
 
   const btnRegisteredLogIn = document.createElement('button');
-  btnRegisteredLogIn.textContent = `${checkLogIn() ? 'Log in' : 'Registered'}`;
+  btnRegisteredLogIn.textContent = `${checkLogIn() ? 'Sign in' : 'Registered'}`;
   btnRegisteredLogIn.classList.add('btn-registered');
   btnRegisteredLogIn.setAttribute('disabled', '');
 

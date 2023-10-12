@@ -15,11 +15,12 @@ import {
   buttonsHomeRestart,
   btnHome,
   btnRestart,
-  resetWinsLose,
   incWin,
   incLose,
   incDraw,
+  resetWinsLose,
   win,
+  lose,
 } from "../../variables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
@@ -41,6 +42,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
     case 'Player':
       setPlayerWin();
       incWin();
+      console.log(win, lose)
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '4';
@@ -49,6 +51,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
     case 'Computer':
       setPlayerLose();
       incLose();
+      console.log(win, lose)
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '2';
@@ -125,7 +128,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
         startGameWrapper.append(endGamePopUpWrapper);
         resetWinsLose();
       };
-      clearTimeout(displayNone)
+      clearTimeout(displayNone);
     }, 1500);
 
     clearTimeout(popUpWinnerVisible);

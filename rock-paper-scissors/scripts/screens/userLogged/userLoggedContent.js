@@ -20,6 +20,7 @@ import {
   winGames,
   loseGames,
   userLoggedScreen,
+  logOut,
 } from "../../../variables.js";
 
 export const userLoggedContent = () => {
@@ -62,7 +63,7 @@ export const userLoggedContent = () => {
 
   startGameContainer.innerHTML = startGameIcon;
   menuGameContainer.innerHTML = menuGameIcon;
-  navBar.append(startGameContainer, menuGameContainer);
+  navBar.append(startGameContainer, menuGameContainer, logOut);
 
   userLoggedScreen.append(userInfo, loggedLogo, previewGame, navBar);
   screensWrapper.append(userLoggedScreen);

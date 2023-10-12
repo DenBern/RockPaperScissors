@@ -1,5 +1,6 @@
 export const createNewUser = (login) => {
   let newUser = {
+    logged: true,
     login: `${login}`,
     win: 0,
     lose: 0,

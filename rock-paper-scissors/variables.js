@@ -109,6 +109,8 @@ const navBar = document.createElement('div');
 navBar.classList.add('nav-bar');
 const startGameContainer = document.createElement('button');
 const menuGameContainer = document.createElement('button');
+const logOut = document.createElement('button');
+logOut.classList.add('log-out');
 startGameContainer.classList.add('btn-start');
 menuGameContainer.classList.add('btn-menu');
 const userInfo = document.createElement('div');
@@ -214,9 +216,9 @@ const itemsGame = {
   'Paper': 'Scissors',
 };
 
-const maxWins = 5;
-let playerWin = 4;
-let playerLose = 4;
+const maxWins = 3;
+let playerWin = 0;
+let playerLose = 0;
 
 const setPlayerWin = () => playerWin ++;
 const setPlayerLose = () => playerLose ++;
@@ -225,7 +227,7 @@ const resetWinsLose = () => {
   playerLose = 0;
 };
 
-// let rounds = 0;
+let counterStart = 0;
 let win =  0;
 let lose = 0;
 let draw = 0;
@@ -233,6 +235,7 @@ let clickRock = 0;
 let clickPaper = 0;
 let clickScissors = 0;
 let clickRandom = 0;
+let logged = false;
 
 const setWin = (value) => win = value;
 const setLose = (value) => lose = value;
@@ -241,8 +244,8 @@ const setClickRock = (value) => clickRock = value;
 const setClickPaper = (value) => clickPaper = value;
 const setClickScissors= (value) => clickScissors = value;
 const setClickRandom = (value) => clickRandom = value;
+const setLogged = (value) => logged = value;
 
-// const incRounds = () => rounds ++;
 const incWin = () => win ++;
 const incLose = () => lose ++;
 const incDraw = () => draw ++;
@@ -250,6 +253,16 @@ const incClicRock = () => clickRock ++;
 const incClickPaper = () => clickPaper ++;
 const incClickScissors = () => clickScissors ++;
 const incClickRandom = () => clickRandom ++;
+
+const clearGame = (value) => {
+  setWin(value);
+  setLose(value);
+  setDraw(value);
+  setClickRock(value);
+  setClickPaper(value);
+  setClickScissors(value);
+  setClickRandom(value);
+};
 
 const buttonsHomeRestart= document.createElement('div');
 buttonsHomeRestart.classList.add('btns-home-restart')
@@ -266,6 +279,8 @@ btnRestartIcon.src = './assets/svg/endGame/restartGame.svg';
 
 btnRestart.append(btnRestartIcon);
 btnHome.append(btnHomeIcon);
+
+console.log(win,lose)
 
 export {
   win,
@@ -358,7 +373,7 @@ export {
   userPhotoName,
   resetWinsLose,
   setWin,
-    setLose,
+  setLose,
   setDraw,
   setClickRock,
   setClickPaper,
@@ -367,4 +382,9 @@ export {
   userLoggedScreen,
   playerScoreWrapper,
   closeScore,
+  logOut,
+  setLogged,
+  logged,
+  clearGame,
+  counterStart,
 };

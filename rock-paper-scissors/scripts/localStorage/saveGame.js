@@ -1,14 +1,13 @@
-import { win, lose, draw, clickRock, clickPaper, clickScissors, clickRandom } from "../../variables.js";
-import { userFind } from "./getUserLoggedData.js";
+import { win, lose, draw, clickRock, clickPaper, clickScissors, clickRandom, userName, setWin, setLose, clearGame } from "../../variables.js";
 
 export const saveGame = () => {
-  userFind.win = win;
-  userFind.lose = lose;
-  userFind.draw = draw;
-  userFind.clickRock = clickRock;
-  userFind.clickPaper = clickPaper;
-  userFind.clickScissors = clickScissors;
-  userFind.clickRandom = clickRandom;
-
-  localStorage.setItem('users', JSON.stringify([userFind]));
+  console.log(win ,lose, draw, clickRock, clickPaper, clickScissors, clickRandom)
+  const getUsers = JSON.parse(localStorage.getItem('users'));
+  const savePlayerGame = getUsers.map(user => {
+    if (user.login === userName) {
+      return {...user, win: user.win + win, lose: user.lose + lose, draw: user.draw + draw, clickPaper: user.clickPaper + clickPaper, clickRock: user.clickRock + clickRock, clickScissors: user.clickScissors + clickScissors, clickRandom: user.clickRandom + clickRandom}
+    }
+    return ;
+  });
+  localStorage.setItem('users', JSON.stringify(savePlayerGame));
 };

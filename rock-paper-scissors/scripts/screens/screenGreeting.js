@@ -2,6 +2,9 @@ import { screensWrapper } from "../../variables.js";
 import { characterPresent } from "./characterPresentation/characterPresent.js";
 import { checkLogIn } from "../localStorage/checkLogIn.js";
 import { registerLogInUserRender } from "./registerUser/registerLogInUserRender.js";
+import { userLogged } from "../localStorage/checkUserLogged.js";
+import { userLoggedRender } from "./userLogged/userLoggedRender.js";
+import { checkUserLogged } from "../localStorage/checkUserLogged.js";
 
 export const screenGreeting = () => {
   const greetingScreen = document.createElement('div');
@@ -53,7 +56,15 @@ export const screenGreeting = () => {
     greetingScreen.style.opacity = 0;
     setTimeout(() => {
       greetingScreen.style.display = "none";
-      checkLogIn() ? registerLogInUserRender(checkLogIn()) : characterPresent();
+      if (checkLogIn()) {
+        if (Object.keys(userLogged).length) {
+          userLoggedRender();
+        } else {
+          registerLogInUserRender();
+        };
+      } else {
+        characterPresent();
+      };
     }, 500);
   });
-}
+};
