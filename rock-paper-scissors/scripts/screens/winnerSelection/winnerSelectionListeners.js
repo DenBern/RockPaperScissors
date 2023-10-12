@@ -1,6 +1,6 @@
-import { btnHome, btnRestart, setWin, setLose, setDraw, setClickRock, setClickPaper, setClickScissors,setClickRandom} from "../../variables.js"
-import { startGameRender } from "../screens/startGame/startGameRender.js"
-import { userLoggedRender } from "../screens/userLogged/userLoggedRender.js";
+import { btnHome, btnRestart, setWin, setLose, setDraw, setClickRock, setClickPaper, setClickScissors,setClickRandom} from "../../../variables.js"
+import { startGameRender } from "../startGame/startGameRender.js"
+import { userLoggedRender } from "../userLogged/userLoggedRender.js";
 export const winnerSelectionListeners = () => {
   const clearCounter = () => {
     setWin(0);

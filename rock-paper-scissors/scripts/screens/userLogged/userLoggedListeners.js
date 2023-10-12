@@ -1,10 +1,10 @@
-import { logOut, lose, menuGameContainer, setClickPaper, setClickRandom, setClickRock, setClickScissors, setWin, setDraw, setLogged, setLose, startGameContainer, win } from "../../../variables.js";
-import { screenGreeting } from "../screenGreeting.js";
+import { logOut, menuGameContainer, setLogged, startGameContainer } from "../../../variables.js";
 import { playerScoreRender } from "./playerScore/playerScoreRender.js";
 import { userLoggedAnimationStart } from "./userLoggedAnimationStart.js";
 import { screensWrapper } from "../../../variables.js";
 import { startGameRender } from "../startGame/startGameRender.js";
 import { userLogOut } from "../../localStorage/userLogOut.js";
+import { greetingRender } from "../greeting/greetingRender.js";
 
 export const userLoggedListeners = () => {
   startGameContainer.addEventListener('click', () => {
@@ -21,7 +21,7 @@ export const userLoggedListeners = () => {
     userLogOut();
     setTimeout(() => {
       screensWrapper.innerHTML = '';
-      screenGreeting();
+      greetingRender();
     }, 750);
     removeHandlerLogOut();
   };

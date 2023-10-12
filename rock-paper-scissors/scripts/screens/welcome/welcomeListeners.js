@@ -1,9 +1,9 @@
 import { screenWelcome } from "../../../variables.js";
-import { screenGreeting } from "../screenGreeting.js";
+import { greetingRender } from "../greeting/greetingRender.js";
 
 export const welcomeListeners = () => {
   screenWelcome.addEventListener('animationend', () => {
     screenWelcome.style.display = "none";
-    screenGreeting();
+    greetingRender();
   });
 };

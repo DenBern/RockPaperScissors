@@ -1,13 +1,8 @@
-import { screensWrapper } from "../../variables.js";
-import { characterPresent } from "./characterPresentation/characterPresent.js";
-import { checkLogIn } from "../localStorage/checkLogIn.js";
-import { registerLogInUserRender } from "./registerUser/registerLogInUserRender.js";
-import { userLogged } from "../localStorage/checkUserLogged.js";
-import { userLoggedRender } from "./userLogged/userLoggedRender.js";
-import { checkUserLogged } from "../localStorage/checkUserLogged.js";
+import { screensWrapper } from "../../../variables.js";
+import { btnTap, greetingScreen } from "./greetingVariables.js";
 
-export const screenGreeting = () => {
-  const greetingScreen = document.createElement('div');
+export const greetingContent = () => {
+  
   greetingScreen.classList.add('greeting-screen');
   screensWrapper.append(greetingScreen);
 
@@ -23,7 +18,6 @@ export const screenGreeting = () => {
     <span class="dash"> - </span>
     <span class="letter-s">S</span>
   `;
-
 
   const rock = document.createElement('img');
   const paper = document.createElement('img');
@@ -43,28 +37,9 @@ export const screenGreeting = () => {
   greeting.append(rock, paper, scissors, shadowSmall, shadowBig);
   greetingScreen.append(gameTitle);
 
-  const btnTap = document.createElement('button');
-
   setTimeout(() => {
     btnTap.classList.add('btn-tap');
     btnTap.textContent = "Click";
     greetingScreen.append(btnTap);
   }, 1000);
-
-  btnTap.addEventListener('click', () => {
-    greetingScreen.style.zIndex = 1;
-    greetingScreen.style.opacity = 0;
-    setTimeout(() => {
-      greetingScreen.style.display = "none";
-      if (checkLogIn()) {
-        if (Object.keys(userLogged).length) {
-          userLoggedRender();
-        } else {
-          registerLogInUserRender();
-        };
-      } else {
-        characterPresent();
-      };
-    }, 500);
-  });
 };

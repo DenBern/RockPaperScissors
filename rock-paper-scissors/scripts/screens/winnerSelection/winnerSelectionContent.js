@@ -1,4 +1,4 @@
-import { startGameRender } from "../screens/startGame/startGameRender.js";
+import { startGameRender } from "../startGame/startGameRender.js";
 import {
   playerItemContainer,
   computerItemContainer,
@@ -19,9 +19,7 @@ import {
   incLose,
   incDraw,
   resetWinsLose,
-  win,
-  lose,
-} from "../../variables.js";
+} from "../../../variables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
   playerItemContainer.classList.add('player-item-container');
@@ -42,7 +40,6 @@ export const winnerSelectionContent = (winner, player, computer) => {
     case 'Player':
       setPlayerWin();
       incWin();
-      console.log(win, lose)
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '4';
@@ -51,7 +48,6 @@ export const winnerSelectionContent = (winner, player, computer) => {
     case 'Computer':
       setPlayerLose();
       incLose();
-      console.log(win, lose)
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
       playerItemContainer.style.zIndex = '2';
@@ -89,9 +85,10 @@ export const winnerSelectionContent = (winner, player, computer) => {
 
   const endGamePopUpContainer = document.createElement('div');
   endGamePopUpContainer.classList.add('end-game-pop-up-container');
-
   const winnerLogo = document.createElement('div');
   winnerLogo.classList.add('winner-logo');
+  winnerLogo.style.backgroundImage = `url(./assets/svg/${winner.toLowerCase() + 'IconWin.svg'}`;
+
 
   const currentAccountWrapper = document.createElement('div');
   currentAccountWrapper.classList.add('current-account-wrapper');
@@ -107,12 +104,9 @@ export const winnerSelectionContent = (winner, player, computer) => {
 
   buttonsHomeRestart.append(btnHome, btnRestart)
 
-
   endGamePopUpContainer.append(winnerLogo, currentAccountWrapper, buttonsHomeRestart)
 
-
   endGamePopUpWrapper.append(endGamePopUpContainer);
-
 
   let popUpWinnerVisible = setTimeout(() => {
     startGameWrapper.append(winnerPopUp);

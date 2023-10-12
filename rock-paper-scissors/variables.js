@@ -1,5 +1,3 @@
-import { userFind } from "./scripts/localStorage/getUserLoggedData.js ";
-
 // Screens wrapper
 const screensWrapper = document.querySelector('.screens-wrapper');
 
@@ -217,8 +215,8 @@ const itemsGame = {
 };
 
 const maxWins = 3;
-let playerWin = 0;
-let playerLose = 0;
+let playerWin = 2;
+let playerLose = 2;
 
 const setPlayerWin = () => playerWin ++;
 const setPlayerLose = () => playerLose ++;
@@ -279,8 +277,6 @@ btnRestartIcon.src = './assets/svg/endGame/restartGame.svg';
 
 btnRestart.append(btnRestartIcon);
 btnHome.append(btnHomeIcon);
-
-console.log(win,lose)
 
 export {
   win,

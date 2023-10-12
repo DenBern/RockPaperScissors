@@ -689,6 +689,8 @@ h1 {
 .btn-start,
 .btn-menu {
   background: none;
+  transform: scale(1);
+  transition: 0.5s;
 }
 
 .btn-menu:hover {
@@ -954,6 +956,9 @@ h1 {
   width: 176px;
   height: 176px;
   border-radius: 50%;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
   background-color: #2B2870;
 }
 

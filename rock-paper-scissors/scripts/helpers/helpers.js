@@ -1,5 +1,5 @@
 import * as variables from "../../variables.js"
-import { winnerSelectionRender } from "../winnerSelection/winnerSelectionRender.js";
+import { winnerSelectionRender } from "../screens/winnerSelection/winnerSelectionRender.js";
 
 export const changeBtnPresent = (value) => {
   switch (value) {
