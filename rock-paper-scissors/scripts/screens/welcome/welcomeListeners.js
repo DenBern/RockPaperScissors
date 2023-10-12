@@ -1,5 +1,5 @@
 import { screenWelcome } from "./welcomeVariables.js";
-import { allUsers, getUsers } from "../../localStorage/getUsers.js";
+import { getUsers } from "../../localStorage/getUsers.js";
 import { greetingRender } from "../greeting/greetingRender.js";
 
 export const welcomeListeners = () => {
@@ -7,6 +7,5 @@ export const welcomeListeners = () => {
     screenWelcome.style.display = "none";
     getUsers();
     greetingRender();
-    console.log(allUsers)
   });
 };

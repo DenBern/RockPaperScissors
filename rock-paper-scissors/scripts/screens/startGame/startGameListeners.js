@@ -15,7 +15,6 @@ export const startGameListeners = () => {
   };
 
   const rockButtonClickHandler = () => {
-    console.log('rock btn')
     selectItem(rockButton);
     incClicRock();
   };
