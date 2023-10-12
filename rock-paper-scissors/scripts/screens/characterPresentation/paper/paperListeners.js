@@ -1,4 +1,4 @@
-import { paper, paperCircle } from "../../../../variables.js";
+import { paper, paperCircle } from "./paperVariables.js";
 
 export const paperListeners = () => {
   paper.addEventListener('animationend', () => {

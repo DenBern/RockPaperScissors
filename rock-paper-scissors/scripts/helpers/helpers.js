@@ -1,16 +1,20 @@
-import * as variables from "../../variables.js"
+import * as variables from "../../variables.js";
+
+import { btnPrev, btnNext, arrowNext } from "../screens/greeting/greetingVariables.js";
 import { winnerSelectionRender } from "../screens/winnerSelection/winnerSelectionRender.js";
+import { randomButton, rockButton, paperButton, scissorsButton } from "../screens/startGame/startGameVariables.js";
+import { startGameWrapper } from "../screens/startGame/startGameVariables.js";
 
 export const changeBtnPresent = (value) => {
   switch (value) {
     case 3:
-      variables.btnPrev.style.right = '240px';
-      variables.btnNext.textContent = 'Let’s Start';
+      btnPrev.style.right = '240px';
+      btnNext.textContent = 'Let’s Start';
       break;
     case 2:
-      variables.btnNext.textContent = 'Next';
-      variables.btnNext.append(variables.arrowNext);
-      variables.btnPrev.style.right = '200px';
+      btnNext.textContent = 'Next';
+      btnNext.append(arrowNext);
+      btnPrev.style.right = '200px';
       break;
   };
 };
@@ -19,7 +23,7 @@ export const changeIcons = (counter) => {
   const icons = document.querySelectorAll('.icons');
   const pathScisssors = document.getElementById('scissors-path');
   const pathRock = document.getElementById('rock-path');
-  const pathPaper= document.getElementById('paper-path');
+  const pathPaper = document.getElementById('paper-path');
 
   icons.forEach((icon, index) => {
     if (counter - 1 === index) {
@@ -37,7 +41,7 @@ export const changeIcons = (counter) => {
     case 2:
       pathScisssors.setAttribute('fill', '#90C67B');
       pathRock.setAttribute('fill', '#FFCC01');
-      pathPaper.setAttribute('fill', '#fff')
+      pathPaper.setAttribute('fill', '#fff');
       break;
     case 3:
       pathScisssors.setAttribute('fill', '#90C67B');
@@ -47,7 +51,7 @@ export const changeIcons = (counter) => {
     default:
       pathScisssors.setAttribute('fill', '#fff');
       pathRock.setAttribute('fill', '#fff');
-      pathPaper.setAttribute('fill', '#fff')
+      pathPaper.setAttribute('fill', '#fff');
   };
 };
 
@@ -73,14 +77,14 @@ export const changeActionButtons = (btn) => {
 };
 
 export const disabledActionBtns = () => {
-  variables.rockButton.setAttribute('disabled', '');
-  variables.paperButton.setAttribute('disabled', '');
-  variables.scissorsButton.setAttribute('disabled', '');
-  variables.randomButton.setAttribute('disabled', '');
+  rockButton.setAttribute('disabled', '');
+  paperButton.setAttribute('disabled', '');
+  scissorsButton.setAttribute('disabled', '');
+  randomButton.setAttribute('disabled', '');
 };
 
 export const enabledActionBtns = () => {
-  [variables.rockButton, variables.paperButton, variables.scissorsButton, variables.randomButton].forEach(btn => {
+  [rockButton, paperButton, scissorsButton, randomButton].forEach(btn => {
     btn.removeAttribute('disabled', '');
     btn.style.backgroundColor = '#232586';
     btn.style.opacity = 0.7;
@@ -105,7 +109,7 @@ export const whoIsWinner = (player, computer) => {
 
 export const resetStyleStartGame = () => {
   enabledActionBtns();
-  variables.startGameWrapper.innerHTML = '';
-  variables.startGameWrapper.style.alignItems = '';
-  variables.startGameWrapper.style.justifyContent = '';
+  startGameWrapper.innerHTML = '';
+  startGameWrapper.style.alignItems = '';
+  startGameWrapper.style.justifyContent = '';
 };

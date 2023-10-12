@@ -1,8 +1,16 @@
-import { startGameContainer, userInfo, userNotFound } from "../../../variables.js"
-import { handMale, handFemale, bloodPreview, shadowPreview, loggedLogo, navBar } from "../../../variables.js";
-import { userLoggedAnimationStart } from "./userLoggedAnimationStart.js";
+import { userNotFound, userInfo } from "./mainMenuVariables.js";
+import { mainMenuAnimationStart } from "./mainMenuAnimationStart.js";
+import {
+  handMale,
+  handFemale,
+  bloodPreview,
+  shadowPreview,
+  loggedLogo,
+  navBar,
+  startGameContainer
+} from "./mainMenuVariables.js";
 
-export const userLoggedAnimation = () => {
+export const mainMenuAnimation = () => {
   userInfo.style.top = '0';
   handMale.style.left = '200px';
   handFemale.style.right = '160px';
@@ -32,5 +40,5 @@ export const userLoggedAnimation = () => {
   ], 700);
 
   userNotFound.style.opacity = 1;
-  startGameContainer.removeEventListener('click', userLoggedAnimationStart);
+  startGameContainer.removeEventListener('click', mainMenuAnimationStart);
 };

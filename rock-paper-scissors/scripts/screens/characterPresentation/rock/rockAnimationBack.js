@@ -1,4 +1,4 @@
-import { rockCircle, titleRock, rock } from "../../../../variables.js";
+import { rockCircle, titleRock, rock } from "./rockVariables.js";
 
 export const rockAnimationBack = (count) => {
   if (count === 1) {
@@ -13,7 +13,7 @@ export const rockAnimationBack = (count) => {
       {top: '40px', left: '-45px'},
       {top: '430px', left: '310px'},
     ], 700);
-  
+
     rockCircle.animate([
       {top: '360px', left: '-115px'},
       {top: '700px', left: '210px'},

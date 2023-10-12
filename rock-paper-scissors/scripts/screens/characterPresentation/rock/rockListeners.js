@@ -1,4 +1,4 @@
-import { rock, rockCircle } from "../../../../variables.js";
+import { rock, rockCircle } from "./rockVariables.js";
 
 export const rockListeners = () => {
   rock.addEventListener('animationend', () => {

@@ -1,6 +1,7 @@
-import { btnHome, btnRestart, setWin, setLose, setDraw, setClickRock, setClickPaper, setClickScissors,setClickRandom} from "../../../variables.js"
+import { setWin, setLose, setDraw, setClickRock, setClickPaper, setClickScissors,setClickRandom} from "../../../variables.js"
+import { btnHome, btnRestart } from "./winnerSelectionVariables.js";
 import { startGameRender } from "../startGame/startGameRender.js"
-import { userLoggedRender } from "../userLogged/userLoggedRender.js";
+import { mainMenuRender } from "../mainMenu/mainMenuRender.js";
 export const winnerSelectionListeners = () => {
   const clearCounter = () => {
     setWin(0);
@@ -14,7 +15,7 @@ export const winnerSelectionListeners = () => {
   };
 
   const backToMain = () => {
-    userLoggedRender();
+    mainMenuRender();
     removeListeners();
     clearCounter();
   };

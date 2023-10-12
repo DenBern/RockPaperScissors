@@ -1,10 +1,9 @@
-import { menuGameContainer, closeScore } from "../../../../variables.js";
+import { menuGameContainer, closeScore } from "../mainMenuVariables.js";
 import { playerScoreAnimate } from "./playerScoreAnimate.js";
 import { playerScoreAnimationBack } from "./playerScoreAnimationBack.js";
 
 export const playerScoreListeners = () => {
   const handlerClickPlayerScore = () => {
-    console.log('open score')
     playerScoreAnimate();
     removeScoreOpen();
   };
@@ -23,5 +22,4 @@ export const playerScoreListeners = () => {
   function removeScoreClose () {
     closeScore.removeEventListener('click', handleClickScoreClose);
   };
-
 };

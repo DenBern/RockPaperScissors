@@ -1,4 +1,4 @@
-import { computerChangeContainer, playerChangeContainer } from "../../variables.js";
+import { computerChangeContainer, playerChangeContainer } from "../screens/startGame/startGameVariables.js";
 
 export const playerSelectedAnimation = () => {
   computerChangeContainer.style.bottom = '600px';

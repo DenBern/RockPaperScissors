@@ -1,17 +1,18 @@
-import { screensWrapper, userName, userNotFound , userNotFoundText} from "../../../variables.js";
+import { screensWrapper, userName} from "../../../variables.js";
 import { getUserLoggedData } from "../../localStorage/getUserLoggedData.js";
-import { userLoggedContent } from "./userLoggedContent.js";
-import { userLoggedListeners } from "./userLoggedListeners.js";
-import { userLoggedAnimation } from "./userLoggedAnimation.js";
+import { mainMenuContent } from "./mainMenuContent.js";
+import { mainMenuListeners } from "./mainMenuListeners.js";
+import { mainMenuAnimation } from "./mainMenuAnimation.js";
+import { userNotFound, userNotFoundText } from "./mainMenuVariables.js";
 
-export const userLoggedRender = () => {
-  userLoggedAnimation();
-  userLoggedListeners();
+export const mainMenuRender = () => {
+  mainMenuAnimation();
+  mainMenuListeners();
 
   userNotFound.innerHTML = '';
 
   if (getUserLoggedData(userName)) {
-    userLoggedContent();
+    mainMenuContent();
   } else {
     userNotFoundText.textContent = `User '${userName}' not found`;
     userNotFound.append(userNotFoundText);

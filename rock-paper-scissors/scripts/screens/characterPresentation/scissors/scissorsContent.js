@@ -1,16 +1,10 @@
-import {
-  scissorsCircle,
-  scissorsScreenContainer,
-  titleScissors,
-  scissors,
-  btnNext,
-  screensWrapper,
-  iconsWrapper,
-} from "../../../../variables.js";
+import { screensWrapper} from "../../../../variables.js";
+import { btnNext } from "../../greeting/greetingVariables.js";
+import { scissorsScreenContainer, scissorsCircle, scissors, titleScissors } from "./scissorsVariables.js";
+import { iconsWrapper } from "./scissorsVariables.js";
 
 export const scissorsContent = () => {
   scissorsScreenContainer.classList.add('scissors-screen');
-
   titleScissors.classList.add('title-scissors');
   scissorsCircle.classList.add('scissors-circle');
 
@@ -18,10 +12,7 @@ export const scissorsContent = () => {
   scissors.classList.add('scissors');
 
   scissorsCircle.append(titleScissors);
-  scissorsScreenContainer.append(scissorsCircle);
-  scissorsScreenContainer.append(scissors);
+  scissorsScreenContainer.append(scissorsCircle, scissors);
 
-  screensWrapper.append(btnNext);
-  screensWrapper.append(scissorsScreenContainer);
-  screensWrapper.append(iconsWrapper);
+  screensWrapper.append(btnNext, scissorsScreenContainer, iconsWrapper);
 };

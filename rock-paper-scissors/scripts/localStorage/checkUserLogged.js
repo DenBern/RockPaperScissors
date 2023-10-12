@@ -1,12 +1,11 @@
-import { greetingRender } from "../screens/greeting/greetingRender.js";
-import { userLoggedRender } from "../screens/userLogged/userLoggedRender.js";
+import { allUsers } from "./getUsers.js";
 
 export let userLogged = {};
-export const checkUserLogged = () => {
-  let users = JSON.parse(localStorage.getItem('users')) ?? [];
-  if (!users.length) {
-    greetingRender()
-  } else {
-    userLoggedRender();
-  };
-};
+export const checkUserLogged = () => userLogged = allUsers.find(user => user.logged);
+  // if (userLogged) {
+  //   console.log(allUsers)
+  //   greetingRender()
+  // } else {
+  //   console.log(allUsers)
+  //   userLoggedRender();
+  // };

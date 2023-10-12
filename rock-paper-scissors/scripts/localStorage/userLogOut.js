@@ -5,7 +5,7 @@ export const userLogOut = () => {
   let userLogged = getUsers.map(user => {
     if (user.login === userName) {
       return {...user, logged: logged}
-    }
+    };
     return;
   });
   localStorage.setItem('users', JSON.stringify(userLogged));

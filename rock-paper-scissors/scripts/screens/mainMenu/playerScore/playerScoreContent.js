@@ -1,6 +1,6 @@
-import { userLoggedScreen, playerScoreWrapper, closeScore} from "../../../../variables.js";
-
+import { mainMenuScreen, playerScoreWrapper, closeScore} from "../mainMenuVariables.js";
 import { userFind } from "../../../localStorage/getUserLoggedData.js";
+
 export const playerScoreContent = () => {
 
   playerScoreWrapper.innerHTML = '';
@@ -106,5 +106,5 @@ export const playerScoreContent = () => {
 
   playerScoreWrapper.append(playerNameBtnClose, wrapperTopClicks)
 
-  userLoggedScreen.append(playerScoreWrapper);
+  mainMenuScreen.append(playerScoreWrapper);
 };

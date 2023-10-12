@@ -1,25 +1,27 @@
 import { startGameRender } from "../startGame/startGameRender.js";
 import {
-  playerItemContainer,
-  computerItemContainer,
-  itemPlayerIcon,
-  itemComputerIcon,
-  startGameWrapper,
   setPlayerWin,
   setPlayerLose,
   playerLose,
   maxWins,
   playerWin,
-  currentProgressComputer,
-  currentProgressPlayer,
-  buttonsHomeRestart,
-  btnHome,
-  btnRestart,
   incWin,
   incLose,
   incDraw,
   resetWinsLose,
 } from "../../../variables.js";
+
+import {
+  playerItemContainer,
+  computerItemContainer,
+  itemPlayerIcon,
+  itemComputerIcon,
+  startGameWrapper,
+  currentProgressComputer,
+  currentProgressPlayer,
+} from "../startGame/startGameVariables.js";
+
+import { btnHome, btnRestart, buttonsHomeRestart } from "./winnerSelectionVariables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
   playerItemContainer.classList.add('player-item-container');

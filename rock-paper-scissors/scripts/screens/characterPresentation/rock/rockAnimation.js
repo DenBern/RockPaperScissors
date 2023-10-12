@@ -1,4 +1,7 @@
-import { btnPrev, rockCircle, titleRock, rock, currentIcon } from "../../../../variables.js";
+import { currentIcon } from "../../../../variables.js";
+import { rock, titleRock, rockCircle } from "./rockVariables.js";
+
+import { btnPrev } from "../../greeting/greetingVariables.js";
 
 export const rockAnimation = () => {
   if (currentIcon === 2) {

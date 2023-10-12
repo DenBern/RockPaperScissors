@@ -1,9 +1,10 @@
-import { btnNext, btnPrev, currentIcon, incrementCount} from "../../../../variables.js"
+import { currentIcon, incrementCount} from "../../../../variables.js"
 import { scissorsAnimation } from "../scissors/scissorsAnimation.js";
 import { rockAnimation } from "../rock/rockAnimation.js";
 import { paperAnimation } from "../paper/paperAnimation.js";
 import { changeBtnPresent, changeIcons } from "../../../../scripts/helpers/helpers.js";
 import { registerLogInUserRender } from "../../registerUser/registerLogInUserRender.js";
+import { btnNext, btnPrev } from "../../greeting/greetingVariables.js";
 
 export const nextCharacter = () => {
   btnNext.addEventListener('click', () => {

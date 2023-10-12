@@ -1,4 +1,4 @@
-import { paperCircle, paper, titlePaper } from "../../../../variables.js";
+import { paper, paperCircle, titlePaper } from "./paperVariables.js";
 
 export const paperAnimationBack = () => {
   paper.style.top = '40px';

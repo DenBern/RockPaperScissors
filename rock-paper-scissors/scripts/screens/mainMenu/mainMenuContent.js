@@ -1,34 +1,33 @@
 import { getUserLoggedData } from "../../localStorage/getUserLoggedData.js";
+import { screensWrapper, userName } from "../../../variables.js";
+import { userInfo } from "./mainMenuVariables.js";
 import {
-  screensWrapper,
   menuGameIcon,
   startGameIcon,
   startGameContainer,
   menuGameContainer,
   navBar,
-  userInfo,
   shadowPreview,
-  bloodPreview,
   handFemale,
   handMale,
   loggedLogo,
-  userName,
   userPhotoName,
   userPhoto,
   userLogin,
   winLoseGames,
   winGames,
   loseGames,
-  userLoggedScreen,
+  mainMenuScreen,
   logOut,
-} from "../../../variables.js";
+  bloodPreview,
+} from "./mainMenuVariables.js";
 
-export const userLoggedContent = () => {
+export const mainMenuContent = () => {
   screensWrapper.innerHTML = '';
-  const {login, round, win, lose, draw, clickRock, clickPaper, clickScissors, clickRandom} = getUserLoggedData(userName);
+  const { login, win, lose } = getUserLoggedData(userName);
 
-  userLoggedScreen.innerHTML = '';
-  userLoggedScreen.classList.add('user-logged');
+  mainMenuScreen.innerHTML = '';
+  mainMenuScreen.classList.add('user-logged');
 
   userInfo.classList.add('user-info');
 
@@ -65,6 +64,6 @@ export const userLoggedContent = () => {
   menuGameContainer.innerHTML = menuGameIcon;
   navBar.append(startGameContainer, menuGameContainer, logOut);
 
-  userLoggedScreen.append(userInfo, loggedLogo, previewGame, navBar);
-  screensWrapper.append(userLoggedScreen);
+  mainMenuScreen.append(userInfo, loggedLogo, previewGame, navBar);
+  screensWrapper.append(mainMenuScreen);
 };

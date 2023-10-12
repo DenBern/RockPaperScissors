@@ -2,7 +2,6 @@ import { screensWrapper } from "../../../variables.js";
 import { btnTap, greetingScreen } from "./greetingVariables.js";
 
 export const greetingContent = () => {
-  
   greetingScreen.classList.add('greeting-screen');
   screensWrapper.append(greetingScreen);
 
@@ -34,12 +33,14 @@ export const greetingContent = () => {
   scissors.src = "./assets/svg/greeting/scissors.svg";
   shadowSmall.src = "./assets/svg/greeting/shadowEllipse1.svg";
   shadowBig.src = "./assets/svg/greeting/shadowEllipse2.svg";
+
   greeting.append(rock, paper, scissors, shadowSmall, shadowBig);
   greetingScreen.append(gameTitle);
 
-  setTimeout(() => {
+  let btnVisible = setTimeout(() => {
     btnTap.classList.add('btn-tap');
     btnTap.textContent = "Click";
     greetingScreen.append(btnTap);
+    clearTimeout(btnVisible);
   }, 1000);
 };

@@ -1,14 +1,17 @@
-import { logOut, menuGameContainer, setLogged, startGameContainer } from "../../../variables.js";
+import { logOut, menuGameContainer, startGameContainer } from "./mainMenuVariables.js";
+import { setLogged } from "../../../variables.js"
+
 import { playerScoreRender } from "./playerScore/playerScoreRender.js";
-import { userLoggedAnimationStart } from "./userLoggedAnimationStart.js";
+import { mainMenuAnimationStart } from "./mainMenuAnimationStart.js";
 import { screensWrapper } from "../../../variables.js";
 import { startGameRender } from "../startGame/startGameRender.js";
 import { userLogOut } from "../../localStorage/userLogOut.js";
 import { greetingRender } from "../greeting/greetingRender.js";
+import { greetingScreen } from "../greeting/greetingVariables.js";
 
-export const userLoggedListeners = () => {
+export const mainMenuListeners = () => {
   startGameContainer.addEventListener('click', () => {
-    userLoggedAnimationStart();
+    mainMenuAnimationStart();
     setTimeout(() => {
       screensWrapper.innerHTML = '';
       startGameRender();
@@ -17,7 +20,7 @@ export const userLoggedListeners = () => {
 
   const handlerLogOut = () => {
     setLogged(false);
-    userLoggedAnimationStart();
+    mainMenuAnimationStart();
     userLogOut();
     setTimeout(() => {
       screensWrapper.innerHTML = '';
@@ -30,6 +33,6 @@ export const userLoggedListeners = () => {
   logOut.addEventListener('click', handlerLogOut);
 
   function removeHandlerLogOut  ()  {
-    logOut.removeEventListener('click', handlerLogOut)
+    logOut.removeEventListener('click', handlerLogOut);
   };
 };

@@ -1,22 +1,20 @@
+import { maxWins, playerLose, playerWin, screensWrapper } from "../../../variables.js";
 import { enabledActionBtns, resetStyleStartGame } from "../../helpers/helpers.js";
+
+import { playerSelectedAnimationBack } from "../../playerSelected/playerSelectedAnimationBack.js";
 import {
   computerChangeContainer,
-  screensWrapper,
   playerChangeContainer,
   randomPaperBtns,
   gameButtons,
   scissorsButton,
   rockButton,
   startGameWrapper,
-  maxWins,
-  playerLose,
-  playerWin,
   playerProgressWrapper,
   computerProgressWrapper,
   currentProgressPlayer,
   currentProgressComputer,
-} from "../../../variables.js";
-import { playerSelectedAnimationBack } from "../../playerSelected/playerSelectedAnimationBack.js";
+} from "../startGame/startGameVariables.js";
 
 export const startGameContent = () => {
   let secondsToStart = 3;

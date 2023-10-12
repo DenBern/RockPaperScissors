@@ -1,4 +1,4 @@
-import { paperCircle, paper, titlePaper } from "../../../../variables.js";
+import { paper, paperCircle, titlePaper } from "./paperVariables.js";
 
 export const paperAnimation = () => {
   paper.style.left = '-195px';

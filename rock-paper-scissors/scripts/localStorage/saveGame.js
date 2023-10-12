@@ -12,8 +12,8 @@ export const saveGame = () => {
         clickPaper: user.clickPaper + clickPaper,
         clickRock: user.clickRock + clickRock,
         clickScissors: user.clickScissors + clickScissors,
-        clickRandom: user.clickRandom + clickRandom
-      }
+        clickRandom: user.clickRandom + clickRandom,
+      };
     };
     return;
   });

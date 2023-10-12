@@ -1,5 +1,6 @@
 import { changeActionButtons, disabledActionBtns, getRandomItem, whoIsWinner } from "../../helpers/helpers.js";
-import { paperButton, rockButton, scissorsButton, randomButton, incClicRock, incClickPaper, incClickScissors, incClickRandom, clickRandom, clickRock  } from "../../../variables.js"
+import { incClicRock, incClickPaper, incClickScissors, incClickRandom } from "../../../variables.js"
+import { rockButton, paperButton, scissorsButton, randomButton } from "./startGameVariables.js";
 import { computerSelected } from "../../computerSelected/computerSelected.js";
 import { playerSelectedRender } from "../../playerSelected/playerSelectedRender.js";
 import { playerSelected } from "../../playerSelected/playerSelected.js";

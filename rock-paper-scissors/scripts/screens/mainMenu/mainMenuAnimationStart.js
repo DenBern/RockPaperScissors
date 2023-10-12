@@ -1,14 +1,14 @@
+import { userInfo } from "./mainMenuVariables.js";
 import {
   bloodPreview,
   handFemale,
   handMale,
   loggedLogo,
   navBar,
-  shadowPreview,
-  userInfo,
-} from "../../../variables.js";
+  shadowPreview
+} from "./mainMenuVariables.js";
 
-export const userLoggedAnimationStart = () => {
+export const mainMenuAnimationStart = () => {
   userInfo.style.top = '-65px';
   handMale.style.left = '440px';
   handFemale.style.right = '440px';

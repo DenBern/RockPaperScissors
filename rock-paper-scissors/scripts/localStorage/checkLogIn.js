@@ -1,1 +1,3 @@
-export const checkLogIn = () => Boolean(localStorage.getItem('users'));
+import { allUsers } from "./getUsers.js";
+
+export const checkLogIn = () => Boolean(allUsers.length);

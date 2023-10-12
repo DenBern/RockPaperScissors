@@ -1,7 +1,7 @@
 import { createNewUser } from "../../localStorage/createNewUser.js";
 import { setUserName, userName } from "../../../variables.js";
-import { userLoggedRender } from "../userLogged/userLoggedRender.js";
-import { userLogIn } from "../../localStorage/userLoIn.js";
+import { mainMenuRender } from "../mainMenu/mainMenuRender.js";
+import { userLogIn } from "../../localStorage/userLogIn.js";
 
 export const registerLogInUserListeners = () => {
   const btnRegisteredLogIn = document.querySelector('.btn-registered');
@@ -23,9 +23,9 @@ export const registerLogInUserListeners = () => {
   btnRegisteredLogIn.addEventListener('click', () => {
     if (btnRegisteredLogIn.textContent !== 'Sign in') {
       createNewUser(userName);
-      userLoggedRender();
+      mainMenuRender();
     } else {
-      userLoggedRender();
+      mainMenuRender();
       userLogIn();
     };
   });

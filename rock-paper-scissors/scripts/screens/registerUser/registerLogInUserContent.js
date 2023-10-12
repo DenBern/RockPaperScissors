@@ -13,14 +13,14 @@ export const registerLogInUserContent = () => {
   registerScreenContainer.classList.add('register-screen');
 
   const inputName = document.createElement('input');
-  inputName.classList.add('input-name')
+  inputName.classList.add('input-name');
   inputName.setAttribute('type', 'text');
   inputName.setAttribute('maxLength', '10');
   inputName.setAttribute('minLength', '1');
   inputName.setAttribute('required', '');
   inputName.setAttribute('autofocus', '')
   // inputName.setAttribute('pattern', '^[^\s()-]*$');
-  inputName.placeholder = 'What is your name?';
+  inputName.placeholder = checkLogIn() ? 'Enter your name' : 'What is your name?';
 
   const wrapperInput = document.createElement('div');
   wrapperInput.classList.add('wrapper-input');

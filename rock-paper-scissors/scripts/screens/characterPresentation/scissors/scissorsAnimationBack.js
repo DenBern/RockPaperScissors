@@ -1,4 +1,4 @@
-import { scissors, scissorsCircle } from "../../../../variables.js";
+import { scissors, scissorsCircle } from "./scissorsVariables.js";
 
 export const scissorsAnimationBack = () => {
   scissors.style.left = '100px';

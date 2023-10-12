@@ -1,10 +1,5 @@
-import {
-  paperCircle,
-  paperScreenContainer,
-  titlePaper,
-  paper,
-  screensWrapper,
-} from "../../../../variables.js";
+import { screensWrapper } from "../../../../variables.js";
+import { paper, paperCircle, paperScreenContainer, paperContainer, titlePaper } from "./paperVariables.js";
 
 export const paperContent = () => {
   paperScreenContainer.classList.add('paper-screen');
