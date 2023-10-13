@@ -89,7 +89,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
   endGamePopUpContainer.classList.add('end-game-pop-up-container');
   const winnerLogo = document.createElement('div');
   winnerLogo.classList.add('winner-logo');
-  winnerLogo.style.backgroundImage = `url(./assets/svg/${winner.toLowerCase() + 'IconWin.svg'}`;
+  winnerLogo.style.backgroundImage = `url(./assets/svg/process/${winner.toLowerCase() + 'IconProcess.svg'}`;
 
 
   const currentAccountWrapper = document.createElement('div');

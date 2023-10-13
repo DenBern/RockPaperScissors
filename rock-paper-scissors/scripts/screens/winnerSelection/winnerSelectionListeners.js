@@ -25,7 +25,6 @@ export const winnerSelectionListeners = () => {
     startGameRender();
   }
 
-
   btnHome.addEventListener('click', backToMain);
   btnRestart.addEventListener('click', restartGame);
 
