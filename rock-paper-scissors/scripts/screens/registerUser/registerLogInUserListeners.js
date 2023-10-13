@@ -15,8 +15,7 @@ export const registerLogInUserListeners = () => {
         btnRegisteredLogIn.style.transform = 'scale(1)';
     };
   });
-
-  btnRegisteredLogIn.addEventListener('click', () => {
+  const handleClickRegister = () => {
     if (btnRegisteredLogIn.textContent !== 'Sign in') {
       createNewUser(userName);
       mainMenuRender();
@@ -24,5 +23,7 @@ export const registerLogInUserListeners = () => {
       mainMenuRender();
       userLogIn();
     };
-  });
+    btnRegisteredLogIn.removeEventListener('click', handleClickRegister)
+  };
+  btnRegisteredLogIn.addEventListener('click', handleClickRegister)
 };

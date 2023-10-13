@@ -4,7 +4,7 @@ export let allUsers = [];
 export const getUsers = () => {
   allUsers = JSON.parse(localStorage.getItem('users')) || [];
   allUsers.forEach(user => {
-    if(user.logged) setUserName(user.login);
+    if(user.login) setUserName(user.login);
   });
   inputName.value = userName;
 };
