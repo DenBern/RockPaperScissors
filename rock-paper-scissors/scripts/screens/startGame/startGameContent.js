@@ -13,6 +13,7 @@ import {
   computerProgressWrapper,
   currentProgressPlayer,
   currentProgressComputer,
+  leaveGame,
 } from "../startGame/startGameVariables.js";
 
 export const startGameContent = () => {
@@ -68,6 +69,7 @@ export const startGameContent = () => {
 
   winners.append(winsPlayer, winsComputer);
 
+  leaveGame.classList.add('leave-game');
 
   const timerFight = setInterval(() => {
     secondsToStart -= 1;
@@ -87,6 +89,6 @@ export const startGameContent = () => {
 
   gameButtons.append(rockButton, randomPaperBtns, scissorsButton);
 
-  startGameWrapper.append(playerChangeContainer, computerChangeContainer, gameButtons,timerToStart, progressGame, winners)
+  startGameWrapper.append(playerChangeContainer, computerChangeContainer, gameButtons,timerToStart, progressGame, winners, leaveGame)
   screensWrapper.append(startGameWrapper);
 };

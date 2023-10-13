@@ -473,6 +473,13 @@ h1 {
   width: 20px;
   height: 20px;
   background: url(./assets/svg/closeIcon.svg) no-repeat center;
+  transition: 0.5s;
+  transform: scale(1) rotate(0);
+}
+
+.btn-close-score:hover {
+  transform: scale(1.4) rotate(360deg);
+  transition: 0.5s;
 }
 
 .log-out {
@@ -723,11 +730,6 @@ h1 {
   transition: 0.5s;
 }
 
-.btn-close-score:hover {
-  transform: scale(1.4);
-  transition: 0.5s;
-}
-
 /***** Start game *****/
 
 .start-game {
@@ -774,6 +776,21 @@ h1 {
   font-weight: 400;
   line-height: normal;
   color: #fff;
+}
+
+.leave-game {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  padding: 35px;
+  background: url(./assets/svg/leaveGame.svg) no-repeat center;
+  transition: 0.5s;
+  transform: rotate(0) scale(1);
+}
+
+.leave-game:hover {
+  transition: 0.5s;
+  transform: rotate(-30deg) scale(1.2);
 }
 
 .game-field {

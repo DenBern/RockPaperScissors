@@ -8,6 +8,8 @@ const playerChangeShadow = document.createElement('img');
 const computerChangeContainer = document.createElement('div');
 const playerChangeContainer = document.createElement('div');
 
+const leaveGame = document.createElement('button');
+
 playerChangeShadow.src = './assets/svg/hands/shadow/userChange.svg';
 computerChangeShadow.src = './assets/svg/hands/shadow/computerChange.svg';
 
@@ -92,4 +94,5 @@ export {
   computerItemContainer,
   itemComputerIcon,
   itemPlayerIcon,
+  leaveGame,
 }

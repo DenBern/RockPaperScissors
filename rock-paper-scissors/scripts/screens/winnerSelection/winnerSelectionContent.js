@@ -10,8 +10,6 @@ import {
   incLose,
   incDraw,
   resetWinsLose,
-  winsPlayer,
-  winsComputer,
   playerStr,
   computerStr,
   drawStr,

@@ -5,7 +5,6 @@ import {
   maxWins,
   playerLose,
   playerWin,
-  lastGames,
   setLastGames,
   winsPlayer,
   winsComputer
@@ -20,4 +19,4 @@ export const winnerSelectionRender = (winner, player, computer) => {
     winsPlayer.textContent = `${"You wins: " + playerWin + " / " + maxWins}`;
     winsComputer.textContent = `${"Computer wins: " + playerLose + " / " + maxWins}`;
   };
-}
+};

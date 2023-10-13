@@ -8,13 +8,11 @@ export const startGameRender = () => {
   startGameContent();
   const initialListeners = () => {
     if (addListeners) {
-      return
-    }
+      return;
+    };
     startGameListeners();
     addListeners = true;
   };
-
   initialListeners();
-
   disabledActionBtns();
 };
