@@ -1,4 +1,4 @@
-import { maxWins, playerLose, playerWin, screensWrapper } from "../../../variables.js";
+import { maxWins, playerLose, playerWin, screensWrapper, rounds, currentRound } from "../../../variables.js";
 import { enabledActionBtns, resetStyleStartGame } from "../../helpers/helpers.js";
 
 import { playerSelectedAnimationBack } from "../../playerSelected/playerSelectedAnimationBack.js";
@@ -61,6 +61,9 @@ export const startGameContent = () => {
 
   progressGame.append(playerIcon, progressLine, computerIcon);
 
+  rounds.classList.add('rounds')
+  rounds.textContent = `Wins: ${currentRound} / ${maxWins}`;
+
   const timerFight = setInterval(() => {
     secondsToStart -= 1;
     if (secondsToStart >= 1 ) {
@@ -79,6 +82,6 @@ export const startGameContent = () => {
 
   gameButtons.append(rockButton, randomPaperBtns, scissorsButton);
 
-  startGameWrapper.append(playerChangeContainer, computerChangeContainer, gameButtons,timerToStart, progressGame)
+  startGameWrapper.append(playerChangeContainer, computerChangeContainer, gameButtons,timerToStart, progressGame, rounds)
   screensWrapper.append(startGameWrapper);
 };

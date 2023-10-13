@@ -16,6 +16,16 @@ const setUserName = (value) => {
   userName = value;
 };
 
+// Rounds
+let currentRound = 0;
+const rounds = document.createElement('span');
+
+const setRound = (win, lose) => {
+  // currentRound = Math.ceil((win + lose) / 3) || 1;
+  currentRound = win > lose ? win : lose;
+  console.log(currentRound)
+};
+
 const rock = 'Rock';
 const paper = 'Paper';
 const scissors = 'Scissors';
@@ -127,4 +137,7 @@ export {
   random,
   inputName,
   btnRegisteredLogIn,
+  rounds,
+  currentRound,
+  setRound,
 };
