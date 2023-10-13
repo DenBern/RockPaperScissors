@@ -31,7 +31,11 @@ export const playerScoreContent = () => {
   resultsList.classList.add('results-list');
   resultsList.innerHTML = '';
   userFind.lastGames.forEach(game => {
-      resultsList.innerHTML += `<li class="result">${game}</li>`;
+    let comparison = game.split("");
+      resultsList.innerHTML += `
+      <li class="result" style="color: ${+comparison[0] > +comparison[comparison.length - 1] ? '#90c67b' : '#d94691'}">
+        ${game}
+      </li>`;
   });
 
   wrapperTop.append(topResults, resultsList);
