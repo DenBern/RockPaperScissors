@@ -1,4 +1,5 @@
 import { startGameRender } from "../startGame/startGameRender.js";
+import { btnHome, btnRestart, buttonsHomeRestart } from "./winnerSelectionVariables.js";
 import {
   setPlayerWin,
   setPlayerLose,
@@ -12,6 +13,9 @@ import {
   setRound,
   rounds,
   currentRound,
+  playerStr,
+  computerStr,
+  drawStr,
 } from "../../../variables.js";
 
 import {
@@ -23,8 +27,6 @@ import {
   currentProgressComputer,
   currentProgressPlayer,
 } from "../startGame/startGameVariables.js";
-
-import { btnHome, btnRestart, buttonsHomeRestart } from "./winnerSelectionVariables.js";
 
 export const winnerSelectionContent = (winner, player, computer) => {
   playerItemContainer.classList.add('player-item-container');
@@ -42,7 +44,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
   bloodItemContainer.append(bloodIcon);
 
   switch (winner) {
-    case 'Player':
+    case playerStr:
       setPlayerWin();
       setRound(playerWin, playerLose);
       incWin();
@@ -51,7 +53,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
       playerItemContainer.style.zIndex = '4';
       computerItemContainer.style.zIndex = '2';
       break;
-    case 'Computer':
+    case computerStr:
       setPlayerLose();
       setRound(playerWin, playerLose);
       incLose();
@@ -60,7 +62,7 @@ export const winnerSelectionContent = (winner, player, computer) => {
       playerItemContainer.style.zIndex = '2';
       computerItemContainer.style.zIndex = '4';
       break;
-    case 'Draw':
+    case drawStr:
       incDraw();
       playerItemContainer.style.bottom = '-220px';
       computerItemContainer.style.bottom = '380px';
@@ -96,16 +98,15 @@ export const winnerSelectionContent = (winner, player, computer) => {
   winnerLogo.classList.add('winner-logo');
   winnerLogo.style.backgroundImage = `url(./assets/svg/process/${winner.toLowerCase() + 'IconProcess.svg'}`;
 
-
   const currentAccountWrapper = document.createElement('div');
   currentAccountWrapper.classList.add('current-account-wrapper');
 
   const winnerTitle = document.createElement('p');
   winnerTitle.classList.add('winner-title');
-  winnerTitle.textContent = `${winner === 'Player' ? 'You win!' :  'Computer win!'}`;
+  winnerTitle.textContent = `${winner === playerStr ? 'You win!' :  'Computer win!'}`;
   const currentAccount = document.createElement('p');
   currentAccount.classList.add('current-account');
-  currentAccount.textContent = `${playerWin +  ' : ' + playerLose}`
+  currentAccount.textContent = `${playerWin +  ' : ' + playerLose}`;
 
   currentAccountWrapper.append(winnerTitle, currentAccount)
 

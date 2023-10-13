@@ -12,6 +12,10 @@ body {
   height: 100vh;
 }
 
+ul {
+  list-style: none;
+}
+
 /* All greeting screen */
 
 .icons-wrapper {
@@ -486,7 +490,6 @@ h1 {
 
 .player-title {
   color: #FFB24C;
-  font-family: Inter;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
@@ -508,6 +511,22 @@ h1 {
 
 .top-results {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+.result {
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .wrapper-clicks {
@@ -882,12 +901,14 @@ h1 {
   height: 8px;
   border-radius: 5px;
   background-color: #E95847;
+  transition: 1s;
 }
 
 .current-progress-player {
   height: 8px;
   border-radius: 5px;
   background-color: #90C67B;
+  transition: 1s;
 }
 
 /***** Player click *****/

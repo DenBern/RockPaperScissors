@@ -4,9 +4,9 @@ import { randomButton, rockButton, paperButton, scissorsButton } from "../screen
 import { startGameWrapper } from "../screens/startGame/startGameVariables.js";
 import {
   itemsGame,
-  winnerPlayer,
-  winnerComputer,
-  winnerDraw,
+  playerStr,
+  computerStr,
+  drawStr,
   rock,
   paper,
   scissors,
@@ -108,10 +108,10 @@ export const getRandomItem = () => {
 export const whoIsWinner = (player, computer) => {
   let winner = '';
   itemsGame[player] === computer
-    ? winner = winnerComputer
+    ? winner = computerStr
     : player === computer
-    ? winner = winnerDraw
-    : winner = winnerPlayer
+    ? winner = drawStr
+    : winner = playerStr
   winnerSelectionRender(winner, player, computer);
 };
 

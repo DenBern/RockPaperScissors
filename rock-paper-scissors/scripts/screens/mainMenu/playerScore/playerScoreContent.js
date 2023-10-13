@@ -27,7 +27,14 @@ export const playerScoreContent = () => {
   topResults.textContent = 'Last 10 games';
   topResults.style.color = '#fff';
 
-  wrapperTop.append(topResults);
+  const resultsList = document.createElement('ul');
+  resultsList.classList.add('results-list');
+  resultsList.innerHTML = '';
+  userFind.lastGames.forEach(game => {
+      resultsList.innerHTML += `<li class="result">${game}</li>`;
+  });
+
+  wrapperTop.append(topResults, resultsList);
 
   const wrapperClicks = document.createElement('div');
   wrapperClicks.classList.add('wrapper-clicks');

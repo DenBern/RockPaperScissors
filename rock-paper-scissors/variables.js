@@ -1,3 +1,4 @@
+import { userFind } from "./scripts/localStorage/getUserLoggedData.js";
 // Screens wrapper
 const screensWrapper = document.querySelector('.screens-wrapper');
 
@@ -21,9 +22,7 @@ let currentRound = 0;
 const rounds = document.createElement('span');
 
 const setRound = (win, lose) => {
-  // currentRound = Math.ceil((win + lose) / 3) || 1;
   currentRound = win > lose ? win : lose;
-  console.log(currentRound)
 };
 
 const rock = 'Rock';
@@ -37,9 +36,9 @@ const itemsGame = {
   'Paper': 'Scissors',
 };
 
-const winnerPlayer = 'Player';
-const winnerComputer = 'Computer';
-const winnerDraw = 'Draw';
+const playerStr = 'Player';
+const computerStr = 'Computer';
+const drawStr = 'Draw';
 
 const maxWins = 3;
 let playerWin = 0;
@@ -61,6 +60,8 @@ let clickPaper = 0;
 let clickScissors = 0;
 let clickRandom = 0;
 let logged = false;
+let lastGames = [];
+let lastGamesMaxLenght = 10;
 
 const setWin = (value) => win = value;
 const setLose = (value) => lose = value;
@@ -70,6 +71,18 @@ const setClickPaper = (value) => clickPaper = value;
 const setClickScissors= (value) => clickScissors = value;
 const setClickRandom = (value) => clickRandom = value;
 const setLogged = (value) => logged = value;
+const getLastGames = (playerGames) => {
+  lastGames = playerGames;
+};
+
+const setLastGames = () => {
+  if (lastGames.length === lastGamesMaxLenght) {
+    lastGames.pop();
+    lastGames.unshift(`${playerWin + " : " + playerLose}`);
+  } else {
+    lastGames.unshift(`${playerWin + " : " + playerLose}`);
+  }
+};
 
 const incWin = () => win ++;
 const incLose = () => lose ++;
@@ -112,9 +125,9 @@ export {
   userName,
   setUserName,
   itemsGame,
-  winnerPlayer,
-  winnerComputer,
-  winnerDraw,
+  playerStr,
+  computerStr,
+  drawStr,
   setPlayerLose,
   setPlayerWin,
   playerWin,
@@ -140,4 +153,7 @@ export {
   rounds,
   currentRound,
   setRound,
+  lastGames,
+  getLastGames,
+  setLastGames,
 };

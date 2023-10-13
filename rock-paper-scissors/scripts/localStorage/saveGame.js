@@ -1,4 +1,14 @@
-import { win, lose, draw, clickRock, clickPaper, clickScissors, clickRandom, userName} from "../../variables.js";
+import {
+  win,
+  lose,
+  draw,
+  clickRock,
+  clickPaper,
+  clickScissors,
+  clickRandom,
+  userName,
+  lastGames,
+} from "../../variables.js";
 
 export const saveGame = () => {
   const getUsers = JSON.parse(localStorage.getItem('users'));
@@ -13,6 +23,7 @@ export const saveGame = () => {
         clickRock: user.clickRock + clickRock,
         clickScissors: user.clickScissors + clickScissors,
         clickRandom: user.clickRandom + clickRandom,
+        lastGames,
       };
     };
     return;

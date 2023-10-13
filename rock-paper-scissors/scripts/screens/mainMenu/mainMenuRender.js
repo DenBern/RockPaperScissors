@@ -1,5 +1,5 @@
-import { btnRegisteredLogIn, screensWrapper, userName} from "../../../variables.js";
-import { getUserLoggedData } from "../../localStorage/getUserLoggedData.js";
+import { btnRegisteredLogIn, screensWrapper, getLastGames, userName, lastGames} from "../../../variables.js";
+import { getUserLoggedData, userFind } from "../../localStorage/getUserLoggedData.js";
 import { mainMenuContent } from "./mainMenuContent.js";
 import { mainMenuListeners } from "./mainMenuListeners.js";
 import { mainMenuAnimation } from "./mainMenuAnimation.js";
@@ -25,4 +25,6 @@ export const mainMenuRender = () => {
       userNotFound.style.opacity = 0;
     }, 2000);
   };
+  getLastGames(userFind.lastGames);
+  console.log(lastGames)
 };

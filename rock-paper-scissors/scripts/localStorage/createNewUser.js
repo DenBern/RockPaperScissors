@@ -9,6 +9,7 @@ export const createNewUser = (login) => {
     clickPaper: 0,
     clickScissors: 0,
     clickRandom: 0,
+    lastGames: [],
   };
 
   let getUsers = JSON.parse(localStorage.getItem('users')) ?? [];
