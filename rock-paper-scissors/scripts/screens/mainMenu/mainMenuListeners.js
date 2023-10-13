@@ -7,7 +7,6 @@ import { screensWrapper } from "../../../variables.js";
 import { startGameRender } from "../startGame/startGameRender.js";
 import { userLogOut } from "../../localStorage/userLogOut.js";
 import { greetingRender } from "../greeting/greetingRender.js";
-import { greetingScreen } from "../greeting/greetingVariables.js";
 
 export const mainMenuListeners = () => {
   startGameContainer.addEventListener('click', () => {

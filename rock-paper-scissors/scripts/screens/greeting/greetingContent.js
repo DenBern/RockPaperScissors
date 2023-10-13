@@ -2,6 +2,8 @@ import { screensWrapper } from "../../../variables.js";
 import { btnTap, greetingScreen } from "./greetingVariables.js";
 
 export const greetingContent = () => {
+  greetingScreen.style.display = 'flex';
+  greetingScreen.style.opacity = 1;
   greetingScreen.classList.add('greeting-screen');
   screensWrapper.append(greetingScreen);
 

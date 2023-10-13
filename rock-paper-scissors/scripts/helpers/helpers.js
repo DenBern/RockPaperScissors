@@ -1,9 +1,17 @@
-import * as variables from "../../variables.js";
-
 import { btnPrev, btnNext, arrowNext } from "../screens/greeting/greetingVariables.js";
 import { winnerSelectionRender } from "../screens/winnerSelection/winnerSelectionRender.js";
 import { randomButton, rockButton, paperButton, scissorsButton } from "../screens/startGame/startGameVariables.js";
 import { startGameWrapper } from "../screens/startGame/startGameVariables.js";
+import {
+  itemsGame,
+  winnerPlayer,
+  winnerComputer,
+  winnerDraw,
+  rock,
+  paper,
+  scissors,
+  random
+} from "../../variables.js";
 
 export const changeBtnPresent = (value) => {
   switch (value) {
@@ -57,19 +65,19 @@ export const changeIcons = (counter) => {
 
 export const changeActionButtons = (btn) => {
   switch (btn.textContent) {
-    case 'Rock':
+    case rock:
       btn.style.backgroundColor = '#D94690';
       btn.style.opacity = '1';
       break;
-    case 'Paper':
+    case paper:
       btn.style.backgroundColor = '#FFCC01';
       btn.style.opacity = '1';
       break;
-    case 'Scissors':
+    case scissors:
       btn.style.backgroundColor = '#5BC6E0';
       btn.style.opacity = '1';
       break;
-    case 'Random':
+    case random:
       btn.style.backgroundColor = '#90C67B';
       btn.style.opacity = '1';
       break;
@@ -92,18 +100,18 @@ export const enabledActionBtns = () => {
 };
 
 export const getRandomItem = () => {
-  const  items = ['Rock', 'Paper', 'Scissors'];
+  const  items = [rock, paper, scissors];
   const randomNumber = Math.floor(Math.random() * items.length);
   return items[randomNumber];
 };
 
 export const whoIsWinner = (player, computer) => {
   let winner = '';
-  variables.itemsGame[player] === computer
-    ? winner = 'Computer'
+  itemsGame[player] === computer
+    ? winner = winnerComputer
     : player === computer
-    ? winner = 'Draw'
-    : winner = 'Player'
+    ? winner = winnerDraw
+    : winner = winnerPlayer
   winnerSelectionRender(winner, player, computer);
 };
 

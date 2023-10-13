@@ -1,6 +1,6 @@
-const btnTap = document.createElement('button');
 const greetingScreen = document.createElement('div');
 
+const btnTap = document.createElement('button');
 const btnNext = document.createElement('button');
 btnNext.classList.add('btn-next');
 btnNext.textContent = 'Next';

@@ -1,11 +1,6 @@
 // Screens wrapper
 const screensWrapper = document.querySelector('.screens-wrapper');
 
-// Icons import  => for function changeIcons in helpers
-import { rockIcon } from "./scripts/screens/characterPresentation/rock/rockVariables.js";
-import { scissorsIcon } from "./scripts/screens/characterPresentation/scissors/scissorsVariables.js";
-import { paperIcon } from "./scripts/screens/characterPresentation/paper/paperVariables.js";
-
 //Change character screen
 let currentIcon = 1;
 const incrementCount = () => currentIcon ++;
@@ -17,12 +12,20 @@ const setUserName = (value) => {
   userName = value;
 };
 
+const rock = 'Rock';
+const paper = 'Paper';
+const scissors = 'Scissors';
+const random = 'Random';
 
 const itemsGame = {
   'Rock': 'Paper',
   'Scissors': 'Rock',
   'Paper': 'Scissors',
 };
+
+const winnerPlayer = 'Player';
+const winnerComputer = 'Computer';
+const winnerDraw = 'Draw';
 
 const maxWins = 3;
 let playerWin = 0;
@@ -72,7 +75,6 @@ const clearGame = (value) => {
   setClickRandom(value);
 };
 
-
 export {
   win,
   lose,
@@ -96,6 +98,9 @@ export {
   userName,
   setUserName,
   itemsGame,
+  winnerPlayer,
+  winnerComputer,
+  winnerDraw,
   setPlayerLose,
   setPlayerWin,
   playerWin,
@@ -112,4 +117,8 @@ export {
   logged,
   clearGame,
   counterStart,
+  rock,
+  paper,
+  scissors,
+  random,
 };
