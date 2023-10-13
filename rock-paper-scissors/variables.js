@@ -18,12 +18,9 @@ const setUserName = (value) => {
 };
 
 // Rounds
-let currentRound = 0;
-const rounds = document.createElement('span');
-
-const setRound = (win, lose) => {
-  currentRound = win > lose ? win : lose;
-};
+const winners = document.createElement('div');
+const winsPlayer = document.createElement('span');
+const winsComputer = document.createElement('span');
 
 const rock = 'Rock';
 const paper = 'Paper';
@@ -150,9 +147,9 @@ export {
   random,
   inputName,
   btnRegisteredLogIn,
-  rounds,
-  currentRound,
-  setRound,
+  winners,
+  winsPlayer,
+  winsComputer,
   lastGames,
   getLastGames,
   setLastGames,

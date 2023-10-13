@@ -30,13 +30,16 @@ export const playerScoreContent = () => {
   const resultsList = document.createElement('ul');
   resultsList.classList.add('results-list');
   resultsList.innerHTML = '';
-  userFind.lastGames.forEach(game => {
-    let comparison = game.split("");
-      resultsList.innerHTML += `
-      <li class="result" style="color: ${+comparison[0] > +comparison[comparison.length - 1] ? '#90c67b' : '#d94691'}">
-        ${game}
-      </li>`;
-  });
+
+  if(userFind.lastGames) {
+    userFind.lastGames.forEach(game => {
+      let comparison = game.split("");
+        resultsList.innerHTML +=
+          `<li class="result" style="color: ${+comparison[0] > +comparison[comparison.length - 1] ? '#90c67b' : '#d94691'}">
+            ${game}
+          </li>`;
+    });
+  };
 
   wrapperTop.append(topResults, resultsList);
 

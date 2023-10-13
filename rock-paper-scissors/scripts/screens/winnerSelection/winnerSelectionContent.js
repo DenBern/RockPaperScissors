@@ -10,9 +10,8 @@ import {
   incLose,
   incDraw,
   resetWinsLose,
-  setRound,
-  rounds,
-  currentRound,
+  winsPlayer,
+  winsComputer,
   playerStr,
   computerStr,
   drawStr,
@@ -46,7 +45,6 @@ export const winnerSelectionContent = (winner, player, computer) => {
   switch (winner) {
     case playerStr:
       setPlayerWin();
-      setRound(playerWin, playerLose);
       incWin();
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
@@ -55,7 +53,6 @@ export const winnerSelectionContent = (winner, player, computer) => {
       break;
     case computerStr:
       setPlayerLose();
-      setRound(playerWin, playerLose);
       incLose();
       playerItemContainer.style.bottom = '-100px';
       computerItemContainer.style.bottom = '290px';
@@ -127,10 +124,8 @@ export const winnerSelectionContent = (winner, player, computer) => {
       if (playerLose < maxWins && playerWin < maxWins) {
         startGameRender();
       } else {
-        rounds.textContent = `Wins: ${currentRound} / ${maxWins}`;
         startGameWrapper.append(endGamePopUpWrapper);
         resetWinsLose();
-        setRound(playerWin, playerLose);
       };
       clearTimeout(displayNone);
     }, 1500);

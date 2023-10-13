@@ -14,6 +14,7 @@ export const mainMenuRender = () => {
 
   if (getUserLoggedData(userName)) {
     mainMenuContent();
+    getLastGames(userFind.lastGames);
     btnRegisteredLogIn.removeEventListener('click', handleClickRegister)
   } else {
     userNotFoundText.textContent = `User '${userName}' not found`;
@@ -25,6 +26,4 @@ export const mainMenuRender = () => {
       userNotFound.style.opacity = 0;
     }, 2000);
   };
-  getLastGames(userFind.lastGames);
-  console.log(lastGames)
 };

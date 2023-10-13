@@ -1,6 +1,5 @@
-import { maxWins, playerLose, playerWin, screensWrapper, rounds, currentRound } from "../../../variables.js";
+import { maxWins, playerLose, playerWin, screensWrapper, winners, winsComputer, winsPlayer } from "../../../variables.js";
 import { enabledActionBtns, resetStyleStartGame } from "../../helpers/helpers.js";
-
 import { playerSelectedAnimationBack } from "../../playerSelected/playerSelectedAnimationBack.js";
 import {
   computerChangeContainer,
@@ -22,6 +21,8 @@ export const startGameContent = () => {
   //Reset styles
   playerSelectedAnimationBack();
   resetStyleStartGame();
+  winsPlayer.textContent = `${"You wins: " + playerWin + " / " + maxWins}`;
+  winsComputer.textContent = `${"Computer wins: " + playerLose + " / " + maxWins}`;
 
   startGameWrapper.classList.add('start-game');
   playerChangeContainer.classList.add('player-change-container');
@@ -61,8 +62,12 @@ export const startGameContent = () => {
 
   progressGame.append(playerIcon, progressLine, computerIcon);
 
-  rounds.classList.add('rounds')
-  rounds.textContent = `Wins: ${currentRound} / ${maxWins}`;
+  winners.classList.add('winners');
+  winsPlayer.textContent = `${"You wins: " + playerWin + " / " + maxWins}`;
+  winsComputer.textContent = `${"Computer wins: " + playerLose + " / " + maxWins}`;
+
+  winners.append(winsPlayer, winsComputer);
+
 
   const timerFight = setInterval(() => {
     secondsToStart -= 1;
@@ -82,6 +87,6 @@ export const startGameContent = () => {
 
   gameButtons.append(rockButton, randomPaperBtns, scissorsButton);
 
-  startGameWrapper.append(playerChangeContainer, computerChangeContainer, gameButtons,timerToStart, progressGame, rounds)
+  startGameWrapper.append(playerChangeContainer, computerChangeContainer, gameButtons,timerToStart, progressGame, winners)
   screensWrapper.append(startGameWrapper);
 };
