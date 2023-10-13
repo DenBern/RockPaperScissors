@@ -1,4 +1,4 @@
-import { screensWrapper } from "../../../variables.js";
+import { screensWrapper, inputName, btnRegisteredLogIn, userName} from "../../../variables.js";
 import { checkLogIn } from "../../localStorage/checkLogIn.js";
 
 export const registerLogInUserContent = () => {
@@ -12,7 +12,6 @@ export const registerLogInUserContent = () => {
   const registerScreenContainer = document.createElement('div');
   registerScreenContainer.classList.add('register-screen');
 
-  const inputName = document.createElement('input');
   inputName.classList.add('input-name');
   inputName.setAttribute('type', 'text');
   inputName.setAttribute('maxLength', '10');
@@ -21,6 +20,7 @@ export const registerLogInUserContent = () => {
   inputName.setAttribute('autofocus', '')
   // inputName.setAttribute('pattern', '^[^\s()-]*$');
   inputName.placeholder = checkLogIn() ? 'Enter your name' : 'What is your name?';
+  inputName.value = `${userName ? userName : ''}`;
 
   const wrapperInput = document.createElement('div');
   wrapperInput.classList.add('wrapper-input');
@@ -36,10 +36,9 @@ export const registerLogInUserContent = () => {
   const navBar = document.createElement('div');
   navBar.classList.add('nav-bar');
 
-  const btnRegisteredLogIn = document.createElement('button');
   btnRegisteredLogIn.textContent = `${checkLogIn() ? 'Sign in' : 'Registered'}`;
   btnRegisteredLogIn.classList.add('btn-registered');
-  btnRegisteredLogIn.setAttribute('disabled', '');
+  btnRegisteredLogIn.setAttribute(`${userName ? 'enabled' : 'disabled'}`, '');
 
   registerScreenContainer.append(logo, titleLogo,wrapperInput, dividerContainer, btnRegisteredLogIn)
 

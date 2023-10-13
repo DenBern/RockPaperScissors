@@ -1,6 +1,10 @@
 // Screens wrapper
 const screensWrapper = document.querySelector('.screens-wrapper');
 
+// Save player name in input
+const inputName = document.createElement('input');
+const btnRegisteredLogIn = document.createElement('button');
+
 //Change character screen
 let currentIcon = 1;
 const incrementCount = () => currentIcon ++;
@@ -121,4 +125,6 @@ export {
   paper,
   scissors,
   random,
+  inputName,
+  btnRegisteredLogIn,
 };

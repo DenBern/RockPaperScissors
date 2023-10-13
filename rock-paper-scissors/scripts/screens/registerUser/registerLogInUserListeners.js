@@ -1,16 +1,12 @@
 import { createNewUser } from "../../localStorage/createNewUser.js";
-import { setUserName, userName } from "../../../variables.js";
+import { setUserName, userName, inputName, btnRegisteredLogIn } from "../../../variables.js";
 import { mainMenuRender } from "../mainMenu/mainMenuRender.js";
 import { userLogIn } from "../../localStorage/userLogIn.js";
 
 export const registerLogInUserListeners = () => {
-  const btnRegisteredLogIn = document.querySelector('.btn-registered');
-  const inputName = document.querySelector('.input-name');
-
   inputName.addEventListener('input', (e) => {
     setUserName(e.target.value);
     const minLength = inputName.minLength;
-
     if (userName.length >= minLength) {
         btnRegisteredLogIn.removeAttribute('disabled', '');
         btnRegisteredLogIn.style.transform = 'scale(1.2)';
