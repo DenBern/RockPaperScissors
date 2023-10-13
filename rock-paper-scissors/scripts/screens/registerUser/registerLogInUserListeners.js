@@ -3,6 +3,17 @@ import { setUserName, userName, inputName, btnRegisteredLogIn } from "../../../v
 import { mainMenuRender } from "../mainMenu/mainMenuRender.js";
 import { userLogIn } from "../../localStorage/userLogIn.js";
 
+export const handleClickRegister = () => {
+  if (btnRegisteredLogIn.textContent !== 'Sign in') {
+    createNewUser(userName);
+    mainMenuRender();
+    btnRegisteredLogIn.removeEventListener('click', handleClickRegister);
+  } else {
+    mainMenuRender();
+    userLogIn();
+  };
+};
+
 export const registerLogInUserListeners = () => {
   inputName.addEventListener('input', (e) => {
     setUserName(e.target.value);
@@ -15,15 +26,5 @@ export const registerLogInUserListeners = () => {
         btnRegisteredLogIn.style.transform = 'scale(1)';
     };
   });
-  const handleClickRegister = () => {
-    if (btnRegisteredLogIn.textContent !== 'Sign in') {
-      createNewUser(userName);
-      mainMenuRender();
-    } else {
-      mainMenuRender();
-      userLogIn();
-    };
-    btnRegisteredLogIn.removeEventListener('click', handleClickRegister)
-  };
-  btnRegisteredLogIn.addEventListener('click', handleClickRegister)
+  btnRegisteredLogIn.addEventListener('click', handleClickRegister);
 };

@@ -38,7 +38,11 @@ export const registerLogInUserContent = () => {
 
   btnRegisteredLogIn.textContent = `${checkLogIn() ? 'Sign in' : 'Registered'}`;
   btnRegisteredLogIn.classList.add('btn-registered');
-  btnRegisteredLogIn.setAttribute(`${userName ? 'enabled' : 'disabled'}`, '');
+  if (userName) {
+    btnRegisteredLogIn.removeAttribute('disabled', '');
+  } else {
+    btnRegisteredLogIn.setAttribute('disabled', '');
+  };
 
   registerScreenContainer.append(logo, titleLogo,wrapperInput, dividerContainer, btnRegisteredLogIn)
 

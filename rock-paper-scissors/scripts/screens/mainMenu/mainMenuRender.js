@@ -1,9 +1,10 @@
-import { screensWrapper, userName} from "../../../variables.js";
+import { btnRegisteredLogIn, screensWrapper, userName} from "../../../variables.js";
 import { getUserLoggedData } from "../../localStorage/getUserLoggedData.js";
 import { mainMenuContent } from "./mainMenuContent.js";
 import { mainMenuListeners } from "./mainMenuListeners.js";
 import { mainMenuAnimation } from "./mainMenuAnimation.js";
 import { userNotFound, userNotFoundText } from "./mainMenuVariables.js";
+import { handleClickRegister } from "../registerUser/registerLogInUserListeners.js"
 
 export const mainMenuRender = () => {
   mainMenuAnimation();
@@ -13,6 +14,7 @@ export const mainMenuRender = () => {
 
   if (getUserLoggedData(userName)) {
     mainMenuContent();
+    btnRegisteredLogIn.removeEventListener('click', handleClickRegister)
   } else {
     userNotFoundText.textContent = `User '${userName}' not found`;
     userNotFound.append(userNotFoundText);
