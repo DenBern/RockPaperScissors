@@ -1,4 +1,3 @@
-import { userFind } from "./scripts/localStorage/getUserLoggedData.js";
 // Screens wrapper
 const screensWrapper = document.querySelector('.screens-wrapper');
 

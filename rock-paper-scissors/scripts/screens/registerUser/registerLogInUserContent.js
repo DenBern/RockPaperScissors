@@ -14,11 +14,12 @@ export const registerLogInUserContent = () => {
 
   inputName.classList.add('input-name');
   inputName.setAttribute('type', 'text');
-  inputName.setAttribute('maxLength', '10');
+  inputName.setAttribute('maxLength', '20');
   inputName.setAttribute('minLength', '1');
   inputName.setAttribute('required', '');
-  inputName.setAttribute('autofocus', '')
-  // inputName.setAttribute('pattern', '^[^\s()-]*$');
+  inputName.setAttribute('autofocus', '');
+  inputName.setAttribute('title', 'Use the latin characters');
+  inputName.setAttribute('pattern', "^[a-zA-Z]+$");
   inputName.placeholder = checkLogIn() ? 'Enter your name' : 'What is your name?';
   inputName.value = `${userName ? userName : ''}`;
 

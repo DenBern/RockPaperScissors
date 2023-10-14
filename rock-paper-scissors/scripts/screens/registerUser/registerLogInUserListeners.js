@@ -15,16 +15,21 @@ export const handleClickRegister = () => {
 };
 
 export const registerLogInUserListeners = () => {
+  const validName = /^[a-zA-Z]+$/;
+  const minLength = inputName.minLength;
+  const maxLength = inputName.maxLength;
   inputName.addEventListener('input', (e) => {
+    console.log(validName.test(e.target.value))
     setUserName(e.target.value);
-    const minLength = inputName.minLength;
-    if (userName.length >= minLength) {
-        btnRegisteredLogIn.removeAttribute('disabled', '');
-        btnRegisteredLogIn.style.transform = 'scale(1.2)';
-      } else {
-        btnRegisteredLogIn.setAttribute('disabled', '');
-        btnRegisteredLogIn.style.transform = 'scale(1)';
-    };
+    if (userName.length >= minLength && validName.test(e.target.value) && userName.length <= maxLength) {
+      btnRegisteredLogIn.removeAttribute('disabled', '');
+      btnRegisteredLogIn.style.transform = 'scale(1.2)';
+      inputName.style.border = "3px solid #5ecf32";
+    } else {
+      btnRegisteredLogIn.setAttribute('disabled', '');
+      btnRegisteredLogIn.style.transform = 'scale(1)';
+      inputName.style.border = "3px solid #d94647";
+    }
   });
   btnRegisteredLogIn.addEventListener('click', handleClickRegister);
 };
