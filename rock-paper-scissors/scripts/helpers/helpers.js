@@ -11,7 +11,6 @@ import {
   paper,
   scissors,
   random,
-  audio,
 } from "../../variables.js";
 
 export const changeBtnPresent = (value) => {

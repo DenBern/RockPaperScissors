@@ -1,10 +1,9 @@
 import { createNewUser } from "../../localStorage/createNewUser.js";
-import { setUserName, userName, inputName, btnRegisteredLogIn, audio } from "../../../variables.js";
+import { setUserName, userName, inputName, btnRegisteredLogIn } from "../../../variables.js";
 import { mainMenuRender } from "../mainMenu/mainMenuRender.js";
 import { userLogIn } from "../../localStorage/userLogIn.js";
 
 export const handleClickRegister = () => {
-  audio.play();
   if (btnRegisteredLogIn.textContent !== 'Sign in') {
     createNewUser(userName);
     mainMenuRender();

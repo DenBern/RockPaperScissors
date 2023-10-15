@@ -98,9 +98,6 @@ const clearGame = (value) => {
   setClickRandom(value);
 };
 
-const audio = new Audio ();
-audio.src = '/assets/audio/mainTheme.mp3';
-
 export {
   win,
   lose,
@@ -155,5 +152,4 @@ export {
   lastGames,
   getLastGames,
   setLastGames,
-  audio,
 };
