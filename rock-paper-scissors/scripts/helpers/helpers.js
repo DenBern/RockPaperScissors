@@ -10,7 +10,8 @@ import {
   rock,
   paper,
   scissors,
-  random
+  random,
+  audio,
 } from "../../variables.js";
 
 export const changeBtnPresent = (value) => {
@@ -111,7 +112,7 @@ export const whoIsWinner = (player, computer) => {
     ? winner = computerStr
     : player === computer
     ? winner = drawStr
-    : winner = playerStr
+    : winner = playerStr;
   winnerSelectionRender(winner, player, computer);
 };
 

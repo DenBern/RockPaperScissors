@@ -7,7 +7,7 @@ import {
   playerWin,
   setLastGames,
   winsPlayer,
-  winsComputer
+  winsComputer,
 } from "../../../variables.js";
 
 export const winnerSelectionRender = (winner, player, computer) => {

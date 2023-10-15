@@ -1,9 +1,10 @@
 import { createNewUser } from "../../localStorage/createNewUser.js";
-import { setUserName, userName, inputName, btnRegisteredLogIn } from "../../../variables.js";
+import { setUserName, userName, inputName, btnRegisteredLogIn, audio } from "../../../variables.js";
 import { mainMenuRender } from "../mainMenu/mainMenuRender.js";
 import { userLogIn } from "../../localStorage/userLogIn.js";
 
 export const handleClickRegister = () => {
+  audio.play();
   if (btnRegisteredLogIn.textContent !== 'Sign in') {
     createNewUser(userName);
     mainMenuRender();
@@ -19,7 +20,6 @@ export const registerLogInUserListeners = () => {
   const minLength = inputName.minLength;
   const maxLength = inputName.maxLength;
   inputName.addEventListener('input', (e) => {
-    console.log(validName.test(e.target.value))
     setUserName(e.target.value);
     if (userName.length >= minLength && validName.test(e.target.value) && userName.length <= maxLength) {
       btnRegisteredLogIn.removeAttribute('disabled', '');
