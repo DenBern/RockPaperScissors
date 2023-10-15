@@ -1047,6 +1047,27 @@ h1 {
   height: 52px;
 }
 
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-right: 20px;
+}
+
+.link-school {
+  width: 80px;
+  height: 40px;
+  background: url(./assets/svg/rs_school_logo.svg) no-repeat center;
+}
+
+.link-github {
+  width: 60px;
+  height: 40px;
+  background: url(./assets/svg/github_logo.svg) no-repeat center;
+}
+
 /***** Animation welcome *****/
 
 @keyframes welcome-screen {
