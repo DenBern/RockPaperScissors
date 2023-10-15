@@ -4,8 +4,8 @@ export let userFind = {};
 
 export const getUserLoggedData = (userName) => {
   const findUser = JSON.parse(localStorage.getItem('users')) || [];
-  userFind = findUser.find(user => user.login.toLowerCase() === userName.toLowerCase());
-  if (Boolean(userFind)) {
+  if (findUser.length) {
+    userFind = findUser.find(user => user.login.toLowerCase() === userName.toLowerCase());
     setLogged(true);
     return userFind;
   };
