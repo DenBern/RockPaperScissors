@@ -28,7 +28,7 @@ export const registerLogInUserListeners = () => {
       btnRegisteredLogIn.setAttribute('disabled', '');
       btnRegisteredLogIn.style.transform = 'scale(1)';
       inputName.style.border = "3px solid #d94647";
-    }
+    };
   });
   btnRegisteredLogIn.addEventListener('click', handleClickRegister);
 };
