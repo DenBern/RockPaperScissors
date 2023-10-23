@@ -29,7 +29,7 @@ export const sliders = () => {
       rightSvg.style.stroke = "#000";
       leftSvg.style.stroke = "#000";
     }
-  }
+  };
 
   // Set attribute btns(dots) tablet
 
@@ -105,8 +105,8 @@ export const sliders = () => {
     } else {
       rightSvg.style.stroke = `${defaultColorArrow}`;
       leftSvg.style.stroke = `${defaultColorArrow}`;
-    }
-  }
+    };
+  };
   setDisabledBtn(sliderPosition);
 
   // Move slider buttons tablet & active buttons(dots) tablet
@@ -128,7 +128,7 @@ export const sliders = () => {
       case sliderTabletEndPosition:
         setActiveBtn('fifth-dot');
         break;
-    }
+    };
   }
 
   const shiftLeft = () => {
@@ -143,7 +143,7 @@ export const sliders = () => {
     }
     activeBtnTablet(sliderPosition);
     setDisabledBtn(sliderPosition);
-  }
+  };
   rightButton.addEventListener('click', (shiftLeft));
 
   const shiftRight = () => {
@@ -157,6 +157,6 @@ export const sliders = () => {
     }
     activeBtnTablet(sliderPosition);
     setDisabledBtn(sliderPosition);
-  }
+  };;
   leftButton.addEventListener('click', (shiftRight));
-}
+};;

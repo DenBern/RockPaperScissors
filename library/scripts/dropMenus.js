@@ -15,7 +15,7 @@ export const dropMenus = () => {
   const toggleClass = () => {
     burgerButton.classList.toggle('active-button');
     burgerMenu.classList.toggle('active-menu');
-  }
+  };
 
   burgerButton.addEventListener('click', () => {
     toggleClass();
@@ -30,22 +30,22 @@ export const dropMenus = () => {
     if (!burgerMenu.contains(event.target) && !burgerButton.contains(event.target)) {
       burgerButton.classList.remove('active-button');
       burgerMenu.classList.remove('active-menu');
-    }
+    };
   });
 
   //Menu Profile
 
   btnRegister.addEventListener('click', () => {
     menuAuthorization.classList.remove('active-profile-menu');
-  })
+  });
 
   btnLogIn.addEventListener('click', () => {
     menuAuthorization.classList.remove('active-profile-menu');
-  })
+  });
 
   window.addEventListener('click', (event) => {
     if (!menuAuthorization.contains(event.target) && !profileButton.contains(event.target)) {
       menuAuthorization.classList.remove('active-profile-menu');
-    }
+    };
   });
 }
