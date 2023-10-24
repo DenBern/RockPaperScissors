@@ -2,13 +2,6 @@ import { getLocalStorageUsersCredits, localStorageUsersCredits } from "./localSt
 import { getRegisteredUsers } from "./localStorage/getRegisteredUsers.js";
 
 import {
-  checkVisitsCount,
-  checkBooksCount,
-  checkBonusesCount,
-  findLibraryCard,
-  checkDetails,
-  readersName,
-  readersCardNumber,
   cardTitle,
   cardText,
   btnProfileCard,
@@ -16,6 +9,16 @@ import {
   btnSignUpcards,
   cardTitleFind,
 } from "./variables.js";
+
+import {
+  checkVisitsCount,
+  checkBooksCount,
+  checkBonusesCount,
+  findLibraryCard,
+  checkDetails,
+  readersName,
+  readersCardNumber,
+} from "../scripts/forms/variables.js";
 
 export const changeUserCard = () => {
   getLocalStorageUsersCredits(getRegisteredUsers());

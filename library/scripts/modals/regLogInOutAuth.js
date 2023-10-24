@@ -1,5 +1,4 @@
-import { changeColorBorderInput } from "../helpers.js";
-import { setFirstName, setLastName, setPassword, setEmail, setInputEmailCardLogInValue, setInputPasswordLogInValue, setInputReadersCardNumberValue } from "../variables.js";
+import { setFirstName, setLastName, setPassword, setEmail} from "../variables.js";
 import { inputsValidation } from "../inputsValidation.js";
 import { resetColorBorderInput } from "../helpers.js";
 
@@ -24,8 +23,6 @@ export const regLogInOutAuth = () => {
     const btnProfileCard = document.querySelector('.profile-btn');
     const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
     const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
-    const inputEmailCardLogIn = document.getElementById('log-in-email-card');
-    const inputPasswordLogIn = document.getElementById('log-in-password');
     const btnCloseModalBuycard = document.querySelector('.btn-close-modal-buy-library-card');
     const modalBuyCard = document.querySelector('.wrapper-modal-buy-library-card');
     const body = document.querySelector('body');
@@ -34,9 +31,6 @@ export const regLogInOutAuth = () => {
     const expirationCodeMounth = document.getElementById('expiration-code-mounth');
     const expirationCodeYear = document.getElementById('expiration-code-year');
     const cardCvc = document.getElementById('card-cvc');
-
-    const readersName = document.getElementById('readers-name');
-    const readersCardNumber = document.getElementById('readers-card-number');
 
     const btnRegistartionInModal = document.querySelector('.btn-registration');
     const btnLogInInModal = document.querySelector('.btn-login')
@@ -51,16 +45,6 @@ export const regLogInOutAuth = () => {
     btnLogInInModal.addEventListener('click', () => {
         wrapperModalReg.classList.remove('active-blackout');
         wrapperModalLogIn.classList.add('active-blackout');
-    });
-
-    readersName.addEventListener('input', () => {
-        setInputEmailCardLogInValue(readersName.value);
-        inputsValidation(readersName);
-    });
-
-    readersCardNumber.addEventListener('input', () => {
-        setInputReadersCardNumberValue(readersCardNumber.value);
-        inputsValidation(readersCardNumber);
     });
 
     btnSignUpcards.addEventListener('click', () => {
@@ -175,15 +159,5 @@ export const regLogInOutAuth = () => {
     btnCloseUserProfile.addEventListener('click', () => {
         modalUserProfile.classList.remove('active-blackout');
         body.classList.remove('no-scroll');
-    });
-
-    inputEmailCardLogIn.addEventListener('input', () => {
-        changeColorBorderInput(inputEmailCardLogIn.value.length >= 1, inputEmailCardLogIn);
-        setInputEmailCardLogInValue(inputEmailCardLogIn.value);
-    });
-
-    inputPasswordLogIn.addEventListener('input', () => {
-        changeColorBorderInput(inputPasswordLogIn.value.length >= 8, inputPasswordLogIn);
-        setInputPasswordLogInValue(inputPasswordLogIn.value);
     });
 };

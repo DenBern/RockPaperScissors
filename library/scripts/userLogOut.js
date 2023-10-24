@@ -6,11 +6,6 @@ import {
   btnsWrapper,
   titleDropMenu,
   buyBtns,
-  formCard,
-  findLibraryCard,
-  checkDetails,
-  readersName,
-  readersCardNumber,
   cardTitle,
   cardText,
   btnProfileCard,
@@ -20,6 +15,14 @@ import {
   btnLogInDropMenu,
   btnRegister
 } from "./variables.js";
+
+import {
+  formCard,
+  findLibraryCard,
+  checkDetails,
+  readersName,
+  readersCardNumber,
+} from "./forms/variables.js";
 
 export const userLogOut = () => {
   localStorageUsersCredits.map(user => {

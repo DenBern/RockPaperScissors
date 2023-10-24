@@ -7,8 +7,9 @@ import { changeCard } from "./changeCard.js";
 import {
   userRentedBooks,
   setUserRentedBooks,
-  modalBuyCard,
   body,
+  wrapperModalReg,
+  // wrapperModalLogIn,
 } from "./variables.js";
 
 

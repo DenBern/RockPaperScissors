@@ -1,6 +1,20 @@
-// import { getRegisteredUsers } from "./localStorage/getRegisteredUsers.js";
-// import { getLocalStorageUsersCredits, localStorageUsersCredits } from "./localStorage/getLocalStorageUserCredits.js";
-// import { checkCardCredits } from "./variables.js";
+import { getRegisteredUsers } from "../localStorage/getRegisteredUsers.js";
+import { getLocalStorageUsersCredits, localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
+import {
+  checkCardCredits,
+  findLibraryCard,
+  checkDetails,
+  readersName,
+  readersCardNumber,
+  checkVisitsCount,
+  checkBonusesCount,
+  checkBooksCount,
+  inputReadersNameValue,
+  inputReadersCardNumberValue,
+  setInputReadersNameValue,
+  setInputReadersCardNumberValue
+} from "./variables.js";
+
 
 export const checkCard = () => {
   if (!getRegisteredUsers()) return;
@@ -25,10 +39,12 @@ export const checkCard = () => {
           readersCardNumber.removeAttribute('disabled')
           readersName.value = '';
           readersCardNumber.value = '';
-          inputReadersNameValue = '';
-          inputReadersCardNumberValue = '';
+          setInputReadersNameValue('');
+          setInputReadersCardNumberValue('');
+          // inputReadersNameValue = '';
+          // inputReadersCardNumberValue = '';
           checkCardCredits = {};
-      }, 10000)
+      }, 10000);
   } else {
       alert('Check user name or card number');
   };
