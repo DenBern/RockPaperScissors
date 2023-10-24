@@ -1,7 +1,7 @@
 import { body } from "../variables.js";
 import  { modalBuyCard, btnBuyCard }from './variables.js';
 import { localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
-import { buyBook } from "../buyBook.js";
+import { buyBookEventListener } from "../buyBook/buyBookEventListener.js";
 
 export const cardRegister = () => {
   localStorageUsersCredits.map(user => {
@@ -17,5 +17,5 @@ export const cardRegister = () => {
       btnBuyCard.textContent = 'Done!';
     };
   });
-  buyBook();
+  buyBookEventListener();
 };

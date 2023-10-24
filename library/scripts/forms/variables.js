@@ -15,11 +15,12 @@ const formLogIn = document.getElementById('form-log-in');
 const wrapperModalLogIn = document.querySelector('.wrapper-modal-log-in');
 const formCardDetails = document.getElementById('form-card-details');
 const formRegistrarion = document.getElementById('form-registration');
-
+const wrapperModalReg = document.querySelector('.wrapper-modal-register');
 const firstName = document.getElementById('first-name');
 const lastName = document.getElementById('last-name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+const body = document.querySelector('body');
 
 let checkCardCredits = {};
 
@@ -45,11 +46,12 @@ const setInputReadersCardNumberValue = (value) => {
 };
 
 export {
+  body,
   firstName,
   lastName,
   email,
   password,
-  // newUserCredits,
+  wrapperModalReg,
   btnBuyCard,
   modalBuyCard,
   formCard,
@@ -68,7 +70,6 @@ export {
   formLogIn,
   wrapperModalLogIn,
   formCardDetails,
-
   inputEmailCardLogInValue,
   setInputEmailCardLogInValue,
   inputPasswordLogInValue,

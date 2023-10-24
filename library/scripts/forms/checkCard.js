@@ -1,7 +1,6 @@
 import { getRegisteredUsers } from "../localStorage/getRegisteredUsers.js";
 import { getLocalStorageUsersCredits, localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
 import {
-  checkCardCredits,
   findLibraryCard,
   checkDetails,
   readersName,
@@ -19,7 +18,7 @@ import {
 export const checkCard = () => {
   if (!getRegisteredUsers()) return;
   getLocalStorageUsersCredits(getRegisteredUsers())
-  checkCardCredits = localStorageUsersCredits.find(user => user.firstName === inputReadersNameValue) || {};
+  const checkCardCredits = localStorageUsersCredits.find(user => user.firstName === inputReadersNameValue) || {};
   if (!Object.keys(checkCardCredits).length) {
       return alert('Check user name or card number');
   };
@@ -41,8 +40,6 @@ export const checkCard = () => {
           readersCardNumber.value = '';
           setInputReadersNameValue('');
           setInputReadersCardNumberValue('');
-          // inputReadersNameValue = '';
-          // inputReadersCardNumberValue = '';
           checkCardCredits = {};
       }, 10000);
   } else {

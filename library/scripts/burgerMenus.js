@@ -1,16 +1,9 @@
-export const dropMenus = () => {
+import { menuAuthorization, profileButton } from "./modals/variables.js";
 
-  //Menu burger
-
-  //Variables
+export const burgerMenu = () => {
   const burgerButton = document.querySelector('.burger-menu-button');
   const burgerLinks = document.querySelectorAll('.burger-link');
   const burgerMenu = document.querySelector('.burger-links');
-
-  const profileButton = document.querySelector('.link-user');
-  const menuAuthorization = document.querySelector('.wrapper-menu-auth');
-  const btnRegister = document.querySelector('.register');
-  const btnLogIn = document.querySelector('.log-in');
 
   const toggleClass = () => {
     burgerButton.classList.toggle('active-button');
@@ -33,19 +26,9 @@ export const dropMenus = () => {
     };
   });
 
-  //Menu Profile
-
-  btnRegister.addEventListener('click', () => {
-    menuAuthorization.classList.remove('active-profile-menu');
-  });
-
-  btnLogIn.addEventListener('click', () => {
-    menuAuthorization.classList.remove('active-profile-menu');
-  });
-
   window.addEventListener('click', (event) => {
     if (!menuAuthorization.contains(event.target) && !profileButton.contains(event.target)) {
       menuAuthorization.classList.remove('active-profile-menu');
     };
   });
-}
+};

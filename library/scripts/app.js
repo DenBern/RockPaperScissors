@@ -1,19 +1,18 @@
-import { changeFavorite } from "./changeFavorite.js";
-import { dropMenus } from "./dropMenus.js";
+import { changeFavorite } from "./changeContent/changeFavorite.js";
 import { sliders } from "./sliders.js";
-import { regLogInOutAuth } from "./modals/regLogInOutAuth.js";
-import { changeProfileMenu } from "./changeProfileMenu.js";
+import { changeProfileMenu } from "./changeContent/changeProfileMenu.js";
 import { getRegisteredUsers } from "./localStorage/getRegisteredUsers.js";
 import { formsEventListeners } from "./forms/formsEventListeners.js";
+import { modalsEventListeners } from "./modals/modalsEventListeners.js";
+import { burgerMenu } from "./burgerMenus.js";
+import { buyBookEventListener } from "./buyBook/buyBookEventListener.js";
 
-dropMenus();
+burgerMenu();
 sliders();
-changeProfileMenu(getRegisteredUsers());
 changeFavorite();
-
-
-regLogInOutAuth();
-
+changeProfileMenu(getRegisteredUsers());
+modalsEventListeners();
 formsEventListeners();
+buyBookEventListener();
 
 

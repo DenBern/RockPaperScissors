@@ -6,8 +6,6 @@ export const sliders = () => {
   const leftSvg = document.getElementById('btn-left');
   const rightSvg = document.getElementById('btn-right');
 
-  // Variables
-
   const sliderCenterPosition = 0;
   const sliderTabletStartPosition = 1016;
   const sliderTabletEndPosition = -1016;
@@ -24,11 +22,11 @@ export const sliders = () => {
   const setActiveBtn = (btnName) => {
     sliderBtns.forEach(btn => {
       btn.classList.toggle('active', btn.classList.contains(btnName));
-    })
+    });
     if (btnName !== 'first-dot' || 'fifth-dot') {
       rightSvg.style.stroke = "#000";
       leftSvg.style.stroke = "#000";
-    }
+    };
   };
 
   // Set attribute btns(dots) tablet
@@ -47,14 +45,14 @@ export const sliders = () => {
         leftButton.removeAttribute('disabled', '');
         rightButton.setAttribute('disabled', '');
         break;
-    }
-  }
+    };
+  };
 
   // Move slider (desktop & tablet)
 
   const moveSlider = (positionDesktop, positionTablet) => {
     sliderImages.style.left = `${screenWith ? positionDesktop : positionTablet }` + 'px';
-  }
+  };
 
   sliderBtns.forEach(btn => btn.addEventListener('click', (btn) => {
     switch (btn.target.id) {
@@ -90,8 +88,8 @@ export const sliders = () => {
         setAttributeBtn(btn.target.id);
         rightSvg.style.stroke = `${disabledColorArrow}`;
         break;
-    }
-  }))
+    };
+  }));
 
   // Disabled buttons(tablet)
 
@@ -129,7 +127,7 @@ export const sliders = () => {
         setActiveBtn('fifth-dot');
         break;
     };
-  }
+  };
 
   const shiftLeft = () => {
     sliderPosition > sliderTabletEndPosition ? sliderPosition -= sliderTabletStep : 0;
@@ -140,7 +138,7 @@ export const sliders = () => {
     } else {
       moveSlider(0, sliderPosition);
       leftButton.removeAttribute('disabled', '');
-    }
+    };
     activeBtnTablet(sliderPosition);
     setDisabledBtn(sliderPosition);
   };
@@ -154,9 +152,9 @@ export const sliders = () => {
     } else {
       moveSlider(0, sliderPosition);
       rightButton.removeAttribute('disabled', '');
-    }
+    };
     activeBtnTablet(sliderPosition);
     setDisabledBtn(sliderPosition);
-  };;
+  };
   leftButton.addEventListener('click', (shiftRight));
 };;

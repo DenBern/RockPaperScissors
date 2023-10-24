@@ -16,7 +16,13 @@ import {
   inputEmailCardLogIn,
   inputPasswordLogIn,
   formRegistrarion,
+  firstName,
+  lastName,
+  email,
+  password,
 } from "./variables.js";
+
+import { setFirstName, setLastName, setEmail, setPassword } from "../createNewUser.js";
 
 export const formsEventListeners = () => {
   formRegistrarion.addEventListener('submit', (event) => {
@@ -57,5 +63,25 @@ export const formsEventListeners = () => {
   inputPasswordLogIn.addEventListener('input', () => {
     changeColorBorderInput(inputPasswordLogIn.value.length >= 8, inputPasswordLogIn);
     setInputPasswordLogInValue(inputPasswordLogIn.value);
+  });
+
+  firstName.addEventListener('input', () => {
+    setFirstName(firstName.value);
+    inputsValidation(firstName);
+  });
+
+  lastName.addEventListener('input', () => {
+    setLastName(lastName.value);
+    inputsValidation(lastName);
+  });
+
+  email.addEventListener('input', () => {
+    setEmail(email.value);
+    inputsValidation(email);
+  });
+
+  password.addEventListener('input', () => {
+    setPassword(password.value);
+    inputsValidation(password);
   });
 };

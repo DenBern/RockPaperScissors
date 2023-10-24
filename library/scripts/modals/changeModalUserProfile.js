@@ -2,10 +2,10 @@ import {
   initials,
   userFirstName,
   userLastName,
-  visitsCount,
   bonusesCount,
+  userCardNumber,
+  visitsCount,
   booksCount,
-  userCardNumber
 } from "../variables.js";
 import { currentUserCreditsLogged } from "../variables.js";
 

@@ -1,4 +1,4 @@
-import { localStorageUsersCredits } from "./localStorage/getLocalStorageUserCredits.js";
+import { localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
 import { changeProfileMenu } from "./changeProfileMenu.js";
 import {
   btnLogOut,
@@ -10,11 +10,10 @@ import {
   cardText,
   btnProfileCard,
   btnLogInCards,
-  btnSignUpcards,
   cardTitleFind,
   btnLogInDropMenu,
-  btnRegister
-} from "./variables.js";
+  btnSignUpCards,
+} from "../variables.js";
 
 import {
   formCard,
@@ -22,7 +21,9 @@ import {
   checkDetails,
   readersName,
   readersCardNumber,
-} from "./forms/variables.js";
+} from "../forms/variables.js";
+
+import { btnRegister } from "../modals/variables.js";
 
 export const userLogOut = () => {
   localStorageUsersCredits.map(user => {
@@ -55,6 +56,6 @@ export const userLogOut = () => {
                           into account or you can register a new account`;
   btnProfileCard.style.display = 'none';
   btnLogInCards.style.display = 'block';
-  btnSignUpcards.style.display = 'block';
+  btnSignUpCards.style.display = 'block';
   cardTitleFind.textContent = 'Find your Library card';
 };

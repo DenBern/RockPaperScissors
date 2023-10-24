@@ -1,22 +1,25 @@
-import { getLocalStorageUsersCredits, localStorageUsersCredits } from "./localStorage/getLocalStorageUserCredits.js";
-import { changeModalUserProfile } from "./modals/changeModalUserProfile.js";
+import { getLocalStorageUsersCredits, localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
+import { changeModalUserProfile } from "../modals/changeModalUserProfile.js";
 import { renderRentedBooks } from "./renderRentedBooks.js";
-import { changeBtns } from "./helpers.js";
+import { changeBtns } from "../helpers.js";
 import { userLogOut } from "./userLogOut.js";
 import {
   setCurrentUserCreditsLogged,
   currentUserCreditsLogged,
-  profileButton,
   titleDropMenu,
   btnLogInDropMenu,
   btnMyProfile,
   btnsWrapper,
-  btnRegister,
   btnLogOut,
-  menuAuthorization,
   modalUserProfile,
   body,
-} from "./variables.js";
+} from "../variables.js";
+
+import {
+  profileButton,
+  btnRegister,
+  menuAuthorization,
+} from "../modals/variables.js";
 
 export const changeProfileMenu = (registered) => {
   getLocalStorageUsersCredits(registered);

@@ -1,8 +1,8 @@
 import { getRegisteredUsers } from "../localStorage/getRegisteredUsers.js";
 import { localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
-import { changeProfileMenu } from "../changeProfileMenu.js";
+import { changeProfileMenu } from "../changeContent/changeProfileMenu.js";
 import { changeBtns, resetColorBorderInput } from "../helpers.js";
-import { changeUserCard } from "../changeUserCard.js";
+import { changeUserCard } from "../changeContent/changeUserCard.js";
 import { body } from "../variables.js";
 import {
   formLogIn,

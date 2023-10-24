@@ -11,13 +11,13 @@ export const changeFavorite = () => {
       if(item.className.includes(defaultFavorite)) {
         item.style.display = 'flex';
         item.classList.add('active-season');
-      }
+      };
     });
 
     if (item.id === defaultFavorite) {
       item.checked = true;
       item.labels[0].classList.add('active-input');
-    }
+    };
   });
 
   showDefaultFavorite();
@@ -40,16 +40,16 @@ export const changeFavorite = () => {
         setTimeout(() => {
           item.style.display = 'none';
         }, delayTimeDisplay);
-      }
+      };
     });
 
     inputsFavorites.forEach(item => {
-      if(item.id !== season) {
+      if (item.id !== season) {
         item.checked = false;
         item.labels[0].classList.remove('active-input');
-      }
+      };
     });
-  }
+  };
 
   inputsFavorites.forEach(item => {
     item.addEventListener('click', (item) => {
@@ -66,7 +66,7 @@ export const changeFavorite = () => {
         case 'autumn':
           changeFavoriteSeason(item);
           break;
-      }
+      };
     });
   });
 };

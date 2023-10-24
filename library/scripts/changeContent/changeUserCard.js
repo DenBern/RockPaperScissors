@@ -1,14 +1,14 @@
-import { getLocalStorageUsersCredits, localStorageUsersCredits } from "./localStorage/getLocalStorageUserCredits.js";
-import { getRegisteredUsers } from "./localStorage/getRegisteredUsers.js";
+import { getLocalStorageUsersCredits, localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
+import { getRegisteredUsers } from "../localStorage/getRegisteredUsers.js";
 
 import {
   cardTitle,
   cardText,
   btnProfileCard,
   btnLogInCards,
-  btnSignUpcards,
   cardTitleFind,
-} from "./variables.js";
+  btnSignUpCards,
+} from "../variables.js";
 
 import {
   checkVisitsCount,
@@ -18,7 +18,7 @@ import {
   checkDetails,
   readersName,
   readersCardNumber,
-} from "../scripts/forms/variables.js";
+} from "../forms/variables.js";
 
 export const changeUserCard = () => {
   getLocalStorageUsersCredits(getRegisteredUsers());
@@ -42,7 +42,7 @@ export const changeUserCard = () => {
                               and more.`;
       btnProfileCard.style.display = 'block';
       btnLogInCards.style.display = 'none';
-      btnSignUpcards.style.display = 'none';
+      btnSignUpCards.style.display = 'none';
       cardTitleFind.textContent = 'Your Library card';
     };
   });

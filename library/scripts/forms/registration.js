@@ -1,29 +1,29 @@
 import { localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
 import { resetColorBorderInput } from "../helpers.js";
-import { changeProfileMenu } from "../changeProfileMenu.js";
+import { changeProfileMenu } from "../changeContent/changeProfileMenu.js";
 import { getRegisteredUsers } from "../localStorage/getRegisteredUsers.js";
 import { changeBtns } from "../helpers.js";
-import { changeCard } from "../changeCard.js";
+import { changeCard } from "../changeContent/changeCard.js";
 import { generateCardNumber } from "../utils.js";
+import { body, btnSignUp } from "../variables.js";
 import {
-  body,
-  btnSignUp,
+  firstName,
+  lastName,
+  email,
+  password,
+  wrapperModalReg,
+  formRegistrarion,
+} from "./variables.js";
+
+import {
+  usersCredits,
   newUserCredits,
   setUserLogged,
   setUserVisits,
   setUserBonuses,
   setUsersCredits,
   setUserCardNumber,
-  usersCredits,
-  wrapperModalReg,
-} from "../variables.js";
-import {
-  formRegistrarion,
-  firstName,
-  lastName,
-  email,
-  password,
-} from "./variables.js";
+} from "../createNewUser.js";
 
 export const registration = () => {
   const randomCardNumber = generateCardNumber();

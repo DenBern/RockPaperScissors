@@ -1,15 +1,6 @@
-import {
-    getLocalStorageUsersCredits,
-    localStorageUsersCredits
-} from "./localStorage/getLocalStorageUserCredits.js";
-import {
-    getRegisteredUsers
-} from "./localStorage/getRegisteredUsers.js";
-import {
-    buyBtns,
-    setUserRentedBooks,
-    userRentedBooks
-} from "../scripts/variables.js";
+import { getLocalStorageUsersCredits, localStorageUsersCredits } from "./localStorage/getLocalStorageUserCredits.js";
+import { getRegisteredUsers } from "./localStorage/getRegisteredUsers.js";
+import { buyBtns, setUserRentedBooks, userRentedBooks } from "../scripts/variables.js";
 
 export const changeBtns = () => {
     getLocalStorageUsersCredits(getRegisteredUsers());
