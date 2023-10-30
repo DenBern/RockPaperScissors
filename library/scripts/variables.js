@@ -35,11 +35,11 @@ const cardTitle = document.querySelector('.create-card-title');
 const cardText = document.querySelector('.create-card-text');
 const cardTitleFind = document.querySelector('.find-card-title');
 
-let currentUserCreditsLogged = {};
+let usersCredits = [];
+const setUsersCredits = (value) => usersCredits = value;
 
-const setCurrentUserCreditsLogged = (credits) => {
-  currentUserCreditsLogged = credits;
-};
+let currentUserCreditsLogged = {};
+const setCurrentUserCreditsLogged = (credits) => currentUserCreditsLogged = credits;
 
 export {
   visitsCount,
@@ -48,6 +48,8 @@ export {
   btnSignUp,
   currentUserCreditsLogged,
   setCurrentUserCreditsLogged,
+  usersCredits,
+  setUsersCredits,
   titleDropMenu,
   btnLogInDropMenu,
   userFirstName,
