@@ -92,7 +92,7 @@ export const disabledActionBtns = () => {
 };
 
 export const enabledActionBtns = () => {
-  [rockButton, paperButton, scissorsButton, randomButton].forEach(btn => {
+  [rockButton, paperButton, scissorsButton, randomButton].forEach(btn=> {
     btn.removeAttribute('disabled', '');
     btn.style.backgroundColor = '#232586';
     btn.style.opacity = 0.7;
