@@ -29,21 +29,11 @@ let inputPasswordLogInValue;
 let inputReadersNameValue;
 let inputReadersCardNumberValue;
 
-const setInputEmailCardLogInValue = (value) => {
-  inputEmailCardLogInValue = value;
-};
-
-const setInputPasswordLogInValue = (value) => {
-  inputPasswordLogInValue = value;
-};
-
-const setInputReadersNameValue = (value) => {
-  inputReadersNameValue = value;
-};
-
-const setInputReadersCardNumberValue = (value) => {
-  inputReadersCardNumberValue = value;
-};
+const setInputEmailCardLogInValue = (value) => inputEmailCardLogInValue = value;
+const setInputPasswordLogInValue = (value) => inputPasswordLogInValue = value;
+const setInputReadersNameValue = (value) => inputReadersNameValue = value;
+const setInputReadersCardNumberValue = (value) => inputReadersCardNumberValue = value;
+const setCheckCardCredits = (value) => checkCardCredits = value;
 
 export {
   body,
@@ -78,4 +68,5 @@ export {
   setInputReadersNameValue,
   inputReadersCardNumberValue,
   setInputReadersCardNumberValue,
+  setCheckCardCredits
 };

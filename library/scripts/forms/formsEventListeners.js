@@ -20,6 +20,7 @@ import {
   lastName,
   email,
   password,
+  setInputReadersNameValue,
 } from "./variables.js";
 
 import { setFirstName, setLastName, setEmail, setPassword } from "../createNewUser.js";
@@ -46,7 +47,7 @@ export const formsEventListeners = () => {
   });
 
   readersName.addEventListener('input', () => {
-    setInputEmailCardLogInValue(readersName.value);
+    setInputReadersNameValue(readersName.value)
     inputsValidation(readersName);
   });
 

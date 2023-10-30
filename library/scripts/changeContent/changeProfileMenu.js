@@ -43,14 +43,6 @@ export const changeProfileMenu = (registered) => {
       changeModalUserProfile();
       renderRentedBooks();
       changeBtns();
-
-    // Event listener ??
-      btnMyProfile.addEventListener('click', () => {
-        menuAuthorization.classList.remove('active-profile-menu');
-        modalUserProfile.classList.add('active-blackout');
-        body.classList.add('no-scroll');
-      });
-      btnLogOut.addEventListener('click', () => userLogOut());
   } else {
       profileButton.style.background = '';
       profileButton.innerHTML = '';

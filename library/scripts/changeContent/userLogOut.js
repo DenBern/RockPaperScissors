@@ -5,7 +5,6 @@ import {
   btnMyProfile,
   btnsWrapper,
   titleDropMenu,
-  buyBtns,
   cardTitle,
   cardText,
   btnProfileCard,
@@ -14,6 +13,8 @@ import {
   btnLogInDropMenu,
   btnSignUpCards,
 } from "../variables.js";
+
+import { buyBtns } from "../buyBook/variables.js";
 
 import {
   formCard,

@@ -22,8 +22,9 @@ import {
   expirationCodeYear,
   cardCvc,
 } from "./variables.js";
+import { userLogOut } from "../changeContent/userLogOut.js";
 import { closeRegistration } from "./closeRegistration.js";
-import { body } from "../variables.js";
+import { body, btnMyProfile, btnLogOut } from "../variables.js";
 import { formCardDetails } from "../forms/variables.js";
 import { resetColorBorderInput } from "../helpers.js";
 import { inputsValidation } from "../inputsValidation.js";
@@ -73,6 +74,14 @@ export const modalsEventListeners = () => {
     wrapperModalLogIn.classList.remove('active-blackout');
     body.classList.remove('no-scroll');
   });
+
+  btnMyProfile.addEventListener('click', () => {
+    menuAuthorization.classList.remove('active-profile-menu');
+    modalUserProfile.classList.add('active-blackout');
+    body.classList.add('no-scroll');
+  });
+
+  btnLogOut.addEventListener('click', () => userLogOut());
 
   btnCloseModalBuyCard.addEventListener('click', () => {
     modalBuyCard.classList.remove('active-blackout');

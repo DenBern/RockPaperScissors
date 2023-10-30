@@ -11,7 +11,8 @@ import {
   inputReadersNameValue,
   inputReadersCardNumberValue,
   setInputReadersNameValue,
-  setInputReadersCardNumberValue
+  setInputReadersCardNumberValue,
+  setCheckCardCredits
 } from "./variables.js";
 
 
@@ -19,8 +20,9 @@ export const checkCard = () => {
   if (!getRegisteredUsers()) return;
   getLocalStorageUsersCredits(getRegisteredUsers())
   const checkCardCredits = localStorageUsersCredits.find(user => user.firstName === inputReadersNameValue) || {};
+
   if (!Object.keys(checkCardCredits).length) {
-      return alert('Check user name or card number');
+      return alert('User not found.');
   };
 
   if (checkCardCredits.firstName === inputReadersNameValue && checkCardCredits.cardNumber === inputReadersCardNumberValue) {
@@ -40,7 +42,7 @@ export const checkCard = () => {
           readersCardNumber.value = '';
           setInputReadersNameValue('');
           setInputReadersCardNumberValue('');
-          checkCardCredits = {};
+          setCheckCardCredits({});
       }, 10000);
   } else {
       alert('Check user name or card number');

@@ -1,30 +1,32 @@
-import { setNewRentedBook, newRentedBook } from "../variables.js";
+import {
+  setNewRentedBook,
+  newRentedBook,
+  buyBtns,
+  setUserRentedBooks,
+  userRentedBooks
+} from "./variables.js";
+
 import { localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
 import { getRegisteredUsers } from "../localStorage/getRegisteredUsers.js";
 import { renderRentedBooks } from "../changeContent/renderRentedBooks.js";
 import { changeProfileMenu } from "../changeContent/changeProfileMenu.js";
 import { changeCard } from "../changeContent/changeCard.js";
-import { userRentedBooks, setUserRentedBooks, body } from "../variables.js";
+import { body } from "../variables.js";
 import { wrapperModalReg, wrapperModalLogIn } from "../forms/variables.js";
 import { modalBuyCard } from "../forms/variables.js";
 
-export const buyBook = (event) => {
-  console.log('buy book')
+export const buyBook = () => {
   const currentUserCreditsLogged = localStorageUsersCredits.find(user => user.logged) || {};
   if (!getRegisteredUsers()) {
     wrapperModalReg.classList.add('active-blackout');
     body.classList.add('no-scroll');
-    return
   } else if (getRegisteredUsers() && !Object.keys(currentUserCreditsLogged).length) {
     wrapperModalLogIn.classList.add('active-blackout');
     body.classList.add('no-scroll');
-    return;
   };
 
   localStorageUsersCredits.find(user => {
-    if (user.logged) {
-      setUserRentedBooks(user.rentedBooks);
-    };
+    if (user.logged) setUserRentedBooks(user.rentedBooks);
   });
 
   if (currentUserCreditsLogged && currentUserCreditsLogged.logged) {
@@ -48,6 +50,7 @@ export const buyBook = (event) => {
           changeProfileMenu(getRegisteredUsers);
           renderRentedBooks();
           changeCard();
+          buyBtns.forEach(btn => btn.removeEventListener('click', buyBook));
         };
       });
     } else {

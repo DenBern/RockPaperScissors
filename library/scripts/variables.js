@@ -19,7 +19,6 @@ const btnLogIn = document.querySelector('.log-in');
 const btnLogInCards = document.querySelector('.log-in-btn');
 const btnProfileCard = document.querySelector('.profile-btn');
 const btnCloseModalLogIn = document.querySelector('.btn-close-modal-log-in');
-const buyBtns = document.querySelectorAll('.book-buy');
 const inputEmailCardLogIn = document.getElementById('log-in-email-card');
 const inputPasswordLogIn = document.getElementById('log-in-password');
 const btnCloseModalBuycard = document.querySelector('.btn-close-modal-buy-library-card');
@@ -36,47 +35,19 @@ const cardTitle = document.querySelector('.create-card-title');
 const cardText = document.querySelector('.create-card-text');
 const cardTitleFind = document.querySelector('.find-card-title');
 
-const btnRegistartionInModal = document.querySelector('.btn-registration');
-const btnLogInInModal = document.querySelector('.btn-login');
-
-let newRentedBook = {
-  bookName: '',
-  bookAuthor: '',
-  btnDisabled: true,
-};
-
-const setNewRentedBook = (name, author) => {
-  console.log('setBook')
-  newRentedBook.bookName = name;
-  newRentedBook.bookAuthor = author;
-  newRentedBook.btnDisabled = !newRentedBook.btnDisabled;
-};
-
 let currentUserCreditsLogged = {};
 
 const setCurrentUserCreditsLogged = (credits) => {
   currentUserCreditsLogged = credits;
 };
 
-let userRentedBooks = [];
-
-const setUserRentedBooks = (books) => {
-  userRentedBooks = books;
-};
-
-
 export {
   visitsCount,
   booksCount,
   btnSignUpCards,
   btnSignUp,
-
   currentUserCreditsLogged,
   setCurrentUserCreditsLogged,
-  userRentedBooks,
-  setUserRentedBooks,
-  setNewRentedBook,
-  newRentedBook,
   titleDropMenu,
   btnLogInDropMenu,
   userFirstName,
@@ -93,7 +64,6 @@ export {
   btnLogInCards,
   btnProfileCard,
   btnCloseModalLogIn,
-  buyBtns,
   inputEmailCardLogIn,
   inputPasswordLogIn,
   btnCloseModalBuycard,
@@ -106,6 +76,4 @@ export {
   cardTitle,
   cardText,
   cardTitleFind,
-  btnRegistartionInModal,
-  btnLogInInModal
 };

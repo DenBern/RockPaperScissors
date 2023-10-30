@@ -1,6 +1,7 @@
 import { getLocalStorageUsersCredits, localStorageUsersCredits } from "../localStorage/getLocalStorageUserCredits.js";
-import { setUserRentedBooks, userRentedBooks, booksList } from "../variables.js";
+import { setUserRentedBooks, userRentedBooks } from "../buyBook/variables.js";
 import { getRegisteredUsers } from "../localStorage/getRegisteredUsers.js";
+import { booksList } from "../variables.js";
 
 export const renderRentedBooks = () => {
     getLocalStorageUsersCredits(getRegisteredUsers());

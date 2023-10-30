@@ -6,10 +6,12 @@ import { formsEventListeners } from "./forms/formsEventListeners.js";
 import { modalsEventListeners } from "./modals/modalsEventListeners.js";
 import { burgerMenu } from "./burgerMenus.js";
 import { buyBookEventListener } from "./buyBook/buyBookEventListener.js";
+import { changeCard } from "./changeContent/changeCard.js";
 
 burgerMenu();
 sliders();
 changeFavorite();
+changeCard();
 changeProfileMenu(getRegisteredUsers());
 modalsEventListeners();
 formsEventListeners();
